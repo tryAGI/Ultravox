@@ -14,6 +14,21 @@ if (OpenApi31Support.IsOpenApi31(yamlOrJson))
 
 var openApiDocument = new OpenApiStringReader().Read(yamlOrJson, out var diagnostics);
 
+openApiDocument.SecurityRequirements.Add(new OpenApiSecurityRequirement
+{
+    {
+        new OpenApiSecurityScheme
+        {
+            Reference = new OpenApiReference
+            {
+                Type = ReferenceType.SecurityScheme,
+                Id = "apiKeyAuth"
+            }
+        },
+        new List<string>()
+    }
+});
+
 //openApiDocument.Components.Schemas["GenerateCompletionRequest"]!.Properties["stream"]!.Default = new OpenApiBoolean(true);
 
 yamlOrJson = openApiDocument.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
