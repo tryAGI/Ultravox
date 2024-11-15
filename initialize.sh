@@ -1,8 +1,8 @@
 dotnet tool install --global autosdk.cli --prerelease
 
 autosdk init \
-  SolutionName \
-  SomeClient \
-  https://raw.githubusercontent.com/api/openapi.json \
-  CompanyName \
+  Ultravox \
+  UltravoxClient \
+  https://api.ultravox.ai/api/schema/ \
+  tryAGI \
   --output .
