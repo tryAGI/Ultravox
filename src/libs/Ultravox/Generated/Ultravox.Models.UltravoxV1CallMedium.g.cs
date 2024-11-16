@@ -29,6 +29,15 @@ namespace Ultravox
         public object? Twilio { get; set; }
 
         /// <summary>
+        /// The call will use a plain websocket connection. This is unlikely to yield an acceptable user<br/>
+        ///  experience if used from a browser or mobile client, but may be suitable for a<br/>
+        ///  server-to-server connection. This option provides a simple way to connect your own server to<br/>
+        ///  an Ultravox inference instance.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("serverWebSocket")]
+        public global::Ultravox.UltravoxV1CallMediumWebSocketMedium? ServerWebSocket { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -48,13 +57,21 @@ namespace Ultravox
         ///  &lt;Connect&gt;&lt;Stream url=${your-join-url} /&gt;&lt;/Connect&gt;<br/>
         ///  This works for both inbound and outbound calls.
         /// </param>
+        /// <param name="serverWebSocket">
+        /// The call will use a plain websocket connection. This is unlikely to yield an acceptable user<br/>
+        ///  experience if used from a browser or mobile client, but may be suitable for a<br/>
+        ///  server-to-server connection. This option provides a simple way to connect your own server to<br/>
+        ///  an Ultravox inference instance.
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public UltravoxV1CallMedium(
             object? webRtc,
-            object? twilio)
+            object? twilio,
+            global::Ultravox.UltravoxV1CallMediumWebSocketMedium? serverWebSocket)
         {
             this.WebRtc = webRtc;
             this.Twilio = twilio;
+            this.ServerWebSocket = serverWebSocket;
         }
 
         /// <summary>

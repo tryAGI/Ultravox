@@ -1540,6 +1540,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallMedium_TwilioMedium'
           description: "The call will use Twilio's \"Media Streams\" protocol.\n Once you have a join URL from starting a call, include it in your\n TwiML like so:\n <Connect><Stream url=${your-join-url} /></Connect>\n This works for both inbound and outbound calls."
+        serverWebSocket:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallMedium_WebSocketMedium'
+          description: "The call will use a plain websocket connection. This is unlikely to yield an acceptable user\n experience if used from a browser or mobile client, but may be suitable for a\n server-to-server connection. This option provides a simple way to connect your own server to\n an Ultravox inference instance."
       description: "Details about a call's protocol. By default, calls occur over WebRTC using\n the Ultravox client SDK. Setting a different call medium will prepare the\n server for a call using a different protocol.\n At most one call medium may be set."
     ultravox.v1.CallMedium_TwilioMedium:
       type: object
@@ -1547,6 +1551,22 @@ components:
     ultravox.v1.CallMedium_WebRtcMedium:
       type: object
       description: Details for a WebRTC call.
+    ultravox.v1.CallMedium_WebSocketMedium:
+      type: object
+      properties:
+        inputSampleRate:
+          type: integer
+          description: The sample rate for input (user) audio. Required.
+          format: int32
+        outputSampleRate:
+          type: integer
+          description: 'The desired sample rate for output (agent) audio. If unset, defaults to the input_sample_rate.'
+          format: int32
+        clientBufferSizeMs:
+          type: integer
+          description: "The size of the client-side audio buffer in milliseconds. Smaller buffers allow for faster\n interruptions but may cause audio underflow if network latency fluctuates too greatly. For\n the best of both worlds, set this to some large value (e.g. 30000) and implement support for\n playback_clear_buffer messages. Defaults to 60."
+          format: int32
+      description: Details for a WebSocket call.
     ultravox.v1.CallTool:
       type: object
       properties:
