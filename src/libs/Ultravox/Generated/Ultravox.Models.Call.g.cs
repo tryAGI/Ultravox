@@ -18,6 +18,13 @@ namespace Ultravox
         public global::System.Guid CallId { get; set; } = default!;
 
         /// <summary>
+        /// The version of the client that joined this call.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("clientVersion")]
+        public string? ClientVersion { get; set; }
+
+        /// <summary>
         /// Included only in responses
         /// </summary>
         /// <default>default!</default>
@@ -151,6 +158,10 @@ namespace Ultravox
         /// <param name="callId">
         /// Included only in responses
         /// </param>
+        /// <param name="clientVersion">
+        /// The version of the client that joined this call.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="created">
         /// Included only in responses
         /// </param>
@@ -207,6 +218,7 @@ namespace Ultravox
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Call(
+            string? clientVersion,
             global::System.DateTime? ended,
             global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? endReason,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
@@ -228,6 +240,7 @@ namespace Ultravox
             global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!)
         {
             this.CallId = callId;
+            this.ClientVersion = clientVersion;
             this.Created = created;
             this.Ended = ended;
             this.EndReason = endReason;
