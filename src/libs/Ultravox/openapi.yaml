@@ -979,6 +979,7 @@ components:
     Call:
       required:
         - callId
+        - clientVersion
         - created
         - endReason
         - ended
@@ -990,6 +991,11 @@ components:
         callId:
           type: string
           format: uuid
+          readOnly: true
+        clientVersion:
+          type: string
+          description: The version of the client that joined this call.
+          nullable: true
           readOnly: true
         created:
           type: string
