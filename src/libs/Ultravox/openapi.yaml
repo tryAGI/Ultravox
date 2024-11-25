@@ -218,22 +218,6 @@ paths:
                 $ref: '#/components/schemas/Call'
       security:
         - apiKeyAuth: [ ]
-    delete:
-      tags:
-        - calls
-      operationId: calls_destroy
-      parameters:
-        - name: call_id
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '204':
-          description: No response body
-      security:
-        - apiKeyAuth: [ ]
   '/api/calls/{call_id}/messages':
     get:
       tags:
