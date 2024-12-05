@@ -38,6 +38,26 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CallMediumWebSocketMedium? ServerWebSocket { get; set; }
 
         /// <summary>
+        /// The call will use Telnyx's media streaming protocol.<br/>
+        ///  Once you have a join URL from starting a call, include it in your<br/>
+        ///  TexML like so:<br/>
+        ///  &lt;Connect&gt;&lt;Stream url=${your-join-url} /&gt;&lt;/Connect&gt;<br/>
+        ///  This works for both inbound and outbound calls.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("telnyx")]
+        public object? Telnyx { get; set; }
+
+        /// <summary>
+        /// The call will use Plivo's AudioStreams protocol.<br/>
+        ///  Once you have a join URL from starting a call, include it in your<br/>
+        ///  Plivo XML like so:<br/>
+        ///  &lt;Stream keepCallAlive="true" bidirectional="true" contentType="audio/x-mulaw;rate=8000"&gt;${your-join-url}&lt;/Stream&gt;<br/>
+        ///  This works for both inbound and outbound calls.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("plivo")]
+        public object? Plivo { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -63,15 +83,33 @@ namespace Ultravox
         ///  server-to-server connection. This option provides a simple way to connect your own server to<br/>
         ///  an Ultravox inference instance.
         /// </param>
+        /// <param name="telnyx">
+        /// The call will use Telnyx's media streaming protocol.<br/>
+        ///  Once you have a join URL from starting a call, include it in your<br/>
+        ///  TexML like so:<br/>
+        ///  &lt;Connect&gt;&lt;Stream url=${your-join-url} /&gt;&lt;/Connect&gt;<br/>
+        ///  This works for both inbound and outbound calls.
+        /// </param>
+        /// <param name="plivo">
+        /// The call will use Plivo's AudioStreams protocol.<br/>
+        ///  Once you have a join URL from starting a call, include it in your<br/>
+        ///  Plivo XML like so:<br/>
+        ///  &lt;Stream keepCallAlive="true" bidirectional="true" contentType="audio/x-mulaw;rate=8000"&gt;${your-join-url}&lt;/Stream&gt;<br/>
+        ///  This works for both inbound and outbound calls.
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public UltravoxV1CallMedium(
             object? webRtc,
             object? twilio,
-            global::Ultravox.UltravoxV1CallMediumWebSocketMedium? serverWebSocket)
+            global::Ultravox.UltravoxV1CallMediumWebSocketMedium? serverWebSocket,
+            object? telnyx,
+            object? plivo)
         {
             this.WebRtc = webRtc;
             this.Twilio = twilio;
             this.ServerWebSocket = serverWebSocket;
+            this.Telnyx = telnyx;
+            this.Plivo = plivo;
         }
 
         /// <summary>

@@ -6,7 +6,8 @@ namespace Ultravox
     /// <summary>
     /// * `unjoined` - Client never joined<br/>
     /// * `hangup` - Client hung up<br/>
-    /// * `timeout` - Call timed out
+    /// * `timeout` - Call timed out<br/>
+    /// * `connection_error` - Connection error
     /// </summary>
     public enum EndReasonEnum
     {
@@ -22,6 +23,10 @@ namespace Ultravox
         /// 
         /// </summary>
         Timeout,
+        /// <summary>
+        /// 
+        /// </summary>
+        ConnectionError,
     }
 
     /// <summary>
@@ -39,6 +44,7 @@ namespace Ultravox
                 EndReasonEnum.Unjoined => "unjoined",
                 EndReasonEnum.Hangup => "hangup",
                 EndReasonEnum.Timeout => "timeout",
+                EndReasonEnum.ConnectionError => "connection_error",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,6 +58,7 @@ namespace Ultravox
                 "unjoined" => EndReasonEnum.Unjoined,
                 "hangup" => EndReasonEnum.Hangup,
                 "timeout" => EndReasonEnum.Timeout,
+                "connection_error" => EndReasonEnum.ConnectionError,
                 _ => null,
             };
         }
