@@ -537,7 +537,6 @@ paths:
                 type: object
                 additionalProperties: { }
       security:
-        - apiKeyAuth: [ ]
         - { }
   /api/tools:
     get:
@@ -994,7 +993,7 @@ components:
           oneOf:
             - $ref: '#/components/schemas/EndReasonEnum'
             - $ref: '#/components/schemas/NullEnum'
-          description: "The reason the call ended.\n\n* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `timeout` - Call timed out"
+          description: "The reason the call ended.\n\n* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `timeout` - Call timed out\n* `connection_error` - Connection error"
           nullable: true
           readOnly: true
         firstSpeaker:
@@ -1136,8 +1135,9 @@ components:
         - unjoined
         - hangup
         - timeout
+        - connection_error
       type: string
-      description: "* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `timeout` - Call timed out"
+      description: "* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `timeout` - Call timed out\n* `connection_error` - Connection error"
     EventsEnum:
       enum:
         - call.started
@@ -1534,7 +1534,21 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallMedium_WebSocketMedium'
           description: "The call will use a plain websocket connection. This is unlikely to yield an acceptable user\n experience if used from a browser or mobile client, but may be suitable for a\n server-to-server connection. This option provides a simple way to connect your own server to\n an Ultravox inference instance."
+        telnyx:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallMedium_TelnyxMedium'
+          description: "The call will use Telnyx's media streaming protocol.\n Once you have a join URL from starting a call, include it in your\n TexML like so:\n <Connect><Stream url=${your-join-url} /></Connect>\n This works for both inbound and outbound calls."
+        plivo:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallMedium_PlivoMedium'
+          description: "The call will use Plivo's AudioStreams protocol.\n Once you have a join URL from starting a call, include it in your\n Plivo XML like so:\n <Stream keepCallAlive=\"true\" bidirectional=\"true\" contentType=\"audio/x-mulaw;rate=8000\">${your-join-url}</Stream>\n This works for both inbound and outbound calls."
       description: "Details about a call's protocol. By default, calls occur over WebRTC using\n the Ultravox client SDK. Setting a different call medium will prepare the\n server for a call using a different protocol.\n At most one call medium may be set."
+    ultravox.v1.CallMedium_PlivoMedium:
+      type: object
+      description: Details for a Plivo call.
+    ultravox.v1.CallMedium_TelnyxMedium:
+      type: object
+      description: Details for a Telnyx call.
     ultravox.v1.CallMedium_TwilioMedium:
       type: object
       description: Details for a Twilio call.
