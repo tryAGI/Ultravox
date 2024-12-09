@@ -74,7 +74,7 @@ namespace Ultravox
         public global::Ultravox.InitialOutputMediumEnum InitialOutputMedium { get; set; } = default!;
 
         /// <summary>
-        /// Default Value: 60s
+        /// Default Value: 30s
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("joinTimeout")]
         public string? JoinTimeout { get; set; }
@@ -189,7 +189,7 @@ namespace Ultravox
         /// Included only in responses
         /// </param>
         /// <param name="joinTimeout">
-        /// Default Value: 60s
+        /// Default Value: 30s
         /// </param>
         /// <param name="joinUrl">
         /// Included only in responses

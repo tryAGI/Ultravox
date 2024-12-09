@@ -45,7 +45,7 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1Message>? InitialMessages { get; set; }
 
         /// <summary>
-        /// A timeout for joining the call. Defaults to 5 minutes.
+        /// A timeout for joining the call. Defaults to 30 seconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("joinTimeout")]
         public string? JoinTimeout { get; set; }
@@ -145,7 +145,7 @@ namespace Ultravox
         /// The conversation history to start from for this call.
         /// </param>
         /// <param name="joinTimeout">
-        /// A timeout for joining the call. Defaults to 5 minutes.
+        /// A timeout for joining the call. Defaults to 30 seconds.
         /// </param>
         /// <param name="maxDuration">
         /// The maximum duration of the call. Defaults to 1 hour.

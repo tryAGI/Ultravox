@@ -398,6 +398,26 @@ paths:
                   $ref: '#/components/schemas/CallTool'
       security:
         - apiKeyAuth: [ ]
+  /api/models:
+    get:
+      tags:
+        - models
+      operationId: models_list
+      parameters:
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedModelAliasList'
+      security:
+        - apiKeyAuth: [ ]
   /api/schema/:
     get:
       tags:
@@ -1013,7 +1033,7 @@ components:
           readOnly: true
         joinTimeout:
           type: string
-          default: 60s
+          default: 30s
         joinUrl:
           type: string
           nullable: true
@@ -1061,7 +1081,6 @@ components:
         - callId
         - callStageId
         - created
-        - model
         - temperature
       type: object
       properties:
@@ -1089,7 +1108,7 @@ components:
           nullable: true
         model:
           type: string
-          readOnly: true
+          default: fixie-ai/ultravox
         recordingEnabled:
           type: boolean
           default: false
@@ -1154,6 +1173,15 @@ components:
         - MESSAGE_MEDIUM_VOICE
         - MESSAGE_MEDIUM_TEXT
       type: string
+    ModelAlias:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The alias name.
+          readOnly: true
     NullEnum:
       enum:
         - 
@@ -1214,6 +1242,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CallStage'
+    PaginatedModelAliasList:
+      required:
+        - results
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModelAlias'
     PaginatedToolList:
       required:
         - results
@@ -1756,7 +1803,7 @@ components:
         joinTimeout:
           pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
           type: string
-          description: A timeout for joining the call. Defaults to 5 minutes.
+          description: A timeout for joining the call. Defaults to 30 seconds.
         maxDuration:
           pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
           type: string

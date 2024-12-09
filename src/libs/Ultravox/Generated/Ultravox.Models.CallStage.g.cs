@@ -42,11 +42,10 @@ namespace Ultravox
         public string? LanguageHint { get; set; }
 
         /// <summary>
-        /// Included only in responses
+        /// Default Value: fixie-ai/ultravox
         /// </summary>
-        /// <default>default!</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        public string Model { get; set; } = default!;
+        public string? Model { get; set; }
 
         /// <summary>
         /// Default Value: false<br/>
@@ -105,7 +104,7 @@ namespace Ultravox
         /// BCP47 language code that may be used to guide speech recognition.
         /// </param>
         /// <param name="model">
-        /// Included only in responses
+        /// Default Value: fixie-ai/ultravox
         /// </param>
         /// <param name="recordingEnabled">
         /// Default Value: false<br/>
@@ -121,6 +120,7 @@ namespace Ultravox
         public CallStage(
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
             string? languageHint,
+            string? model,
             bool? recordingEnabled,
             string? systemPrompt,
             string? timeExceededMessage,
@@ -128,7 +128,6 @@ namespace Ultravox
             global::System.Guid callId = default!,
             global::System.Guid callStageId = default!,
             global::System.DateTime created = default!,
-            string model = default!,
             double temperature = default!)
         {
             this.CallId = callId;
