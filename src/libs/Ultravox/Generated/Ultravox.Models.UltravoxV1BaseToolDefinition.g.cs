@@ -49,8 +49,7 @@ namespace Ultravox
         /// The maximum amount of time the tool is allowed for execution. The conversation is frozen<br/>
         ///  while tools run, so prefer sticking to the default unless you're comfortable with that<br/>
         ///  consequence. If your tool is too slow for the default and can't be made faster, still try to<br/>
-        ///  keep this timeout as low as possible.<br/>
-        ///  Note: For read APIs, 0s actually means unset (i.e. use the default).
+        ///  keep this timeout as low as possible.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
         public string? Timeout { get; set; }
@@ -99,8 +98,7 @@ namespace Ultravox
         /// The maximum amount of time the tool is allowed for execution. The conversation is frozen<br/>
         ///  while tools run, so prefer sticking to the default unless you're comfortable with that<br/>
         ///  consequence. If your tool is too slow for the default and can't be made faster, still try to<br/>
-        ///  keep this timeout as low as possible.<br/>
-        ///  Note: For read APIs, 0s actually means unset (i.e. use the default).
+        ///  keep this timeout as low as possible.
         /// </param>
         /// <param name="http">
         /// Details for an HTTP tool.
