@@ -33,6 +33,16 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1AutomaticParameter>? AutomaticParameters { get; set; }
 
         /// <summary>
+        /// The maximum amount of time the tool is allowed for execution. The conversation is frozen<br/>
+        ///  while tools run, so prefer sticking to the default unless you're comfortable with that<br/>
+        ///  consequence. If your tool is too slow for the default and can't be made faster, still try to<br/>
+        ///  keep this timeout as low as possible.<br/>
+        ///  Note: For read APIs, 0s actually means unset (i.e. use the default).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
+        public string? Timeout { get; set; }
+
+        /// <summary>
         /// Details for an HTTP tool.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("http")]
@@ -66,6 +76,13 @@ namespace Ultravox
         /// <param name="automaticParameters">
         /// Parameters automatically set by the system.
         /// </param>
+        /// <param name="timeout">
+        /// The maximum amount of time the tool is allowed for execution. The conversation is frozen<br/>
+        ///  while tools run, so prefer sticking to the default unless you're comfortable with that<br/>
+        ///  consequence. If your tool is too slow for the default and can't be made faster, still try to<br/>
+        ///  keep this timeout as low as possible.<br/>
+        ///  Note: For read APIs, 0s actually means unset (i.e. use the default).
+        /// </param>
         /// <param name="http">
         /// Details for an HTTP tool.
         /// </param>
@@ -79,6 +96,7 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1DynamicParameter>? dynamicParameters,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1StaticParameter>? staticParameters,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1AutomaticParameter>? automaticParameters,
+            string? timeout,
             global::Ultravox.UltravoxV1HttpCallToolDetails? http,
             object? client)
         {
@@ -86,6 +104,7 @@ namespace Ultravox
             this.DynamicParameters = dynamicParameters;
             this.StaticParameters = staticParameters;
             this.AutomaticParameters = automaticParameters;
+            this.Timeout = timeout;
             this.Http = http;
             this.Client = client;
         }
