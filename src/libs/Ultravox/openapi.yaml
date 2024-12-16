@@ -1588,11 +1588,11 @@ components:
         telnyx:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallMedium_TelnyxMedium'
-          description: "The call will use Telnyx's media streaming protocol.\n Once you have a join URL from starting a call, include it in your\n TexML like so:\n <Connect><Stream url=${your-join-url} /></Connect>\n This works for both inbound and outbound calls."
+          description: "The call will use Telnyx's media streaming protocol.\n Once you have a join URL from starting a call, include it in your\n TexML like so:\n <Connect><Stream url=${your-join-url} bidirectionalMode=\"rtp\" /></Connect>\n This works for both inbound and outbound calls."
         plivo:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallMedium_PlivoMedium'
-          description: "The call will use Plivo's AudioStreams protocol.\n Once you have a join URL from starting a call, include it in your\n Plivo XML like so:\n <Stream keepCallAlive=\"true\" bidirectional=\"true\" contentType=\"audio/x-mulaw;rate=8000\">${your-join-url}</Stream>\n This works for both inbound and outbound calls."
+          description: "The call will use Plivo's AudioStreams protocol.\n Once you have a join URL from starting a call, include it in your\n Plivo XML like so:\n <Stream keepCallAlive=\"true\" bidirectional=\"true\" contentType=\"audio/x-l16;rate=16000\">${your-join-url}</Stream>\n This works for both inbound and outbound calls."
       description: "Details about a call's protocol. By default, calls occur over WebRTC using\n the Ultravox client SDK. Setting a different call medium will prepare the\n server for a call using a different protocol.\n At most one call medium may be set."
     ultravox.v1.CallMedium_PlivoMedium:
       type: object
