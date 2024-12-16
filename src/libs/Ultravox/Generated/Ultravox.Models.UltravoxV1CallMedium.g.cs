@@ -41,7 +41,7 @@ namespace Ultravox
         /// The call will use Telnyx's media streaming protocol.<br/>
         ///  Once you have a join URL from starting a call, include it in your<br/>
         ///  TexML like so:<br/>
-        ///  &lt;Connect&gt;&lt;Stream url=${your-join-url} /&gt;&lt;/Connect&gt;<br/>
+        ///  &lt;Connect&gt;&lt;Stream url=${your-join-url} bidirectionalMode="rtp" /&gt;&lt;/Connect&gt;<br/>
         ///  This works for both inbound and outbound calls.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("telnyx")]
@@ -51,7 +51,7 @@ namespace Ultravox
         /// The call will use Plivo's AudioStreams protocol.<br/>
         ///  Once you have a join URL from starting a call, include it in your<br/>
         ///  Plivo XML like so:<br/>
-        ///  &lt;Stream keepCallAlive="true" bidirectional="true" contentType="audio/x-mulaw;rate=8000"&gt;${your-join-url}&lt;/Stream&gt;<br/>
+        ///  &lt;Stream keepCallAlive="true" bidirectional="true" contentType="audio/x-l16;rate=16000"&gt;${your-join-url}&lt;/Stream&gt;<br/>
         ///  This works for both inbound and outbound calls.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("plivo")]
@@ -87,14 +87,14 @@ namespace Ultravox
         /// The call will use Telnyx's media streaming protocol.<br/>
         ///  Once you have a join URL from starting a call, include it in your<br/>
         ///  TexML like so:<br/>
-        ///  &lt;Connect&gt;&lt;Stream url=${your-join-url} /&gt;&lt;/Connect&gt;<br/>
+        ///  &lt;Connect&gt;&lt;Stream url=${your-join-url} bidirectionalMode="rtp" /&gt;&lt;/Connect&gt;<br/>
         ///  This works for both inbound and outbound calls.
         /// </param>
         /// <param name="plivo">
         /// The call will use Plivo's AudioStreams protocol.<br/>
         ///  Once you have a join URL from starting a call, include it in your<br/>
         ///  Plivo XML like so:<br/>
-        ///  &lt;Stream keepCallAlive="true" bidirectional="true" contentType="audio/x-mulaw;rate=8000"&gt;${your-join-url}&lt;/Stream&gt;<br/>
+        ///  &lt;Stream keepCallAlive="true" bidirectional="true" contentType="audio/x-l16;rate=16000"&gt;${your-join-url}&lt;/Stream&gt;<br/>
         ///  This works for both inbound and outbound calls.
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
