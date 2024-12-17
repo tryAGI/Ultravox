@@ -7,11 +7,13 @@ namespace Ultravox
     {
         partial void PrepareModelsListArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string? cursor);
+            ref string? cursor,
+            ref int? pageSize);
         partial void PrepareModelsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string? cursor);
+            string? cursor,
+            int? pageSize);
         partial void ProcessModelsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -25,23 +27,27 @@ namespace Ultravox
         /// 
         /// </summary>
         /// <param name="cursor"></param>
+        /// <param name="pageSize"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedModelAliasList> ModelsListAsync(
             string? cursor = default,
+            int? pageSize = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
             PrepareModelsListArguments(
                 httpClient: HttpClient,
-                cursor: ref cursor);
+                cursor: ref cursor,
+                pageSize: ref pageSize);
 
             var __pathBuilder = new PathBuilder(
                 path: "/api/models",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
                 .AddOptionalParameter("cursor", cursor) 
+                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -74,7 +80,8 @@ namespace Ultravox
             PrepareModelsListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                cursor: cursor);
+                cursor: cursor,
+                pageSize: pageSize);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
