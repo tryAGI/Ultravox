@@ -80,6 +80,14 @@ namespace Ultravox
         public string? Voice { get; set; }
 
         /// <summary>
+        /// The number of errors in this call stage.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("errorCount")]
+        public int ErrorCount { get; set; } = default!;
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -116,6 +124,10 @@ namespace Ultravox
         /// </param>
         /// <param name="timeExceededMessage"></param>
         /// <param name="voice"></param>
+        /// <param name="errorCount">
+        /// The number of errors in this call stage.<br/>
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public CallStage(
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
@@ -128,7 +140,8 @@ namespace Ultravox
             global::System.Guid callId = default!,
             global::System.Guid callStageId = default!,
             global::System.DateTime created = default!,
-            double temperature = default!)
+            double temperature = default!,
+            int errorCount = default!)
         {
             this.CallId = callId;
             this.CallStageId = callStageId;
@@ -141,6 +154,7 @@ namespace Ultravox
             this.Temperature = temperature;
             this.TimeExceededMessage = timeExceededMessage;
             this.Voice = voice;
+            this.ErrorCount = errorCount;
         }
 
         /// <summary>

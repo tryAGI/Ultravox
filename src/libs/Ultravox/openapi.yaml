@@ -48,6 +48,11 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
       responses:
         '200':
           description: ''
@@ -163,6 +168,11 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
       responses:
         '200':
           description: ''
@@ -235,6 +245,11 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
       responses:
         '200':
           description: ''
@@ -278,6 +293,11 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
       responses:
         '200':
           description: ''
@@ -337,6 +357,11 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
       responses:
         '200':
           description: ''
@@ -344,6 +369,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Paginatedultravox.v1.MessageList'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/calls/{call_id}/stages/{call_stage_id}/messages/{call_stage_message_index}/audio':
+    get:
+      tags:
+        - calls
+      operationId: calls_stages_messages_audio_retrieve
+      parameters:
+        - name: call_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: call_stage_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: call_stage_message_index
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: No response body
       security:
         - apiKeyAuth: [ ]
   '/api/calls/{call_id}/stages/{call_stage_id}/tools':
@@ -409,6 +462,11 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
       responses:
         '200':
           description: ''
@@ -569,6 +627,11 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
       responses:
         '200':
           description: ''
@@ -680,6 +743,11 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
       responses:
         '200':
           description: ''
@@ -762,6 +830,11 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
       responses:
         '200':
           description: ''
@@ -986,6 +1059,7 @@ components:
         - created
         - endReason
         - ended
+        - errorCount
         - firstSpeaker
         - initialOutputMedium
         - joinUrl
@@ -1056,7 +1130,6 @@ components:
         recordingEnabled:
           type: boolean
           default: false
-          writeOnly: true
         systemPrompt:
           type: string
           nullable: true
@@ -1076,11 +1149,17 @@ components:
           type: boolean
           description: Indicates whether a transcript is optional for the call.
           default: true
+        errorCount:
+          type: integer
+          description: The number of errors in this call.
+          default: 0
+          readOnly: true
     CallStage:
       required:
         - callId
         - callStageId
         - created
+        - errorCount
         - temperature
       type: object
       properties:
@@ -1126,6 +1205,10 @@ components:
         voice:
           type: string
           nullable: true
+        errorCount:
+          type: integer
+          description: The number of errors in this call stage.
+          readOnly: true
     CallTool:
       required:
         - callToolId
@@ -1204,6 +1287,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/APIKey'
+        total:
+          type: integer
+          example: 123
     PaginatedCallList:
       required:
         - results
@@ -1223,6 +1309,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Call'
+        total:
+          type: integer
+          example: 123
     PaginatedCallStageList:
       required:
         - results
@@ -1242,6 +1331,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CallStage'
+        total:
+          type: integer
+          example: 123
     PaginatedModelAliasList:
       required:
         - results
@@ -1261,6 +1353,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ModelAlias'
+        total:
+          type: integer
+          example: 123
     PaginatedToolList:
       required:
         - results
@@ -1280,6 +1375,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Tool'
+        total:
+          type: integer
+          example: 123
     PaginatedVoiceList:
       required:
         - results
@@ -1299,6 +1397,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Voice'
+        total:
+          type: integer
+          example: 123
     PaginatedWebhookList:
       required:
         - results
@@ -1318,6 +1419,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Webhook'
+        total:
+          type: integer
+          example: 123
     Paginatedultravox.v1.MessageList:
       required:
         - results
@@ -1337,6 +1441,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ultravox.v1.Message'
+        total:
+          type: integer
+          example: 123
     PatchedAPIKey:
       type: object
       properties:
@@ -1488,6 +1595,21 @@ components:
         errorDetails:
           type: string
           description: "For failed tool calls, additional debugging information. While the text field is\n presented to the model so it can respond to failures gracefully, the full details\n are only exposed via the Ultravox REST API."
+        medium:
+          enum:
+            - MESSAGE_MEDIUM_UNSPECIFIED
+            - MESSAGE_MEDIUM_VOICE
+            - MESSAGE_MEDIUM_TEXT
+          type: string
+          description: The medium of the message.
+          format: enum
+        callStageMessageIndex:
+          type: integer
+          description: The index of the message within the call stage.
+          format: int32
+        callStageId:
+          type: string
+          description: The call stage this message appeared in.
       description: A message exchanged during a call.
     google.protobuf.Value:
       description: 'Represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values.'

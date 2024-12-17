@@ -42,6 +42,25 @@ namespace Ultravox
         public string? ErrorDetails { get; set; }
 
         /// <summary>
+        /// The medium of the message.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("medium")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1MessageMediumJsonConverter))]
+        public global::Ultravox.UltravoxV1MessageMedium? Medium { get; set; }
+
+        /// <summary>
+        /// The index of the message within the call stage.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("callStageMessageIndex")]
+        public int? CallStageMessageIndex { get; set; }
+
+        /// <summary>
+        /// The call stage this message appeared in.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("callStageId")]
+        public string? CallStageId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -67,19 +86,34 @@ namespace Ultravox
         ///  presented to the model so it can respond to failures gracefully, the full details<br/>
         ///  are only exposed via the Ultravox REST API.
         /// </param>
+        /// <param name="medium">
+        /// The medium of the message.
+        /// </param>
+        /// <param name="callStageMessageIndex">
+        /// The index of the message within the call stage.
+        /// </param>
+        /// <param name="callStageId">
+        /// The call stage this message appeared in.
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public UltravoxV1Message(
             global::Ultravox.UltravoxV1MessageRole? role,
             string? text,
             string? invocationId,
             string? toolName,
-            string? errorDetails)
+            string? errorDetails,
+            global::Ultravox.UltravoxV1MessageMedium? medium,
+            int? callStageMessageIndex,
+            string? callStageId)
         {
             this.Role = role;
             this.Text = text;
             this.InvocationId = invocationId;
             this.ToolName = toolName;
             this.ErrorDetails = errorDetails;
+            this.Medium = medium;
+            this.CallStageMessageIndex = callStageMessageIndex;
+            this.CallStageId = callStageId;
         }
 
         /// <summary>

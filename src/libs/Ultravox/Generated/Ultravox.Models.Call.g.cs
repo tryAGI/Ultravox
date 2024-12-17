@@ -110,8 +110,7 @@ namespace Ultravox
         public string? Model { get; set; }
 
         /// <summary>
-        /// Default Value: false<br/>
-        /// Included only in requests
+        /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("recordingEnabled")]
         public bool? RecordingEnabled { get; set; }
@@ -146,6 +145,15 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcriptOptional")]
         public bool? TranscriptOptional { get; set; }
+
+        /// <summary>
+        /// The number of errors in this call.<br/>
+        /// Default Value: 0<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("errorCount")]
+        public int ErrorCount { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -205,8 +213,7 @@ namespace Ultravox
         /// Default Value: fixie-ai/ultravox
         /// </param>
         /// <param name="recordingEnabled">
-        /// Default Value: false<br/>
-        /// Included only in requests
+        /// Default Value: false
         /// </param>
         /// <param name="systemPrompt"></param>
         /// <param name="temperature">
@@ -217,6 +224,11 @@ namespace Ultravox
         /// <param name="transcriptOptional">
         /// Indicates whether a transcript is optional for the call.<br/>
         /// Default Value: true
+        /// </param>
+        /// <param name="errorCount">
+        /// The number of errors in this call.<br/>
+        /// Default Value: 0<br/>
+        /// Included only in responses
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Call(
@@ -239,7 +251,8 @@ namespace Ultravox
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
             global::Ultravox.FirstSpeakerEnum firstSpeaker = default!,
-            global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!)
+            global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!,
+            int errorCount = default!)
         {
             this.CallId = callId;
             this.ClientVersion = clientVersion;
@@ -261,6 +274,7 @@ namespace Ultravox
             this.TimeExceededMessage = timeExceededMessage;
             this.Voice = voice;
             this.TranscriptOptional = transcriptOptional;
+            this.ErrorCount = errorCount;
         }
 
         /// <summary>

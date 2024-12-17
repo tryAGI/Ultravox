@@ -35,6 +35,8 @@ namespace Ultravox
             typeof(global::Ultravox.JsonConverters.EventsEnumNullableJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1MessageRoleJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1MessageRoleNullableJsonConverter),
+            typeof(global::Ultravox.JsonConverters.UltravoxV1MessageMediumJsonConverter),
+            typeof(global::Ultravox.JsonConverters.UltravoxV1MessageMediumNullableJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestInitiatorJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestInitiatorNullableJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestFirstSpeakerJsonConverter),

@@ -30,6 +30,13 @@ namespace Ultravox
         public required global::System.Collections.Generic.IList<global::Ultravox.ModelAlias> Results { get; set; }
 
         /// <summary>
+        /// Example: 123
+        /// </summary>
+        /// <example>123</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
+        public int? Total { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -45,15 +52,20 @@ namespace Ultravox
         /// Example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         /// </param>
         /// <param name="results"></param>
+        /// <param name="total">
+        /// Example: 123
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public PaginatedModelAliasList(
             global::System.Collections.Generic.IList<global::Ultravox.ModelAlias> results,
             string? next,
-            string? previous)
+            string? previous,
+            int? total)
         {
             this.Results = results ?? throw new global::System.ArgumentNullException(nameof(results));
             this.Next = next;
             this.Previous = previous;
+            this.Total = total;
         }
 
         /// <summary>

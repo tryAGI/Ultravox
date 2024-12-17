@@ -8,12 +8,14 @@ namespace Ultravox
         partial void PrepareCallsStagesListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid callId,
-            ref string? cursor);
+            ref string? cursor,
+            ref int? pageSize);
         partial void PrepareCallsStagesListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::System.Guid callId,
-            string? cursor);
+            string? cursor,
+            int? pageSize);
         partial void ProcessCallsStagesListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,11 +30,13 @@ namespace Ultravox
         /// </summary>
         /// <param name="callId"></param>
         /// <param name="cursor"></param>
+        /// <param name="pageSize"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedCallStageList> CallsStagesListAsync(
             global::System.Guid callId,
             string? cursor = default,
+            int? pageSize = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -40,13 +44,15 @@ namespace Ultravox
             PrepareCallsStagesListArguments(
                 httpClient: HttpClient,
                 callId: ref callId,
-                cursor: ref cursor);
+                cursor: ref cursor,
+                pageSize: ref pageSize);
 
             var __pathBuilder = new PathBuilder(
                 path: $"/api/calls/{callId}/stages",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
                 .AddOptionalParameter("cursor", cursor) 
+                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -80,7 +86,8 @@ namespace Ultravox
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 callId: callId,
-                cursor: cursor);
+                cursor: cursor,
+                pageSize: pageSize);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
