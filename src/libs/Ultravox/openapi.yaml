@@ -1683,6 +1683,9 @@ components:
           pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
           type: string
           description: "The maximum amount of time the tool is allowed for execution. The conversation is frozen\n while tools run, so prefer sticking to the default unless you're comfortable with that\n consequence. If your tool is too slow for the default and can't be made faster, still try to\n keep this timeout as low as possible."
+        precomputable:
+          type: boolean
+          description: "The tool is guaranteed to be non-mutating, repeatable, and free of side-effects. Such tools\n can safely be executed speculatively, reducing their effective latency. However, the fact they\n were called may not be reflected in the call history if their result ends up unused."
         http:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.BaseHttpToolDetails'
@@ -1769,6 +1772,9 @@ components:
           pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
           type: string
           description: "The maximum amount of time the tool is allowed for execution. The conversation is frozen\n while tools run, so prefer sticking to the default unless you're comfortable with that\n consequence. If your tool is too slow for the default and can't be made faster, still try to\n keep this timeout as low as possible."
+        precomputable:
+          type: boolean
+          description: "The tool is guaranteed to be non-mutating, repeatable, and free of side-effects. Such tools\n can safely be executed speculatively, reducing their effective latency. However, the fact they\n were called may not be reflected in the call history if their result ends up unused."
         http:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.HttpCallToolDetails'

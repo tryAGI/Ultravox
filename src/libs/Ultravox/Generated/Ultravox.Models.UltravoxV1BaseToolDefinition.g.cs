@@ -55,6 +55,14 @@ namespace Ultravox
         public string? Timeout { get; set; }
 
         /// <summary>
+        /// The tool is guaranteed to be non-mutating, repeatable, and free of side-effects. Such tools<br/>
+        ///  can safely be executed speculatively, reducing their effective latency. However, the fact they<br/>
+        ///  were called may not be reflected in the call history if their result ends up unused.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("precomputable")]
+        public bool? Precomputable { get; set; }
+
+        /// <summary>
         /// Details for an HTTP tool.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("http")]
@@ -100,6 +108,11 @@ namespace Ultravox
         ///  consequence. If your tool is too slow for the default and can't be made faster, still try to<br/>
         ///  keep this timeout as low as possible.
         /// </param>
+        /// <param name="precomputable">
+        /// The tool is guaranteed to be non-mutating, repeatable, and free of side-effects. Such tools<br/>
+        ///  can safely be executed speculatively, reducing their effective latency. However, the fact they<br/>
+        ///  were called may not be reflected in the call history if their result ends up unused.
+        /// </param>
         /// <param name="http">
         /// Details for an HTTP tool.
         /// </param>
@@ -116,6 +129,7 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1AutomaticParameter>? automaticParameters,
             global::Ultravox.UltravoxV1ToolRequirements? requirements,
             string? timeout,
+            bool? precomputable,
             global::Ultravox.UltravoxV1BaseHttpToolDetails? http,
             object? client)
         {
@@ -126,6 +140,7 @@ namespace Ultravox
             this.AutomaticParameters = automaticParameters;
             this.Requirements = requirements;
             this.Timeout = timeout;
+            this.Precomputable = precomputable;
             this.Http = http;
             this.Client = client;
         }
