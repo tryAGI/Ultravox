@@ -1154,6 +1154,11 @@ components:
           description: The number of errors in this call.
           default: 0
           readOnly: true
+        vadSettings:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.VadSettings'
+          description: VAD settings for the call.
+          nullable: true
     CallStage:
       required:
         - callId
@@ -1991,6 +1996,10 @@ components:
           type: string
           description: "The medium to use for the call initially. May be altered by the client later.\n Defaults to voice."
           format: enum
+        vadSettings:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.VadSettings'
+          description: VAD settings for the call.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object
@@ -2045,6 +2054,22 @@ components:
             type: string
           description: Dynamic parameters that must be overridden with an explicit (static) value.
       description: 'The requirements for using a tool, which must be satisfied when creating a call with the tool.'
+    ultravox.v1.VadSettings:
+      type: object
+      properties:
+        turnEndpointDelay:
+          pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
+          type: string
+          description: "The delay to wait after the last speech frame before ending the user's \"turn\". Increasing\n this value makes the agent wait longer before speaking after the user stops speaking."
+        minimumTurnDuration:
+          pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
+          type: string
+          description: The minimum duration of user speech required to be considered a user turn.
+        minimumInterruptionDuration:
+          pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
+          type: string
+          description: The minimum duration of user speech required to interrupt the agent.
+      description: Call-level VAD settings.
   securitySchemes:
     apiKeyAuth:
       type: apiKey
