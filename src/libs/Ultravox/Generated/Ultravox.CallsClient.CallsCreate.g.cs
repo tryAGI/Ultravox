@@ -225,6 +225,9 @@ namespace Ultravox
         /// The medium to use for the call initially. May be altered by the client later.<br/>
         ///  Defaults to voice.
         /// </param>
+        /// <param name="vadSettings">
+        /// VAD settings for the call.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
@@ -246,6 +249,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? firstSpeaker = default,
             bool? transcriptOptional = default,
             global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? initialOutputMedium = default,
+            global::Ultravox.UltravoxV1VadSettings? vadSettings = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.UltravoxV1StartCallRequest
@@ -267,6 +271,7 @@ namespace Ultravox
                 FirstSpeaker = firstSpeaker,
                 TranscriptOptional = transcriptOptional,
                 InitialOutputMedium = initialOutputMedium,
+                VadSettings = vadSettings,
             };
 
             return await CallsCreateAsync(

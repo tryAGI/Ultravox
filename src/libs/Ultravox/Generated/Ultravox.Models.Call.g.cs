@@ -156,6 +156,12 @@ namespace Ultravox
         public int ErrorCount { get; set; } = default!;
 
         /// <summary>
+        /// VAD settings for the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("vadSettings")]
+        public global::Ultravox.UltravoxV1VadSettings? VadSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -230,6 +236,9 @@ namespace Ultravox
         /// Default Value: 0<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="vadSettings">
+        /// VAD settings for the call.
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Call(
             string? clientVersion,
@@ -248,6 +257,7 @@ namespace Ultravox
             string? timeExceededMessage,
             string? voice,
             bool? transcriptOptional,
+            global::Ultravox.UltravoxV1VadSettings? vadSettings,
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
             global::Ultravox.FirstSpeakerEnum firstSpeaker = default!,
@@ -275,6 +285,7 @@ namespace Ultravox
             this.Voice = voice;
             this.TranscriptOptional = transcriptOptional;
             this.ErrorCount = errorCount;
+            this.VadSettings = vadSettings;
         }
 
         /// <summary>

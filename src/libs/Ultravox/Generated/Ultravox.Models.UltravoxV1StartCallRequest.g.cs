@@ -118,6 +118,12 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? InitialOutputMedium { get; set; }
 
         /// <summary>
+        /// VAD settings for the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("vadSettings")]
+        public global::Ultravox.UltravoxV1VadSettings? VadSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -181,6 +187,9 @@ namespace Ultravox
         /// The medium to use for the call initially. May be altered by the client later.<br/>
         ///  Defaults to voice.
         /// </param>
+        /// <param name="vadSettings">
+        /// VAD settings for the call.
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public UltravoxV1StartCallRequest(
             string? systemPrompt,
@@ -199,7 +208,8 @@ namespace Ultravox
             bool? recordingEnabled,
             global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? firstSpeaker,
             bool? transcriptOptional,
-            global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? initialOutputMedium)
+            global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? initialOutputMedium,
+            global::Ultravox.UltravoxV1VadSettings? vadSettings)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -218,6 +228,7 @@ namespace Ultravox
             this.FirstSpeaker = firstSpeaker;
             this.TranscriptOptional = transcriptOptional;
             this.InitialOutputMedium = initialOutputMedium;
+            this.VadSettings = vadSettings;
         }
 
         /// <summary>
