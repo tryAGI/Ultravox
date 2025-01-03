@@ -1966,14 +1966,6 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallMedium'
           description: The medium used for this call.
-        initiator:
-          enum:
-            - INITIATOR_UNSPECIFIED
-            - INITIATOR_USER
-            - INITIATOR_AGENT
-          type: string
-          description: "Who was responsible for staring this call. Typically set to agent for outgoing calls and left as the default (user) otherwise.\n DEPRECATED: Use first_speaker instead. Will be removed in November 2024."
-          format: enum
         recordingEnabled:
           type: boolean
           description: Whether the call should be recorded.
