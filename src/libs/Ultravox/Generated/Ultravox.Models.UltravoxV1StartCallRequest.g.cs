@@ -82,14 +82,6 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CallMedium? Medium { get; set; }
 
         /// <summary>
-        /// Who was responsible for staring this call. Typically set to agent for outgoing calls and left as the default (user) otherwise.<br/>
-        ///  DEPRECATED: Use first_speaker instead. Will be removed in November 2024.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("initiator")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestInitiatorJsonConverter))]
-        public global::Ultravox.UltravoxV1StartCallRequestInitiator? Initiator { get; set; }
-
-        /// <summary>
         /// Whether the call should be recorded.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("recordingEnabled")]
@@ -169,10 +161,6 @@ namespace Ultravox
         /// <param name="medium">
         /// The medium used for this call.
         /// </param>
-        /// <param name="initiator">
-        /// Who was responsible for staring this call. Typically set to agent for outgoing calls and left as the default (user) otherwise.<br/>
-        ///  DEPRECATED: Use first_speaker instead. Will be removed in November 2024.
-        /// </param>
         /// <param name="recordingEnabled">
         /// Whether the call should be recorded.
         /// </param>
@@ -204,7 +192,6 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>? selectedTools,
             global::Ultravox.UltravoxV1CallMedium? medium,
-            global::Ultravox.UltravoxV1StartCallRequestInitiator? initiator,
             bool? recordingEnabled,
             global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? firstSpeaker,
             bool? transcriptOptional,
@@ -223,7 +210,6 @@ namespace Ultravox
             this.InactivityMessages = inactivityMessages;
             this.SelectedTools = selectedTools;
             this.Medium = medium;
-            this.Initiator = initiator;
             this.RecordingEnabled = recordingEnabled;
             this.FirstSpeaker = firstSpeaker;
             this.TranscriptOptional = transcriptOptional;

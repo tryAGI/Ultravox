@@ -57,10 +57,6 @@ namespace Ultravox
         /// <param name="medium">
         /// The medium used for this call.
         /// </param>
-        /// <param name="initiator">
-        /// Who was responsible for staring this call. Typically set to agent for outgoing calls and left as the default (user) otherwise.<br/>
-        ///  DEPRECATED: Use first_speaker instead. Will be removed in November 2024.
-        /// </param>
         /// <param name="recordingEnabled">
         /// Whether the call should be recorded.
         /// </param>
@@ -94,7 +90,6 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages = default,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>? selectedTools = default,
             global::Ultravox.UltravoxV1CallMedium? medium = default,
-            global::Ultravox.UltravoxV1StartCallRequestInitiator? initiator = default,
             bool? recordingEnabled = default,
             global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? firstSpeaker = default,
             bool? transcriptOptional = default,

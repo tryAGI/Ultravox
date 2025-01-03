@@ -338,42 +338,38 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartCallRequestInitiator? Type80 { get; set; }
+        public global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? Type81 { get; set; }
+        public global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? Type82 { get; set; }
+        public global::Ultravox.ToolsCreateRequest? Type82 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.ToolsCreateRequest? Type83 { get; set; }
+        public byte[]? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type84 { get; set; }
+        public global::Ultravox.VoicesCreateRequest? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.VoicesCreateRequest? Type85 { get; set; }
+        public global::Ultravox.SchemaRetrieveFormat? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveFormat? Type86 { get; set; }
+        public global::Ultravox.SchemaRetrieveLang? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveLang? Type87 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type88 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type89 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type88 { get; set; }
     }
 }
