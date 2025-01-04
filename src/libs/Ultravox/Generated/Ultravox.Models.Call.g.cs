@@ -41,6 +41,7 @@ namespace Ultravox
         /// The reason the call ended.<br/>
         /// * `unjoined` - Client never joined<br/>
         /// * `hangup` - Client hung up<br/>
+        /// * `agent_hangup` - Agent hung up<br/>
         /// * `timeout` - Call timed out<br/>
         /// * `connection_error` - Connection error<br/>
         /// Included only in responses
@@ -187,6 +188,7 @@ namespace Ultravox
         /// The reason the call ended.<br/>
         /// * `unjoined` - Client never joined<br/>
         /// * `hangup` - Client hung up<br/>
+        /// * `agent_hangup` - Agent hung up<br/>
         /// * `timeout` - Call timed out<br/>
         /// * `connection_error` - Connection error<br/>
         /// Included only in responses
