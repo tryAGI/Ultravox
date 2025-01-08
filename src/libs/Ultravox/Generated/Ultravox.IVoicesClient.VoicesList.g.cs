@@ -5,7 +5,7 @@ namespace Ultravox
     public partial interface IVoicesClient
     {
         /// <summary>
-        /// 
+        /// List all voices in your account.
         /// </summary>
         /// <param name="cursor"></param>
         /// <param name="pageSize"></param>

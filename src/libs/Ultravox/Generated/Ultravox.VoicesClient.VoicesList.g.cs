@@ -24,7 +24,7 @@ namespace Ultravox
             ref string content);
 
         /// <summary>
-        /// 
+        /// List all voices in your account.
         /// </summary>
         /// <param name="cursor"></param>
         /// <param name="pageSize"></param>

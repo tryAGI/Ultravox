@@ -22,7 +22,7 @@ namespace Ultravox
             ref string content);
 
         /// <summary>
-        /// 
+        /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -71,6 +71,15 @@ namespace Ultravox
                 content: new global::System.Net.Http.ByteArrayContent(request.File ?? global::System.Array.Empty<byte>()),
                 name: "file",
                 fileName: request.Filename ?? string.Empty);
+            __httpRequestContent.Add(
+                content: new global::System.Net.Http.StringContent($"{request.Name}"),
+                name: "name");
+            if (request.Description != default)
+            {
+                __httpRequestContent.Add(
+                    content: new global::System.Net.Http.StringContent($"{request.Description}"),
+                    name: "description");
+            }
             __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
@@ -158,7 +167,7 @@ namespace Ultravox
         }
 
         /// <summary>
-        /// 
+        /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>
         /// <param name="file">
         /// An audio file containing a sample of the voice to clone.
@@ -166,17 +175,29 @@ namespace Ultravox
         /// <param name="filename">
         /// An audio file containing a sample of the voice to clone.
         /// </param>
+        /// <param name="name">
+        /// Name for the cloned voice. Must be unique within your account.<br/>
+        /// Example: My Custom Voice
+        /// </param>
+        /// <param name="description">
+        /// Optional description for the voice. If not provided, a default description will be generated.<br/>
+        /// Example: Voice recorded on Jan 1, 2024
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesCreateAsync(
             byte[] file,
             string filename,
+            string name,
+            string? description = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.VoicesCreateRequest
             {
                 File = file,
                 Filename = filename,
+                Name = name,
+                Description = description,
             };
 
             return await VoicesCreateAsync(
