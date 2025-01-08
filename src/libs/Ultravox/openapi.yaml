@@ -736,6 +736,7 @@ paths:
     get:
       tags:
         - voices
+      description: List all voices in your account.
       operationId: voices_list
       parameters:
         - name: cursor
@@ -760,6 +761,7 @@ paths:
     post:
       tags:
         - voices
+      description: Create a new cloned voice from an audio sample. The created voice will be private to your account.
       operationId: voices_create
       requestBody:
         content:
@@ -767,12 +769,21 @@ paths:
             schema:
               required:
                 - file
+                - name
               type: object
               properties:
                 file:
                   type: string
                   description: An audio file containing a sample of the voice to clone.
                   format: binary
+                name:
+                  type: string
+                  description: Name for the cloned voice. Must be unique within your account.
+                  example: My Custom Voice
+                description:
+                  type: string
+                  description: 'Optional description for the voice. If not provided, a default description will be generated.'
+                  example: 'Voice recorded on Jan 1, 2024'
       responses:
         '200':
           description: ''
@@ -782,6 +793,9 @@ paths:
                 $ref: '#/components/schemas/Voice'
       security:
         - apiKeyAuth: [ ]
+      x-codeSamples:
+        - lang: curl
+          source: "curl --request POST \\\n--url https://api.ultravox.ai/api/voices \\\n--header 'Content-Type: multipart/form-data' \\\n--header 'X-API-Key: <your-api-key>' \\\n--form 'file=@/path/to/voice.mp3' \\\n--form 'name=My Custom Voice' \\\n--form 'description=Voice recorded on Jan 1, 2024'"
   '/api/voices/{voice_id}':
     get:
       tags:

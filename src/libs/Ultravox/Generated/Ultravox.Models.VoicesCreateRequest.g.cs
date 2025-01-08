@@ -23,6 +23,23 @@ namespace Ultravox
         public required string Filename { get; set; }
 
         /// <summary>
+        /// Name for the cloned voice. Must be unique within your account.<br/>
+        /// Example: My Custom Voice
+        /// </summary>
+        /// <example>My Custom Voice</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Name { get; set; }
+
+        /// <summary>
+        /// Optional description for the voice. If not provided, a default description will be generated.<br/>
+        /// Example: Voice recorded on Jan 1, 2024
+        /// </summary>
+        /// <example>Voice recorded on Jan 1, 2024</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,13 +54,25 @@ namespace Ultravox
         /// <param name="filename">
         /// An audio file containing a sample of the voice to clone.
         /// </param>
+        /// <param name="name">
+        /// Name for the cloned voice. Must be unique within your account.<br/>
+        /// Example: My Custom Voice
+        /// </param>
+        /// <param name="description">
+        /// Optional description for the voice. If not provided, a default description will be generated.<br/>
+        /// Example: Voice recorded on Jan 1, 2024
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public VoicesCreateRequest(
             byte[] file,
-            string filename)
+            string filename,
+            string name,
+            string? description)
         {
             this.File = file ?? throw new global::System.ArgumentNullException(nameof(file));
             this.Filename = filename ?? throw new global::System.ArgumentNullException(nameof(filename));
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Description = description;
         }
 
         /// <summary>
