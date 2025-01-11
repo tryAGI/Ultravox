@@ -46,6 +46,22 @@ namespace Ultravox
         public required bool HasActiveSubscription { get; set; }
 
         /// <summary>
+        /// The number of active calls for this account.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("activeCalls")]
+        public int ActiveCalls { get; set; } = default!;
+
+        /// <summary>
+        /// The maximum number of concurrent calls allowed for this account.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allowedConcurrentCalls")]
+        public int AllowedConcurrentCalls { get; set; } = default!;
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -71,19 +87,31 @@ namespace Ultravox
         /// <param name="hasActiveSubscription">
         /// Whether the account has an active subscription.
         /// </param>
+        /// <param name="activeCalls">
+        /// The number of active calls for this account.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="allowedConcurrentCalls">
+        /// The maximum number of concurrent calls allowed for this account.<br/>
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Account(
             bool hasActiveSubscription,
             string name = default!,
             string billingUrl = default!,
             string freeTimeUsed = default!,
-            string freeTimeRemaining = default!)
+            string freeTimeRemaining = default!,
+            int activeCalls = default!,
+            int allowedConcurrentCalls = default!)
         {
             this.HasActiveSubscription = hasActiveSubscription;
             this.Name = name;
             this.BillingUrl = billingUrl;
             this.FreeTimeUsed = freeTimeUsed;
             this.FreeTimeRemaining = freeTimeRemaining;
+            this.ActiveCalls = activeCalls;
+            this.AllowedConcurrentCalls = allowedConcurrentCalls;
         }
 
         /// <summary>

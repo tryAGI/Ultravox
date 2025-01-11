@@ -163,6 +163,20 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1VadSettings? VadSettings { get; set; }
 
         /// <summary>
+        /// A short summary of the call.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("shortSummary")]
+        public string? ShortSummary { get; set; }
+
+        /// <summary>
+        /// A summary of the call.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
+        public string? Summary { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -241,6 +255,14 @@ namespace Ultravox
         /// <param name="vadSettings">
         /// VAD settings for the call.
         /// </param>
+        /// <param name="shortSummary">
+        /// A short summary of the call.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="summary">
+        /// A summary of the call.<br/>
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Call(
             string? clientVersion,
@@ -260,6 +282,8 @@ namespace Ultravox
             string? voice,
             bool? transcriptOptional,
             global::Ultravox.UltravoxV1VadSettings? vadSettings,
+            string? shortSummary,
+            string? summary,
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
             global::Ultravox.FirstSpeakerEnum firstSpeaker = default!,
@@ -288,6 +312,8 @@ namespace Ultravox
             this.TranscriptOptional = transcriptOptional;
             this.ErrorCount = errorCount;
             this.VadSettings = vadSettings;
+            this.ShortSummary = shortSummary;
+            this.Summary = summary;
         }
 
         /// <summary>
