@@ -50,59 +50,59 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.Call? Type6 { get; set; }
+        public int? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Guid? Type7 { get; set; }
+        public global::Ultravox.Call? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? Type8 { get; set; }
+        public global::System.Guid? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.EndReasonEnum? Type9 { get; set; }
+        public global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.NullEnum? Type10 { get; set; }
+        public global::Ultravox.EndReasonEnum? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.FirstSpeakerEnum? Type11 { get; set; }
+        public global::Ultravox.NullEnum? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? Type12 { get; set; }
+        public global::Ultravox.FirstSpeakerEnum? Type12 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1TimedMessage? Type13 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? Type13 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1TimedMessageEndBehavior? Type14 { get; set; }
+        public global::Ultravox.UltravoxV1TimedMessage? Type14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.InitialOutputMediumEnum? Type15 { get; set; }
+        public global::Ultravox.UltravoxV1TimedMessageEndBehavior? Type15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CallMedium? Type16 { get; set; }
+        public global::Ultravox.InitialOutputMediumEnum? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public object? Type17 { get; set; }
+        public global::Ultravox.UltravoxV1CallMedium? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CallMediumWebSocketMedium? Type18 { get; set; }
+        public object? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public int? Type19 { get; set; }
+        public global::Ultravox.UltravoxV1CallMediumWebSocketMedium? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>

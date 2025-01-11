@@ -1042,6 +1042,8 @@ components:
           nullable: true
     Account:
       required:
+        - activeCalls
+        - allowedConcurrentCalls
         - billingUrl
         - freeTimeRemaining
         - freeTimeUsed
@@ -1066,6 +1068,14 @@ components:
         hasActiveSubscription:
           type: boolean
           description: Whether the account has an active subscription.
+        activeCalls:
+          type: integer
+          description: The number of active calls for this account.
+          readOnly: true
+        allowedConcurrentCalls:
+          type: integer
+          description: The maximum number of concurrent calls allowed for this account.
+          readOnly: true
     Call:
       required:
         - callId
@@ -1077,6 +1087,8 @@ components:
         - firstSpeaker
         - initialOutputMedium
         - joinUrl
+        - shortSummary
+        - summary
       type: object
       properties:
         callId:
@@ -1173,6 +1185,16 @@ components:
             - $ref: '#/components/schemas/ultravox.v1.VadSettings'
           description: VAD settings for the call.
           nullable: true
+        shortSummary:
+          type: string
+          description: A short summary of the call.
+          nullable: true
+          readOnly: true
+        summary:
+          type: string
+          description: A summary of the call.
+          nullable: true
+          readOnly: true
     CallStage:
       required:
         - callId
