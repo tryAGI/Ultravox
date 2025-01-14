@@ -20,6 +20,10 @@ namespace Ultravox
         /// 
         /// </summary>
         KNOWNPARAMCONVERSATIONHISTORY,
+        /// <summary>
+        /// 
+        /// </summary>
+        KNOWNPARAMOUTPUTSAMPLERATE,
     }
 
     /// <summary>
@@ -37,6 +41,7 @@ namespace Ultravox
                 UltravoxV1AutomaticParameterKnownValue.KNOWNPARAMUNSPECIFIED => "KNOWN_PARAM_UNSPECIFIED",
                 UltravoxV1AutomaticParameterKnownValue.KNOWNPARAMCALLID => "KNOWN_PARAM_CALL_ID",
                 UltravoxV1AutomaticParameterKnownValue.KNOWNPARAMCONVERSATIONHISTORY => "KNOWN_PARAM_CONVERSATION_HISTORY",
+                UltravoxV1AutomaticParameterKnownValue.KNOWNPARAMOUTPUTSAMPLERATE => "KNOWN_PARAM_OUTPUT_SAMPLE_RATE",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,6 +55,7 @@ namespace Ultravox
                 "KNOWN_PARAM_UNSPECIFIED" => UltravoxV1AutomaticParameterKnownValue.KNOWNPARAMUNSPECIFIED,
                 "KNOWN_PARAM_CALL_ID" => UltravoxV1AutomaticParameterKnownValue.KNOWNPARAMCALLID,
                 "KNOWN_PARAM_CONVERSATION_HISTORY" => UltravoxV1AutomaticParameterKnownValue.KNOWNPARAMCONVERSATIONHISTORY,
+                "KNOWN_PARAM_OUTPUT_SAMPLE_RATE" => UltravoxV1AutomaticParameterKnownValue.KNOWNPARAMOUTPUTSAMPLERATE,
                 _ => null,
             };
         }
