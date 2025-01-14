@@ -1676,6 +1676,7 @@ components:
             - KNOWN_PARAM_UNSPECIFIED
             - KNOWN_PARAM_CALL_ID
             - KNOWN_PARAM_CONVERSATION_HISTORY
+            - KNOWN_PARAM_OUTPUT_SAMPLE_RATE
           type: string
           description: The value to set for the parameter.
           format: enum
