@@ -2090,15 +2090,15 @@ components:
         turnEndpointDelay:
           pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
           type: string
-          description: "The delay to wait after the last speech frame before ending the user's \"turn\". Increasing\n this value makes the agent wait longer before speaking after the user stops speaking."
+          description: "The minimum amount of time the agent will wait to respond after the user seems to be done\n speaking. Increasing this value will make the agent less eager to respond, which may increase\n perceived response latency but will also make the agent less likely to jump in before the user\n is really done speaking.\n\n Built-in VAD currently operates on 32ms frames, so only multiples of 32ms are meaningful.\n (Anything from 1ms to 31ms will produce the same result.)\n\n Defaults to \"0.192s\" (192ms) as a starting point, but there's nothing special about this value\n aside from it corresponding to 6 VAD frames."
         minimumTurnDuration:
           pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
           type: string
-          description: The minimum duration of user speech required to be considered a user turn.
+          description: "The minimum duration of user speech required to be considered a user turn.\n Increasing this value will cause the agent to ignore short user audio. This may be useful in\n particularly noisy environments, but it comes at the cost of possibly ignoring very short\n user responses such as \"yes\" or \"no\".\n\n Defaults to \"0s\" meaning the agent considers all user audio inputs (that make it through\n built-in noise cancellation)."
         minimumInterruptionDuration:
           pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
           type: string
-          description: The minimum duration of user speech required to interrupt the agent.
+          description: "The minimum duration of user speech required to interrupt the agent. This works the same way\n as minimumTurnDuration, but allows for a higher threshold for interrupting the agent. (This\n value will be ignored if it is less than minimumTurnDuration.)\n\n Defaults to \"0.09s\" (90ms) as a starting point, but there's nothing special about this value."
       description: Call-level VAD settings.
   securitySchemes:
     apiKeyAuth:
