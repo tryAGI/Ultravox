@@ -15,8 +15,8 @@ namespace Ultravox
         ///  is really done speaking.<br/>
         ///  Built-in VAD currently operates on 32ms frames, so only multiples of 32ms are meaningful.<br/>
         ///  (Anything from 1ms to 31ms will produce the same result.)<br/>
-        ///  Defaults to "0.192s" (192ms) as a starting point, but there's nothing special about this value<br/>
-        ///  aside from it corresponding to 6 VAD frames.
+        ///  Defaults to "0.384s" (384ms) as a starting point, but there's nothing special about this value<br/>
+        ///  aside from it corresponding to 12 VAD frames.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("turnEndpointDelay")]
         public string? TurnEndpointDelay { get; set; }
@@ -57,8 +57,8 @@ namespace Ultravox
         ///  is really done speaking.<br/>
         ///  Built-in VAD currently operates on 32ms frames, so only multiples of 32ms are meaningful.<br/>
         ///  (Anything from 1ms to 31ms will produce the same result.)<br/>
-        ///  Defaults to "0.192s" (192ms) as a starting point, but there's nothing special about this value<br/>
-        ///  aside from it corresponding to 6 VAD frames.
+        ///  Defaults to "0.384s" (384ms) as a starting point, but there's nothing special about this value<br/>
+        ///  aside from it corresponding to 12 VAD frames.
         /// </param>
         /// <param name="minimumTurnDuration">
         /// The minimum duration of user speech required to be considered a user turn.<br/>
