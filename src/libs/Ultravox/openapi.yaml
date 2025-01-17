@@ -2090,7 +2090,7 @@ components:
         turnEndpointDelay:
           pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
           type: string
-          description: "The minimum amount of time the agent will wait to respond after the user seems to be done\n speaking. Increasing this value will make the agent less eager to respond, which may increase\n perceived response latency but will also make the agent less likely to jump in before the user\n is really done speaking.\n\n Built-in VAD currently operates on 32ms frames, so only multiples of 32ms are meaningful.\n (Anything from 1ms to 31ms will produce the same result.)\n\n Defaults to \"0.192s\" (192ms) as a starting point, but there's nothing special about this value\n aside from it corresponding to 6 VAD frames."
+          description: "The minimum amount of time the agent will wait to respond after the user seems to be done\n speaking. Increasing this value will make the agent less eager to respond, which may increase\n perceived response latency but will also make the agent less likely to jump in before the user\n is really done speaking.\n\n Built-in VAD currently operates on 32ms frames, so only multiples of 32ms are meaningful.\n (Anything from 1ms to 31ms will produce the same result.)\n\n Defaults to \"0.384s\" (384ms) as a starting point, but there's nothing special about this value\n aside from it corresponding to 12 VAD frames."
         minimumTurnDuration:
           pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
           type: string
