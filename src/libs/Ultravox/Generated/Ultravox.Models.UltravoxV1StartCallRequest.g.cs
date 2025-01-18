@@ -89,7 +89,8 @@ namespace Ultravox
 
         /// <summary>
         /// Who should talk first when the call starts. Typically set to FIRST_SPEAKER_USER for outgoing<br/>
-        ///  calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.
+        ///  calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.<br/>
+        ///  Deprecated. Prefer `firstSpeakerSettings`. If both are set, they must match.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("firstSpeaker")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestFirstSpeakerJsonConverter))]
@@ -114,6 +115,15 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("vadSettings")]
         public global::Ultravox.UltravoxV1VadSettings? VadSettings { get; set; }
+
+        /// <summary>
+        /// The settings for the initial message to get a conversation started.<br/>
+        ///  Defaults to `agent: {}` which means the agent will start the conversation with an<br/>
+        ///  (interruptible) greeting generated based on the system prompt and any initial messages.<br/>
+        ///  (If first_speaker is set and this is not, first_speaker will be used instead.)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("firstSpeakerSettings")]
+        public global::Ultravox.UltravoxV1FirstSpeakerSettings? FirstSpeakerSettings { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -166,7 +176,8 @@ namespace Ultravox
         /// </param>
         /// <param name="firstSpeaker">
         /// Who should talk first when the call starts. Typically set to FIRST_SPEAKER_USER for outgoing<br/>
-        ///  calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.
+        ///  calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.<br/>
+        ///  Deprecated. Prefer `firstSpeakerSettings`. If both are set, they must match.
         /// </param>
         /// <param name="transcriptOptional">
         /// Indicates whether a transcript is optional for the call.
@@ -177,6 +188,12 @@ namespace Ultravox
         /// </param>
         /// <param name="vadSettings">
         /// VAD settings for the call.
+        /// </param>
+        /// <param name="firstSpeakerSettings">
+        /// The settings for the initial message to get a conversation started.<br/>
+        ///  Defaults to `agent: {}` which means the agent will start the conversation with an<br/>
+        ///  (interruptible) greeting generated based on the system prompt and any initial messages.<br/>
+        ///  (If first_speaker is set and this is not, first_speaker will be used instead.)
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public UltravoxV1StartCallRequest(
@@ -196,7 +213,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? firstSpeaker,
             bool? transcriptOptional,
             global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? initialOutputMedium,
-            global::Ultravox.UltravoxV1VadSettings? vadSettings)
+            global::Ultravox.UltravoxV1VadSettings? vadSettings,
+            global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -215,6 +233,7 @@ namespace Ultravox
             this.TranscriptOptional = transcriptOptional;
             this.InitialOutputMedium = initialOutputMedium;
             this.VadSettings = vadSettings;
+            this.FirstSpeakerSettings = firstSpeakerSettings;
         }
 
         /// <summary>

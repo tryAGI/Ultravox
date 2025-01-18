@@ -5,7 +5,8 @@ namespace Ultravox
 {
     /// <summary>
     /// Who should talk first when the call starts. Typically set to FIRST_SPEAKER_USER for outgoing<br/>
-    ///  calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.
+    ///  calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.<br/>
+    ///  Deprecated. Prefer `firstSpeakerSettings`. If both are set, they must match.
     /// </summary>
     public enum UltravoxV1StartCallRequestFirstSpeaker
     {

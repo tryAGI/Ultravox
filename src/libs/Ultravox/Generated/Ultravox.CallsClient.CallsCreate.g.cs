@@ -212,7 +212,8 @@ namespace Ultravox
         /// </param>
         /// <param name="firstSpeaker">
         /// Who should talk first when the call starts. Typically set to FIRST_SPEAKER_USER for outgoing<br/>
-        ///  calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.
+        ///  calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.<br/>
+        ///  Deprecated. Prefer `firstSpeakerSettings`. If both are set, they must match.
         /// </param>
         /// <param name="transcriptOptional">
         /// Indicates whether a transcript is optional for the call.
@@ -223,6 +224,12 @@ namespace Ultravox
         /// </param>
         /// <param name="vadSettings">
         /// VAD settings for the call.
+        /// </param>
+        /// <param name="firstSpeakerSettings">
+        /// The settings for the initial message to get a conversation started.<br/>
+        ///  Defaults to `agent: {}` which means the agent will start the conversation with an<br/>
+        ///  (interruptible) greeting generated based on the system prompt and any initial messages.<br/>
+        ///  (If first_speaker is set and this is not, first_speaker will be used instead.)
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -245,6 +252,7 @@ namespace Ultravox
             bool? transcriptOptional = default,
             global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? initialOutputMedium = default,
             global::Ultravox.UltravoxV1VadSettings? vadSettings = default,
+            global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.UltravoxV1StartCallRequest
@@ -266,6 +274,7 @@ namespace Ultravox
                 TranscriptOptional = transcriptOptional,
                 InitialOutputMedium = initialOutputMedium,
                 VadSettings = vadSettings,
+                FirstSpeakerSettings = firstSpeakerSettings,
             };
 
             return await CallsCreateAsync(

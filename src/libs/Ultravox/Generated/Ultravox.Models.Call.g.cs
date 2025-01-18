@@ -60,6 +60,13 @@ namespace Ultravox
         public global::Ultravox.FirstSpeakerEnum FirstSpeaker { get; set; } = default!;
 
         /// <summary>
+        /// Settings for the initial message to get the call started.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("firstSpeakerSettings")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::Ultravox.UltravoxV1FirstSpeakerSettings FirstSpeakerSettings { get; set; }
+
+        /// <summary>
         /// Messages spoken by the agent when the user is inactive for the specified duration. Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("inactivityMessages")]
@@ -207,9 +214,8 @@ namespace Ultravox
         /// * `connection_error` - Connection error<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="firstSpeaker">
-        /// Who was supposed to talk first when the call started. Typically set to FIRST_SPEAKER_USER for outgoing calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.<br/>
-        /// Included only in responses
+        /// <param name="firstSpeakerSettings">
+        /// Settings for the initial message to get the call started.
         /// </param>
         /// <param name="inactivityMessages">
         /// Messages spoken by the agent when the user is inactive for the specified duration. Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.
@@ -265,6 +271,7 @@ namespace Ultravox
         /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Call(
+            global::Ultravox.UltravoxV1FirstSpeakerSettings firstSpeakerSettings,
             string? clientVersion,
             global::System.DateTime? ended,
             global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? endReason,
@@ -286,16 +293,15 @@ namespace Ultravox
             string? summary,
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
-            global::Ultravox.FirstSpeakerEnum firstSpeaker = default!,
             global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!,
             int errorCount = default!)
         {
+            this.FirstSpeakerSettings = firstSpeakerSettings ?? throw new global::System.ArgumentNullException(nameof(firstSpeakerSettings));
             this.CallId = callId;
             this.ClientVersion = clientVersion;
             this.Created = created;
             this.Ended = ended;
             this.EndReason = endReason;
-            this.FirstSpeaker = firstSpeaker;
             this.InactivityMessages = inactivityMessages;
             this.InitialOutputMedium = initialOutputMedium;
             this.JoinTimeout = joinTimeout;

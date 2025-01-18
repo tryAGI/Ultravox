@@ -1085,6 +1085,7 @@ components:
         - ended
         - errorCount
         - firstSpeaker
+        - firstSpeakerSettings
         - initialOutputMedium
         - joinUrl
         - shortSummary
@@ -1121,6 +1122,11 @@ components:
             - $ref: '#/components/schemas/FirstSpeakerEnum'
           description: Who was supposed to talk first when the call started. Typically set to FIRST_SPEAKER_USER for outgoing calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.
           readOnly: true
+          deprecated: true
+        firstSpeakerSettings:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.FirstSpeakerSettings'
+          description: Settings for the initial message to get the call started.
         inactivityMessages:
           type: array
           items:
@@ -1853,6 +1859,31 @@ components:
           type: boolean
           description: Whether the parameter is required.
       description: A dynamic parameter the tool accepts that may be set by the model.
+    ultravox.v1.FirstSpeakerSettings:
+      type: object
+      properties:
+        user:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.FirstSpeakerSettings_UserGreeting'
+          description: 'If set, the user should speak first.'
+        agent:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.FirstSpeakerSettings_AgentGreeting'
+          description: 'If set, the agent should speak first.'
+      description: "Settings for the initial message to get a conversation started.\n Exactly one of user or agent should be set. The default is agent\n (unless firstSpeaker is also set, in which case the default will\n match that)."
+    ultravox.v1.FirstSpeakerSettings_AgentGreeting:
+      type: object
+      properties:
+        uninterruptible:
+          type: boolean
+          description: "Whether the user should be prevented from interrupting the agent's first message.\n Defaults to false (meaning the agent is interruptible as usual)."
+        text:
+          type: string
+          description: 'What the agent should say. If unset, the model will generate a greeting.'
+      description: Additional properties for when the agent speaks first.
+    ultravox.v1.FirstSpeakerSettings_UserGreeting:
+      type: object
+      description: Additional properties for when the user speaks first.
     ultravox.v1.HeaderApiKeyRequirement:
       type: object
       properties:
@@ -2013,7 +2044,7 @@ components:
             - FIRST_SPEAKER_AGENT
             - FIRST_SPEAKER_USER
           type: string
-          description: "Who should talk first when the call starts. Typically set to FIRST_SPEAKER_USER for outgoing\n calls and left as the default (FIRST_SPEAKER_AGENT) otherwise."
+          description: "Who should talk first when the call starts. Typically set to FIRST_SPEAKER_USER for outgoing\n calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.\n Deprecated. Prefer `firstSpeakerSettings`. If both are set, they must match."
           format: enum
         transcriptOptional:
           type: boolean
@@ -2030,6 +2061,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.VadSettings'
           description: VAD settings for the call.
+        firstSpeakerSettings:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.FirstSpeakerSettings'
+          description: "The settings for the initial message to get a conversation started.\n Defaults to `agent: {}` which means the agent will start the conversation with an\n (interruptible) greeting generated based on the system prompt and any initial messages.\n (If first_speaker is set and this is not, first_speaker will be used instead.)"
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object
