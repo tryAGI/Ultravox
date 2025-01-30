@@ -15,6 +15,18 @@ namespace Ultravox
         public global::System.Collections.Generic.Dictionary<string, global::Ultravox.UltravoxV1SecurityRequirement>? Requirements { get; set; }
 
         /// <summary>
+        /// An additional special security requirement that can be automatically fulfilled<br/>
+        ///  during call creation. If a tool has this requirement set, a token identifying<br/>
+        ///  the call and relevant scopes will be created during call creation and set as<br/>
+        ///  an X-Ultravox-Call-Token header when the tool is invoked.<br/>
+        ///  Such tokens are only verifiable by the Ultravox service and primarily exist<br/>
+        ///  for built-in tools (though it's possible for third-party tools that wrap a<br/>
+        ///  built-in tool to make use of them as well).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ultravoxCallTokenRequirement")]
+        public global::Ultravox.UltravoxV1UltravoxCallTokenRequirement? UltravoxCallTokenRequirement { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -26,11 +38,22 @@ namespace Ultravox
         /// <param name="requirements">
         /// Requirements keyed by name.
         /// </param>
+        /// <param name="ultravoxCallTokenRequirement">
+        /// An additional special security requirement that can be automatically fulfilled<br/>
+        ///  during call creation. If a tool has this requirement set, a token identifying<br/>
+        ///  the call and relevant scopes will be created during call creation and set as<br/>
+        ///  an X-Ultravox-Call-Token header when the tool is invoked.<br/>
+        ///  Such tokens are only verifiable by the Ultravox service and primarily exist<br/>
+        ///  for built-in tools (though it's possible for third-party tools that wrap a<br/>
+        ///  built-in tool to make use of them as well).
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public UltravoxV1SecurityRequirements(
-            global::System.Collections.Generic.Dictionary<string, global::Ultravox.UltravoxV1SecurityRequirement>? requirements)
+            global::System.Collections.Generic.Dictionary<string, global::Ultravox.UltravoxV1SecurityRequirement>? requirements,
+            global::Ultravox.UltravoxV1UltravoxCallTokenRequirement? ultravoxCallTokenRequirement)
         {
             this.Requirements = requirements;
+            this.UltravoxCallTokenRequirement = ultravoxCallTokenRequirement;
         }
 
         /// <summary>
