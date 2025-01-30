@@ -451,6 +451,405 @@ paths:
                   $ref: '#/components/schemas/CallTool'
       security:
         - apiKeyAuth: [ ]
+  /api/corpora:
+    get:
+      tags:
+        - corpora
+      operationId: corpora_list
+      parameters:
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paginatedultravox.v1.CorpusList'
+      security:
+        - apiKeyAuth: [ ]
+    post:
+      tags:
+        - corpora
+      operationId: corpora_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ultravox.v1.Corpus'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ultravox.v1.Corpus'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/corpora/{corpus_id}':
+    get:
+      tags:
+        - corpora
+      operationId: corpora_retrieve
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ultravox.v1.Corpus'
+      security:
+        - apiKeyAuth: [ ]
+    put:
+      tags:
+        - corpora
+      operationId: corpora_update
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ultravox.v1.Corpus'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ultravox.v1.Corpus'
+      security:
+        - apiKeyAuth: [ ]
+    patch:
+      tags:
+        - corpora
+      operationId: corpora_partial_update
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ultravox.v1.Corpus'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ultravox.v1.Corpus'
+      security:
+        - apiKeyAuth: [ ]
+    delete:
+      tags:
+        - corpora
+      operationId: corpora_destroy
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: No response body
+      security:
+        - apiKeyAuth: [ ]
+  '/api/corpora/{corpus_id}/query':
+    post:
+      tags:
+        - corpora
+      operationId: corpora_query
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ultravox.v1.QueryCorpusRequest'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ultravox.v1.CorpusQueryResult'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/corpora/{corpus_id}/sources':
+    get:
+      tags:
+        - corpora
+      operationId: corpora_sources_list
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paginatedultravox.v1.CorpusSourceList'
+      security:
+        - apiKeyAuth: [ ]
+    post:
+      tags:
+        - corpora
+      operationId: corpora_sources_create
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ultravox.v1.CorpusSource'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ultravox.v1.CorpusSource'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/corpora/{corpus_id}/sources/{source_id}':
+    get:
+      tags:
+        - corpora
+      operationId: corpora_sources_retrieve
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: source_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ultravox.v1.CorpusSource'
+      security:
+        - apiKeyAuth: [ ]
+    put:
+      tags:
+        - corpora
+      operationId: corpora_sources_update
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: source_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ultravox.v1.CorpusSource'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ultravox.v1.CorpusSource'
+      security:
+        - apiKeyAuth: [ ]
+    patch:
+      tags:
+        - corpora
+      operationId: corpora_sources_partial_update
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: source_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ultravox.v1.CorpusSource'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ultravox.v1.CorpusSource'
+      security:
+        - apiKeyAuth: [ ]
+    delete:
+      tags:
+        - corpora
+      operationId: corpora_sources_destroy
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: source_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: No response body
+      security:
+        - apiKeyAuth: [ ]
+  '/api/corpora/{corpus_id}/sources/{source_id}/documents':
+    get:
+      tags:
+        - corpora
+      operationId: corpora_sources_documents_list
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+        - name: source_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Paginatedultravox.v1.CorpusDocumentList'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/corpora/{corpus_id}/sources/{source_id}/documents/{document_id}':
+    get:
+      tags:
+        - corpora
+      operationId: corpora_sources_documents_retrieve
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: document_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: source_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ultravox.v1.CorpusDocument'
+      security:
+        - apiKeyAuth: [ ]
   /api/models:
     get:
       tags:
@@ -1470,6 +1869,72 @@ components:
         total:
           type: integer
           example: 123
+    Paginatedultravox.v1.CorpusDocumentList:
+      required:
+        - results
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.CorpusDocument'
+        total:
+          type: integer
+          example: 123
+    Paginatedultravox.v1.CorpusList:
+      required:
+        - results
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.Corpus'
+        total:
+          type: integer
+          example: 123
+    Paginatedultravox.v1.CorpusSourceList:
+      required:
+        - results
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.CorpusSource'
+        total:
+          type: integer
+          example: 123
     Paginatedultravox.v1.MessageList:
       required:
         - results
@@ -1618,6 +2083,97 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EventsEnum'
+    ultravox.v1.Corpus:
+      type: object
+      properties:
+        corpusId:
+          type: string
+          description: The unique ID of this corpus.
+        created:
+          type: string
+          description: When this corpus was created.
+          format: date-time
+        name:
+          type: string
+          description: The name of this corpus.
+        description:
+          type: string
+          description: A description of this corpus.
+        stats:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CorpusStats'
+          description: The current stats for this corpus.
+      description: "A queryable collection of documents. A corpus can be used to ground Ultravox\n with factual content for a particular domain."
+    ultravox.v1.CorpusDocument:
+      type: object
+      properties:
+        corpusId:
+          type: string
+          description: The id of the corpus in which this document is included.
+        sourceId:
+          type: string
+          description: The id of the source that provides this document.
+        documentId:
+          type: string
+          description: The unique ID of this document.
+        created:
+          type: string
+          description: When this document was created.
+          format: date-time
+        mimeType:
+          type: string
+          description: "The MIME type of the document.\n https://developer.mozilla.org/en-US/docs/Web/HTTP/MIME_types"
+        metadata:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CorpusDocumentMetadata'
+          description: Metadata about the document.
+        sizeBytes:
+          type: string
+          description: 'The size of the document contents, in bytes.'
+      description: "A single complete source of information included in a corpus. In the most\n straight-forward case, this could be an uploaded PDF or a single webpage.\n However, documents can also be created from other documents during processing,\n for example turning an HTML page into a markdown document."
+    ultravox.v1.CorpusQueryResult:
+      type: object
+      properties:
+        content:
+          type: string
+          description: The content of the retrieved chunk.
+        score:
+          type: number
+          description: 'The score of this chunk, with higher scores indicating better matches.'
+          format: double
+        citation:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CorpusQueryResult_Citation'
+          description: A citation for this chunk.
+      description: A single result from a corpus query (corresponding to a chunk).
+    ultravox.v1.CorpusSource:
+      type: object
+      properties:
+        corpusId:
+          type: string
+          description: The id of this source's corpus.
+        sourceId:
+          type: string
+          description: The unique ID of this source.
+        created:
+          type: string
+          description: When this source was created.
+          format: date-time
+        name:
+          type: string
+          description: The name of this source.
+        description:
+          type: string
+          description: A description of this source.
+        stats:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.SourceStats'
+          description: The current stats for this source.
+        loadSpec:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.LoadSpec'
+          description: How to load documents for this source.
+      description: "A source of documents for building a corpus. A source defines where documents\n are pulled from."
     ultravox.v1.Message:
       type: object
       properties:
@@ -1836,6 +2392,72 @@ components:
     ultravox.v1.ClientCallToolDetails:
       type: object
       description: Details for a CallTool implemented by the client.
+    ultravox.v1.CorpusDocumentMetadata:
+      type: object
+      properties:
+        publicUrl:
+          type: string
+          description: 'The public URL of the document, if any.'
+        language:
+          type: string
+          description: 'The BCP47 language code of the document, if known.'
+        title:
+          type: string
+          description: 'The title of the document, if known.'
+        description:
+          type: string
+          description: 'A description of the document, if known.'
+        published:
+          type: string
+          description: 'The timestamp that the document was published, if known.'
+          format: date-time
+      description: "Metadata about a document. This is typically not included in the document's\n chunks, but can be used for filtering or citations.\n Derived documents inherit metadata from their source documents in general."
+    ultravox.v1.CorpusQueryResult_Citation:
+      type: object
+      properties:
+        sourceId:
+          type: string
+          description: The source that provided the document from which this chunk was retrieved.
+        documentId:
+          type: string
+          description: The document from which this chunk was retrieved.
+        publicUrl:
+          type: string
+          description: 'The public URL of the document, if any.'
+        title:
+          type: string
+          description: 'The title of the document, if known.'
+      description: A citation for a query result.
+    ultravox.v1.CorpusStats:
+      type: object
+      properties:
+        status:
+          enum:
+            - CORPUS_STATUS_UNSPECIFIED
+            - CORPUS_STATUS_EMPTY
+            - CORPUS_STATUS_INITIALIZING
+            - CORPUS_STATUS_READY
+            - CORPUS_STATUS_UPDATING
+          type: string
+          description: 'The current status of this corpus, indicating whether it is queryable.'
+          format: enum
+        lastUpdated:
+          type: string
+          description: The last time the contents of this corpus were updated.
+          format: date-time
+        numChunks:
+          type: integer
+          description: The number of chunks in this corpus. Chunks are subsets of documents.
+          format: int32
+        numDocs:
+          type: integer
+          description: The number of documents in this corpus.
+          format: int32
+        numVectors:
+          type: integer
+          description: "The number of vectors in this corpus. Vectors are used for semantic search.\n Multiple vectors may correspond to a single chunk."
+          format: int32
+      description: "The current stats for a corpus. This gives an indication of whether the\n corpus is queryable and what sorts of results can be expected."
     ultravox.v1.DynamicParameter:
       type: object
       properties:
@@ -1918,6 +2540,52 @@ components:
             type: string
           description: Auth query parameters added when the tool is invoked.
       description: Details for a CallTool implemented via HTTP requests.
+    ultravox.v1.LoadSpec:
+      type: object
+      properties:
+        maxDocuments:
+          type: integer
+          description: The maximum number of documents to ingest.
+          format: int32
+        maxDocumentBytes:
+          type: integer
+          description: The maximum size of an individual document in bytes.
+          format: int32
+        relevantDocumentTypes:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.MimeTypeFilter'
+          description: "The types of documents to keep. Any documents surfaced during loading\n that don't match this filter will be discarded. If not set, Ultravox will\n choose a default that includes types known to provide real value."
+        startUrls:
+          type: array
+          items:
+            type: string
+          description: "The list of start URLs for crawling. If max_depth is 1, only these URLs will\n be fetched. Otherwise, links from these urls will be followed up to the\n max_depth."
+        maxDepth:
+          type: integer
+          description: "The maximum depth of links to traverse. Use 1 to only fetch the startUrls,\n 2 to fetch the startUrls and documents directly linked from them, 3 to\n additionally fetch documents linked from those (excluding anything already\n seen), etc."
+          format: int32
+      description: The specification of how to acquire documents for this source.
+    ultravox.v1.MimeTypeFilter:
+      type: object
+      properties:
+        include:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.MimeTypeSet'
+          description: Mime types must be in this set to be kept.
+        exclude:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.MimeTypeSet'
+          description: Mime types must not be in this set to be kept.
+      description: A Filter to apply to mime types.
+    ultravox.v1.MimeTypeSet:
+      type: object
+      properties:
+        mimeTypes:
+          type: array
+          items:
+            type: string
+          description: The mime types in this set.
+      description: "A set of mime types. Entries may be a full mime type (e.g. \"text/html\") or a\n type without a subtype (e.g. \"text\"). Entries without a subtype will match\n all subtypes (e.g. \"text\" will match \"text/html\", \"text/plain\", etc.)."
     ultravox.v1.QueryApiKeyRequirement:
       type: object
       properties:
@@ -1925,6 +2593,17 @@ components:
           type: string
           description: The name of the query parameter.
       description: A security requirement that will cause an API key to be added to the query string.
+    ultravox.v1.QueryCorpusRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          description: The query to run.
+        maxResults:
+          type: integer
+          description: The maximum number of results to return.
+          format: int32
+      description: A request to query a corpus.
     ultravox.v1.SecurityOptions:
       type: object
       properties:
@@ -1986,6 +2665,27 @@ components:
             $ref: '#/components/schemas/google.protobuf.Value'
           description: "Static values to use in place of dynamic parameters. Any parameter included\n here will be hidden from the model and the static value will be used instead.\n Some tools may require certain parameters to be overridden, but any parameter\n can be overridden regardless of whether it is required to be."
       description: "A tool selected for a particular call. Exactly one of tool_id, tool_name, or\n temporary_tool should be set."
+    ultravox.v1.SourceStats:
+      type: object
+      properties:
+        status:
+          enum:
+            - SOURCE_STATUS_UNSPECIFIED
+            - SOURCE_STATUS_INITIALIZING
+            - SOURCE_STATUS_READY
+            - SOURCE_STATUS_UPDATING
+          type: string
+          description: 'The current status of this source, indicating whether it affects queries.'
+          format: enum
+        lastUpdated:
+          type: string
+          description: When this source last finished contributing contents to its corpus.
+          format: date-time
+        numDocs:
+          type: integer
+          description: "The number of documents in this source. This includes both loaded documents\n and derived documents."
+          format: int32
+      description: The current stats for a source.
     ultravox.v1.StartCallRequest:
       type: object
       properties:
