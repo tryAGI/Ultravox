@@ -2539,6 +2539,11 @@ components:
           items:
             type: string
           description: Auth query parameters added when the tool is invoked.
+        callTokenScopes:
+          type: array
+          items:
+            type: string
+          description: "If the tool requires a call token, the scopes that must be present in the token.\n If this is empty, no call token will be created."
       description: Details for a CallTool implemented via HTTP requests.
     ultravox.v1.LoadSpec:
       type: object
@@ -2637,6 +2642,10 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/ultravox.v1.SecurityRequirement'
           description: Requirements keyed by name.
+        ultravoxCallTokenRequirement:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.UltravoxCallTokenRequirement'
+          description: "An additional special security requirement that can be automatically fulfilled\n during call creation. If a tool has this requirement set, a token identifying\n the call and relevant scopes will be created during call creation and set as\n an X-Ultravox-Call-Token header when the tool is invoked.\n Such tokens are only verifiable by the Ultravox service and primarily exist\n for built-in tools (though it's possible for third-party tools that wrap a\n built-in tool to make use of them as well)."
       description: The security requirements for a request. All requirements must be met.
     ultravox.v1.SelectedTool:
       type: object
@@ -2819,6 +2828,15 @@ components:
             type: string
           description: Dynamic parameters that must be overridden with an explicit (static) value.
       description: 'The requirements for using a tool, which must be satisfied when creating a call with the tool.'
+    ultravox.v1.UltravoxCallTokenRequirement:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
+          description: The scopes that must be present in the token.
+      description: "A security requirement that will automatically be fulfilled during call creation.\n The generated token will be set as an X-Ultravox-Call-Token header when the tool\n is invoked. The token is only verifiable by the Ultravox service and should not be\n used for authentication by any other service.\n The token will also be invalid as soon as the call is completed."
     ultravox.v1.VadSettings:
       type: object
       properties:

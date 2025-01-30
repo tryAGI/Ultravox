@@ -33,6 +33,13 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<string>? AuthQueryParams { get; set; }
 
         /// <summary>
+        /// If the tool requires a call token, the scopes that must be present in the token.<br/>
+        ///  If this is empty, no call token will be created.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("callTokenScopes")]
+        public global::System.Collections.Generic.IList<string>? CallTokenScopes { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -53,17 +60,23 @@ namespace Ultravox
         /// <param name="authQueryParams">
         /// Auth query parameters added when the tool is invoked.
         /// </param>
+        /// <param name="callTokenScopes">
+        /// If the tool requires a call token, the scopes that must be present in the token.<br/>
+        ///  If this is empty, no call token will be created.
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public UltravoxV1HttpCallToolDetails(
             string? baseUrlPattern,
             string? httpMethod,
             global::System.Collections.Generic.IList<string>? authHeaders,
-            global::System.Collections.Generic.IList<string>? authQueryParams)
+            global::System.Collections.Generic.IList<string>? authQueryParams,
+            global::System.Collections.Generic.IList<string>? callTokenScopes)
         {
             this.BaseUrlPattern = baseUrlPattern;
             this.HttpMethod = httpMethod;
             this.AuthHeaders = authHeaders;
             this.AuthQueryParams = authQueryParams;
+            this.CallTokenScopes = callTokenScopes;
         }
 
         /// <summary>
