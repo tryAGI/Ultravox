@@ -187,6 +187,12 @@ paths:
         - calls
       operationId: calls_create
       parameters:
+        - name: enableGreetingPrompt
+          in: query
+          description: Adds a prompt for a greeting if there's not an initial message that the model would naturally respond to (a user message or tool result).
+          schema:
+            type: boolean
+            default: true
         - name: priorCallId
           in: query
           description: 'The UUID of a prior call. When specified, the new call will use the same properites as the prior call unless overriden in this request''s body. The new call will also use the prior call''s message history as its own initial_messages. (It''s illegal to also set initial_messages in the body.)'
@@ -1580,6 +1586,7 @@ components:
           type: boolean
           description: Indicates whether a transcript is optional for the call.
           default: true
+          deprecated: true
         errorCount:
           type: integer
           description: The number of errors in this call.

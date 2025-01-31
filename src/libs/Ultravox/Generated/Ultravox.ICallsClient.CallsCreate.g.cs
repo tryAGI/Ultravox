@@ -7,18 +7,25 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="enableGreetingPrompt">
+        /// Default Value: true
+        /// </param>
         /// <param name="priorCallId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
             global::Ultravox.UltravoxV1StartCallRequest request,
+            bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="enableGreetingPrompt">
+        /// Default Value: true
+        /// </param>
         /// <param name="priorCallId"></param>
         /// <param name="systemPrompt">
         /// The system prompt provided to the model during generations.
@@ -84,6 +91,7 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
+            bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
             string? systemPrompt = default,
             float? temperature = default,
