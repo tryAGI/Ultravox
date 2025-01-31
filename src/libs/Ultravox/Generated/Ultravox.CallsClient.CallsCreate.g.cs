@@ -7,11 +7,13 @@ namespace Ultravox
     {
         partial void PrepareCallsCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref bool? enableGreetingPrompt,
             ref global::System.Guid? priorCallId,
             global::Ultravox.UltravoxV1StartCallRequest request);
         partial void PrepareCallsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            bool? enableGreetingPrompt,
             global::System.Guid? priorCallId,
             global::Ultravox.UltravoxV1StartCallRequest request);
         partial void ProcessCallsCreateResponse(
@@ -26,12 +28,16 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="enableGreetingPrompt">
+        /// Default Value: true
+        /// </param>
         /// <param name="priorCallId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
             global::Ultravox.UltravoxV1StartCallRequest request,
+            bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -41,6 +47,7 @@ namespace Ultravox
                 client: HttpClient);
             PrepareCallsCreateArguments(
                 httpClient: HttpClient,
+                enableGreetingPrompt: ref enableGreetingPrompt,
                 priorCallId: ref priorCallId,
                 request: request);
 
@@ -48,6 +55,7 @@ namespace Ultravox
                 path: "/api/calls",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
+                .AddOptionalParameter("enableGreetingPrompt", enableGreetingPrompt?.ToString()) 
                 .AddOptionalParameter("priorCallId", priorCallId?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
@@ -87,6 +95,7 @@ namespace Ultravox
             PrepareCallsCreateRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
+                enableGreetingPrompt: enableGreetingPrompt,
                 priorCallId: priorCallId,
                 request: request);
 
@@ -169,6 +178,9 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="enableGreetingPrompt">
+        /// Default Value: true
+        /// </param>
         /// <param name="priorCallId"></param>
         /// <param name="systemPrompt">
         /// The system prompt provided to the model during generations.
@@ -234,6 +246,7 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
+            bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
             string? systemPrompt = default,
             float? temperature = default,
@@ -278,6 +291,7 @@ namespace Ultravox
             };
 
             return await CallsCreateAsync(
+                enableGreetingPrompt: enableGreetingPrompt,
                 priorCallId: priorCallId,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

@@ -152,6 +152,7 @@ namespace Ultravox
         /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcriptOptional")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public bool? TranscriptOptional { get; set; }
 
         /// <summary>
@@ -249,10 +250,6 @@ namespace Ultravox
         /// </param>
         /// <param name="timeExceededMessage"></param>
         /// <param name="voice"></param>
-        /// <param name="transcriptOptional">
-        /// Indicates whether a transcript is optional for the call.<br/>
-        /// Default Value: true
-        /// </param>
         /// <param name="errorCount">
         /// The number of errors in this call.<br/>
         /// Default Value: 0<br/>
@@ -287,7 +284,6 @@ namespace Ultravox
             double? temperature,
             string? timeExceededMessage,
             string? voice,
-            bool? transcriptOptional,
             global::Ultravox.UltravoxV1VadSettings? vadSettings,
             string? shortSummary,
             string? summary,
@@ -315,7 +311,6 @@ namespace Ultravox
             this.Temperature = temperature;
             this.TimeExceededMessage = timeExceededMessage;
             this.Voice = voice;
-            this.TranscriptOptional = transcriptOptional;
             this.ErrorCount = errorCount;
             this.VadSettings = vadSettings;
             this.ShortSummary = shortSummary;
