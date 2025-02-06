@@ -1493,6 +1493,7 @@ components:
         - firstSpeakerSettings
         - initialOutputMedium
         - joinUrl
+        - joined
         - shortSummary
         - summary
       type: object
@@ -1509,6 +1510,11 @@ components:
         created:
           type: string
           format: date-time
+          readOnly: true
+        joined:
+          type: string
+          format: date-time
+          nullable: true
           readOnly: true
         ended:
           type: string
