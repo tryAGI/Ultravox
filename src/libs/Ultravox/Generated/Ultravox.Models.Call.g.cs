@@ -34,6 +34,12 @@ namespace Ultravox
         /// <summary>
         /// Included only in responses
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("joined")]
+        public global::System.DateTime? Joined { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ended")]
         public global::System.DateTime? Ended { get; set; }
 
@@ -203,6 +209,9 @@ namespace Ultravox
         /// <param name="created">
         /// Included only in responses
         /// </param>
+        /// <param name="joined">
+        /// Included only in responses
+        /// </param>
         /// <param name="ended">
         /// Included only in responses
         /// </param>
@@ -270,6 +279,7 @@ namespace Ultravox
         public Call(
             global::Ultravox.UltravoxV1FirstSpeakerSettings firstSpeakerSettings,
             string? clientVersion,
+            global::System.DateTime? joined,
             global::System.DateTime? ended,
             global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? endReason,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
@@ -296,6 +306,7 @@ namespace Ultravox
             this.CallId = callId;
             this.ClientVersion = clientVersion;
             this.Created = created;
+            this.Joined = joined;
             this.Ended = ended;
             this.EndReason = endReason;
             this.InactivityMessages = inactivityMessages;
