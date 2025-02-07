@@ -76,7 +76,9 @@ namespace Ultravox
         ///  additionally fetch documents linked from those (excluding anything already<br/>
         ///  seen), etc.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1LoadSpec(
             int? maxDocuments,
             int? maxDocumentBytes,

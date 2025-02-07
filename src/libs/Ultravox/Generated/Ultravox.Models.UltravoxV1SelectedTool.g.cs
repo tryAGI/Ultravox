@@ -86,7 +86,9 @@ namespace Ultravox
         ///  Some tools may require certain parameters to be overridden, but any parameter<br/>
         ///  can be overridden regardless of whether it is required to be.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1SelectedTool(
             string? toolId,
             string? toolName,

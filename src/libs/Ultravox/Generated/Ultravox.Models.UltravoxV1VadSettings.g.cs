@@ -74,7 +74,9 @@ namespace Ultravox
         ///  value will be ignored if it is less than minimumTurnDuration.)<br/>
         ///  Defaults to "0.09s" (90ms) as a starting point, but there's nothing special about this value.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1VadSettings(
             string? turnEndpointDelay,
             string? minimumTurnDuration,

@@ -55,7 +55,9 @@ namespace Ultravox
         /// <param name="total">
         /// Example: 123
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public PaginatedVoiceList(
             global::System.Collections.Generic.IList<global::Ultravox.Voice> results,
             string? next,

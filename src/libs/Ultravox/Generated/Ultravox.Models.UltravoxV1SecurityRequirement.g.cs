@@ -45,7 +45,9 @@ namespace Ultravox
         /// <param name="httpAuth">
         /// The HTTP authentication header must be added.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1SecurityRequirement(
             global::Ultravox.UltravoxV1QueryApiKeyRequirement? queryApiKey,
             global::Ultravox.UltravoxV1HeaderApiKeyRequirement? headerApiKey,

@@ -95,7 +95,9 @@ namespace Ultravox
         /// <param name="callStageId">
         /// The call stage this message appeared in.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1Message(
             global::Ultravox.UltravoxV1MessageRole? role,
             string? text,

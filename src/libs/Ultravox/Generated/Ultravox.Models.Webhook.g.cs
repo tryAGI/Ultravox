@@ -60,7 +60,9 @@ namespace Ultravox
         /// <param name="url"></param>
         /// <param name="secrets"></param>
         /// <param name="events"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Webhook(
             string url,
             global::System.Collections.Generic.IList<global::Ultravox.EventsEnum> events,

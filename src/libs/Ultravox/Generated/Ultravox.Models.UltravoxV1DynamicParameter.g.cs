@@ -58,7 +58,9 @@ namespace Ultravox
         /// <param name="required">
         /// Whether the parameter is required.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1DynamicParameter(
             string? name,
             global::Ultravox.UltravoxV1DynamicParameterLocation? location,

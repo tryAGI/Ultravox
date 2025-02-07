@@ -32,7 +32,9 @@ namespace Ultravox
         ///  that we always prefer a non-empty set of requirements over an empty set<br/>
         ///  unless no non-empty set can be satisfied.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1SecurityOptions(
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SecurityRequirements>? options)
         {

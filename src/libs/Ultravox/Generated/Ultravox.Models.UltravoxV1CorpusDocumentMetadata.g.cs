@@ -64,7 +64,9 @@ namespace Ultravox
         /// <param name="published">
         /// The timestamp that the document was published, if known.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1CorpusDocumentMetadata(
             string? publicUrl,
             string? language,

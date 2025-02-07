@@ -46,7 +46,9 @@ namespace Ultravox
         /// <param name="endBehavior">
         /// The behavior to exhibit when the message is finished being spoken.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1TimedMessage(
             string? duration,
             string? message,

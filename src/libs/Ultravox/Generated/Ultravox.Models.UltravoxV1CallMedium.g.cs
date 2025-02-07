@@ -110,7 +110,9 @@ namespace Ultravox
         ///  Once you have a join URL from starting a call, provide it to Exotel as the wss target URL<br/>
         ///  for your Voicebot (either directly or more likely dynamically from your own server).
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1CallMedium(
             object? webRtc,
             object? twilio,

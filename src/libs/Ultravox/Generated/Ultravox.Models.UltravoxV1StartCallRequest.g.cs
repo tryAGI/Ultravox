@@ -195,7 +195,9 @@ namespace Ultravox
         ///  (interruptible) greeting generated based on the system prompt and any initial messages.<br/>
         ///  (If first_speaker is set and this is not, first_speaker will be used instead.)
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1StartCallRequest(
             string? systemPrompt,
             float? temperature,

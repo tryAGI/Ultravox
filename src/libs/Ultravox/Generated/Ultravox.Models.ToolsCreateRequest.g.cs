@@ -37,7 +37,9 @@ namespace Ultravox
         /// <param name="filename">
         /// An OpenAPI schema file in either JSON or YAML format.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public ToolsCreateRequest(
             byte[] file,
             string filename)

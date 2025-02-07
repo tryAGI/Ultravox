@@ -46,7 +46,9 @@ namespace Ultravox
         /// <param name="value">
         /// The value of the parameter.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1StaticParameter(
             string? name,
             global::Ultravox.UltravoxV1StaticParameterLocation? location,

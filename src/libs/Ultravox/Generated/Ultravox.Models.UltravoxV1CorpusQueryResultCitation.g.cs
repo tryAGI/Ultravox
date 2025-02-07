@@ -53,7 +53,9 @@ namespace Ultravox
         /// <param name="title">
         /// The title of the document, if known.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1CorpusQueryResultCitation(
             string? sourceId,
             string? documentId,

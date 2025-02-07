@@ -64,7 +64,9 @@ namespace Ultravox
         /// If the tool requires a call token, the scopes that must be present in the token.<br/>
         ///  If this is empty, no call token will be created.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1HttpCallToolDetails(
             string? baseUrlPattern,
             string? httpMethod,

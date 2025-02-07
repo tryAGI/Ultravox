@@ -81,7 +81,9 @@ namespace Ultravox
         /// <param name="loadSpec">
         /// How to load documents for this source.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1CorpusSource(
             string? corpusId,
             string? sourceId,

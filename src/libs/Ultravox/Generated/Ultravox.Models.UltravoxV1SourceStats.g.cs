@@ -47,7 +47,9 @@ namespace Ultravox
         /// The number of documents in this source. This includes both loaded documents<br/>
         ///  and derived documents.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1SourceStats(
             global::Ultravox.UltravoxV1SourceStatsStatus? status,
             global::System.DateTime? lastUpdated,
