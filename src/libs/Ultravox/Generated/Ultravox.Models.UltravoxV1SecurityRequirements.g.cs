@@ -47,7 +47,9 @@ namespace Ultravox
         ///  for built-in tools (though it's possible for third-party tools that wrap a<br/>
         ///  built-in tool to make use of them as well).
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1SecurityRequirements(
             global::System.Collections.Generic.Dictionary<string, global::Ultravox.UltravoxV1SecurityRequirement>? requirements,
             global::Ultravox.UltravoxV1UltravoxCallTokenRequirement? ultravoxCallTokenRequirement)

@@ -35,7 +35,9 @@ namespace Ultravox
         /// <param name="requiredParameterOverrides">
         /// Dynamic parameters that must be overridden with an explicit (static) value.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1ToolRequirements(
             global::Ultravox.UltravoxV1SecurityOptions? httpSecurityOptions,
             global::System.Collections.Generic.IList<string>? requiredParameterOverrides)

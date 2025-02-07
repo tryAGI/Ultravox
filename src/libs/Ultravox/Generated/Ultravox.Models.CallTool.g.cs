@@ -58,7 +58,9 @@ namespace Ultravox
         /// <param name="definition">
         /// A tool as used for a particular call (omitting auth details).
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public CallTool(
             global::Ultravox.UltravoxV1CallTool definition,
             global::System.Guid? toolId,

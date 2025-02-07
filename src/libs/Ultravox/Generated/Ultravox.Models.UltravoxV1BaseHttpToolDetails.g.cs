@@ -35,7 +35,9 @@ namespace Ultravox
         /// <param name="httpMethod">
         /// The HTTP method for the tool.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1BaseHttpToolDetails(
             string? baseUrlPattern,
             string? httpMethod)

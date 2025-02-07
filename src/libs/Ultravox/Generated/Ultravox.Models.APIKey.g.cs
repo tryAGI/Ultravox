@@ -78,7 +78,9 @@ namespace Ultravox
         /// <param name="revoked">
         /// If the API key is revoked, clients cannot use it anymore. (This cannot be undone.)
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public APIKey(
             string? creator,
             global::System.DateTime? expiryDate,

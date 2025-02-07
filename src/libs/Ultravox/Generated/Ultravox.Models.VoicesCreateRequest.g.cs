@@ -62,7 +62,9 @@ namespace Ultravox
         /// Optional description for the voice. If not provided, a default description will be generated.<br/>
         /// Example: Voice recorded on Jan 1, 2024
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public VoicesCreateRequest(
             byte[] file,
             string filename,

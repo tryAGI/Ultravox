@@ -26,7 +26,9 @@ namespace Ultravox
         /// <param name="name">
         /// The name of the query parameter.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1QueryApiKeyRequirement(
             string? name)
         {

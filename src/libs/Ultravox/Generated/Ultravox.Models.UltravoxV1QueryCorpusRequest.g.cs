@@ -35,7 +35,9 @@ namespace Ultravox
         /// <param name="maxResults">
         /// The maximum number of results to return.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1QueryCorpusRequest(
             string? query,
             int? maxResults)

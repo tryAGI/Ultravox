@@ -56,7 +56,9 @@ namespace Ultravox
         /// <param name="url"></param>
         /// <param name="secrets"></param>
         /// <param name="events"></param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public PatchedWebhook(
             global::System.Guid? webhookId,
             global::System.DateTime? created,

@@ -50,7 +50,9 @@ namespace Ultravox
         ///  the best of both worlds, set this to some large value (e.g. 30000) and implement support for<br/>
         ///  playback_clear_buffer messages. Defaults to 60.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1CallMediumWebSocketMedium(
             int? inputSampleRate,
             int? outputSampleRate,

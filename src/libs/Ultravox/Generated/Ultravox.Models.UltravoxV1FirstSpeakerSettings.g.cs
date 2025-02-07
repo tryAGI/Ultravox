@@ -38,7 +38,9 @@ namespace Ultravox
         /// <param name="agent">
         /// If set, the agent should speak first.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1FirstSpeakerSettings(
             object? user,
             global::Ultravox.UltravoxV1FirstSpeakerSettingsAgentGreeting? agent)

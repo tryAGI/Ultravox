@@ -37,7 +37,9 @@ namespace Ultravox
         /// <param name="text">
         /// What the agent should say. If unset, the model will generate a greeting.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1FirstSpeakerSettingsAgentGreeting(
             bool? uninterruptible,
             string? text)

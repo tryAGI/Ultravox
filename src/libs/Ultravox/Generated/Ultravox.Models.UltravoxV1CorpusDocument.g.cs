@@ -85,7 +85,9 @@ namespace Ultravox
         /// <param name="sizeBytes">
         /// The size of the document contents, in bytes.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1CorpusDocument(
             string? corpusId,
             string? sourceId,

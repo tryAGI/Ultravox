@@ -57,7 +57,9 @@ namespace Ultravox
         /// The base definition of a tool that can be used during a call. Exactly one<br/>
         ///  implementation (http or client) should be set.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public Tool(
             string name,
             global::Ultravox.UltravoxV1BaseToolDefinition definition,

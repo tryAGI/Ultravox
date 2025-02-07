@@ -63,7 +63,9 @@ namespace Ultravox
         /// <param name="stats">
         /// The current stats for this corpus.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1Corpus(
             string? corpusId,
             global::System.DateTime? created,

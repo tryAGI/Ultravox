@@ -66,7 +66,9 @@ namespace Ultravox
         /// The number of vectors in this corpus. Vectors are used for semantic search.<br/>
         ///  Multiple vectors may correspond to a single chunk.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1CorpusStats(
             global::Ultravox.UltravoxV1CorpusStatsStatus? status,
             global::System.DateTime? lastUpdated,

@@ -35,7 +35,9 @@ namespace Ultravox
         /// <param name="exclude">
         /// Mime types must not be in this set to be kept.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1MimeTypeFilter(
             global::Ultravox.UltravoxV1MimeTypeSet? include,
             global::Ultravox.UltravoxV1MimeTypeSet? exclude)

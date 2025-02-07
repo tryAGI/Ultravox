@@ -101,7 +101,9 @@ namespace Ultravox
         /// Details for a client-implemented tool. Only body parameters are allowed<br/>
         ///  for client tools.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1CallTool(
             string? description,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1DynamicParameter>? dynamicParameters,

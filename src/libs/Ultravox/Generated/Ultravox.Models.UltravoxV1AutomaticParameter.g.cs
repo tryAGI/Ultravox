@@ -46,7 +46,9 @@ namespace Ultravox
         /// <param name="knownValue">
         /// The value to set for the parameter.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1AutomaticParameter(
             string? name,
             global::Ultravox.UltravoxV1AutomaticParameterLocation? location,

@@ -28,7 +28,9 @@ namespace Ultravox
         /// <param name="mimeTypes">
         /// The mime types in this set.
         /// </param>
+#if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
         public UltravoxV1MimeTypeSet(
             global::System.Collections.Generic.IList<string>? mimeTypes)
         {
