@@ -7,14 +7,10 @@ namespace Ultravox
     {
         partial void PrepareVoicesCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string? ownership,
-            ref string? search,
             global::Ultravox.VoicesCreateRequest request);
         partial void PrepareVoicesCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string? ownership,
-            string? search,
             global::Ultravox.VoicesCreateRequest request);
         partial void ProcessVoicesCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -28,15 +24,11 @@ namespace Ultravox
         /// <summary>
         /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>
-        /// <param name="ownership"></param>
-        /// <param name="search"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesCreateAsync(
             global::Ultravox.VoicesCreateRequest request,
-            string? ownership = default,
-            string? search = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -45,17 +37,11 @@ namespace Ultravox
                 client: HttpClient);
             PrepareVoicesCreateArguments(
                 httpClient: HttpClient,
-                ownership: ref ownership,
-                search: ref search,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
                 path: "/api/voices",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("ownership", ownership) 
-                .AddOptionalParameter("search", search) 
-                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -81,18 +67,6 @@ namespace Ultravox
                 }
             }
             using var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-            if (ownership != default)
-            {
-                __httpRequestContent.Add(
-                    content: new global::System.Net.Http.StringContent($"{ownership}"),
-                    name: "ownership");
-            } 
-            if (search != default)
-            {
-                __httpRequestContent.Add(
-                    content: new global::System.Net.Http.StringContent($"{search}"),
-                    name: "search");
-            } 
             __httpRequestContent.Add(
                 content: new global::System.Net.Http.ByteArrayContent(request.File ?? global::System.Array.Empty<byte>()),
                 name: "file",
@@ -114,8 +88,6 @@ namespace Ultravox
             PrepareVoicesCreateRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                ownership: ownership,
-                search: search,
                 request: request);
 
             using var __response = await HttpClient.SendAsync(
@@ -205,8 +177,6 @@ namespace Ultravox
         /// <summary>
         /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>
-        /// <param name="ownership"></param>
-        /// <param name="search"></param>
         /// <param name="file">
         /// An audio file containing a sample of the voice to clone.
         /// </param>
@@ -227,8 +197,6 @@ namespace Ultravox
             byte[] file,
             string filename,
             string name,
-            string? ownership = default,
-            string? search = default,
             string? description = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -241,8 +209,6 @@ namespace Ultravox
             };
 
             return await VoicesCreateAsync(
-                ownership: ownership,
-                search: search,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

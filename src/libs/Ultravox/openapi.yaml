@@ -1178,17 +1178,6 @@ paths:
         - voices
       description: Create a new cloned voice from an audio sample. The created voice will be private to your account.
       operationId: voices_create
-      parameters:
-        - name: ownership
-          in: query
-          description: The ownership used filter results
-          schema:
-            type: string
-        - name: search
-          in: query
-          description: The search string used to filter results
-          schema:
-            type: string
       requestBody:
         content:
           multipart/form-data:
