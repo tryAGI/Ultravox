@@ -1149,11 +1149,21 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: ownership
+          in: query
+          description: The ownership used filter results
+          schema:
+            type: string
         - name: pageSize
           in: query
           description: Number of results to return per page.
           schema:
             type: integer
+        - name: search
+          in: query
+          description: The search string used to filter results
+          schema:
+            type: string
       responses:
         '200':
           description: ''
@@ -1168,6 +1178,17 @@ paths:
         - voices
       description: Create a new cloned voice from an audio sample. The created voice will be private to your account.
       operationId: voices_create
+      parameters:
+        - name: ownership
+          in: query
+          description: The ownership used filter results
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: The search string used to filter results
+          schema:
+            type: string
       requestBody:
         content:
           multipart/form-data:
@@ -1728,6 +1749,11 @@ components:
     NullEnum:
       enum:
         - 
+    OwnershipEnum:
+      enum:
+        - public
+        - private
+      type: string
     PaginatedAPIKeyList:
       required:
         - results
@@ -2047,6 +2073,7 @@ components:
       required:
         - description
         - name
+        - ownership
         - previewUrl
         - voiceId
       type: object
@@ -2066,6 +2093,10 @@ components:
           type: string
           format: uri
           nullable: true
+          readOnly: true
+        ownership:
+          allOf:
+            - $ref: '#/components/schemas/OwnershipEnum'
           readOnly: true
     Webhook:
       required:
