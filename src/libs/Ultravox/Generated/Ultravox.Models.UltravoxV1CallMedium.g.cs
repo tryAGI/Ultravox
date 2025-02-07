@@ -58,6 +58,14 @@ namespace Ultravox
         public object? Plivo { get; set; }
 
         /// <summary>
+        /// The call will use Exotel's "Voicebot" protocol.<br/>
+        ///  Once you have a join URL from starting a call, provide it to Exotel as the wss target URL<br/>
+        ///  for your Voicebot (either directly or more likely dynamically from your own server).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exotel")]
+        public object? Exotel { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -97,19 +105,26 @@ namespace Ultravox
         ///  &lt;Stream keepCallAlive="true" bidirectional="true" contentType="audio/x-l16;rate=16000"&gt;${your-join-url}&lt;/Stream&gt;<br/>
         ///  This works for both inbound and outbound calls.
         /// </param>
+        /// <param name="exotel">
+        /// The call will use Exotel's "Voicebot" protocol.<br/>
+        ///  Once you have a join URL from starting a call, provide it to Exotel as the wss target URL<br/>
+        ///  for your Voicebot (either directly or more likely dynamically from your own server).
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public UltravoxV1CallMedium(
             object? webRtc,
             object? twilio,
             global::Ultravox.UltravoxV1CallMediumWebSocketMedium? serverWebSocket,
             object? telnyx,
-            object? plivo)
+            object? plivo,
+            object? exotel)
         {
             this.WebRtc = webRtc;
             this.Twilio = twilio;
             this.ServerWebSocket = serverWebSocket;
             this.Telnyx = telnyx;
             this.Plivo = plivo;
+            this.Exotel = exotel;
         }
 
         /// <summary>

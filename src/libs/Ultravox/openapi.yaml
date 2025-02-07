@@ -2367,7 +2367,14 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallMedium_PlivoMedium'
           description: "The call will use Plivo's AudioStreams protocol.\n Once you have a join URL from starting a call, include it in your\n Plivo XML like so:\n <Stream keepCallAlive=\"true\" bidirectional=\"true\" contentType=\"audio/x-l16;rate=16000\">${your-join-url}</Stream>\n This works for both inbound and outbound calls."
+        exotel:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallMedium_ExotelMedium'
+          description: "The call will use Exotel's \"Voicebot\" protocol.\n Once you have a join URL from starting a call, provide it to Exotel as the wss target URL\n for your Voicebot (either directly or more likely dynamically from your own server)."
       description: "Details about a call's protocol. By default, calls occur over WebRTC using\n the Ultravox client SDK. Setting a different call medium will prepare the\n server for a call using a different protocol.\n At most one call medium may be set."
+    ultravox.v1.CallMedium_ExotelMedium:
+      type: object
+      description: Details for a Exotel call.
     ultravox.v1.CallMedium_PlivoMedium:
       type: object
       description: Details for a Plivo call.
