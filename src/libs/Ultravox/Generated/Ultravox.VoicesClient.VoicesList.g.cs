@@ -8,12 +8,16 @@ namespace Ultravox
         partial void PrepareVoicesListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
-            ref int? pageSize);
+            ref string? ownership,
+            ref int? pageSize,
+            ref string? search);
         partial void PrepareVoicesListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
-            int? pageSize);
+            string? ownership,
+            int? pageSize,
+            string? search);
         partial void ProcessVoicesListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -27,12 +31,16 @@ namespace Ultravox
         /// List all voices in your account.
         /// </summary>
         /// <param name="cursor"></param>
+        /// <param name="ownership"></param>
         /// <param name="pageSize"></param>
+        /// <param name="search"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedVoiceList> VoicesListAsync(
             string? cursor = default,
+            string? ownership = default,
             int? pageSize = default,
+            string? search = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -40,14 +48,18 @@ namespace Ultravox
             PrepareVoicesListArguments(
                 httpClient: HttpClient,
                 cursor: ref cursor,
-                pageSize: ref pageSize);
+                ownership: ref ownership,
+                pageSize: ref pageSize,
+                search: ref search);
 
             var __pathBuilder = new PathBuilder(
                 path: "/api/voices",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
                 .AddOptionalParameter("cursor", cursor) 
+                .AddOptionalParameter("ownership", ownership) 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+                .AddOptionalParameter("search", search) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -81,7 +93,9 @@ namespace Ultravox
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 cursor: cursor,
-                pageSize: pageSize);
+                ownership: ownership,
+                pageSize: pageSize,
+                search: search);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

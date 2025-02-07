@@ -35,6 +35,14 @@ namespace Ultravox
         public string? PreviewUrl { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ownership")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.OwnershipEnumJsonConverter))]
+        public global::Ultravox.OwnershipEnum Ownership { get; set; } = default!;
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -55,17 +63,22 @@ namespace Ultravox
         /// <param name="previewUrl">
         /// Included only in responses
         /// </param>
+        /// <param name="ownership">
+        /// Included only in responses
+        /// </param>
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
         public Voice(
             string? description,
             string? previewUrl,
             global::System.Guid voiceId = default!,
-            string name = default!)
+            string name = default!,
+            global::Ultravox.OwnershipEnum ownership = default!)
         {
             this.VoiceId = voiceId;
             this.Name = name;
             this.Description = description;
             this.PreviewUrl = previewUrl;
+            this.Ownership = ownership;
         }
 
         /// <summary>

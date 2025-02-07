@@ -7,16 +7,22 @@ namespace Ultravox
         /// <summary>
         /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>
+        /// <param name="ownership"></param>
+        /// <param name="search"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesCreateAsync(
             global::Ultravox.VoicesCreateRequest request,
+            string? ownership = default,
+            string? search = default,
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>
+        /// <param name="ownership"></param>
+        /// <param name="search"></param>
         /// <param name="file">
         /// An audio file containing a sample of the voice to clone.
         /// </param>
@@ -37,6 +43,8 @@ namespace Ultravox
             byte[] file,
             string filename,
             string name,
+            string? ownership = default,
+            string? search = default,
             string? description = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
