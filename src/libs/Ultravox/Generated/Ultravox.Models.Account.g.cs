@@ -62,6 +62,14 @@ namespace Ultravox
         public int AllowedConcurrentCalls { get; set; } = default!;
 
         /// <summary>
+        /// The maximum number of custom voices allowed for this account.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allowedVoices")]
+        public int AllowedVoices { get; set; } = default!;
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -95,6 +103,10 @@ namespace Ultravox
         /// The maximum number of concurrent calls allowed for this account.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="allowedVoices">
+        /// The maximum number of custom voices allowed for this account.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -105,7 +117,8 @@ namespace Ultravox
             string freeTimeUsed = default!,
             string freeTimeRemaining = default!,
             int activeCalls = default!,
-            int allowedConcurrentCalls = default!)
+            int allowedConcurrentCalls = default!,
+            int allowedVoices = default!)
         {
             this.HasActiveSubscription = hasActiveSubscription;
             this.Name = name;
@@ -114,6 +127,7 @@ namespace Ultravox
             this.FreeTimeRemaining = freeTimeRemaining;
             this.ActiveCalls = activeCalls;
             this.AllowedConcurrentCalls = allowedConcurrentCalls;
+            this.AllowedVoices = allowedVoices;
         }
 
         /// <summary>
