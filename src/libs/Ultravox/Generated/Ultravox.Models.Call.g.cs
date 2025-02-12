@@ -191,6 +191,13 @@ namespace Ultravox
         public string? Summary { get; set; }
 
         /// <summary>
+        /// Experimental settings for the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("experimentalSettings")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object ExperimentalSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -275,11 +282,15 @@ namespace Ultravox
         /// A summary of the call.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="experimentalSettings">
+        /// Experimental settings for the call.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Call(
             global::Ultravox.UltravoxV1FirstSpeakerSettings firstSpeakerSettings,
+            object experimentalSettings,
             string? clientVersion,
             global::System.DateTime? joined,
             global::System.DateTime? ended,
@@ -305,6 +316,7 @@ namespace Ultravox
             int errorCount = default!)
         {
             this.FirstSpeakerSettings = firstSpeakerSettings ?? throw new global::System.ArgumentNullException(nameof(firstSpeakerSettings));
+            this.ExperimentalSettings = experimentalSettings ?? throw new global::System.ArgumentNullException(nameof(experimentalSettings));
             this.CallId = callId;
             this.ClientVersion = clientVersion;
             this.Created = created;

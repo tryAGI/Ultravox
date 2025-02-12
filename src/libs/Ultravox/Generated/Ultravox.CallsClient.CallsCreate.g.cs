@@ -251,6 +251,9 @@ namespace Ultravox
         ///  (interruptible) greeting generated based on the system prompt and any initial messages.<br/>
         ///  (If first_speaker is set and this is not, first_speaker will be used instead.)
         /// </param>
+        /// <param name="experimentalSettings">
+        /// Experimental settings for the call.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
@@ -274,6 +277,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? initialOutputMedium = default,
             global::Ultravox.UltravoxV1VadSettings? vadSettings = default,
             global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings = default,
+            object? experimentalSettings = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.UltravoxV1StartCallRequest
@@ -296,6 +300,7 @@ namespace Ultravox
                 InitialOutputMedium = initialOutputMedium,
                 VadSettings = vadSettings,
                 FirstSpeakerSettings = firstSpeakerSettings,
+                ExperimentalSettings = experimentalSettings,
             };
 
             return await CallsCreateAsync(

@@ -1504,6 +1504,7 @@ components:
         - endReason
         - ended
         - errorCount
+        - experimentalSettings
         - firstSpeaker
         - firstSpeakerSettings
         - initialOutputMedium
@@ -1628,12 +1629,15 @@ components:
           description: A summary of the call.
           nullable: true
           readOnly: true
+        experimentalSettings:
+          description: Experimental settings for the call.
     CallStage:
       required:
         - callId
         - callStageId
         - created
         - errorCount
+        - experimentalSettings
         - temperature
       type: object
       properties:
@@ -1682,6 +1686,10 @@ components:
         errorCount:
           type: integer
           description: The number of errors in this call stage.
+          readOnly: true
+        experimentalSettings:
+          description: Experimental settings for this call stage.
+          nullable: true
           readOnly: true
     CallTool:
       required:
@@ -2819,6 +2827,9 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.FirstSpeakerSettings'
           description: "The settings for the initial message to get a conversation started.\n Defaults to `agent: {}` which means the agent will start the conversation with an\n (interruptible) greeting generated based on the system prompt and any initial messages.\n (If first_speaker is set and this is not, first_speaker will be used instead.)"
+        experimentalSettings:
+          type: object
+          description: Experimental settings for the call.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object
