@@ -88,6 +88,13 @@ namespace Ultravox
         public int ErrorCount { get; set; } = default!;
 
         /// <summary>
+        /// Experimental settings for this call stage.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("experimentalSettings")]
+        public object? ExperimentalSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -128,6 +135,10 @@ namespace Ultravox
         /// The number of errors in this call stage.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="experimentalSettings">
+        /// Experimental settings for this call stage.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -139,6 +150,7 @@ namespace Ultravox
             string? systemPrompt,
             string? timeExceededMessage,
             string? voice,
+            object? experimentalSettings,
             global::System.Guid callId = default!,
             global::System.Guid callStageId = default!,
             global::System.DateTime created = default!,
@@ -157,6 +169,7 @@ namespace Ultravox
             this.TimeExceededMessage = timeExceededMessage;
             this.Voice = voice;
             this.ErrorCount = errorCount;
+            this.ExperimentalSettings = experimentalSettings;
         }
 
         /// <summary>

@@ -126,6 +126,12 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1FirstSpeakerSettings? FirstSpeakerSettings { get; set; }
 
         /// <summary>
+        /// Experimental settings for the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("experimentalSettings")]
+        public object? ExperimentalSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -195,6 +201,9 @@ namespace Ultravox
         ///  (interruptible) greeting generated based on the system prompt and any initial messages.<br/>
         ///  (If first_speaker is set and this is not, first_speaker will be used instead.)
         /// </param>
+        /// <param name="experimentalSettings">
+        /// Experimental settings for the call.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -216,7 +225,8 @@ namespace Ultravox
             bool? transcriptOptional,
             global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? initialOutputMedium,
             global::Ultravox.UltravoxV1VadSettings? vadSettings,
-            global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings)
+            global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings,
+            object? experimentalSettings)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -236,6 +246,7 @@ namespace Ultravox
             this.InitialOutputMedium = initialOutputMedium;
             this.VadSettings = vadSettings;
             this.FirstSpeakerSettings = firstSpeakerSettings;
+            this.ExperimentalSettings = experimentalSettings;
         }
 
         /// <summary>
