@@ -1666,10 +1666,6 @@ components:
         model:
           type: string
           default: fixie-ai/ultravox
-        recordingEnabled:
-          type: boolean
-          default: false
-          writeOnly: true
         systemPrompt:
           type: string
           nullable: true
@@ -1726,9 +1722,10 @@ components:
     EventsEnum:
       enum:
         - call.started
+        - call.joined
         - call.ended
       type: string
-      description: "* `call.started` - Fired when a call starts\n* `call.ended` - Fired when a call ends"
+      description: "* `call.started` - Fired when a call starts\n* `call.joined` - Fired when a call is joined\n* `call.ended` - Fired when a call ends"
     FirstSpeakerEnum:
       enum:
         - FIRST_SPEAKER_AGENT
