@@ -5,6 +5,7 @@ namespace Ultravox
 {
     /// <summary>
     /// * `call.started` - Fired when a call starts<br/>
+    /// * `call.joined` - Fired when a call is joined<br/>
     /// * `call.ended` - Fired when a call ends
     /// </summary>
     public enum EventsEnum
@@ -13,6 +14,10 @@ namespace Ultravox
         /// 
         /// </summary>
         CallStarted,
+        /// <summary>
+        /// 
+        /// </summary>
+        CallJoined,
         /// <summary>
         /// 
         /// </summary>
@@ -32,6 +37,7 @@ namespace Ultravox
             return value switch
             {
                 EventsEnum.CallStarted => "call.started",
+                EventsEnum.CallJoined => "call.joined",
                 EventsEnum.CallEnded => "call.ended",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -44,6 +50,7 @@ namespace Ultravox
             return value switch
             {
                 "call.started" => EventsEnum.CallStarted,
+                "call.joined" => EventsEnum.CallJoined,
                 "call.ended" => EventsEnum.CallEnded,
                 _ => null,
             };

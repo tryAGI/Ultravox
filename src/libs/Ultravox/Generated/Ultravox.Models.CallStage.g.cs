@@ -48,13 +48,6 @@ namespace Ultravox
         public string? Model { get; set; }
 
         /// <summary>
-        /// Default Value: false<br/>
-        /// Included only in requests
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("recordingEnabled")]
-        public bool? RecordingEnabled { get; set; }
-
-        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("systemPrompt")]
@@ -121,10 +114,6 @@ namespace Ultravox
         /// <param name="model">
         /// Default Value: fixie-ai/ultravox
         /// </param>
-        /// <param name="recordingEnabled">
-        /// Default Value: false<br/>
-        /// Included only in requests
-        /// </param>
         /// <param name="systemPrompt"></param>
         /// <param name="temperature">
         /// Included only in responses
@@ -146,7 +135,6 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
             string? languageHint,
             string? model,
-            bool? recordingEnabled,
             string? systemPrompt,
             string? timeExceededMessage,
             string? voice,
@@ -163,7 +151,6 @@ namespace Ultravox
             this.InactivityMessages = inactivityMessages;
             this.LanguageHint = languageHint;
             this.Model = model;
-            this.RecordingEnabled = recordingEnabled;
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
             this.TimeExceededMessage = timeExceededMessage;
