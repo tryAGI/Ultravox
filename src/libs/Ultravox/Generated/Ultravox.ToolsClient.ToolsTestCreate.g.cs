@@ -5,65 +5,44 @@ namespace Ultravox
 {
     public partial class ToolsClient
     {
-        partial void PrepareToolsListArguments(
+        partial void PrepareToolsTestCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string? cursor,
-            ref string? ownership,
-            ref int? pageSize,
-            ref string? search);
-        partial void PrepareToolsListRequest(
+            ref global::System.Guid toolId);
+        partial void PrepareToolsTestCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string? cursor,
-            string? ownership,
-            int? pageSize,
-            string? search);
-        partial void ProcessToolsListResponse(
+            global::System.Guid toolId);
+        partial void ProcessToolsTestCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessToolsListResponseContent(
+        partial void ProcessToolsTestCreateResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// List all tools in your account.
+        /// Test a tool by executing it with the provided parameters.
         /// </summary>
-        /// <param name="cursor"></param>
-        /// <param name="ownership"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="search"></param>
+        /// <param name="toolId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedToolList> ToolsListAsync(
-            string? cursor = default,
-            string? ownership = default,
-            int? pageSize = default,
-            string? search = default,
+        public async global::System.Threading.Tasks.Task<string> ToolsTestCreateAsync(
+            global::System.Guid toolId,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareToolsListArguments(
+            PrepareToolsTestCreateArguments(
                 httpClient: HttpClient,
-                cursor: ref cursor,
-                ownership: ref ownership,
-                pageSize: ref pageSize,
-                search: ref search);
+                toolId: ref toolId);
 
             var __pathBuilder = new PathBuilder(
-                path: "/api/tools",
+                path: $"/api/tools/{toolId}/test",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("cursor", cursor) 
-                .AddOptionalParameter("ownership", ownership) 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("search", search) 
-                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Get,
+                method: global::System.Net.Http.HttpMethod.Post,
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -89,13 +68,10 @@ namespace Ultravox
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareToolsListRequest(
+            PrepareToolsTestCreateRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                cursor: cursor,
-                ownership: ownership,
-                pageSize: pageSize,
-                search: search);
+                toolId: toolId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -105,9 +81,37 @@ namespace Ultravox
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessToolsListResponse(
+            ProcessToolsTestCreateResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
+            // 
+            if (!__response.IsSuccessStatusCode)
+            {
+                string? __content_default = null;
+                string? __value_default = null;
+                if (ReadResponseAsString)
+                {
+                    __content_default = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                    __value_default = global::System.Text.Json.JsonSerializer.Deserialize(__content_default, typeof(string), JsonSerializerContext) as string;
+                }
+                else
+                {
+                    var __contentStream_default = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    __value_default = await global::System.Text.Json.JsonSerializer.DeserializeAsync(__contentStream_default, typeof(string), JsonSerializerContext).ConfigureAwait(false) as string;
+                }
+
+                throw new global::Ultravox.ApiException<string>(
+                    message: __response.ReasonPhrase ?? string.Empty,
+                    statusCode: __response.StatusCode)
+                {
+                    ResponseBody = __content_default,
+                    ResponseObject = __value_default,
+                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                        __response.Headers,
+                        h => h.Key,
+                        h => h.Value),
+                };
+            }
 
             if (ReadResponseAsString)
             {
@@ -121,7 +125,7 @@ namespace Ultravox
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessToolsListResponseContent(
+                ProcessToolsTestCreateResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -145,9 +149,7 @@ namespace Ultravox
                     };
                 }
 
-                return
-                    global::Ultravox.PaginatedToolList.FromJson(__content, JsonSerializerContext) ??
-                    throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                return __content;
             }
             else
             {
@@ -169,15 +171,13 @@ namespace Ultravox
                     };
                 }
 
-                using var __content = await __response.Content.ReadAsStreamAsync(
+                var __content = await __response.Content.ReadAsStringAsync(
 #if NET5_0_OR_GREATER
                     cancellationToken
 #endif
                 ).ConfigureAwait(false);
 
-                return
-                    await global::Ultravox.PaginatedToolList.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                    throw new global::System.InvalidOperationException("Response deserialization failed.");
+                return __content;
             }
         }
     }
