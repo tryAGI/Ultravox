@@ -1025,6 +1025,7 @@ paths:
     get:
       tags:
         - tools
+      description: List all tools in your account.
       operationId: tools_list
       parameters:
         - name: cursor
@@ -1032,11 +1033,21 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: ownership
+          in: query
+          description: The ownership used to filter results
+          schema:
+            type: string
         - name: pageSize
           in: query
           description: Number of results to return per page.
           schema:
             type: integer
+        - name: search
+          in: query
+          description: The search string used to filter results
+          schema:
+            type: string
       responses:
         '200':
           description: ''
@@ -1135,6 +1146,58 @@ paths:
       responses:
         '204':
           description: No response body
+      security:
+        - apiKeyAuth: [ ]
+  '/api/tools/{tool_id}/history':
+    get:
+      tags:
+        - tools
+      operationId: tools_history_list
+      parameters:
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+        - name: tool_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedToolHistoryList'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/tools/{tool_id}/test':
+    post:
+      tags:
+        - tools
+      description: Test a tool by executing it with the provided parameters.
+      operationId: tools_test_create
+      parameters:
+        - name: tool_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: ''
+          content:
+            '*/*':
+              schema: { }
       security:
         - apiKeyAuth: [ ]
   /api/voices:
@@ -1841,6 +1904,28 @@ components:
         total:
           type: integer
           example: 123
+    PaginatedToolHistoryList:
+      required:
+        - results
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolHistory'
+        total:
+          type: integer
+          example: 123
     PaginatedToolList:
       required:
         - results
@@ -2052,6 +2137,8 @@ components:
         - created
         - definition
         - name
+        - ownership
+        - statistics
         - toolId
       type: object
       properties:
@@ -2068,6 +2155,41 @@ components:
           readOnly: true
         definition:
           $ref: '#/components/schemas/ultravox.v1.BaseToolDefinition'
+        statistics:
+          allOf:
+            - $ref: '#/components/schemas/ToolStatistics'
+          readOnly: true
+        ownership:
+          allOf:
+            - $ref: '#/components/schemas/OwnershipEnum'
+          readOnly: true
+    ToolHistory:
+      required:
+        - call
+        - errorCount
+      type: object
+      properties:
+        call:
+          allOf:
+            - $ref: '#/components/schemas/Call'
+          readOnly: true
+        errorCount:
+          type: integer
+          readOnly: true
+    ToolStatistics:
+      required:
+        - errorCount
+        - timesCalled
+      type: object
+      properties:
+        errorCount:
+          type: integer
+          default: 0
+          readOnly: true
+        timesCalled:
+          type: integer
+          default: 0
+          readOnly: true
     Voice:
       required:
         - description

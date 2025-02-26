@@ -38,6 +38,21 @@ namespace Ultravox
         public required global::Ultravox.UltravoxV1BaseToolDefinition Definition { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("statistics")]
+        public global::Ultravox.ToolStatistics Statistics { get; set; } = default!;
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ownership")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.OwnershipEnumJsonConverter))]
+        public global::Ultravox.OwnershipEnum Ownership { get; set; } = default!;
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -57,6 +72,12 @@ namespace Ultravox
         /// The base definition of a tool that can be used during a call. Exactly one<br/>
         ///  implementation (http or client) should be set.
         /// </param>
+        /// <param name="statistics">
+        /// Included only in responses
+        /// </param>
+        /// <param name="ownership">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -64,12 +85,16 @@ namespace Ultravox
             string name,
             global::Ultravox.UltravoxV1BaseToolDefinition definition,
             global::System.Guid toolId = default!,
-            global::System.DateTime created = default!)
+            global::System.DateTime created = default!,
+            global::Ultravox.ToolStatistics statistics = default!,
+            global::Ultravox.OwnershipEnum ownership = default!)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Definition = definition ?? throw new global::System.ArgumentNullException(nameof(definition));
             this.ToolId = toolId;
             this.Created = created;
+            this.Statistics = statistics;
+            this.Ownership = ownership;
         }
 
         /// <summary>

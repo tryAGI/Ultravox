@@ -5,61 +5,54 @@ namespace Ultravox
 {
     public partial class ToolsClient
     {
-        partial void PrepareToolsListArguments(
+        partial void PrepareToolsHistoryListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
-            ref string? ownership,
             ref int? pageSize,
-            ref string? search);
-        partial void PrepareToolsListRequest(
+            ref global::System.Guid toolId);
+        partial void PrepareToolsHistoryListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
-            string? ownership,
             int? pageSize,
-            string? search);
-        partial void ProcessToolsListResponse(
+            global::System.Guid toolId);
+        partial void ProcessToolsHistoryListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessToolsListResponseContent(
+        partial void ProcessToolsHistoryListResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// List all tools in your account.
+        /// 
         /// </summary>
         /// <param name="cursor"></param>
-        /// <param name="ownership"></param>
         /// <param name="pageSize"></param>
-        /// <param name="search"></param>
+        /// <param name="toolId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedToolList> ToolsListAsync(
+        public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedToolHistoryList> ToolsHistoryListAsync(
+            global::System.Guid toolId,
             string? cursor = default,
-            string? ownership = default,
             int? pageSize = default,
-            string? search = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareToolsListArguments(
+            PrepareToolsHistoryListArguments(
                 httpClient: HttpClient,
                 cursor: ref cursor,
-                ownership: ref ownership,
                 pageSize: ref pageSize,
-                search: ref search);
+                toolId: ref toolId);
 
             var __pathBuilder = new PathBuilder(
-                path: "/api/tools",
+                path: $"/api/tools/{toolId}/history",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
                 .AddOptionalParameter("cursor", cursor) 
-                .AddOptionalParameter("ownership", ownership) 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("search", search) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -89,13 +82,12 @@ namespace Ultravox
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareToolsListRequest(
+            PrepareToolsHistoryListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 cursor: cursor,
-                ownership: ownership,
                 pageSize: pageSize,
-                search: search);
+                toolId: toolId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -105,7 +97,7 @@ namespace Ultravox
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessToolsListResponse(
+            ProcessToolsHistoryListResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
 
@@ -121,7 +113,7 @@ namespace Ultravox
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessToolsListResponseContent(
+                ProcessToolsHistoryListResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -146,7 +138,7 @@ namespace Ultravox
                 }
 
                 return
-                    global::Ultravox.PaginatedToolList.FromJson(__content, JsonSerializerContext) ??
+                    global::Ultravox.PaginatedToolHistoryList.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -176,7 +168,7 @@ namespace Ultravox
                 ).ConfigureAwait(false);
 
                 return
-                    await global::Ultravox.PaginatedToolList.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Ultravox.PaginatedToolHistoryList.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
