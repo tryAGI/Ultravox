@@ -3027,6 +3027,10 @@ components:
           pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
           type: string
           description: "The minimum duration of user speech required to interrupt the agent. This works the same way\n as minimumTurnDuration, but allows for a higher threshold for interrupting the agent. (This\n value will be ignored if it is less than minimumTurnDuration.)\n\n Defaults to \"0.09s\" (90ms) as a starting point, but there's nothing special about this value."
+        frameActivationThreshold:
+          type: number
+          description: "The threshold for the VAD to consider a frame as speech. This is a value between 0.1 and 1.\n\n Miniumum value is 0.1, which is the default value."
+          format: float
       description: Call-level VAD settings.
   securitySchemes:
     apiKeyAuth:
