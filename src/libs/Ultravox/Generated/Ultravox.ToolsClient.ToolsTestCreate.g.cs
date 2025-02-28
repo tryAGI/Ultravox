@@ -101,7 +101,7 @@ namespace Ultravox
                 }
 
                 throw new global::Ultravox.ApiException<string>(
-                    message: __response.ReasonPhrase ?? string.Empty,
+                    message: __content_default ?? __response.ReasonPhrase ?? string.Empty,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_default,
