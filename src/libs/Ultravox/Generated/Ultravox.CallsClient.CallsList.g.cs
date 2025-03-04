@@ -8,12 +8,24 @@ namespace Ultravox
         partial void PrepareCallsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
-            ref int? pageSize);
+            ref string? durationMax,
+            ref string? durationMin,
+            ref global::System.DateTime? fromDate,
+            ref int? pageSize,
+            ref string? search,
+            ref global::System.DateTime? toDate,
+            ref global::System.Guid? voiceId);
         partial void PrepareCallsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
-            int? pageSize);
+            string? durationMax,
+            string? durationMin,
+            global::System.DateTime? fromDate,
+            int? pageSize,
+            string? search,
+            global::System.DateTime? toDate,
+            global::System.Guid? voiceId);
         partial void ProcessCallsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -27,12 +39,24 @@ namespace Ultravox
         /// 
         /// </summary>
         /// <param name="cursor"></param>
+        /// <param name="durationMax"></param>
+        /// <param name="durationMin"></param>
+        /// <param name="fromDate"></param>
         /// <param name="pageSize"></param>
+        /// <param name="search"></param>
+        /// <param name="toDate"></param>
+        /// <param name="voiceId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedCallList> CallsListAsync(
             string? cursor = default,
+            string? durationMax = default,
+            string? durationMin = default,
+            global::System.DateTime? fromDate = default,
             int? pageSize = default,
+            string? search = default,
+            global::System.DateTime? toDate = default,
+            global::System.Guid? voiceId = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -40,14 +64,26 @@ namespace Ultravox
             PrepareCallsListArguments(
                 httpClient: HttpClient,
                 cursor: ref cursor,
-                pageSize: ref pageSize);
+                durationMax: ref durationMax,
+                durationMin: ref durationMin,
+                fromDate: ref fromDate,
+                pageSize: ref pageSize,
+                search: ref search,
+                toDate: ref toDate,
+                voiceId: ref voiceId);
 
             var __pathBuilder = new PathBuilder(
                 path: "/api/calls",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
                 .AddOptionalParameter("cursor", cursor) 
+                .AddOptionalParameter("durationMax", durationMax) 
+                .AddOptionalParameter("durationMin", durationMin) 
+                .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-dd")) 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+                .AddOptionalParameter("search", search) 
+                .AddOptionalParameter("toDate", toDate?.ToString("yyyy-MM-dd")) 
+                .AddOptionalParameter("voiceId", voiceId?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -81,7 +117,13 @@ namespace Ultravox
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 cursor: cursor,
-                pageSize: pageSize);
+                durationMax: durationMax,
+                durationMin: durationMin,
+                fromDate: fromDate,
+                pageSize: pageSize,
+                search: search,
+                toDate: toDate,
+                voiceId: voiceId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
