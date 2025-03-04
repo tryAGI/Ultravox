@@ -168,11 +168,45 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: durationMax
+          in: query
+          description: Maximum duration of calls
+          schema:
+            type: string
+        - name: durationMin
+          in: query
+          description: Minimum duration of calls
+          schema:
+            type: string
+        - name: fromDate
+          in: query
+          description: Start date (inclusive) for filtering calls by creation date
+          schema:
+            type: string
+            format: date
         - name: pageSize
           in: query
           description: Number of results to return per page.
           schema:
             type: integer
+        - name: search
+          in: query
+          description: The search string used to filter results
+          schema:
+            minLength: 1
+            type: string
+        - name: toDate
+          in: query
+          description: End date (inclusive) for filtering calls by creation date
+          schema:
+            type: string
+            format: date
+        - name: voiceId
+          in: query
+          description: Filter calls by the associated voice ID
+          schema:
+            type: string
+            format: uuid
       responses:
         '200':
           description: ''
