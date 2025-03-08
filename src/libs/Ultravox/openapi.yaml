@@ -237,7 +237,19 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ultravox.v1.StartCallRequest'
+              allOf:
+                - $ref: '#/components/schemas/ultravox.v1.StartCallRequest'
+                - type: object
+                  properties:
+                    metadata:
+                      type: object
+                      additionalProperties:
+                        type: string
+                      description: Optional metadata key-value pairs to associate with the call. All values must be strings.
+                      example:
+                        customer_id: cust_123
+                        source: web_chat
+                        department: sales
       responses:
         '201':
           description: ''
@@ -1728,6 +1740,10 @@ components:
           readOnly: true
         experimentalSettings:
           description: Experimental settings for the call.
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
     CallStage:
       required:
         - callId
@@ -2983,6 +2999,11 @@ components:
         experimentalSettings:
           type: object
           description: Experimental settings for the call.
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: Arbitrary metadata associated with this call.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object

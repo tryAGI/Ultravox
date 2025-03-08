@@ -52,6 +52,7 @@ namespace Ultravox
             typeof(global::Ultravox.JsonConverters.SchemaRetrieveLangJsonConverter),
             typeof(global::Ultravox.JsonConverters.SchemaRetrieveLangNullableJsonConverter),
             typeof(global::Ultravox.JsonConverters.OneOfJsonConverter<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>),
+            typeof(global::Ultravox.JsonConverters.AllOfJsonConverter<global::Ultravox.UltravoxV1StartCallRequest, global::Ultravox.CallsCreateRequest2>),
             typeof(global::Ultravox.JsonConverters.UnixTimestampJsonConverter),
         })]
 
