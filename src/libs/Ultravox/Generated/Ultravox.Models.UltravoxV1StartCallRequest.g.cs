@@ -132,6 +132,12 @@ namespace Ultravox
         public object? ExperimentalSettings { get; set; }
 
         /// <summary>
+        /// Arbitrary metadata associated with this call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Metadata { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -204,6 +210,9 @@ namespace Ultravox
         /// <param name="experimentalSettings">
         /// Experimental settings for the call.
         /// </param>
+        /// <param name="metadata">
+        /// Arbitrary metadata associated with this call.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -226,7 +235,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? initialOutputMedium,
             global::Ultravox.UltravoxV1VadSettings? vadSettings,
             global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings,
-            object? experimentalSettings)
+            object? experimentalSettings,
+            global::System.Collections.Generic.Dictionary<string, string>? metadata)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -247,6 +257,7 @@ namespace Ultravox
             this.VadSettings = vadSettings;
             this.FirstSpeakerSettings = firstSpeakerSettings;
             this.ExperimentalSettings = experimentalSettings;
+            this.Metadata = metadata;
         }
 
         /// <summary>

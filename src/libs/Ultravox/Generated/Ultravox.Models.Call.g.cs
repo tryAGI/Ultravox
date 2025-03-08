@@ -198,6 +198,12 @@ namespace Ultravox
         public required object ExperimentalSettings { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::System.Collections.Generic.Dictionary<string, string>? Metadata { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -285,6 +291,7 @@ namespace Ultravox
         /// <param name="experimentalSettings">
         /// Experimental settings for the call.
         /// </param>
+        /// <param name="metadata"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -310,6 +317,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1VadSettings? vadSettings,
             string? shortSummary,
             string? summary,
+            global::System.Collections.Generic.Dictionary<string, string>? metadata,
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
             global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!,
@@ -340,6 +348,7 @@ namespace Ultravox
             this.VadSettings = vadSettings;
             this.ShortSummary = shortSummary;
             this.Summary = summary;
+            this.Metadata = metadata;
         }
 
         /// <summary>
