@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    /// Optional metadata key-value pairs to associate with the call. All values must be strings.
     /// </summary>
     public sealed partial class CallMetadata
     {

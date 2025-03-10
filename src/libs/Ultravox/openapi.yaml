@@ -184,6 +184,13 @@ paths:
           schema:
             type: string
             format: date
+        - name: metadata
+          in: query
+          description: Filter calls by metadata. Use metadata.key=value to filter by specific key-value pairs.
+          schema:
+            type: object
+            additionalProperties:
+              type: string
         - name: pageSize
           in: query
           description: Number of results to return per page.
@@ -237,19 +244,7 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-                - $ref: '#/components/schemas/ultravox.v1.StartCallRequest'
-                - type: object
-                  properties:
-                    metadata:
-                      type: object
-                      additionalProperties:
-                        type: string
-                      description: Optional metadata key-value pairs to associate with the call. All values must be strings.
-                      example:
-                        customer_id: cust_123
-                        source: web_chat
-                        department: sales
+              $ref: '#/components/schemas/ultravox.v1.StartCallRequest'
       responses:
         '201':
           description: ''
@@ -1619,6 +1614,7 @@ components:
         - initialOutputMedium
         - joinUrl
         - joined
+        - metadata
         - shortSummary
         - summary
       type: object
@@ -1744,6 +1740,7 @@ components:
           type: object
           additionalProperties:
             type: string
+          description: Optional metadata key-value pairs to associate with the call. All values must be strings.
     CallStage:
       required:
         - callId
@@ -3003,7 +3000,7 @@ components:
           type: object
           additionalProperties:
             type: string
-          description: Arbitrary metadata associated with this call.
+          description: Optional metadata key-value pairs to associate with the call. All values must be strings.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object
