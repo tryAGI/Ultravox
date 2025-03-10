@@ -466,42 +466,34 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.AllOf<global::Ultravox.UltravoxV1StartCallRequest, global::Ultravox.CallsCreateRequest2>? Type110 { get; set; }
+        public global::Ultravox.ToolsCreateRequest? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.CallsCreateRequest2? Type111 { get; set; }
+        public byte[]? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.ToolsCreateRequest? Type112 { get; set; }
+        public global::Ultravox.VoicesCreateRequest? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type113 { get; set; }
+        public global::Ultravox.SchemaRetrieveFormat? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.VoicesCreateRequest? Type114 { get; set; }
+        public global::Ultravox.SchemaRetrieveLang? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveFormat? Type115 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveLang? Type116 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type117 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type118 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type119 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type117 { get; set; }
     }
 }

@@ -132,7 +132,7 @@ namespace Ultravox
         public object? ExperimentalSettings { get; set; }
 
         /// <summary>
-        /// Arbitrary metadata associated with this call.
+        /// Optional metadata key-value pairs to associate with the call. All values must be strings.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
         public global::System.Collections.Generic.Dictionary<string, string>? Metadata { get; set; }
@@ -211,7 +211,7 @@ namespace Ultravox
         /// Experimental settings for the call.
         /// </param>
         /// <param name="metadata">
-        /// Arbitrary metadata associated with this call.
+        /// Optional metadata key-value pairs to associate with the call. All values must be strings.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

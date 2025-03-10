@@ -11,6 +11,7 @@ namespace Ultravox
         /// <param name="durationMax"></param>
         /// <param name="durationMin"></param>
         /// <param name="fromDate"></param>
+        /// <param name="metadata"></param>
         /// <param name="pageSize"></param>
         /// <param name="search"></param>
         /// <param name="toDate"></param>
@@ -22,6 +23,7 @@ namespace Ultravox
             string? durationMax = default,
             string? durationMin = default,
             global::System.DateTime? fromDate = default,
+            global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
             int? pageSize = default,
             string? search = default,
             global::System.DateTime? toDate = default,
