@@ -2511,6 +2511,15 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.BaseClientToolDetails'
           description: "Details for a client-implemented tool. Only body parameters are allowed\n for client tools."
+        defaultReaction:
+          enum:
+            - AGENT_REACTION_UNSPECIFIED
+            - AGENT_REACTION_SPEAKS
+            - AGENT_REACTION_LISTENS
+            - AGENT_REACTION_SPEAKS_ONCE
+          type: string
+          description: "Indicates the default for how the agent should proceed after the tool is invoked.\n Can be overridden by the tool implementation via the X-Ultravox-Agent-Reaction\n header."
+          format: enum
       description: "The base definition of a tool that can be used during a call. Exactly one\n implementation (http or client) should be set."
     ultravox.v1.CallMedium:
       type: object
@@ -2607,6 +2616,15 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.ClientCallToolDetails'
           description: "Details for a client-implemented tool. Only body parameters are allowed\n for client tools."
+        defaultReaction:
+          enum:
+            - AGENT_REACTION_UNSPECIFIED
+            - AGENT_REACTION_SPEAKS
+            - AGENT_REACTION_LISTENS
+            - AGENT_REACTION_SPEAKS_ONCE
+          type: string
+          description: "Indicates the default for how the agent should proceed after the tool is invoked.\n Can be overridden by the tool implementation via the X-Ultravox-Agent-Reaction\n header."
+          format: enum
       description: A tool as used for a particular call (omitting auth details).
     ultravox.v1.ClientCallToolDetails:
       type: object

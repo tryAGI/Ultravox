@@ -76,6 +76,15 @@ namespace Ultravox
         public object? Client { get; set; }
 
         /// <summary>
+        /// Indicates the default for how the agent should proceed after the tool is invoked.<br/>
+        ///  Can be overridden by the tool implementation via the X-Ultravox-Agent-Reaction<br/>
+        ///  header.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("defaultReaction")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1BaseToolDefinitionDefaultReactionJsonConverter))]
+        public global::Ultravox.UltravoxV1BaseToolDefinitionDefaultReaction? DefaultReaction { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -120,6 +129,11 @@ namespace Ultravox
         /// Details for a client-implemented tool. Only body parameters are allowed<br/>
         ///  for client tools.
         /// </param>
+        /// <param name="defaultReaction">
+        /// Indicates the default for how the agent should proceed after the tool is invoked.<br/>
+        ///  Can be overridden by the tool implementation via the X-Ultravox-Agent-Reaction<br/>
+        ///  header.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -133,7 +147,8 @@ namespace Ultravox
             string? timeout,
             bool? precomputable,
             global::Ultravox.UltravoxV1BaseHttpToolDetails? http,
-            object? client)
+            object? client,
+            global::Ultravox.UltravoxV1BaseToolDefinitionDefaultReaction? defaultReaction)
         {
             this.ModelToolName = modelToolName;
             this.Description = description;
@@ -145,6 +160,7 @@ namespace Ultravox
             this.Precomputable = precomputable;
             this.Http = http;
             this.Client = client;
+            this.DefaultReaction = defaultReaction;
         }
 
         /// <summary>
