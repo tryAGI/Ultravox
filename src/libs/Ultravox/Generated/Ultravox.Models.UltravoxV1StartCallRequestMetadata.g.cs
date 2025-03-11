@@ -4,7 +4,8 @@
 namespace Ultravox
 {
     /// <summary>
-    /// Optional metadata key-value pairs to associate with the call. All values must be strings.
+    /// Optional metadata key-value pairs to associate with the call. All values must be strings.<br/>
+    ///  Keys may not start with "ultravox.", which is reserved for system-provided metadata.
     /// </summary>
     public sealed partial class UltravoxV1StartCallRequestMetadata
     {

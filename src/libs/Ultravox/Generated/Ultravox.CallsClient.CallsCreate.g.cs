@@ -255,7 +255,8 @@ namespace Ultravox
         /// Experimental settings for the call.
         /// </param>
         /// <param name="metadata">
-        /// Optional metadata key-value pairs to associate with the call. All values must be strings.
+        /// Optional metadata key-value pairs to associate with the call. All values must be strings.<br/>
+        ///  Keys may not start with "ultravox.", which is reserved for system-provided metadata.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>

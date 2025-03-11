@@ -3018,7 +3018,7 @@ components:
           type: object
           additionalProperties:
             type: string
-          description: Optional metadata key-value pairs to associate with the call. All values must be strings.
+          description: "Optional metadata key-value pairs to associate with the call. All values must be strings.\n Keys may not start with \"ultravox.\", which is reserved for system-provided metadata."
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object
