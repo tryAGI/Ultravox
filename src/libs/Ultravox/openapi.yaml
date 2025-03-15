@@ -310,6 +310,7 @@ paths:
     get:
       tags:
         - calls
+      description: Returns or redirects to a recording of the call.
       operationId: calls_recording_retrieve
       parameters:
         - name: call_id
@@ -320,6 +321,13 @@ paths:
             format: uuid
       responses:
         '200':
+          description: ''
+          content:
+            audio/wav:
+              schema:
+                type: string
+                format: binary
+        '302':
           description: No response body
       security:
         - apiKeyAuth: [ ]
