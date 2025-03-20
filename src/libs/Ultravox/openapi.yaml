@@ -36,6 +36,63 @@ paths:
                 $ref: '#/components/schemas/Account'
       security:
         - apiKeyAuth: [ ]
+  /api/accounts/me/usage/calls:
+    get:
+      tags:
+        - accounts
+      description: Gets aggregated call usage.
+      operationId: accounts_me_usage_calls_retrieve
+      parameters:
+        - name: durationMax
+          in: query
+          description: Maximum duration of calls
+          schema:
+            type: string
+        - name: durationMin
+          in: query
+          description: Minimum duration of calls
+          schema:
+            type: string
+        - name: fromDate
+          in: query
+          description: Start date (inclusive) for filtering calls by creation date
+          schema:
+            type: string
+            format: date
+        - name: metadata
+          in: query
+          description: Filter calls by metadata. Use metadata.key=value to filter by specific key-value pairs.
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+        - name: search
+          in: query
+          description: The search string used to filter results
+          schema:
+            minLength: 1
+            type: string
+        - name: toDate
+          in: query
+          description: End date (inclusive) for filtering calls by creation date
+          schema:
+            type: string
+            format: date
+        - name: voiceId
+          in: query
+          description: Filter calls by the associated voice ID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallUsage'
+      security:
+        - apiKeyAuth: [ ]
   /api/api_keys:
     get:
       tags:
@@ -1805,6 +1862,22 @@ components:
           description: Experimental settings for this call stage.
           nullable: true
           readOnly: true
+    CallStatistics:
+      required:
+        - duration
+        - joinedCount
+        - totalCount
+      type: object
+      properties:
+        totalCount:
+          type: integer
+          description: Total number of calls
+        duration:
+          type: string
+          description: Total duration of all calls
+        joinedCount:
+          type: integer
+          description: Number of calls that were joined
     CallTool:
       required:
         - callToolId
@@ -1828,6 +1901,42 @@ components:
           readOnly: true
         definition:
           $ref: '#/components/schemas/ultravox.v1.CallTool'
+    CallUsage:
+      required:
+        - allTime
+        - daily
+      type: object
+      properties:
+        allTime:
+          allOf:
+            - $ref: '#/components/schemas/CallStatistics'
+          description: All-time call usage
+        daily:
+          type: array
+          items:
+            $ref: '#/components/schemas/DailyCallStatistics'
+          description: Call usage per day
+    DailyCallStatistics:
+      required:
+        - date
+        - duration
+        - joinedCount
+        - totalCount
+      type: object
+      properties:
+        totalCount:
+          type: integer
+          description: Total number of calls
+        duration:
+          type: string
+          description: Total duration of all calls
+        joinedCount:
+          type: integer
+          description: Number of calls that were joined
+        date:
+          type: string
+          description: Date of usage
+          format: date
     EndReasonEnum:
       enum:
         - unjoined
