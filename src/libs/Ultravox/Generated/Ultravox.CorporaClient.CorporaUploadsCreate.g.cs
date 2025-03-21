@@ -5,47 +5,47 @@ namespace Ultravox
 {
     public partial class CorporaClient
     {
-        partial void PrepareCorporaSourcesCreateArguments(
+        partial void PrepareCorporaUploadsCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid corpusId,
-            global::Ultravox.UltravoxV1CorpusSource request);
-        partial void PrepareCorporaSourcesCreateRequest(
+            global::Ultravox.CorpusUploadsRequest request);
+        partial void PrepareCorporaUploadsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::System.Guid corpusId,
-            global::Ultravox.UltravoxV1CorpusSource request);
-        partial void ProcessCorporaSourcesCreateResponse(
+            global::Ultravox.CorpusUploadsRequest request);
+        partial void ProcessCorporaUploadsCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCorporaSourcesCreateResponseContent(
+        partial void ProcessCorporaUploadsCreateResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// 
+        /// Request a presigned URL for uploading a document.
         /// </summary>
         /// <param name="corpusId"></param>
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.UltravoxV1CorpusSource> CorporaSourcesCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Ultravox.CorpusUploadsResponse> CorporaUploadsCreateAsync(
             global::System.Guid corpusId,
-            global::Ultravox.UltravoxV1CorpusSource request,
+            global::Ultravox.CorpusUploadsRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareCorporaSourcesCreateArguments(
+            PrepareCorporaUploadsCreateArguments(
                 httpClient: HttpClient,
                 corpusId: ref corpusId,
                 request: request);
 
             var __pathBuilder = new PathBuilder(
-                path: $"/api/corpora/{corpusId}/sources",
+                path: $"/api/corpora/{corpusId}/uploads",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -81,7 +81,7 @@ namespace Ultravox
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareCorporaSourcesCreateRequest(
+            PrepareCorporaUploadsCreateRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 corpusId: corpusId,
@@ -95,7 +95,7 @@ namespace Ultravox
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessCorporaSourcesCreateResponse(
+            ProcessCorporaUploadsCreateResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
 
@@ -111,7 +111,7 @@ namespace Ultravox
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessCorporaSourcesCreateResponseContent(
+                ProcessCorporaUploadsCreateResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -136,7 +136,7 @@ namespace Ultravox
                 }
 
                 return
-                    global::Ultravox.UltravoxV1CorpusSource.FromJson(__content, JsonSerializerContext) ??
+                    global::Ultravox.CorpusUploadsResponse.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -166,71 +166,31 @@ namespace Ultravox
                 ).ConfigureAwait(false);
 
                 return
-                    await global::Ultravox.UltravoxV1CorpusSource.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Ultravox.CorpusUploadsResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
 
         /// <summary>
-        /// 
+        /// Request a presigned URL for uploading a document.
         /// </summary>
         /// <param name="corpusId"></param>
-        /// <param name="requestCorpusId">
-        /// The id of this source's corpus.
-        /// </param>
-        /// <param name="sourceId">
-        /// The unique ID of this source.
-        /// </param>
-        /// <param name="created">
-        /// When this source was created.
-        /// </param>
-        /// <param name="name">
-        /// The name of this source.
-        /// </param>
-        /// <param name="description">
-        /// A description of this source.
-        /// </param>
-        /// <param name="stats">
-        /// The current stats for this source.
-        /// </param>
-        /// <param name="loadSpec">
-        /// DEPRECATED. Prefer setting crawl instead. If either crawl or upload is set, this field will be ignored.
-        /// </param>
-        /// <param name="crawl">
-        /// Allows loading documents by crawling the web.
-        /// </param>
-        /// <param name="upload">
-        /// Allows loading from a uploaded document.
+        /// <param name="mimeType">
+        /// The MIME type of the file to be uploaded.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.UltravoxV1CorpusSource> CorporaSourcesCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Ultravox.CorpusUploadsResponse> CorporaUploadsCreateAsync(
             global::System.Guid corpusId,
-            string? requestCorpusId = default,
-            string? sourceId = default,
-            global::System.DateTime? created = default,
-            string? name = default,
-            string? description = default,
-            global::Ultravox.UltravoxV1SourceStats? stats = default,
-            global::Ultravox.UltravoxV1CrawlSpec? loadSpec = default,
-            global::Ultravox.UltravoxV1CrawlSpec? crawl = default,
-            global::Ultravox.UltravoxV1UploadSpec? upload = default,
+            string mimeType,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Ultravox.UltravoxV1CorpusSource
+            var __request = new global::Ultravox.CorpusUploadsRequest
             {
-                CorpusId = requestCorpusId,
-                SourceId = sourceId,
-                Created = created,
-                Name = name,
-                Description = description,
-                Stats = stats,
-                LoadSpec = loadSpec,
-                Crawl = crawl,
-                Upload = upload,
+                MimeType = mimeType,
             };
 
-            return await CorporaSourcesCreateAsync(
+            return await CorporaUploadsCreateAsync(
                 corpusId: corpusId,
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

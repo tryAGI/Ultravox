@@ -46,10 +46,22 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1SourceStats? Stats { get; set; }
 
         /// <summary>
-        /// How to load documents for this source.
+        /// DEPRECATED. Prefer setting crawl instead. If either crawl or upload is set, this field will be ignored.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("loadSpec")]
-        public global::Ultravox.UltravoxV1LoadSpec? LoadSpec { get; set; }
+        public global::Ultravox.UltravoxV1CrawlSpec? LoadSpec { get; set; }
+
+        /// <summary>
+        /// Allows loading documents by crawling the web.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("crawl")]
+        public global::Ultravox.UltravoxV1CrawlSpec? Crawl { get; set; }
+
+        /// <summary>
+        /// Allows loading from a uploaded document.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("upload")]
+        public global::Ultravox.UltravoxV1UploadSpec? Upload { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -79,7 +91,13 @@ namespace Ultravox
         /// The current stats for this source.
         /// </param>
         /// <param name="loadSpec">
-        /// How to load documents for this source.
+        /// DEPRECATED. Prefer setting crawl instead. If either crawl or upload is set, this field will be ignored.
+        /// </param>
+        /// <param name="crawl">
+        /// Allows loading documents by crawling the web.
+        /// </param>
+        /// <param name="upload">
+        /// Allows loading from a uploaded document.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -91,7 +109,9 @@ namespace Ultravox
             string? name,
             string? description,
             global::Ultravox.UltravoxV1SourceStats? stats,
-            global::Ultravox.UltravoxV1LoadSpec? loadSpec)
+            global::Ultravox.UltravoxV1CrawlSpec? loadSpec,
+            global::Ultravox.UltravoxV1CrawlSpec? crawl,
+            global::Ultravox.UltravoxV1UploadSpec? upload)
         {
             this.CorpusId = corpusId;
             this.SourceId = sourceId;
@@ -100,6 +120,8 @@ namespace Ultravox
             this.Description = description;
             this.Stats = stats;
             this.LoadSpec = loadSpec;
+            this.Crawl = crawl;
+            this.Upload = upload;
         }
 
         /// <summary>
