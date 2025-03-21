@@ -962,6 +962,34 @@ paths:
                 $ref: '#/components/schemas/ultravox.v1.CorpusDocument'
       security:
         - apiKeyAuth: [ ]
+  '/api/corpora/{corpus_id}/uploads':
+    post:
+      tags:
+        - corpora
+      description: Request a presigned URL for uploading a document.
+      operationId: corpora_uploads_create
+      parameters:
+        - name: corpus_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CorpusUploadsRequest'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorpusUploadsResponse'
+      security:
+        - apiKeyAuth: [ ]
   /api/models:
     get:
       tags:
@@ -1916,6 +1944,26 @@ components:
           items:
             $ref: '#/components/schemas/DailyCallStatistics'
           description: Call usage per day
+    CorpusUploadsRequest:
+      required:
+        - mimeType
+      type: object
+      properties:
+        mimeType:
+          minLength: 1
+          type: string
+          description: The MIME type of the file to be uploaded.
+    CorpusUploadsResponse:
+      required:
+        - documentId
+        - presignedUrl
+      type: object
+      properties:
+        documentId:
+          type: string
+        presignedUrl:
+          type: string
+          format: uri
     DailyCallStatistics:
       required:
         - date
@@ -2500,8 +2548,16 @@ components:
           description: The current stats for this source.
         loadSpec:
           allOf:
-            - $ref: '#/components/schemas/ultravox.v1.LoadSpec'
-          description: How to load documents for this source.
+            - $ref: '#/components/schemas/ultravox.v1.CrawlSpec'
+          description: 'DEPRECATED. Prefer setting crawl instead. If either crawl or upload is set, this field will be ignored.'
+        crawl:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CrawlSpec'
+          description: Allows loading documents by crawling the web.
+        upload:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.UploadSpec'
+          description: Allows loading from a uploaded document.
       description: "A source of documents for building a corpus. A source defines where documents\n are pulled from."
     ultravox.v1.Message:
       type: object
@@ -2812,6 +2868,31 @@ components:
           description: "The number of vectors in this corpus. Vectors are used for semantic search.\n Multiple vectors may correspond to a single chunk."
           format: int32
       description: "The current stats for a corpus. This gives an indication of whether the\n corpus is queryable and what sorts of results can be expected."
+    ultravox.v1.CrawlSpec:
+      type: object
+      properties:
+        maxDocuments:
+          type: integer
+          description: The maximum number of documents to ingest.
+          format: int32
+        maxDocumentBytes:
+          type: integer
+          description: The maximum size of an individual document in bytes.
+          format: int32
+        relevantDocumentTypes:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.MimeTypeFilter'
+          description: "The types of documents to keep. Any documents surfaced during loading\n that don't match this filter will be discarded. If not set, Ultravox will\n choose a default that includes types known to provide real value."
+        startUrls:
+          type: array
+          items:
+            type: string
+          description: "The list of start URLs for crawling. If max_depth is 1, only these URLs will\n be fetched. Otherwise, links from these urls will be followed up to the\n max_depth."
+        maxDepth:
+          type: integer
+          description: "The maximum depth of links to traverse. Use 1 to only fetch the startUrls,\n 2 to fetch the startUrls and documents directly linked from them, 3 to\n additionally fetch documents linked from those (excluding anything already\n seen), etc."
+          format: int32
+      description: The specification of how to acquire documents for this source.
     ultravox.v1.DynamicParameter:
       type: object
       properties:
@@ -2899,31 +2980,6 @@ components:
             type: string
           description: "If the tool requires a call token, the scopes that must be present in the token.\n If this is empty, no call token will be created."
       description: Details for a CallTool implemented via HTTP requests.
-    ultravox.v1.LoadSpec:
-      type: object
-      properties:
-        maxDocuments:
-          type: integer
-          description: The maximum number of documents to ingest.
-          format: int32
-        maxDocumentBytes:
-          type: integer
-          description: The maximum size of an individual document in bytes.
-          format: int32
-        relevantDocumentTypes:
-          allOf:
-            - $ref: '#/components/schemas/ultravox.v1.MimeTypeFilter'
-          description: "The types of documents to keep. Any documents surfaced during loading\n that don't match this filter will be discarded. If not set, Ultravox will\n choose a default that includes types known to provide real value."
-        startUrls:
-          type: array
-          items:
-            type: string
-          description: "The list of start URLs for crawling. If max_depth is 1, only these URLs will\n be fetched. Otherwise, links from these urls will be followed up to the\n max_depth."
-        maxDepth:
-          type: integer
-          description: "The maximum depth of links to traverse. Use 1 to only fetch the startUrls,\n 2 to fetch the startUrls and documents directly linked from them, 3 to\n additionally fetch documents linked from those (excluding anything already\n seen), etc."
-          format: int32
-      description: The specification of how to acquire documents for this source.
     ultravox.v1.MimeTypeFilter:
       type: object
       properties:
@@ -3199,6 +3255,15 @@ components:
             type: string
           description: The scopes that must be present in the token.
       description: "A security requirement that will automatically be fulfilled during call creation.\n The generated token will be set as an X-Ultravox-Call-Token header when the tool\n is invoked. The token is only verifiable by the Ultravox service and should not be\n used for authentication by any other service.\n The token will also be invalid as soon as the call is completed."
+    ultravox.v1.UploadSpec:
+      type: object
+      properties:
+        documentIds:
+          type: array
+          items:
+            type: string
+          description: "The IDs of uploaded documents. These documents must\n have been previously uploaded using the document upload API."
+      description: The specification of how to acquire documents for uploaded documents source.
     ultravox.v1.VadSettings:
       type: object
       properties:

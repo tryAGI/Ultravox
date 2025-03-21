@@ -6,7 +6,7 @@ namespace Ultravox
     /// <summary>
     /// The specification of how to acquire documents for this source.
     /// </summary>
-    public sealed partial class UltravoxV1LoadSpec
+    public sealed partial class UltravoxV1CrawlSpec
     {
         /// <summary>
         /// The maximum number of documents to ingest.
@@ -52,7 +52,7 @@ namespace Ultravox
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UltravoxV1LoadSpec" /> class.
+        /// Initializes a new instance of the <see cref="UltravoxV1CrawlSpec" /> class.
         /// </summary>
         /// <param name="maxDocuments">
         /// The maximum number of documents to ingest.
@@ -79,7 +79,7 @@ namespace Ultravox
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public UltravoxV1LoadSpec(
+        public UltravoxV1CrawlSpec(
             int? maxDocuments,
             int? maxDocumentBytes,
             global::Ultravox.UltravoxV1MimeTypeFilter? relevantDocumentTypes,
@@ -94,9 +94,9 @@ namespace Ultravox
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UltravoxV1LoadSpec" /> class.
+        /// Initializes a new instance of the <see cref="UltravoxV1CrawlSpec" /> class.
         /// </summary>
-        public UltravoxV1LoadSpec()
+        public UltravoxV1CrawlSpec()
         {
         }
     }

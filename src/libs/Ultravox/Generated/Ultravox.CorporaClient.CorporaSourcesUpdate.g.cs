@@ -201,7 +201,13 @@ namespace Ultravox
         /// The current stats for this source.
         /// </param>
         /// <param name="loadSpec">
-        /// How to load documents for this source.
+        /// DEPRECATED. Prefer setting crawl instead. If either crawl or upload is set, this field will be ignored.
+        /// </param>
+        /// <param name="crawl">
+        /// Allows loading documents by crawling the web.
+        /// </param>
+        /// <param name="upload">
+        /// Allows loading from a uploaded document.
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -214,7 +220,9 @@ namespace Ultravox
             string? name = default,
             string? description = default,
             global::Ultravox.UltravoxV1SourceStats? stats = default,
-            global::Ultravox.UltravoxV1LoadSpec? loadSpec = default,
+            global::Ultravox.UltravoxV1CrawlSpec? loadSpec = default,
+            global::Ultravox.UltravoxV1CrawlSpec? crawl = default,
+            global::Ultravox.UltravoxV1UploadSpec? upload = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.UltravoxV1CorpusSource
@@ -226,6 +234,8 @@ namespace Ultravox
                 Description = description,
                 Stats = stats,
                 LoadSpec = loadSpec,
+                Crawl = crawl,
+                Upload = upload,
             };
 
             return await CorporaSourcesUpdateAsync(
