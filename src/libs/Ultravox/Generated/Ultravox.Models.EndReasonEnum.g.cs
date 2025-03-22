@@ -8,7 +8,8 @@ namespace Ultravox
     /// * `hangup` - Client hung up<br/>
     /// * `agent_hangup` - Agent hung up<br/>
     /// * `timeout` - Call timed out<br/>
-    /// * `connection_error` - Connection error
+    /// * `connection_error` - Connection error<br/>
+    /// * `system_error` - System error
     /// </summary>
     public enum EndReasonEnum
     {
@@ -32,6 +33,10 @@ namespace Ultravox
         /// 
         /// </summary>
         ConnectionError,
+        /// <summary>
+        /// 
+        /// </summary>
+        SystemError,
     }
 
     /// <summary>
@@ -51,6 +56,7 @@ namespace Ultravox
                 EndReasonEnum.AgentHangup => "agent_hangup",
                 EndReasonEnum.Timeout => "timeout",
                 EndReasonEnum.ConnectionError => "connection_error",
+                EndReasonEnum.SystemError => "system_error",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -66,6 +72,7 @@ namespace Ultravox
                 "agent_hangup" => EndReasonEnum.AgentHangup,
                 "timeout" => EndReasonEnum.Timeout,
                 "connection_error" => EndReasonEnum.ConnectionError,
+                "system_error" => EndReasonEnum.SystemError,
                 _ => null,
             };
         }

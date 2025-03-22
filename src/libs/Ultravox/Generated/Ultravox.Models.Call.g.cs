@@ -50,6 +50,7 @@ namespace Ultravox
         /// * `agent_hangup` - Agent hung up<br/>
         /// * `timeout` - Call timed out<br/>
         /// * `connection_error` - Connection error<br/>
+        /// * `system_error` - System error<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endReason")]
@@ -236,6 +237,7 @@ namespace Ultravox
         /// * `agent_hangup` - Agent hung up<br/>
         /// * `timeout` - Call timed out<br/>
         /// * `connection_error` - Connection error<br/>
+        /// * `system_error` - System error<br/>
         /// Included only in responses
         /// </param>
         /// <param name="firstSpeakerSettings">
