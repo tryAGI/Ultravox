@@ -1739,7 +1739,7 @@ components:
           oneOf:
             - $ref: '#/components/schemas/EndReasonEnum'
             - $ref: '#/components/schemas/NullEnum'
-          description: "The reason the call ended.\n\n* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `agent_hangup` - Agent hung up\n* `timeout` - Call timed out\n* `connection_error` - Connection error"
+          description: "The reason the call ended.\n\n* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `agent_hangup` - Agent hung up\n* `timeout` - Call timed out\n* `connection_error` - Connection error\n* `system_error` - System error"
           nullable: true
           readOnly: true
         firstSpeaker:
@@ -1992,8 +1992,9 @@ components:
         - agent_hangup
         - timeout
         - connection_error
+        - system_error
       type: string
-      description: "* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `agent_hangup` - Agent hung up\n* `timeout` - Call timed out\n* `connection_error` - Connection error"
+      description: "* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `agent_hangup` - Agent hung up\n* `timeout` - Call timed out\n* `connection_error` - Connection error\n* `system_error` - System error"
     EventsEnum:
       enum:
         - call.started
