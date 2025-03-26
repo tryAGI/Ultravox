@@ -1006,6 +1006,93 @@ paths:
                 $ref: '#/components/schemas/CorpusUploadsResponse'
       security:
         - apiKeyAuth: [ ]
+  /api/deleted_calls:
+    get:
+      tags:
+        - deleted_calls
+      operationId: deleted_calls_list
+      parameters:
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+        - name: durationMax
+          in: query
+          description: Maximum duration of calls
+          schema:
+            type: string
+        - name: durationMin
+          in: query
+          description: Minimum duration of calls
+          schema:
+            type: string
+        - name: fromDate
+          in: query
+          description: Start date (inclusive) for filtering calls by creation date
+          schema:
+            type: string
+            format: date
+        - name: metadata
+          in: query
+          description: Filter calls by metadata. Use metadata.key=value to filter by specific key-value pairs.
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+        - name: search
+          in: query
+          description: The search string used to filter results
+          schema:
+            minLength: 1
+            type: string
+        - name: toDate
+          in: query
+          description: End date (inclusive) for filtering calls by creation date
+          schema:
+            type: string
+            format: date
+        - name: voiceId
+          in: query
+          description: Filter calls by the associated voice ID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCallTombstoneList'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/deleted_calls/{call_id}':
+    get:
+      tags:
+        - deleted_calls
+      operationId: deleted_calls_retrieve
+      parameters:
+        - name: call_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallTombstone'
+      security:
+        - apiKeyAuth: [ ]
   /api/models:
     get:
       tags:
@@ -1922,6 +2009,56 @@ components:
         joinedCount:
           type: integer
           description: Number of calls that were joined
+    CallTombstone:
+      required:
+        - accountId
+        - callId
+        - created
+        - deletionTime
+        - endReason
+        - hadSummary
+        - recordingEnabled
+      type: object
+      properties:
+        callId:
+          type: string
+          format: uuid
+          readOnly: true
+        accountId:
+          type: string
+          format: uuid
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+        deletionTime:
+          type: string
+          format: date-time
+          readOnly: true
+        joined:
+          type: string
+          format: date-time
+          nullable: true
+        ended:
+          type: string
+          format: date-time
+          nullable: true
+        maxDuration:
+          type: string
+          default: 3600s
+        endReason:
+          oneOf:
+            - $ref: '#/components/schemas/EndReasonEnum'
+            - $ref: '#/components/schemas/NullEnum'
+          description: "The reason the call ended.\n\n* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `agent_hangup` - Agent hung up\n* `timeout` - Call timed out\n* `connection_error` - Connection error\n* `system_error` - System error"
+          nullable: true
+          readOnly: true
+        recordingEnabled:
+          type: boolean
+          readOnly: true
+        hadSummary:
+          type: boolean
+          readOnly: true
     CallTool:
       required:
         - callToolId
@@ -2108,6 +2245,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CallStage'
+        total:
+          type: integer
+          example: 123
+    PaginatedCallTombstoneList:
+      required:
+        - results
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallTombstone'
         total:
           type: integer
           example: 123
