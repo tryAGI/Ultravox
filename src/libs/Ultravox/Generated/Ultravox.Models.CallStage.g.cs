@@ -88,6 +88,13 @@ namespace Ultravox
         public object? ExperimentalSettings { get; set; }
 
         /// <summary>
+        /// The initial state of the call stage which is readable/writable by tools.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("initialState")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object InitialState { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -128,10 +135,14 @@ namespace Ultravox
         /// Experimental settings for this call stage.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="initialState">
+        /// The initial state of the call stage which is readable/writable by tools.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CallStage(
+            object initialState,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
             string? languageHint,
             string? model,
@@ -145,6 +156,7 @@ namespace Ultravox
             double temperature = default!,
             int errorCount = default!)
         {
+            this.InitialState = initialState ?? throw new global::System.ArgumentNullException(nameof(initialState));
             this.CallId = callId;
             this.CallStageId = callStageId;
             this.Created = created;

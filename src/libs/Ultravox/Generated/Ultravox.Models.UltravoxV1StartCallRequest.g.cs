@@ -139,6 +139,12 @@ namespace Ultravox
         public global::System.Collections.Generic.Dictionary<string, string>? Metadata { get; set; }
 
         /// <summary>
+        /// The initial state of the call stage which is readable/writable by tools.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("initialState")]
+        public object? InitialState { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -215,6 +221,9 @@ namespace Ultravox
         /// Optional metadata key-value pairs to associate with the call. All values must be strings.<br/>
         ///  Keys may not start with "ultravox.", which is reserved for system-provided metadata.
         /// </param>
+        /// <param name="initialState">
+        /// The initial state of the call stage which is readable/writable by tools.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -238,7 +247,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1VadSettings? vadSettings,
             global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings,
             object? experimentalSettings,
-            global::System.Collections.Generic.Dictionary<string, string>? metadata)
+            global::System.Collections.Generic.Dictionary<string, string>? metadata,
+            object? initialState)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -260,6 +270,7 @@ namespace Ultravox
             this.FirstSpeakerSettings = firstSpeakerSettings;
             this.ExperimentalSettings = experimentalSettings;
             this.Metadata = metadata;
+            this.InitialState = initialState;
         }
 
         /// <summary>
