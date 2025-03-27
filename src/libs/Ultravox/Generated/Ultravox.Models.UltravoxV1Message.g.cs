@@ -61,6 +61,12 @@ namespace Ultravox
         public string? CallStageId { get; set; }
 
         /// <summary>
+        /// If the message updated the call state, the new call state.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("callState")]
+        public object? CallState { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -95,6 +101,9 @@ namespace Ultravox
         /// <param name="callStageId">
         /// The call stage this message appeared in.
         /// </param>
+        /// <param name="callState">
+        /// If the message updated the call state, the new call state.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -106,7 +115,8 @@ namespace Ultravox
             string? errorDetails,
             global::Ultravox.UltravoxV1MessageMedium? medium,
             int? callStageMessageIndex,
-            string? callStageId)
+            string? callStageId,
+            object? callState)
         {
             this.Role = role;
             this.Text = text;
@@ -116,6 +126,7 @@ namespace Ultravox
             this.Medium = medium;
             this.CallStageMessageIndex = callStageMessageIndex;
             this.CallStageId = callStageId;
+            this.CallState = callState;
         }
 
         /// <summary>

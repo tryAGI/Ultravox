@@ -95,6 +95,9 @@ namespace Ultravox
         /// Optional metadata key-value pairs to associate with the call. All values must be strings.<br/>
         ///  Keys may not start with "ultravox.", which is reserved for system-provided metadata.
         /// </param>
+        /// <param name="initialState">
+        /// The initial state of the call stage which is readable/writable by tools.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
@@ -120,6 +123,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings = default,
             object? experimentalSettings = default,
             global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
+            object? initialState = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

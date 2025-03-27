@@ -1808,6 +1808,7 @@ components:
         - firstSpeaker
         - firstSpeakerSettings
         - initialOutputMedium
+        - initialState
         - joinUrl
         - joined
         - metadata
@@ -1937,6 +1938,10 @@ components:
           additionalProperties:
             type: string
           description: Optional metadata key-value pairs to associate with the call. All values must be strings.
+        initialState:
+          type: object
+          additionalProperties: { }
+          description: The initial state of the call which is readable/writable by tools.
     CallStage:
       required:
         - callId
@@ -1944,6 +1949,7 @@ components:
         - created
         - errorCount
         - experimentalSettings
+        - initialState
         - temperature
       type: object
       properties:
@@ -1993,6 +1999,10 @@ components:
           description: Experimental settings for this call stage.
           nullable: true
           readOnly: true
+        initialState:
+          type: object
+          additionalProperties: { }
+          description: The initial state of the call stage which is readable/writable by tools.
     CallStatistics:
       required:
         - duration
@@ -2775,6 +2785,9 @@ components:
         callStageId:
           type: string
           description: The call stage this message appeared in.
+        callState:
+          type: object
+          description: 'If the message updated the call state, the new call state.'
       description: A message exchanged during a call.
     google.protobuf.Value:
       description: 'Represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values.'
@@ -2800,6 +2813,7 @@ components:
             - KNOWN_PARAM_CALL_ID
             - KNOWN_PARAM_CONVERSATION_HISTORY
             - KNOWN_PARAM_OUTPUT_SAMPLE_RATE
+            - KNOWN_PARAM_CALL_STATE
           type: string
           description: The value to set for the parameter.
           format: enum
@@ -3368,6 +3382,9 @@ components:
           additionalProperties:
             type: string
           description: "Optional metadata key-value pairs to associate with the call. All values must be strings.\n Keys may not start with \"ultravox.\", which is reserved for system-provided metadata."
+        initialState:
+          type: object
+          description: The initial state of the call stage which is readable/writable by tools.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object

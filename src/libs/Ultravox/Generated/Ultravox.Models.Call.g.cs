@@ -206,6 +206,13 @@ namespace Ultravox
         public required global::System.Collections.Generic.Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The initial state of the call which is readable/writable by tools.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("initialState")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object InitialState { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -297,6 +304,9 @@ namespace Ultravox
         /// <param name="metadata">
         /// Optional metadata key-value pairs to associate with the call. All values must be strings.
         /// </param>
+        /// <param name="initialState">
+        /// The initial state of the call which is readable/writable by tools.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -304,6 +314,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1FirstSpeakerSettings firstSpeakerSettings,
             object experimentalSettings,
             global::System.Collections.Generic.Dictionary<string, string> metadata,
+            object initialState,
             string? clientVersion,
             global::System.DateTime? joined,
             global::System.DateTime? ended,
@@ -331,6 +342,7 @@ namespace Ultravox
             this.FirstSpeakerSettings = firstSpeakerSettings ?? throw new global::System.ArgumentNullException(nameof(firstSpeakerSettings));
             this.ExperimentalSettings = experimentalSettings ?? throw new global::System.ArgumentNullException(nameof(experimentalSettings));
             this.Metadata = metadata ?? throw new global::System.ArgumentNullException(nameof(metadata));
+            this.InitialState = initialState ?? throw new global::System.ArgumentNullException(nameof(initialState));
             this.CallId = callId;
             this.ClientVersion = clientVersion;
             this.Created = created;
