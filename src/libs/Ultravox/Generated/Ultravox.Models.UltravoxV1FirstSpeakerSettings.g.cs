@@ -15,7 +15,7 @@ namespace Ultravox
         /// If set, the user should speak first.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user")]
-        public object? User { get; set; }
+        public global::Ultravox.UltravoxV1FirstSpeakerSettingsUserGreeting? User { get; set; }
 
         /// <summary>
         /// If set, the agent should speak first.
@@ -42,7 +42,7 @@ namespace Ultravox
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UltravoxV1FirstSpeakerSettings(
-            object? user,
+            global::Ultravox.UltravoxV1FirstSpeakerSettingsUserGreeting? user,
             global::Ultravox.UltravoxV1FirstSpeakerSettingsAgentGreeting? agent)
         {
             this.User = user;

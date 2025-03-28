@@ -82,494 +82,502 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public object? Type14 { get; set; }
+        public global::Ultravox.UltravoxV1FirstSpeakerSettingsUserGreeting? Type14 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1FirstSpeakerSettingsAgentGreeting? Type15 { get; set; }
+        public global::Ultravox.UltravoxV1FallbackAgentGreeting? Type15 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? Type16 { get; set; }
+        public global::Ultravox.UltravoxV1FirstSpeakerSettingsAgentGreeting? Type16 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1TimedMessage? Type17 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? Type17 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1TimedMessageEndBehavior? Type18 { get; set; }
+        public global::Ultravox.UltravoxV1TimedMessage? Type18 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.InitialOutputMediumEnum? Type19 { get; set; }
+        public global::Ultravox.UltravoxV1TimedMessageEndBehavior? Type19 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CallMedium? Type20 { get; set; }
+        public global::Ultravox.InitialOutputMediumEnum? Type20 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CallMediumWebSocketMedium? Type21 { get; set; }
+        public global::Ultravox.UltravoxV1CallMedium? Type21 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Type22 { get; set; }
+        public object? Type22 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1ExternalVoice? Type23 { get; set; }
+        public global::Ultravox.UltravoxV1CallMediumWebSocketMedium? Type23 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1ElevenLabsVoice? Type24 { get; set; }
+        public double? Type24 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public float? Type25 { get; set; }
+        public global::Ultravox.UltravoxV1ExternalVoice? Type25 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference>? Type26 { get; set; }
+        public global::Ultravox.UltravoxV1ElevenLabsVoice? Type26 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference? Type27 { get; set; }
+        public float? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CartesiaVoice? Type28 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference>? Type28 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1PlayHtVoice? Type29 { get; set; }
+        public global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference? Type29 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1LmntVoice? Type30 { get; set; }
+        public global::Ultravox.UltravoxV1CartesiaVoice? Type30 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1VadSettings? Type31 { get; set; }
+        public global::Ultravox.UltravoxV1PlayHtVoice? Type31 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type32 { get; set; }
+        public global::Ultravox.UltravoxV1LmntVoice? Type32 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.CallStage? Type33 { get; set; }
+        public global::Ultravox.UltravoxV1VadSettings? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.CallStatistics? Type34 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.CallTombstone? Type35 { get; set; }
+        public global::Ultravox.CallStage? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.CallTool? Type36 { get; set; }
+        public global::Ultravox.CallStatistics? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CallTool? Type37 { get; set; }
+        public global::Ultravox.CallTombstone? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1DynamicParameter>? Type38 { get; set; }
+        public global::Ultravox.CallTool? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1DynamicParameter? Type39 { get; set; }
+        public global::Ultravox.UltravoxV1CallTool? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1DynamicParameterLocation? Type40 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1DynamicParameter>? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1StaticParameter>? Type41 { get; set; }
+        public global::Ultravox.UltravoxV1DynamicParameter? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StaticParameter? Type42 { get; set; }
+        public global::Ultravox.UltravoxV1DynamicParameterLocation? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StaticParameterLocation? Type43 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1StaticParameter>? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1AutomaticParameter>? Type44 { get; set; }
+        public global::Ultravox.UltravoxV1StaticParameter? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1AutomaticParameter? Type45 { get; set; }
+        public global::Ultravox.UltravoxV1StaticParameterLocation? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1AutomaticParameterLocation? Type46 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1AutomaticParameter>? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1AutomaticParameterKnownValue? Type47 { get; set; }
+        public global::Ultravox.UltravoxV1AutomaticParameter? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1HttpCallToolDetails? Type48 { get; set; }
+        public global::Ultravox.UltravoxV1AutomaticParameterLocation? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<string>? Type49 { get; set; }
+        public global::Ultravox.UltravoxV1AutomaticParameterKnownValue? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CallToolDefaultReaction? Type50 { get; set; }
+        public global::Ultravox.UltravoxV1HttpCallToolDetails? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.CallUsage? Type51 { get; set; }
+        public global::System.Collections.Generic.IList<string>? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.DailyCallStatistics>? Type52 { get; set; }
+        public global::Ultravox.UltravoxV1CallToolDefaultReaction? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.DailyCallStatistics? Type53 { get; set; }
+        public global::Ultravox.CallUsage? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.CorpusUploadsRequest? Type54 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.DailyCallStatistics>? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.CorpusUploadsResponse? Type55 { get; set; }
+        public global::Ultravox.DailyCallStatistics? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.EventsEnum? Type56 { get; set; }
+        public global::Ultravox.CorpusUploadsRequest? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.ModelAlias? Type57 { get; set; }
+        public global::Ultravox.CorpusUploadsResponse? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.OwnershipEnum? Type58 { get; set; }
+        public global::Ultravox.EventsEnum? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedAPIKeyList? Type59 { get; set; }
+        public global::Ultravox.ModelAlias? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.APIKey>? Type60 { get; set; }
+        public global::Ultravox.OwnershipEnum? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedCallList? Type61 { get; set; }
+        public global::Ultravox.PaginatedAPIKeyList? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Call>? Type62 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.APIKey>? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedCallStageList? Type63 { get; set; }
+        public global::Ultravox.PaginatedCallList? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.CallStage>? Type64 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Call>? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedCallTombstoneList? Type65 { get; set; }
+        public global::Ultravox.PaginatedCallStageList? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.CallTombstone>? Type66 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.CallStage>? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedModelAliasList? Type67 { get; set; }
+        public global::Ultravox.PaginatedCallTombstoneList? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.ModelAlias>? Type68 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.CallTombstone>? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedToolHistoryList? Type69 { get; set; }
+        public global::Ultravox.PaginatedModelAliasList? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.ToolHistory>? Type70 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.ModelAlias>? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.ToolHistory? Type71 { get; set; }
+        public global::Ultravox.PaginatedToolHistoryList? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedToolList? Type72 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.ToolHistory>? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Tool>? Type73 { get; set; }
+        public global::Ultravox.ToolHistory? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.Tool? Type74 { get; set; }
+        public global::Ultravox.PaginatedToolList? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1BaseToolDefinition? Type75 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Tool>? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1ToolRequirements? Type76 { get; set; }
+        public global::Ultravox.Tool? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1SecurityOptions? Type77 { get; set; }
+        public global::Ultravox.UltravoxV1BaseToolDefinition? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SecurityRequirements>? Type78 { get; set; }
+        public global::Ultravox.UltravoxV1ToolRequirements? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1SecurityRequirements? Type79 { get; set; }
+        public global::Ultravox.UltravoxV1SecurityOptions? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, global::Ultravox.UltravoxV1SecurityRequirement>? Type80 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SecurityRequirements>? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1SecurityRequirement? Type81 { get; set; }
+        public global::Ultravox.UltravoxV1SecurityRequirements? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1QueryApiKeyRequirement? Type82 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, global::Ultravox.UltravoxV1SecurityRequirement>? Type82 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1HeaderApiKeyRequirement? Type83 { get; set; }
+        public global::Ultravox.UltravoxV1SecurityRequirement? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1HttpAuthRequirement? Type84 { get; set; }
+        public global::Ultravox.UltravoxV1QueryApiKeyRequirement? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1UltravoxCallTokenRequirement? Type85 { get; set; }
+        public global::Ultravox.UltravoxV1HeaderApiKeyRequirement? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1BaseHttpToolDetails? Type86 { get; set; }
+        public global::Ultravox.UltravoxV1HttpAuthRequirement? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1BaseToolDefinitionDefaultReaction? Type87 { get; set; }
+        public global::Ultravox.UltravoxV1UltravoxCallTokenRequirement? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.ToolStatistics? Type88 { get; set; }
+        public global::Ultravox.UltravoxV1BaseHttpToolDetails? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedVoiceList? Type89 { get; set; }
+        public global::Ultravox.UltravoxV1BaseToolDefinitionDefaultReaction? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Voice>? Type90 { get; set; }
+        public global::Ultravox.ToolStatistics? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.Voice? Type91 { get; set; }
+        public global::Ultravox.PaginatedVoiceList? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedWebhookList? Type92 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Voice>? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Webhook>? Type93 { get; set; }
+        public global::Ultravox.Voice? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.Webhook? Type94 { get; set; }
+        public global::Ultravox.PaginatedWebhookList? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.EventsEnum>? Type95 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Webhook>? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedultravoxV1CorpusDocumentList? Type96 { get; set; }
+        public global::Ultravox.Webhook? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusDocument>? Type97 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.EventsEnum>? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CorpusDocument? Type98 { get; set; }
+        public global::Ultravox.PaginatedultravoxV1CorpusDocumentList? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CorpusDocumentMetadata? Type99 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusDocument>? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedultravoxV1CorpusList? Type100 { get; set; }
+        public global::Ultravox.UltravoxV1CorpusDocument? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1Corpus>? Type101 { get; set; }
+        public global::Ultravox.UltravoxV1CorpusDocumentMetadata? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1Corpus? Type102 { get; set; }
+        public global::Ultravox.PaginatedultravoxV1CorpusList? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CorpusStats? Type103 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1Corpus>? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CorpusStatsStatus? Type104 { get; set; }
+        public global::Ultravox.UltravoxV1Corpus? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedultravoxV1CorpusSourceList? Type105 { get; set; }
+        public global::Ultravox.UltravoxV1CorpusStats? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusSource>? Type106 { get; set; }
+        public global::Ultravox.UltravoxV1CorpusStatsStatus? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CorpusSource? Type107 { get; set; }
+        public global::Ultravox.PaginatedultravoxV1CorpusSourceList? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1SourceStats? Type108 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusSource>? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1SourceStatsStatus? Type109 { get; set; }
+        public global::Ultravox.UltravoxV1CorpusSource? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CrawlSpec? Type110 { get; set; }
+        public global::Ultravox.UltravoxV1SourceStats? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1MimeTypeFilter? Type111 { get; set; }
+        public global::Ultravox.UltravoxV1SourceStatsStatus? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1MimeTypeSet? Type112 { get; set; }
+        public global::Ultravox.UltravoxV1CrawlSpec? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1UploadSpec? Type113 { get; set; }
+        public global::Ultravox.UltravoxV1MimeTypeFilter? Type113 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PaginatedultravoxV1MessageList? Type114 { get; set; }
+        public global::Ultravox.UltravoxV1MimeTypeSet? Type114 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1Message>? Type115 { get; set; }
+        public global::Ultravox.UltravoxV1UploadSpec? Type115 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1Message? Type116 { get; set; }
+        public global::Ultravox.PaginatedultravoxV1MessageList? Type116 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1MessageRole? Type117 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1Message>? Type117 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1MessageMedium? Type118 { get; set; }
+        public global::Ultravox.UltravoxV1Message? Type118 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PatchedAPIKey? Type119 { get; set; }
+        public global::Ultravox.UltravoxV1MessageRole? Type119 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.PatchedWebhook? Type120 { get; set; }
+        public global::Ultravox.UltravoxV1MessageMedium? Type120 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CorpusQueryResult? Type121 { get; set; }
+        public global::Ultravox.PatchedAPIKey? Type121 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CorpusQueryResultCitation? Type122 { get; set; }
+        public global::Ultravox.PatchedWebhook? Type122 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1QueryCorpusRequest? Type123 { get; set; }
+        public global::Ultravox.UltravoxV1CorpusQueryResult? Type123 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1SelectedTool? Type124 { get; set; }
+        public global::Ultravox.UltravoxV1CorpusQueryResultCitation? Type124 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartCallRequest? Type125 { get; set; }
+        public global::Ultravox.UltravoxV1QueryCorpusRequest? Type125 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>? Type126 { get; set; }
+        public global::Ultravox.UltravoxV1SelectedTool? Type126 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? Type127 { get; set; }
+        public global::Ultravox.UltravoxV1StartCallRequest? Type127 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? Type128 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>? Type128 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.ToolsCreateRequest? Type129 { get; set; }
+        public global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? Type129 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type130 { get; set; }
+        public global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? Type130 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.VoicesCreateRequest? Type131 { get; set; }
+        public global::Ultravox.ToolsCreateRequest? Type131 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveFormat? Type132 { get; set; }
+        public byte[]? Type132 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveLang? Type133 { get; set; }
+        public global::Ultravox.VoicesCreateRequest? Type133 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type134 { get; set; }
+        public global::Ultravox.SchemaRetrieveFormat? Type134 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type135 { get; set; }
+        public global::Ultravox.SchemaRetrieveLang? Type135 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type136 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type136 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type137 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type138 { get; set; }
     }
 }

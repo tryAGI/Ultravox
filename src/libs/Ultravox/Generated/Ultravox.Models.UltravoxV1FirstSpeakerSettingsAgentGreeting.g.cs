@@ -22,6 +22,13 @@ namespace Ultravox
         public string? Text { get; set; }
 
         /// <summary>
+        /// If set, the agent will wait this long before starting its greeting. This may be useful<br/>
+        ///  for ensuring the user is ready.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delay")]
+        public string? Delay { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,15 +44,21 @@ namespace Ultravox
         /// <param name="text">
         /// What the agent should say. If unset, the model will generate a greeting.
         /// </param>
+        /// <param name="delay">
+        /// If set, the agent will wait this long before starting its greeting. This may be useful<br/>
+        ///  for ensuring the user is ready.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UltravoxV1FirstSpeakerSettingsAgentGreeting(
             bool? uninterruptible,
-            string? text)
+            string? text,
+            string? delay)
         {
             this.Uninterruptible = uninterruptible;
             this.Text = text;
+            this.Delay = delay;
         }
 
         /// <summary>
