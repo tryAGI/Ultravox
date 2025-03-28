@@ -1906,6 +1906,8 @@ components:
         voice:
           type: string
           nullable: true
+        externalVoice:
+          $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
         transcriptOptional:
           type: boolean
           description: Indicates whether a transcript is optional for the call.
@@ -1991,6 +1993,8 @@ components:
         voice:
           type: string
           nullable: true
+        externalVoice:
+          $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
         errorCount:
           type: integer
           description: The number of errors in this call stage.
@@ -2989,6 +2993,23 @@ components:
           description: "Indicates the default for how the agent should proceed after the tool is invoked.\n Can be overridden by the tool implementation via the X-Ultravox-Agent-Reaction\n header."
           format: enum
       description: A tool as used for a particular call (omitting auth details).
+    ultravox.v1.CartesiaVoice:
+      type: object
+      properties:
+        voiceId:
+          type: string
+          description: The ID of the voice in Cartesia.
+        model:
+          type: string
+          description: The Cartesia model to use.
+        speed:
+          type: number
+          description: "The speaking rate. Must be between -1 and 1. Defaults to 0.\n See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.speed"
+          format: float
+        emotion:
+          type: string
+          description: See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
+      description: Specification for a voice served by Cartesia.
     ultravox.v1.ClientCallToolDetails:
       type: object
       description: Details for a CallTool implemented by the client.
@@ -3106,6 +3127,70 @@ components:
           type: boolean
           description: Whether the parameter is required.
       description: A dynamic parameter the tool accepts that may be set by the model.
+    ultravox.v1.ElevenLabsVoice:
+      type: object
+      properties:
+        voiceId:
+          type: string
+          description: The ID of the voice in ElevenLabs.
+        model:
+          type: string
+          description: The ElevenLabs model to use.
+        speed:
+          type: number
+          description: "The speaking rate. Must be between 0.7 and 1.2. Defaults to 1.\n See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.body.voice_settings.speed"
+          format: float
+        useSpeakerBoost:
+          type: boolean
+          description: See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.body.voice_settings.use_speaker_boost
+        style:
+          type: number
+          description: See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.body.voice_settings.style
+          format: float
+        similarityBoost:
+          type: number
+          description: See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.body.voice_settings.similarity_boost
+          format: float
+        stability:
+          type: number
+          description: See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.body.voice_settings.stability
+          format: float
+        pronunciationDictionaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.ElevenLabsVoice_PronunciationDictionaryReference'
+          description: See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.body.pronunciation_dictionary_locators
+      description: Specification for a voice served by ElevenLabs.
+    ultravox.v1.ElevenLabsVoice_PronunciationDictionaryReference:
+      type: object
+      properties:
+        dictionaryId:
+          type: string
+          description: The dictionary's ID.
+        versionId:
+          type: string
+          description: The dictionary's version.
+      description: A reference to a pronunciation dictionary within ElevenLabs.
+    ultravox.v1.ExternalVoice:
+      type: object
+      properties:
+        elevenLabs:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ElevenLabsVoice'
+          description: A voice served by ElevenLabs.
+        cartesia:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CartesiaVoice'
+          description: A voice served by Cartesia.
+        playHt:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.PlayHtVoice'
+          description: A voice served by PlayHT.
+        lmnt:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.LmntVoice'
+          description: A voice served by LMNT.
+      description: "A voice not known to Ultravox Realtime that can nonetheless be used for a call.\n Such voices are significantly less validated than normal voices and you'll be\n responsible for your own TTS-related errors.\n Exactly one field must be set."
     ultravox.v1.FirstSpeakerSettings:
       type: object
       properties:
@@ -3170,6 +3255,23 @@ components:
             type: string
           description: "If the tool requires a call token, the scopes that must be present in the token.\n If this is empty, no call token will be created."
       description: Details for a CallTool implemented via HTTP requests.
+    ultravox.v1.LmntVoice:
+      type: object
+      properties:
+        voiceId:
+          type: string
+          description: The ID of the voice in LMNT.
+        model:
+          type: string
+          description: The LMNT model to use.
+        speed:
+          type: number
+          description: "The speaking rate. Must be between 0.25 and 2. Defaults to 1.\n See https://docs.lmnt.com/api-reference/speech/synthesize-speech-bytes#body-speed"
+          format: float
+        conversational:
+          type: boolean
+          description: See https://docs.lmnt.com/api-reference/speech/synthesize-speech-bytes#body-conversational
+      description: Specification for a voice served by LMNT.
     ultravox.v1.MimeTypeFilter:
       type: object
       properties:
@@ -3191,6 +3293,50 @@ components:
             type: string
           description: The mime types in this set.
       description: "A set of mime types. Entries may be a full mime type (e.g. \"text/html\") or a\n type without a subtype (e.g. \"text\"). Entries without a subtype will match\n all subtypes (e.g. \"text\" will match \"text/html\", \"text/plain\", etc.)."
+    ultravox.v1.PlayHtVoice:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: "The \"user id\" for the PlayHT API. This must be the user who owns the Play API key\n associated with your Ultravox account."
+        voiceId:
+          type: string
+          description: The ID of the voice in PlayHT. Typically an s3 location.
+        model:
+          type: string
+          description: The PlayHT model (aka "engine") to use.
+        speed:
+          type: number
+          description: The speaking rate. Must be between 0 and 5. Defaults to 1.
+          format: float
+        quality:
+          type: string
+          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
+        temperature:
+          type: number
+          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
+          format: float
+        emotion:
+          type: number
+          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
+          format: float
+        voiceGuidance:
+          type: number
+          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
+          format: float
+        styleGuidance:
+          type: number
+          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
+          format: float
+        textGuidance:
+          type: number
+          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
+          format: float
+        voiceConditioningSeconds:
+          type: number
+          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
+          format: float
+      description: Specification for a voice served by PlayHT.
     ultravox.v1.QueryApiKeyRequirement:
       type: object
       properties:
@@ -3311,6 +3457,10 @@ components:
         voice:
           type: string
           description: The ID (or name if unique) of the voice the agent should use for this call.
+        externalVoice:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+          description: "A voice not known to Ultravox Realtime that can nonetheless be used for this call.\n Your account must have an API key set for the provider of the voice.\n Either this or `voice` may be set, but not both."
         languageHint:
           type: string
           description: A BCP47 language code that may be used to guide speech recognition and synthesis.

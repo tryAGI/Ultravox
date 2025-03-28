@@ -33,6 +33,14 @@ namespace Ultravox
         public string? Voice { get; set; }
 
         /// <summary>
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for this call.<br/>
+        ///  Your account must have an API key set for the provider of the voice.<br/>
+        ///  Either this or `voice` may be set, but not both.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("externalVoice")]
+        public global::Ultravox.UltravoxV1ExternalVoice? ExternalVoice { get; set; }
+
+        /// <summary>
         /// A BCP47 language code that may be used to guide speech recognition and synthesis.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageHint")]
@@ -165,6 +173,11 @@ namespace Ultravox
         /// <param name="voice">
         /// The ID (or name if unique) of the voice the agent should use for this call.
         /// </param>
+        /// <param name="externalVoice">
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for this call.<br/>
+        ///  Your account must have an API key set for the provider of the voice.<br/>
+        ///  Either this or `voice` may be set, but not both.
+        /// </param>
         /// <param name="languageHint">
         /// A BCP47 language code that may be used to guide speech recognition and synthesis.
         /// </param>
@@ -232,6 +245,7 @@ namespace Ultravox
             float? temperature,
             string? model,
             string? voice,
+            global::Ultravox.UltravoxV1ExternalVoice? externalVoice,
             string? languageHint,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1Message>? initialMessages,
             string? joinTimeout,
@@ -254,6 +268,7 @@ namespace Ultravox
             this.Temperature = temperature;
             this.Model = model;
             this.Voice = voice;
+            this.ExternalVoice = externalVoice;
             this.LanguageHint = languageHint;
             this.InitialMessages = initialMessages;
             this.JoinTimeout = joinTimeout;

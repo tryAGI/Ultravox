@@ -202,6 +202,11 @@ namespace Ultravox
         /// <param name="voice">
         /// The ID (or name if unique) of the voice the agent should use for this call.
         /// </param>
+        /// <param name="externalVoice">
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for this call.<br/>
+        ///  Your account must have an API key set for the provider of the voice.<br/>
+        ///  Either this or `voice` may be set, but not both.
+        /// </param>
         /// <param name="languageHint">
         /// A BCP47 language code that may be used to guide speech recognition and synthesis.
         /// </param>
@@ -270,6 +275,7 @@ namespace Ultravox
             float? temperature = default,
             string? model = default,
             string? voice = default,
+            global::Ultravox.UltravoxV1ExternalVoice? externalVoice = default,
             string? languageHint = default,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1Message>? initialMessages = default,
             string? joinTimeout = default,
@@ -295,6 +301,7 @@ namespace Ultravox
                 Temperature = temperature,
                 Model = model,
                 Voice = voice,
+                ExternalVoice = externalVoice,
                 LanguageHint = languageHint,
                 InitialMessages = initialMessages,
                 JoinTimeout = joinTimeout,

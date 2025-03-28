@@ -155,6 +155,15 @@ namespace Ultravox
         public string? Voice { get; set; }
 
         /// <summary>
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for a call.<br/>
+        ///  Such voices are significantly less validated than normal voices and you'll be<br/>
+        ///  responsible for your own TTS-related errors.<br/>
+        ///  Exactly one field must be set.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("externalVoice")]
+        public global::Ultravox.UltravoxV1ExternalVoice? ExternalVoice { get; set; }
+
+        /// <summary>
         /// Indicates whether a transcript is optional for the call.<br/>
         /// Default Value: true
         /// </summary>
@@ -282,6 +291,12 @@ namespace Ultravox
         /// </param>
         /// <param name="timeExceededMessage"></param>
         /// <param name="voice"></param>
+        /// <param name="externalVoice">
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for a call.<br/>
+        ///  Such voices are significantly less validated than normal voices and you'll be<br/>
+        ///  responsible for your own TTS-related errors.<br/>
+        ///  Exactly one field must be set.
+        /// </param>
         /// <param name="errorCount">
         /// The number of errors in this call.<br/>
         /// Default Value: 0<br/>
@@ -331,6 +346,7 @@ namespace Ultravox
             double? temperature,
             string? timeExceededMessage,
             string? voice,
+            global::Ultravox.UltravoxV1ExternalVoice? externalVoice,
             global::Ultravox.UltravoxV1VadSettings? vadSettings,
             string? shortSummary,
             string? summary,
@@ -362,6 +378,7 @@ namespace Ultravox
             this.Temperature = temperature;
             this.TimeExceededMessage = timeExceededMessage;
             this.Voice = voice;
+            this.ExternalVoice = externalVoice;
             this.ErrorCount = errorCount;
             this.VadSettings = vadSettings;
             this.ShortSummary = shortSummary;
