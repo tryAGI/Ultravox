@@ -3191,6 +3191,17 @@ components:
             - $ref: '#/components/schemas/ultravox.v1.LmntVoice'
           description: A voice served by LMNT.
       description: "A voice not known to Ultravox Realtime that can nonetheless be used for a call.\n Such voices are significantly less validated than normal voices and you'll be\n responsible for your own TTS-related errors.\n Exactly one field must be set."
+    ultravox.v1.FallbackAgentGreeting:
+      type: object
+      properties:
+        delay:
+          pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
+          type: string
+          description: How long the agent should wait before starting the conversation itself.
+        text:
+          type: string
+          description: 'What the agent should say. If unset, the model will generate a greeting.'
+      description: A fallback for the case when the user is expected to speak first but doesn't.
     ultravox.v1.FirstSpeakerSettings:
       type: object
       properties:
@@ -3212,9 +3223,18 @@ components:
         text:
           type: string
           description: 'What the agent should say. If unset, the model will generate a greeting.'
+        delay:
+          pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
+          type: string
+          description: "If set, the agent will wait this long before starting its greeting. This may be useful\n for ensuring the user is ready."
       description: Additional properties for when the agent speaks first.
     ultravox.v1.FirstSpeakerSettings_UserGreeting:
       type: object
+      properties:
+        fallback:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.FallbackAgentGreeting'
+          description: "If set, the agent will start the conversation itself if the user doesn't start\n speaking within the given delay."
       description: Additional properties for when the user speaks first.
     ultravox.v1.HeaderApiKeyRequirement:
       type: object
