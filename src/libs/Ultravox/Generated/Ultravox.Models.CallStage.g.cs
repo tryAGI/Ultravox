@@ -73,6 +73,15 @@ namespace Ultravox
         public string? Voice { get; set; }
 
         /// <summary>
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for a call.<br/>
+        ///  Such voices are significantly less validated than normal voices and you'll be<br/>
+        ///  responsible for your own TTS-related errors.<br/>
+        ///  Exactly one field must be set.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("externalVoice")]
+        public global::Ultravox.UltravoxV1ExternalVoice? ExternalVoice { get; set; }
+
+        /// <summary>
         /// The number of errors in this call stage.<br/>
         /// Included only in responses
         /// </summary>
@@ -127,6 +136,12 @@ namespace Ultravox
         /// </param>
         /// <param name="timeExceededMessage"></param>
         /// <param name="voice"></param>
+        /// <param name="externalVoice">
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for a call.<br/>
+        ///  Such voices are significantly less validated than normal voices and you'll be<br/>
+        ///  responsible for your own TTS-related errors.<br/>
+        ///  Exactly one field must be set.
+        /// </param>
         /// <param name="errorCount">
         /// The number of errors in this call stage.<br/>
         /// Included only in responses
@@ -149,6 +164,7 @@ namespace Ultravox
             string? systemPrompt,
             string? timeExceededMessage,
             string? voice,
+            global::Ultravox.UltravoxV1ExternalVoice? externalVoice,
             object? experimentalSettings,
             global::System.Guid callId = default!,
             global::System.Guid callStageId = default!,
@@ -167,6 +183,7 @@ namespace Ultravox
             this.Temperature = temperature;
             this.TimeExceededMessage = timeExceededMessage;
             this.Voice = voice;
+            this.ExternalVoice = externalVoice;
             this.ErrorCount = errorCount;
             this.ExperimentalSettings = experimentalSettings;
         }
