@@ -67,6 +67,14 @@ namespace Ultravox
         public object? CallState { get; set; }
 
         /// <summary>
+        /// The timespan during the call when this message occurred.<br/>
+        ///  This is only set for messages that occurred during the call (stage)<br/>
+        ///  and not for messages in the call's (call stage's) initial messages.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timespan")]
+        public global::Ultravox.UltravoxV1InCallTimespan? Timespan { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -104,6 +112,11 @@ namespace Ultravox
         /// <param name="callState">
         /// If the message updated the call state, the new call state.
         /// </param>
+        /// <param name="timespan">
+        /// The timespan during the call when this message occurred.<br/>
+        ///  This is only set for messages that occurred during the call (stage)<br/>
+        ///  and not for messages in the call's (call stage's) initial messages.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -116,7 +129,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1MessageMedium? medium,
             int? callStageMessageIndex,
             string? callStageId,
-            object? callState)
+            object? callState,
+            global::Ultravox.UltravoxV1InCallTimespan? timespan)
         {
             this.Role = role;
             this.Text = text;
@@ -127,6 +141,7 @@ namespace Ultravox
             this.CallStageMessageIndex = callStageMessageIndex;
             this.CallStageId = callStageId;
             this.CallState = callState;
+            this.Timespan = timespan;
         }
 
         /// <summary>
