@@ -2803,6 +2803,10 @@ components:
         callState:
           type: object
           description: 'If the message updated the call state, the new call state.'
+        timespan:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.InCallTimespan'
+          description: "The timespan during the call when this message occurred.\n This is only set for messages that occurred during the call (stage)\n and not for messages in the call's (call stage's) initial messages."
       description: A message exchanged during a call.
     google.protobuf.Value:
       description: 'Represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values.'
@@ -3286,6 +3290,18 @@ components:
             type: string
           description: "If the tool requires a call token, the scopes that must be present in the token.\n If this is empty, no call token will be created."
       description: Details for a CallTool implemented via HTTP requests.
+    ultravox.v1.InCallTimespan:
+      type: object
+      properties:
+        start:
+          pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
+          type: string
+          description: The offset relative to the start of the call.
+        end:
+          pattern: '^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$'
+          type: string
+          description: The offset relative to the start of the call.
+      description: A timespan during a call.
     ultravox.v1.LmntVoice:
       type: object
       properties:
