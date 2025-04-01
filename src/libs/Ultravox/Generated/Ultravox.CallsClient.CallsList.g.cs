@@ -14,6 +14,7 @@ namespace Ultravox
             global::System.Collections.Generic.Dictionary<string, string>? metadata,
             ref int? pageSize,
             ref string? search,
+            ref string? sort,
             ref global::System.DateTime? toDate,
             ref global::System.Guid? voiceId);
         partial void PrepareCallsListRequest(
@@ -26,6 +27,7 @@ namespace Ultravox
             global::System.Collections.Generic.Dictionary<string, string>? metadata,
             int? pageSize,
             string? search,
+            string? sort,
             global::System.DateTime? toDate,
             global::System.Guid? voiceId);
         partial void ProcessCallsListResponse(
@@ -47,6 +49,7 @@ namespace Ultravox
         /// <param name="metadata"></param>
         /// <param name="pageSize"></param>
         /// <param name="search"></param>
+        /// <param name="sort"></param>
         /// <param name="toDate"></param>
         /// <param name="voiceId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -59,6 +62,7 @@ namespace Ultravox
             global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
             int? pageSize = default,
             string? search = default,
+            string? sort = default,
             global::System.DateTime? toDate = default,
             global::System.Guid? voiceId = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -74,6 +78,7 @@ namespace Ultravox
                 metadata: metadata,
                 pageSize: ref pageSize,
                 search: ref search,
+                sort: ref sort,
                 toDate: ref toDate,
                 voiceId: ref voiceId);
 
@@ -88,6 +93,7 @@ namespace Ultravox
                 .AddOptionalParameter("metadata", metadata?.ToString()) 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 .AddOptionalParameter("search", search) 
+                .AddOptionalParameter("sort", sort) 
                 .AddOptionalParameter("toDate", toDate?.ToString("yyyy-MM-dd")) 
                 .AddOptionalParameter("voiceId", voiceId?.ToString()) 
                 ; 
@@ -129,6 +135,7 @@ namespace Ultravox
                 metadata: metadata,
                 pageSize: pageSize,
                 search: search,
+                sort: sort,
                 toDate: toDate,
                 voiceId: voiceId);
 

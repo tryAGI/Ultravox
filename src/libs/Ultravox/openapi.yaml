@@ -270,6 +270,11 @@ paths:
           schema:
             minLength: 1
             type: string
+        - name: sort
+          in: query
+          description: Which field to use when ordering the results.
+          schema:
+            type: string
         - name: toDate
           in: query
           description: End date (inclusive) for filtering calls by creation date
