@@ -1356,7 +1356,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Tool'
+                $ref: '#/components/schemas/ToolDetail'
       security:
         - apiKeyAuth: [ ]
     put:
@@ -1374,7 +1374,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Tool'
+              $ref: '#/components/schemas/ToolDetail'
         required: true
       responses:
         '200':
@@ -1382,7 +1382,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Tool'
+                $ref: '#/components/schemas/ToolDetail'
       security:
         - apiKeyAuth: [ ]
     delete:
@@ -2556,6 +2556,32 @@ components:
         - definition
         - name
         - ownership
+        - toolId
+      type: object
+      properties:
+        toolId:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          maxLength: 40
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        definition:
+          $ref: '#/components/schemas/ultravox.v1.BaseToolDefinition'
+        ownership:
+          allOf:
+            - $ref: '#/components/schemas/OwnershipEnum'
+          readOnly: true
+    ToolDetail:
+      required:
+        - created
+        - definition
+        - name
+        - ownership
         - statistics
         - toolId
       type: object
@@ -2573,13 +2599,13 @@ components:
           readOnly: true
         definition:
           $ref: '#/components/schemas/ultravox.v1.BaseToolDefinition'
-        statistics:
-          allOf:
-            - $ref: '#/components/schemas/ToolStatistics'
-          readOnly: true
         ownership:
           allOf:
             - $ref: '#/components/schemas/OwnershipEnum'
+          readOnly: true
+        statistics:
+          allOf:
+            - $ref: '#/components/schemas/ToolStatistics'
           readOnly: true
     ToolHistory:
       required:

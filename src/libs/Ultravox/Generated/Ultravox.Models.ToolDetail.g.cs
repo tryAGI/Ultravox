@@ -6,7 +6,7 @@ namespace Ultravox
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class Tool
+    public sealed partial class ToolDetail
     {
         /// <summary>
         /// Included only in responses
@@ -46,13 +46,20 @@ namespace Ultravox
         public global::Ultravox.OwnershipEnum Ownership { get; set; } = default!;
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("statistics")]
+        public global::Ultravox.ToolStatistics Statistics { get; set; } = default!;
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Tool" /> class.
+        /// Initializes a new instance of the <see cref="ToolDetail" /> class.
         /// </summary>
         /// <param name="toolId">
         /// Included only in responses
@@ -68,27 +75,32 @@ namespace Ultravox
         /// <param name="ownership">
         /// Included only in responses
         /// </param>
+        /// <param name="statistics">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public Tool(
+        public ToolDetail(
             string name,
             global::Ultravox.UltravoxV1BaseToolDefinition definition,
             global::System.Guid toolId = default!,
             global::System.DateTime created = default!,
-            global::Ultravox.OwnershipEnum ownership = default!)
+            global::Ultravox.OwnershipEnum ownership = default!,
+            global::Ultravox.ToolStatistics statistics = default!)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Definition = definition ?? throw new global::System.ArgumentNullException(nameof(definition));
             this.ToolId = toolId;
             this.Created = created;
             this.Ownership = ownership;
+            this.Statistics = statistics;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Tool" /> class.
+        /// Initializes a new instance of the <see cref="ToolDetail" /> class.
         /// </summary>
-        public Tool()
+        public ToolDetail()
         {
         }
     }
