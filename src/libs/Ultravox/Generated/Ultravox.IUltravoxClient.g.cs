@@ -45,6 +45,11 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        public AgentsClient Agents { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ApiKeysClient ApiKeys { get; }
 
         /// <summary>

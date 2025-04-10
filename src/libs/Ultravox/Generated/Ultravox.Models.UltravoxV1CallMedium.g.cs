@@ -66,6 +66,13 @@ namespace Ultravox
         public object? Exotel { get; set; }
 
         /// <summary>
+        /// The call will be connected using Session Initiation Protocol (SIP). Note that SIP incurs<br/>
+        ///  additional charges and must be enabled for your account.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sip")]
+        public global::Ultravox.UltravoxV1CallMediumSipMedium? Sip { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -110,6 +117,10 @@ namespace Ultravox
         ///  Once you have a join URL from starting a call, provide it to Exotel as the wss target URL<br/>
         ///  for your Voicebot (either directly or more likely dynamically from your own server).
         /// </param>
+        /// <param name="sip">
+        /// The call will be connected using Session Initiation Protocol (SIP). Note that SIP incurs<br/>
+        ///  additional charges and must be enabled for your account.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -119,7 +130,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1CallMediumWebSocketMedium? serverWebSocket,
             object? telnyx,
             object? plivo,
-            object? exotel)
+            object? exotel,
+            global::Ultravox.UltravoxV1CallMediumSipMedium? sip)
         {
             this.WebRtc = webRtc;
             this.Twilio = twilio;
@@ -127,6 +139,7 @@ namespace Ultravox
             this.Telnyx = telnyx;
             this.Plivo = plivo;
             this.Exotel = exotel;
+            this.Sip = sip;
         }
 
         /// <summary>

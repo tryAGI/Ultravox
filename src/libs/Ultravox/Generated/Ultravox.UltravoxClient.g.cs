@@ -49,6 +49,15 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        public AgentsClient Agents => new AgentsClient(HttpClient, authorizations: Authorizations)
+        {
+            ReadResponseAsString = ReadResponseAsString,
+            JsonSerializerContext = JsonSerializerContext,
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ApiKeysClient ApiKeys => new ApiKeysClient(HttpClient, authorizations: Authorizations)
         {
             ReadResponseAsString = ReadResponseAsString,

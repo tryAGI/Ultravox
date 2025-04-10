@@ -72,6 +72,13 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CallToolDefaultReaction? DefaultReaction { get; set; }
 
         /// <summary>
+        /// Static response to a tool. When this is used, this response will be returned<br/>
+        ///  without waiting for the tool's response.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("staticResponse")]
+        public global::Ultravox.UltravoxV1StaticToolResponse? StaticResponse { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -115,6 +122,10 @@ namespace Ultravox
         ///  Can be overridden by the tool implementation via the X-Ultravox-Agent-Reaction<br/>
         ///  header.
         /// </param>
+        /// <param name="staticResponse">
+        /// Static response to a tool. When this is used, this response will be returned<br/>
+        ///  without waiting for the tool's response.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -127,7 +138,8 @@ namespace Ultravox
             bool? precomputable,
             global::Ultravox.UltravoxV1HttpCallToolDetails? http,
             object? client,
-            global::Ultravox.UltravoxV1CallToolDefaultReaction? defaultReaction)
+            global::Ultravox.UltravoxV1CallToolDefaultReaction? defaultReaction,
+            global::Ultravox.UltravoxV1StaticToolResponse? staticResponse)
         {
             this.Description = description;
             this.DynamicParameters = dynamicParameters;
@@ -138,6 +150,7 @@ namespace Ultravox
             this.Http = http;
             this.Client = client;
             this.DefaultReaction = defaultReaction;
+            this.StaticResponse = staticResponse;
         }
 
         /// <summary>
