@@ -53,6 +53,12 @@ namespace Ultravox
         public object? ParameterOverrides { get; set; }
 
         /// <summary>
+        /// For internal use. Relates this tool to a stage transition definition within a call template for attribution.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transitionId")]
+        public string? TransitionId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -86,6 +92,9 @@ namespace Ultravox
         ///  Some tools may require certain parameters to be overridden, but any parameter<br/>
         ///  can be overridden regardless of whether it is required to be.
         /// </param>
+        /// <param name="transitionId">
+        /// For internal use. Relates this tool to a stage transition definition within a call template for attribution.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -95,7 +104,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1BaseToolDefinition? temporaryTool,
             string? nameOverride,
             global::System.Collections.Generic.Dictionary<string, string>? authTokens,
-            object? parameterOverrides)
+            object? parameterOverrides,
+            string? transitionId)
         {
             this.ToolId = toolId;
             this.ToolName = toolName;
@@ -103,6 +113,7 @@ namespace Ultravox
             this.NameOverride = nameOverride;
             this.AuthTokens = authTokens;
             this.ParameterOverrides = parameterOverrides;
+            this.TransitionId = transitionId;
         }
 
         /// <summary>

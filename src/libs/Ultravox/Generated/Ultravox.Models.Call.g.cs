@@ -222,6 +222,13 @@ namespace Ultravox
         public required object InitialState { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("requestContext")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required object RequestContext { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -322,6 +329,7 @@ namespace Ultravox
         /// <param name="initialState">
         /// The initial state of the call which is readable/writable by tools.
         /// </param>
+        /// <param name="requestContext"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -330,6 +338,7 @@ namespace Ultravox
             object experimentalSettings,
             global::System.Collections.Generic.Dictionary<string, string> metadata,
             object initialState,
+            object requestContext,
             string? clientVersion,
             global::System.DateTime? joined,
             global::System.DateTime? ended,
@@ -359,6 +368,7 @@ namespace Ultravox
             this.ExperimentalSettings = experimentalSettings ?? throw new global::System.ArgumentNullException(nameof(experimentalSettings));
             this.Metadata = metadata ?? throw new global::System.ArgumentNullException(nameof(metadata));
             this.InitialState = initialState ?? throw new global::System.ArgumentNullException(nameof(initialState));
+            this.RequestContext = requestContext ?? throw new global::System.ArgumentNullException(nameof(requestContext));
             this.CallId = callId;
             this.ClientVersion = clientVersion;
             this.Created = created;
