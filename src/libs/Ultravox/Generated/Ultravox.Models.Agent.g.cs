@@ -19,8 +19,7 @@ namespace Ultravox
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -30,7 +29,7 @@ namespace Ultravox
         public global::System.DateTime Created { get; set; } = default!;
 
         /// <summary>
-        /// A CallTemplate that can be used to create Ultravox calls with shared properties.
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("callTemplate")]
         public global::Ultravox.UltravoxV1CallTemplate? CallTemplate { get; set; }
@@ -51,20 +50,18 @@ namespace Ultravox
         /// <param name="created">
         /// Included only in responses
         /// </param>
-        /// <param name="callTemplate">
-        /// A CallTemplate that can be used to create Ultravox calls with shared properties.
-        /// </param>
+        /// <param name="callTemplate"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Agent(
-            string name,
+            string? name,
             global::Ultravox.UltravoxV1CallTemplate? callTemplate,
             global::System.Guid agentId = default!,
             global::System.DateTime created = default!)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.AgentId = agentId;
+            this.Name = name;
             this.Created = created;
             this.CallTemplate = callTemplate;
         }

@@ -170,7 +170,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Agent'
-        required: true
       responses:
         '201':
           description: ''
@@ -2029,7 +2028,6 @@ components:
       required:
         - agentId
         - created
-        - name
       type: object
       properties:
         agentId:
@@ -2044,7 +2042,9 @@ components:
           format: date-time
           readOnly: true
         callTemplate:
-          $ref: '#/components/schemas/ultravox.v1.CallTemplate'
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallTemplate'
+          nullable: true
     Call:
       required:
         - callId
@@ -2806,7 +2806,9 @@ components:
           format: date-time
           readOnly: true
         callTemplate:
-          $ref: '#/components/schemas/ultravox.v1.CallTemplate'
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallTemplate'
+          nullable: true
     PatchedSetTtsApiKeysRequest:
       type: object
       properties:

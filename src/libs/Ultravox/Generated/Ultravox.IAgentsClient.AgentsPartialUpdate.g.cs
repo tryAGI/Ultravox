@@ -21,9 +21,7 @@ namespace Ultravox
         /// </summary>
         /// <param name="agentId"></param>
         /// <param name="name"></param>
-        /// <param name="callTemplate">
-        /// A CallTemplate that can be used to create Ultravox calls with shared properties.
-        /// </param>
+        /// <param name="callTemplate"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Agent> AgentsPartialUpdateAsync(
