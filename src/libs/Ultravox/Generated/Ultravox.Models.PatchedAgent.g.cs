@@ -27,7 +27,7 @@ namespace Ultravox
         public global::System.DateTime? Created { get; set; }
 
         /// <summary>
-        /// A CallTemplate that can be used to create Ultravox calls with shared properties.
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("callTemplate")]
         public global::Ultravox.UltravoxV1CallTemplate? CallTemplate { get; set; }
@@ -48,9 +48,7 @@ namespace Ultravox
         /// <param name="created">
         /// Included only in responses
         /// </param>
-        /// <param name="callTemplate">
-        /// A CallTemplate that can be used to create Ultravox calls with shared properties.
-        /// </param>
+        /// <param name="callTemplate"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

@@ -169,13 +169,11 @@ namespace Ultravox
         /// 
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="callTemplate">
-        /// A CallTemplate that can be used to create Ultravox calls with shared properties.
-        /// </param>
+        /// <param name="callTemplate"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Agent> AgentsCreateAsync(
-            string name,
+            string? name = default,
             global::Ultravox.UltravoxV1CallTemplate? callTemplate = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
