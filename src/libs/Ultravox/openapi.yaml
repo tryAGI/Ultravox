@@ -3606,6 +3606,10 @@ components:
           items:
             $ref: '#/components/schemas/ultravox.v1.ElevenLabsVoice_PronunciationDictionaryReference'
           description: See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.body.pronunciation_dictionary_locators
+        optimizeStreamingLatency:
+          type: integer
+          description: See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.query.optimize_streaming_latency.optimize_streaming_latency
+          format: int32
       description: Specification for a voice served by ElevenLabs.
     ultravox.v1.ElevenLabsVoice_PronunciationDictionaryReference:
       type: object

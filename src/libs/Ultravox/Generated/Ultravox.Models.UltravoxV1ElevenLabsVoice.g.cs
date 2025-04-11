@@ -58,6 +58,12 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference>? PronunciationDictionaries { get; set; }
 
         /// <summary>
+        /// See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.query.optimize_streaming_latency.optimize_streaming_latency
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("optimizeStreamingLatency")]
+        public int? OptimizeStreamingLatency { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -91,6 +97,9 @@ namespace Ultravox
         /// <param name="pronunciationDictionaries">
         /// See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.body.pronunciation_dictionary_locators
         /// </param>
+        /// <param name="optimizeStreamingLatency">
+        /// See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.query.optimize_streaming_latency.optimize_streaming_latency
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -102,7 +111,8 @@ namespace Ultravox
             float? style,
             float? similarityBoost,
             float? stability,
-            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference>? pronunciationDictionaries)
+            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference>? pronunciationDictionaries,
+            int? optimizeStreamingLatency)
         {
             this.VoiceId = voiceId;
             this.Model = model;
@@ -112,6 +122,7 @@ namespace Ultravox
             this.SimilarityBoost = similarityBoost;
             this.Stability = stability;
             this.PronunciationDictionaries = pronunciationDictionaries;
+            this.OptimizeStreamingLatency = optimizeStreamingLatency;
         }
 
         /// <summary>
