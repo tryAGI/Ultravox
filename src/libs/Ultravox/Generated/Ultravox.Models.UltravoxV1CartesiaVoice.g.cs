@@ -34,6 +34,12 @@ namespace Ultravox
         public string? Emotion { get; set; }
 
         /// <summary>
+        /// See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("emotions")]
+        public global::System.Collections.Generic.IList<string>? Emotions { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -55,6 +61,9 @@ namespace Ultravox
         /// <param name="emotion">
         /// See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
         /// </param>
+        /// <param name="emotions">
+        /// See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -62,12 +71,14 @@ namespace Ultravox
             string? voiceId,
             string? model,
             float? speed,
-            string? emotion)
+            string? emotion,
+            global::System.Collections.Generic.IList<string>? emotions)
         {
             this.VoiceId = voiceId;
             this.Model = model;
             this.Speed = speed;
             this.Emotion = emotion;
+            this.Emotions = emotions;
         }
 
         /// <summary>
