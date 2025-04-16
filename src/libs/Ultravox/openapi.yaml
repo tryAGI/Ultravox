@@ -3455,6 +3455,11 @@ components:
         emotion:
           type: string
           description: See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
+        emotions:
+          type: array
+          items:
+            type: string
+          description: See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
       description: Specification for a voice served by Cartesia.
     ultravox.v1.ClientCallToolDetails:
       type: object
