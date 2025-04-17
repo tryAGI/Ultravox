@@ -153,6 +153,12 @@ namespace Ultravox
         public object? InitialState { get; set; }
 
         /// <summary>
+        /// Data connection configuration.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dataConnection")]
+        public global::Ultravox.UltravoxV1DataConnectionConfig? DataConnection { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -237,6 +243,9 @@ namespace Ultravox
         /// <param name="initialState">
         /// The initial state of the call stage which is readable/writable by tools.
         /// </param>
+        /// <param name="dataConnection">
+        /// Data connection configuration.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -262,7 +271,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings,
             object? experimentalSettings,
             global::System.Collections.Generic.Dictionary<string, string>? metadata,
-            object? initialState)
+            object? initialState,
+            global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -286,6 +296,7 @@ namespace Ultravox
             this.ExperimentalSettings = experimentalSettings;
             this.Metadata = metadata;
             this.InitialState = initialState;
+            this.DataConnection = dataConnection;
         }
 
         /// <summary>

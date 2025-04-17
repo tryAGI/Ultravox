@@ -2195,6 +2195,10 @@ components:
           additionalProperties: { }
           description: The initial state of the call which is readable/writable by tools.
         requestContext: { }
+        dataConnectionConfig:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.DataConnectionConfig'
+          description: Settings for exchanging data messages with an additional participant.
     CallStage:
       required:
         - callId
@@ -3555,6 +3559,13 @@ components:
           description: "The maximum depth of links to traverse. Use 1 to only fetch the startUrls,\n 2 to fetch the startUrls and documents directly linked from them, 3 to\n additionally fetch documents linked from those (excluding anything already\n seen), etc."
           format: int32
       description: The specification of how to acquire documents for this source.
+    ultravox.v1.DataConnectionConfig:
+      type: object
+      properties:
+        websocketUrl:
+          type: string
+          description: The websocket URL to which the session will connect to stream data messages.
+      description: Data connection enables an auxiliary websocket for streaming data messages.
     ultravox.v1.DynamicParameter:
       type: object
       properties:
@@ -4091,6 +4102,10 @@ components:
         initialState:
           type: object
           description: The initial state of the call stage which is readable/writable by tools.
+        dataConnection:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.DataConnectionConfig'
+          description: Data connection configuration.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object
