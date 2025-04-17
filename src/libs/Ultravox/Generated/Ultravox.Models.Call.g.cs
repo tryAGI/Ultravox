@@ -229,6 +229,12 @@ namespace Ultravox
         public required object RequestContext { get; set; }
 
         /// <summary>
+        /// Settings for exchanging data messages with an additional participant.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dataConnectionConfig")]
+        public global::Ultravox.UltravoxV1DataConnectionConfig? DataConnectionConfig { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -330,6 +336,9 @@ namespace Ultravox
         /// The initial state of the call which is readable/writable by tools.
         /// </param>
         /// <param name="requestContext"></param>
+        /// <param name="dataConnectionConfig">
+        /// Settings for exchanging data messages with an additional participant.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -359,6 +368,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1VadSettings? vadSettings,
             string? shortSummary,
             string? summary,
+            global::Ultravox.UltravoxV1DataConnectionConfig? dataConnectionConfig,
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
             global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!,
@@ -393,6 +403,7 @@ namespace Ultravox
             this.VadSettings = vadSettings;
             this.ShortSummary = shortSummary;
             this.Summary = summary;
+            this.DataConnectionConfig = dataConnectionConfig;
         }
 
         /// <summary>
