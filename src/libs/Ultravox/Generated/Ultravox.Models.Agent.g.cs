@@ -35,6 +35,14 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CallTemplate? CallTemplate { get; set; }
 
         /// <summary>
+        /// Statistics about the agent's usage<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("statistics")]
+        public global::Ultravox.AgentStatistics Statistics { get; set; } = default!;
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -51,6 +59,10 @@ namespace Ultravox
         /// Included only in responses
         /// </param>
         /// <param name="callTemplate"></param>
+        /// <param name="statistics">
+        /// Statistics about the agent's usage<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -58,12 +70,14 @@ namespace Ultravox
             string? name,
             global::Ultravox.UltravoxV1CallTemplate? callTemplate,
             global::System.Guid agentId = default!,
-            global::System.DateTime created = default!)
+            global::System.DateTime created = default!,
+            global::Ultravox.AgentStatistics statistics = default!)
         {
             this.AgentId = agentId;
             this.Name = name;
             this.Created = created;
             this.CallTemplate = callTemplate;
+            this.Statistics = statistics;
         }
 
         /// <summary>
