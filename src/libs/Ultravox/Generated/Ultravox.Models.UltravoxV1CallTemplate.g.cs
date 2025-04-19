@@ -93,11 +93,19 @@ namespace Ultravox
         public string? Model { get; set; }
 
         /// <summary>
-        /// The name or ID of the voice the agent should use for this call.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own voice.
+        /// The name or ID of the voice the agent should use for calls.<br/>
+        ///  If multiple stages are defined for the call, this will be used only for stages without their own voice (or external_voice).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
         public string? Voice { get; set; }
+
+        /// <summary>
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for calls with this agent.<br/>
+        ///  Your account must have an API key set for the provider of the voice.<br/>
+        ///  Either this or `voice` may be set, but not both.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("externalVoice")]
+        public global::Ultravox.UltravoxV1ExternalVoice? ExternalVoice { get; set; }
 
         /// <summary>
         /// A BCP47 language code that may be used to guide speech recognition and synthesis.<br/>
@@ -205,8 +213,13 @@ namespace Ultravox
         ///  If multiple stages are defined for the call, this will be used only for stages without their own model.
         /// </param>
         /// <param name="voice">
-        /// The name or ID of the voice the agent should use for this call.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own voice.
+        /// The name or ID of the voice the agent should use for calls.<br/>
+        ///  If multiple stages are defined for the call, this will be used only for stages without their own voice (or external_voice).
+        /// </param>
+        /// <param name="externalVoice">
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for calls with this agent.<br/>
+        ///  Your account must have an API key set for the provider of the voice.<br/>
+        ///  Either this or `voice` may be set, but not both.
         /// </param>
         /// <param name="languageHint">
         /// A BCP47 language code that may be used to guide speech recognition and synthesis.<br/>
@@ -263,6 +276,7 @@ namespace Ultravox
             float? temperature,
             string? model,
             string? voice,
+            global::Ultravox.UltravoxV1ExternalVoice? externalVoice,
             string? languageHint,
             string? timeExceededMessage,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
@@ -283,6 +297,7 @@ namespace Ultravox
             this.Temperature = temperature;
             this.Model = model;
             this.Voice = voice;
+            this.ExternalVoice = externalVoice;
             this.LanguageHint = languageHint;
             this.TimeExceededMessage = timeExceededMessage;
             this.InactivityMessages = inactivityMessages;
