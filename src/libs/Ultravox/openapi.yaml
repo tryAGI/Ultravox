@@ -3066,7 +3066,11 @@ components:
           description: "The model used for generations. Defaults to fixie-ai/ultravox.\n If multiple stages are defined for the call, this will be used only for stages without their own model."
         voice:
           type: string
-          description: "The name or ID of the voice the agent should use for this call.\n If multiple stages are defined for the call, this will be used only for stages without their own voice."
+          description: "The name or ID of the voice the agent should use for calls.\n If multiple stages are defined for the call, this will be used only for stages without their own voice (or external_voice)."
+        externalVoice:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+          description: "A voice not known to Ultravox Realtime that can nonetheless be used for calls with this agent.\n Your account must have an API key set for the provider of the voice.\n Either this or `voice` may be set, but not both."
         languageHint:
           type: string
           description: "A BCP47 language code that may be used to guide speech recognition and synthesis.\n If multiple stages are defined for the call, this will be used only for stages without their own languageHint."
