@@ -3578,12 +3578,32 @@ components:
           description: "The maximum depth of links to traverse. Use 1 to only fetch the startUrls,\n 2 to fetch the startUrls and documents directly linked from them, 3 to\n additionally fetch documents linked from those (excluding anything already\n seen), etc."
           format: int32
       description: The specification of how to acquire documents for this source.
+    ultravox.v1.DataConnectionAudioConfig:
+      type: object
+      properties:
+        sampleRate:
+          type: integer
+          description: 'The sample rate of the audio stream. If not set, will default to 16000.'
+          format: int32
+        channelMode:
+          enum:
+            - CHANNEL_MODE_UNSPECIFIED
+            - CHANNEL_MODE_MIXED
+            - CHANNEL_MODE_SEPARATED
+          type: string
+          description: "The audio channel mode to use. CHANNEL_MODE_MIXED will combine user and agent audio\n into a single mono output while CHANNEL_MODE_SEPARATED will result in stereo audio\n where user and agent are separated. The latter is the default."
+          format: enum
+      description: Configuration for audio in data connections
     ultravox.v1.DataConnectionConfig:
       type: object
       properties:
         websocketUrl:
           type: string
           description: The websocket URL to which the session will connect to stream data messages.
+        audioConfig:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.DataConnectionAudioConfig'
+          description: Audio configuration for the data connection
       description: Data connection enables an auxiliary websocket for streaming data messages.
     ultravox.v1.DynamicParameter:
       type: object
