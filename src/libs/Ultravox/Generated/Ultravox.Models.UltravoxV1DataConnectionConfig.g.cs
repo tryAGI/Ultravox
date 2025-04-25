@@ -15,7 +15,7 @@ namespace Ultravox
         public string? WebsocketUrl { get; set; }
 
         /// <summary>
-        /// Audio configuration for the data connection
+        /// Audio configuration for the data connection. If not set, no audio will be sent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("audioConfig")]
         public global::Ultravox.UltravoxV1DataConnectionAudioConfig? AudioConfig { get; set; }
@@ -33,7 +33,7 @@ namespace Ultravox
         /// The websocket URL to which the session will connect to stream data messages.
         /// </param>
         /// <param name="audioConfig">
-        /// Audio configuration for the data connection
+        /// Audio configuration for the data connection. If not set, no audio will be sent.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
