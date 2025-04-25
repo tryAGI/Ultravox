@@ -3603,7 +3603,7 @@ components:
         audioConfig:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.DataConnectionAudioConfig'
-          description: Audio configuration for the data connection
+          description: 'Audio configuration for the data connection. If not set, no audio will be sent.'
       description: Data connection enables an auxiliary websocket for streaming data messages.
     ultravox.v1.DynamicParameter:
       type: object
