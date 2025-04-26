@@ -15,10 +15,16 @@ namespace Ultravox
         public string? Delay { get; set; }
 
         /// <summary>
-        /// What the agent should say. If unset, the model will generate a greeting.
+        /// A specific greeting the agent should say.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
+
+        /// <summary>
+        /// A prompt for the agent to generate a greeting.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
+        public string? Prompt { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -33,17 +39,22 @@ namespace Ultravox
         /// How long the agent should wait before starting the conversation itself.
         /// </param>
         /// <param name="text">
-        /// What the agent should say. If unset, the model will generate a greeting.
+        /// A specific greeting the agent should say.
+        /// </param>
+        /// <param name="prompt">
+        /// A prompt for the agent to generate a greeting.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UltravoxV1FallbackAgentGreeting(
             string? delay,
-            string? text)
+            string? text,
+            string? prompt)
         {
             this.Delay = delay;
             this.Text = text;
+            this.Prompt = prompt;
         }
 
         /// <summary>
