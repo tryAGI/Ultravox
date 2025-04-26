@@ -16,10 +16,16 @@ namespace Ultravox
         public bool? Uninterruptible { get; set; }
 
         /// <summary>
-        /// What the agent should say. If unset, the model will generate a greeting.
+        /// A specific greeting the agent should say.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         public string? Text { get; set; }
+
+        /// <summary>
+        /// A prompt for the agent to generate a greeting.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
+        public string? Prompt { get; set; }
 
         /// <summary>
         /// If set, the agent will wait this long before starting its greeting. This may be useful<br/>
@@ -42,7 +48,10 @@ namespace Ultravox
         ///  Defaults to false (meaning the agent is interruptible as usual).
         /// </param>
         /// <param name="text">
-        /// What the agent should say. If unset, the model will generate a greeting.
+        /// A specific greeting the agent should say.
+        /// </param>
+        /// <param name="prompt">
+        /// A prompt for the agent to generate a greeting.
         /// </param>
         /// <param name="delay">
         /// If set, the agent will wait this long before starting its greeting. This may be useful<br/>
@@ -54,10 +63,12 @@ namespace Ultravox
         public UltravoxV1FirstSpeakerSettingsAgentGreeting(
             bool? uninterruptible,
             string? text,
+            string? prompt,
             string? delay)
         {
             this.Uninterruptible = uninterruptible;
             this.Text = text;
+            this.Prompt = prompt;
             this.Delay = delay;
         }
 
