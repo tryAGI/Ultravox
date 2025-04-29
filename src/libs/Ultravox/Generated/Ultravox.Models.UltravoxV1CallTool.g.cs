@@ -63,6 +63,12 @@ namespace Ultravox
         public object? Client { get; set; }
 
         /// <summary>
+        /// Details for invoking a tool via a data connection.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dataConnection")]
+        public object? DataConnection { get; set; }
+
+        /// <summary>
         /// Indicates the default for how the agent should proceed after the tool is invoked.<br/>
         ///  Can be overridden by the tool implementation via the X-Ultravox-Agent-Reaction<br/>
         ///  header.
@@ -117,6 +123,9 @@ namespace Ultravox
         /// Details for a client-implemented tool. Only body parameters are allowed<br/>
         ///  for client tools.
         /// </param>
+        /// <param name="dataConnection">
+        /// Details for invoking a tool via a data connection.
+        /// </param>
         /// <param name="defaultReaction">
         /// Indicates the default for how the agent should proceed after the tool is invoked.<br/>
         ///  Can be overridden by the tool implementation via the X-Ultravox-Agent-Reaction<br/>
@@ -138,6 +147,7 @@ namespace Ultravox
             bool? precomputable,
             global::Ultravox.UltravoxV1HttpCallToolDetails? http,
             object? client,
+            object? dataConnection,
             global::Ultravox.UltravoxV1CallToolDefaultReaction? defaultReaction,
             global::Ultravox.UltravoxV1StaticToolResponse? staticResponse)
         {
@@ -149,6 +159,7 @@ namespace Ultravox
             this.Precomputable = precomputable;
             this.Http = http;
             this.Client = client;
+            this.DataConnection = dataConnection;
             this.DefaultReaction = defaultReaction;
             this.StaticResponse = staticResponse;
         }

@@ -3270,6 +3270,9 @@ components:
     ultravox.v1.BaseClientToolDetails:
       type: object
       description: Details for invoking a tool expected to be implemented by the client.
+    ultravox.v1.BaseDataConnectionToolDetails:
+      type: object
+      description: Details for invoking a tool via a data connection.
     ultravox.v1.BaseHttpToolDetails:
       type: object
       properties:
@@ -3323,6 +3326,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.BaseClientToolDetails'
           description: "Details for a client-implemented tool. Only body parameters are allowed\n for client tools."
+        dataConnection:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.BaseDataConnectionToolDetails'
+          description: "Details for a tool implemented via a data connection websocket. Only body\n parameters are allowed for data connection tools."
         defaultReaction:
           enum:
             - AGENT_REACTION_UNSPECIFIED
@@ -3448,6 +3455,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.ClientCallToolDetails'
           description: "Details for a client-implemented tool. Only body parameters are allowed\n for client tools."
+        dataConnection:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.DataConnectionCallToolDetails'
+          description: Details for invoking a tool via a data connection.
         defaultReaction:
           enum:
             - AGENT_REACTION_UNSPECIFIED
@@ -3594,6 +3605,9 @@ components:
           description: "The audio channel mode to use. CHANNEL_MODE_MIXED will combine user and agent audio\n into a single mono output while CHANNEL_MODE_SEPARATED will result in stereo audio\n where user and agent are separated. The latter is the default."
           format: enum
       description: Configuration for audio in data connections
+    ultravox.v1.DataConnectionCallToolDetails:
+      type: object
+      description: Details for invoking a tool via a data connection.
     ultravox.v1.DataConnectionConfig:
       type: object
       properties:
