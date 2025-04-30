@@ -2834,15 +2834,19 @@ components:
         elevenLabs:
           type: string
           description: "Your ElevenLabs API key.\nhttps://elevenlabs.io/app/settings/api-keys"
+          nullable: true
         cartesia:
           type: string
           description: "Your Cartesia API key.\nhttps://play.cartesia.ai/keys"
+          nullable: true
         playHt:
           type: string
           description: "Your PlayHT API key.\nNote: This must come from play.ht, not play.ai. Their users are NOT interchangeable!\nhttps://play.ht/studio/api-access"
+          nullable: true
         lmnt:
           type: string
           description: "Your LMNT API key.\nhttps://app.lmnt.com/account#api-keys"
+          nullable: true
     PatchedWebhook:
       type: object
       properties:
