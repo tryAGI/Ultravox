@@ -64,6 +64,13 @@ namespace Ultravox
         public int? OptimizeStreamingLatency { get; set; }
 
         /// <summary>
+        /// The maximum sample rate Ultravox will try to use. ElevenLabs limits your allowed sample rate<br/>
+        ///  based on your tier. See https://elevenlabs.io/pricing#pricing-table (and click "Show API details")
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("maxSampleRate")]
+        public int? MaxSampleRate { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -100,6 +107,10 @@ namespace Ultravox
         /// <param name="optimizeStreamingLatency">
         /// See https://elevenlabs.io/docs/api-reference/text-to-speech/convert#request.query.optimize_streaming_latency.optimize_streaming_latency
         /// </param>
+        /// <param name="maxSampleRate">
+        /// The maximum sample rate Ultravox will try to use. ElevenLabs limits your allowed sample rate<br/>
+        ///  based on your tier. See https://elevenlabs.io/pricing#pricing-table (and click "Show API details")
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -112,7 +123,8 @@ namespace Ultravox
             float? similarityBoost,
             float? stability,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference>? pronunciationDictionaries,
-            int? optimizeStreamingLatency)
+            int? optimizeStreamingLatency,
+            int? maxSampleRate)
         {
             this.VoiceId = voiceId;
             this.Model = model;
@@ -123,6 +135,7 @@ namespace Ultravox
             this.Stability = stability;
             this.PronunciationDictionaries = pronunciationDictionaries;
             this.OptimizeStreamingLatency = optimizeStreamingLatency;
+            this.MaxSampleRate = maxSampleRate;
         }
 
         /// <summary>
