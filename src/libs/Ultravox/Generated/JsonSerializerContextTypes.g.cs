@@ -594,74 +594,66 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.ToolDetail? Type142 { get; set; }
+        public global::Ultravox.UltravoxV1CorpusQueryResult? Type142 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.ToolStatistics? Type143 { get; set; }
+        public global::Ultravox.UltravoxV1CorpusQueryResultCitation? Type143 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CorpusQueryResult? Type144 { get; set; }
+        public global::Ultravox.UltravoxV1QueryCorpusRequest? Type144 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1CorpusQueryResultCitation? Type145 { get; set; }
+        public global::Ultravox.UltravoxV1StartAgentCallRequest? Type145 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1QueryCorpusRequest? Type146 { get; set; }
+        public global::Ultravox.UltravoxV1StartAgentCallRequestInitialOutputMedium? Type146 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartAgentCallRequest? Type147 { get; set; }
+        public global::Ultravox.UltravoxV1StartCallRequest? Type147 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartAgentCallRequestInitialOutputMedium? Type148 { get; set; }
+        public global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? Type148 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartCallRequest? Type149 { get; set; }
+        public global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? Type149 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? Type150 { get; set; }
+        public global::Ultravox.ToolsCreateRequest? Type150 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? Type151 { get; set; }
+        public byte[]? Type151 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.ToolsCreateRequest? Type152 { get; set; }
+        public global::Ultravox.VoicesCreateRequest? Type152 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type153 { get; set; }
+        public global::Ultravox.SchemaRetrieveFormat? Type153 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.VoicesCreateRequest? Type154 { get; set; }
+        public global::Ultravox.SchemaRetrieveLang? Type154 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveFormat? Type155 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type155 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveLang? Type156 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type156 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type157 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type158 { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type159 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type157 { get; set; }
     }
 }

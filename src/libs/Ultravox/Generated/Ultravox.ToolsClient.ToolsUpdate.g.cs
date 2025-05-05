@@ -8,12 +8,12 @@ namespace Ultravox
         partial void PrepareToolsUpdateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid toolId,
-            global::Ultravox.ToolDetail request);
+            global::Ultravox.Tool request);
         partial void PrepareToolsUpdateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::System.Guid toolId,
-            global::Ultravox.ToolDetail request);
+            global::Ultravox.Tool request);
         partial void ProcessToolsUpdateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -30,9 +30,9 @@ namespace Ultravox
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.ToolDetail> ToolsUpdateAsync(
+        public async global::System.Threading.Tasks.Task<global::Ultravox.Tool> ToolsUpdateAsync(
             global::System.Guid toolId,
-            global::Ultravox.ToolDetail request,
+            global::Ultravox.Tool request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
@@ -136,7 +136,7 @@ namespace Ultravox
                 }
 
                 return
-                    global::Ultravox.ToolDetail.FromJson(__content, JsonSerializerContext) ??
+                    global::Ultravox.Tool.FromJson(__content, JsonSerializerContext) ??
                     throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
             }
             else
@@ -166,7 +166,7 @@ namespace Ultravox
                 ).ConfigureAwait(false);
 
                 return
-                    await global::Ultravox.ToolDetail.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                    await global::Ultravox.Tool.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                     throw new global::System.InvalidOperationException("Response deserialization failed.");
             }
         }
@@ -182,13 +182,13 @@ namespace Ultravox
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.ToolDetail> ToolsUpdateAsync(
+        public async global::System.Threading.Tasks.Task<global::Ultravox.Tool> ToolsUpdateAsync(
             global::System.Guid toolId,
             string name,
             global::Ultravox.UltravoxV1BaseToolDefinition definition,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Ultravox.ToolDetail
+            var __request = new global::Ultravox.Tool
             {
                 Name = name,
                 Definition = definition,
