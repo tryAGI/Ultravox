@@ -1549,7 +1549,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ToolDetail'
+                $ref: '#/components/schemas/Tool'
       security:
         - apiKeyAuth: [ ]
     put:
@@ -1567,7 +1567,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ToolDetail'
+              $ref: '#/components/schemas/Tool'
         required: true
       responses:
         '200':
@@ -1575,7 +1575,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ToolDetail'
+                $ref: '#/components/schemas/Tool'
       security:
         - apiKeyAuth: [ ]
     delete:
@@ -2897,37 +2897,6 @@ components:
           allOf:
             - $ref: '#/components/schemas/OwnershipEnum'
           readOnly: true
-    ToolDetail:
-      required:
-        - created
-        - definition
-        - name
-        - ownership
-        - statistics
-        - toolId
-      type: object
-      properties:
-        toolId:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          maxLength: 40
-          type: string
-        created:
-          type: string
-          format: date-time
-          readOnly: true
-        definition:
-          $ref: '#/components/schemas/ultravox.v1.BaseToolDefinition'
-        ownership:
-          allOf:
-            - $ref: '#/components/schemas/OwnershipEnum'
-          readOnly: true
-        statistics:
-          allOf:
-            - $ref: '#/components/schemas/ToolStatistics'
-          readOnly: true
     ToolHistory:
       required:
         - call
@@ -2940,20 +2909,6 @@ components:
           readOnly: true
         errorCount:
           type: integer
-          readOnly: true
-    ToolStatistics:
-      required:
-        - errorCount
-        - timesCalled
-      type: object
-      properties:
-        errorCount:
-          type: integer
-          default: 0
-          readOnly: true
-        timesCalled:
-          type: integer
-          default: 0
           readOnly: true
     Voice:
       required:
