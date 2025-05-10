@@ -36,6 +36,12 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1LmntVoice? Lmnt { get; set; }
 
         /// <summary>
+        /// A voice served by a generic REST-based TTS API.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("generic")]
+        public global::Ultravox.UltravoxV1GenericVoice? Generic { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -56,6 +62,9 @@ namespace Ultravox
         /// <param name="lmnt">
         /// A voice served by LMNT.
         /// </param>
+        /// <param name="generic">
+        /// A voice served by a generic REST-based TTS API.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -63,12 +72,14 @@ namespace Ultravox
             global::Ultravox.UltravoxV1ElevenLabsVoice? elevenLabs,
             global::Ultravox.UltravoxV1CartesiaVoice? cartesia,
             global::Ultravox.UltravoxV1PlayHtVoice? playHt,
-            global::Ultravox.UltravoxV1LmntVoice? lmnt)
+            global::Ultravox.UltravoxV1LmntVoice? lmnt,
+            global::Ultravox.UltravoxV1GenericVoice? generic)
         {
             this.ElevenLabs = elevenLabs;
             this.Cartesia = cartesia;
             this.PlayHt = playHt;
             this.Lmnt = lmnt;
+            this.Generic = generic;
         }
 
         /// <summary>
