@@ -3672,6 +3672,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.LmntVoice'
           description: A voice served by LMNT.
+        generic:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.GenericVoice'
+          description: A voice served by a generic REST-based TTS API.
       description: "A voice not known to Ultravox Realtime that can nonetheless be used for a call.\n Such voices are significantly less validated than normal voices and you'll be\n responsible for your own TTS-related errors.\n Exactly one field must be set."
     ultravox.v1.FallbackAgentGreeting:
       type: object
@@ -3724,6 +3728,29 @@ components:
             - $ref: '#/components/schemas/ultravox.v1.FallbackAgentGreeting'
           description: "If set, the agent will start the conversation itself if the user doesn't start\n speaking within the given delay."
       description: Additional properties for when the user speaks first.
+    ultravox.v1.GenericVoice:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The endpoint to which requests are sent.
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Headers to include in the request.
+        body:
+          type: object
+          description: "The request body to send. Some field should include a placeholder for text\n represented as {text}. The placeholder will be replaced with the text to synthesize."
+        responseSampleRate:
+          type: integer
+          description: The sample rate of the audio returned by the API.
+          format: int32
+        responseWordsPerMinute:
+          type: integer
+          description: "An estimate of the speaking rate of the returned audio in words per minute. This is\n used for transcript timing while audio is streamed in the response. (Once the response\n is complete, Ultravox Realtime uses the real audio duration to adjust the timing.)\n Defaults to 150 and is unused for non-streaming responses."
+          format: int32
+      description: "Specification for a voice served by some generic REST-based TTS API. The API must\n accept an application/json POST request (as defined below) and return either WAV\n or raw PCM audio with an appropriate Content-Type response header.\n Note that this simple API implies a lack of either input streaming or audio timing\n information, so more specific voice types are preferable when available."
     ultravox.v1.HeaderApiKeyRequirement:
       type: object
       properties:
