@@ -28,6 +28,10 @@ namespace Ultravox.JsonConverters
                     var numValue = reader.GetInt32();
                     return (global::Ultravox.InitialOutputMediumEnum)numValue;
                 }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::Ultravox.InitialOutputMediumEnum);
+                }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
             }
