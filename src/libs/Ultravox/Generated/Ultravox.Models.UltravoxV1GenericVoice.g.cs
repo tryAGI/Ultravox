@@ -47,6 +47,15 @@ namespace Ultravox
         public int? ResponseWordsPerMinute { get; set; }
 
         /// <summary>
+        /// The real mime type of the audio returned by the API. If unset, the Content-Type response header<br/>
+        ///  will be used. This is useful for APIs whose response bodies don't strictly adhere to what the<br/>
+        ///  API claims via header. For example, if your API claims to return audio/wav but omits the WAV<br/>
+        ///  header (thus really returning raw PCM), set this to audio/l16.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("responseMimeType")]
+        public string? ResponseMimeType { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -74,6 +83,12 @@ namespace Ultravox
         ///  is complete, Ultravox Realtime uses the real audio duration to adjust the timing.)<br/>
         ///  Defaults to 150 and is unused for non-streaming responses.
         /// </param>
+        /// <param name="responseMimeType">
+        /// The real mime type of the audio returned by the API. If unset, the Content-Type response header<br/>
+        ///  will be used. This is useful for APIs whose response bodies don't strictly adhere to what the<br/>
+        ///  API claims via header. For example, if your API claims to return audio/wav but omits the WAV<br/>
+        ///  header (thus really returning raw PCM), set this to audio/l16.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -82,13 +97,15 @@ namespace Ultravox
             global::System.Collections.Generic.Dictionary<string, string>? headers,
             object? body,
             int? responseSampleRate,
-            int? responseWordsPerMinute)
+            int? responseWordsPerMinute,
+            string? responseMimeType)
         {
             this.Url = url;
             this.Headers = headers;
             this.Body = body;
             this.ResponseSampleRate = responseSampleRate;
             this.ResponseWordsPerMinute = responseWordsPerMinute;
+            this.ResponseMimeType = responseMimeType;
         }
 
         /// <summary>

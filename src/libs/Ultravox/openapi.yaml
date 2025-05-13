@@ -3750,6 +3750,9 @@ components:
           type: integer
           description: "An estimate of the speaking rate of the returned audio in words per minute. This is\n used for transcript timing while audio is streamed in the response. (Once the response\n is complete, Ultravox Realtime uses the real audio duration to adjust the timing.)\n Defaults to 150 and is unused for non-streaming responses."
           format: int32
+        responseMimeType:
+          type: string
+          description: "The real mime type of the audio returned by the API. If unset, the Content-Type response header\n will be used. This is useful for APIs whose response bodies don't strictly adhere to what the\n API claims via header. For example, if your API claims to return audio/wav but omits the WAV\n header (thus really returning raw PCM), set this to audio/l16."
       description: "Specification for a voice served by some generic REST-based TTS API. The API must\n accept an application/json POST request (as defined below) and return either WAV\n or raw PCM audio with an appropriate Content-Type response header.\n Note that this simple API implies a lack of either input streaming or audio timing\n information, so more specific voice types are preferable when available."
     ultravox.v1.HeaderApiKeyRequirement:
       type: object
