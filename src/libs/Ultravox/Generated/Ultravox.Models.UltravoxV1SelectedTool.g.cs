@@ -23,7 +23,9 @@ namespace Ultravox
 
         /// <summary>
         /// A temporary tool definition, available only for this call (and subsequent<br/>
-        ///  calls created using priorCallId without overriding selected tools).
+        ///  calls created using priorCallId without overriding selected tools). Exactly one<br/>
+        ///  implementation (http or client) should be set. See the 'Base Tool Definition'<br/>
+        ///  schema for more details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temporaryTool")]
         public global::Ultravox.UltravoxV1BaseToolDefinition? TemporaryTool { get; set; }
@@ -75,7 +77,9 @@ namespace Ultravox
         /// </param>
         /// <param name="temporaryTool">
         /// A temporary tool definition, available only for this call (and subsequent<br/>
-        ///  calls created using priorCallId without overriding selected tools).
+        ///  calls created using priorCallId without overriding selected tools). Exactly one<br/>
+        ///  implementation (http or client) should be set. See the 'Base Tool Definition'<br/>
+        ///  schema for more details.
         /// </param>
         /// <param name="nameOverride">
         /// An override for the model_tool_name. This is primarily useful when using<br/>
