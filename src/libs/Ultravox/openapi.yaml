@@ -3955,7 +3955,7 @@ components:
         temporaryTool:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.BaseToolDefinition'
-          description: "A temporary tool definition, available only for this call (and subsequent\n calls created using priorCallId without overriding selected tools)."
+          description: "A temporary tool definition, available only for this call (and subsequent\n calls created using priorCallId without overriding selected tools). Exactly one\n implementation (http or client) should be set. See the 'Base Tool Definition'\n schema for more details."
         nameOverride:
           type: string
           description: "An override for the model_tool_name. This is primarily useful when using\n multiple instances of the same durable tool (presumably with different\n parameter overrides.) The set of tools used within a call must have a unique\n set of model names and every name must match this pattern: ^[a-zA-Z0-9_-]{1,64}$."
