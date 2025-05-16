@@ -3046,6 +3046,10 @@ components:
           items:
             $ref: '#/components/schemas/ultravox.v1.SelectedTool'
           description: "The tools available to the agent for this call.\n The following fields are treated as templates when converting to a CallTool.\n   * description\n   * static_parameters.value\n   * http.auth_headers.value\n   * http.auth_query_params.value\n If multiple stages are defined for the call, this will be used only for stages without their own selectedTools."
+        dataConnection:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.DataConnectionConfig'
+          description: Data connection configuration for calls created with this agent.
         contextSchema:
           type: object
           description: "JSON schema for the variables used in string templates. If unset, a default schema will\n be created from the variables used in the string templates.\n Call creation requests must provide context adhering to this schema.\n The follow fields are treated as templates:\n   * system_prompt\n   * language_hint\n   * time_exceeded_message\n   * inactivity_messages.message\n   * selected_tools.description\n   * selected_tools.static_parameters.value\n   * selected_tools.http.auth_headers.value\n   * selected_tools.http.auth_query_params.value\n If multiple stages are defined for the call, each must define its own context schema (or use the generated one)."
@@ -3959,6 +3963,9 @@ components:
         nameOverride:
           type: string
           description: "An override for the model_tool_name. This is primarily useful when using\n multiple instances of the same durable tool (presumably with different\n parameter overrides.) The set of tools used within a call must have a unique\n set of model names and every name must match this pattern: ^[a-zA-Z0-9_-]{1,64}$."
+        descriptionOverride:
+          type: string
+          description: "An override for the tool's description, as presented to the model. This is primarily\n useful when using a built-in tool whose description you want to tweak to better fit\n the rest of your prompt."
         authTokens:
           type: object
           additionalProperties:
@@ -4056,6 +4063,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.FirstSpeakerSettings'
           description: "The (overridden) settings for the initial message to get a conversation started.\n Defaults to `agent: {}` which means the agent will start the conversation with an\n (interruptible) greeting generated based on the system prompt and any initial messages.\n (If first_speaker is set and this is not, first_speaker will be used instead.)"
+        dataConnection:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.DataConnectionConfig'
+          description: The (overridden) data connection configuration.
         experimentalSettings:
           type: object
           description: Experimental settings for the call.

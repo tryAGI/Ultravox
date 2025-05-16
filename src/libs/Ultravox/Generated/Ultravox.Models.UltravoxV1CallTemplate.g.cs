@@ -142,6 +142,12 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>? SelectedTools { get; set; }
 
         /// <summary>
+        /// Data connection configuration for calls created with this agent.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dataConnection")]
+        public global::Ultravox.UltravoxV1DataConnectionConfig? DataConnection { get; set; }
+
+        /// <summary>
         /// JSON schema for the variables used in string templates. If unset, a default schema will<br/>
         ///  be created from the variables used in the string templates.<br/>
         ///  Call creation requests must provide context adhering to this schema.<br/>
@@ -243,6 +249,9 @@ namespace Ultravox
         ///    * http.auth_query_params.value<br/>
         ///  If multiple stages are defined for the call, this will be used only for stages without their own selectedTools.
         /// </param>
+        /// <param name="dataConnection">
+        /// Data connection configuration for calls created with this agent.
+        /// </param>
         /// <param name="contextSchema">
         /// JSON schema for the variables used in string templates. If unset, a default schema will<br/>
         ///  be created from the variables used in the string templates.<br/>
@@ -281,6 +290,7 @@ namespace Ultravox
             string? timeExceededMessage,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>? selectedTools,
+            global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection,
             object? contextSchema)
         {
             this.Name = name;
@@ -302,6 +312,7 @@ namespace Ultravox
             this.TimeExceededMessage = timeExceededMessage;
             this.InactivityMessages = inactivityMessages;
             this.SelectedTools = selectedTools;
+            this.DataConnection = dataConnection;
             this.ContextSchema = contextSchema;
         }
 

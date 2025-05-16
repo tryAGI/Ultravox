@@ -266,47 +266,47 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.AgentStatistics? Type60 { get; set; }
+        public global::Ultravox.UltravoxV1DataConnectionConfig? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.Call? Type61 { get; set; }
+        public global::Ultravox.UltravoxV1DataConnectionAudioConfig? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? Type62 { get; set; }
+        public global::Ultravox.UltravoxV1DataConnectionAudioConfigChannelMode? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.EndReasonEnum? Type63 { get; set; }
+        public global::Ultravox.AgentStatistics? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.NullEnum? Type64 { get; set; }
+        public global::Ultravox.Call? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.FirstSpeakerEnum? Type65 { get; set; }
+        public global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.InitialOutputMediumEnum? Type66 { get; set; }
+        public global::Ultravox.EndReasonEnum? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public double? Type67 { get; set; }
+        public global::Ultravox.NullEnum? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1DataConnectionConfig? Type68 { get; set; }
+        public global::Ultravox.FirstSpeakerEnum? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1DataConnectionAudioConfig? Type69 { get; set; }
+        public global::Ultravox.InitialOutputMediumEnum? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.UltravoxV1DataConnectionAudioConfigChannelMode? Type70 { get; set; }
+        public double? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
