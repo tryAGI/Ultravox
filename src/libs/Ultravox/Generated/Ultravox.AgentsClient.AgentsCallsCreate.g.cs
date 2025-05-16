@@ -206,6 +206,9 @@ namespace Ultravox
         ///  (interruptible) greeting generated based on the system prompt and any initial messages.<br/>
         ///  (If first_speaker is set and this is not, first_speaker will be used instead.)
         /// </param>
+        /// <param name="dataConnection">
+        /// The (overridden) data connection configuration.
+        /// </param>
         /// <param name="experimentalSettings">
         /// Experimental settings for the call.
         /// </param>
@@ -222,6 +225,7 @@ namespace Ultravox
             bool? recordingEnabled = default,
             global::Ultravox.UltravoxV1StartAgentCallRequestInitialOutputMedium? initialOutputMedium = default,
             global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings = default,
+            global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection = default,
             object? experimentalSettings = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -236,6 +240,7 @@ namespace Ultravox
                 RecordingEnabled = recordingEnabled,
                 InitialOutputMedium = initialOutputMedium,
                 FirstSpeakerSettings = firstSpeakerSettings,
+                DataConnection = dataConnection,
                 ExperimentalSettings = experimentalSettings,
             };
 

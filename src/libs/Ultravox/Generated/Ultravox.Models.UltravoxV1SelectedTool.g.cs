@@ -40,6 +40,14 @@ namespace Ultravox
         public string? NameOverride { get; set; }
 
         /// <summary>
+        /// An override for the tool's description, as presented to the model. This is primarily<br/>
+        ///  useful when using a built-in tool whose description you want to tweak to better fit<br/>
+        ///  the rest of your prompt.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("descriptionOverride")]
+        public string? DescriptionOverride { get; set; }
+
+        /// <summary>
         /// Auth tokens used to satisfy the tool's security requirements.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("authTokens")]
@@ -87,6 +95,11 @@ namespace Ultravox
         ///  parameter overrides.) The set of tools used within a call must have a unique<br/>
         ///  set of model names and every name must match this pattern: ^[a-zA-Z0-9_-]{1,64}$.
         /// </param>
+        /// <param name="descriptionOverride">
+        /// An override for the tool's description, as presented to the model. This is primarily<br/>
+        ///  useful when using a built-in tool whose description you want to tweak to better fit<br/>
+        ///  the rest of your prompt.
+        /// </param>
         /// <param name="authTokens">
         /// Auth tokens used to satisfy the tool's security requirements.
         /// </param>
@@ -107,6 +120,7 @@ namespace Ultravox
             string? toolName,
             global::Ultravox.UltravoxV1BaseToolDefinition? temporaryTool,
             string? nameOverride,
+            string? descriptionOverride,
             global::System.Collections.Generic.Dictionary<string, string>? authTokens,
             object? parameterOverrides,
             string? transitionId)
@@ -115,6 +129,7 @@ namespace Ultravox
             this.ToolName = toolName;
             this.TemporaryTool = temporaryTool;
             this.NameOverride = nameOverride;
+            this.DescriptionOverride = descriptionOverride;
             this.AuthTokens = authTokens;
             this.ParameterOverrides = parameterOverrides;
             this.TransitionId = transitionId;

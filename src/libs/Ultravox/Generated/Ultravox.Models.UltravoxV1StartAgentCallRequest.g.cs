@@ -68,6 +68,12 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1FirstSpeakerSettings? FirstSpeakerSettings { get; set; }
 
         /// <summary>
+        /// The (overridden) data connection configuration.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dataConnection")]
+        public global::Ultravox.UltravoxV1DataConnectionConfig? DataConnection { get; set; }
+
+        /// <summary>
         /// Experimental settings for the call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("experimentalSettings")]
@@ -113,6 +119,9 @@ namespace Ultravox
         ///  (interruptible) greeting generated based on the system prompt and any initial messages.<br/>
         ///  (If first_speaker is set and this is not, first_speaker will be used instead.)
         /// </param>
+        /// <param name="dataConnection">
+        /// The (overridden) data connection configuration.
+        /// </param>
         /// <param name="experimentalSettings">
         /// Experimental settings for the call.
         /// </param>
@@ -129,6 +138,7 @@ namespace Ultravox
             bool? recordingEnabled,
             global::Ultravox.UltravoxV1StartAgentCallRequestInitialOutputMedium? initialOutputMedium,
             global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings,
+            global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection,
             object? experimentalSettings)
         {
             this.TemplateContext = templateContext;
@@ -140,6 +150,7 @@ namespace Ultravox
             this.RecordingEnabled = recordingEnabled;
             this.InitialOutputMedium = initialOutputMedium;
             this.FirstSpeakerSettings = firstSpeakerSettings;
+            this.DataConnection = dataConnection;
             this.ExperimentalSettings = experimentalSettings;
         }
 
