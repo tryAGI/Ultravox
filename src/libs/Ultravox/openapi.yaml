@@ -1968,6 +1968,7 @@ components:
       required:
         - activeCalls
         - allowedConcurrentCalls
+        - allowedCorpora
         - allowedVoices
         - billingUrl
         - freeTimeRemaining
@@ -2004,6 +2005,10 @@ components:
         allowedVoices:
           type: integer
           description: The maximum number of custom voices allowed for this account.
+          readOnly: true
+        allowedCorpora:
+          type: integer
+          description: The maximum number of corpora allowed for this account.
           readOnly: true
     AccountTtsKeys:
       type: object
