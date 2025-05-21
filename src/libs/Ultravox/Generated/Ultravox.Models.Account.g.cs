@@ -57,25 +57,22 @@ namespace Ultravox
         /// The maximum number of concurrent calls allowed for this account.<br/>
         /// Included only in responses
         /// </summary>
-        /// <default>default!</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("allowedConcurrentCalls")]
-        public int AllowedConcurrentCalls { get; set; } = default!;
+        public int? AllowedConcurrentCalls { get; set; }
 
         /// <summary>
         /// The maximum number of custom voices allowed for this account.<br/>
         /// Included only in responses
         /// </summary>
-        /// <default>default!</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("allowedVoices")]
-        public int AllowedVoices { get; set; } = default!;
+        public int? AllowedVoices { get; set; }
 
         /// <summary>
         /// The maximum number of corpora allowed for this account.<br/>
         /// Included only in responses
         /// </summary>
-        /// <default>default!</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("allowedCorpora")]
-        public int AllowedCorpora { get; set; } = default!;
+        public int? AllowedCorpora { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -124,14 +121,14 @@ namespace Ultravox
 #endif
         public Account(
             bool hasActiveSubscription,
+            int? allowedConcurrentCalls,
+            int? allowedVoices,
+            int? allowedCorpora,
             string name = default!,
             string billingUrl = default!,
             string freeTimeUsed = default!,
             string freeTimeRemaining = default!,
-            int activeCalls = default!,
-            int allowedConcurrentCalls = default!,
-            int allowedVoices = default!,
-            int allowedCorpora = default!)
+            int activeCalls = default!)
         {
             this.HasActiveSubscription = hasActiveSubscription;
             this.Name = name;
