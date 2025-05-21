@@ -2001,14 +2001,17 @@ components:
         allowedConcurrentCalls:
           type: integer
           description: The maximum number of concurrent calls allowed for this account.
+          nullable: true
           readOnly: true
         allowedVoices:
           type: integer
           description: The maximum number of custom voices allowed for this account.
+          nullable: true
           readOnly: true
         allowedCorpora:
           type: integer
           description: The maximum number of corpora allowed for this account.
+          nullable: true
           readOnly: true
     AccountTtsKeys:
       type: object
