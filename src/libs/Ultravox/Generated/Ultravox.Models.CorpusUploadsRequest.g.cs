@@ -16,6 +16,12 @@ namespace Ultravox
         public required string MimeType { get; set; }
 
         /// <summary>
+        /// The name of the file to be uploaded.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fileName")]
+        public string? FileName { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -27,13 +33,18 @@ namespace Ultravox
         /// <param name="mimeType">
         /// The MIME type of the file to be uploaded.
         /// </param>
+        /// <param name="fileName">
+        /// The name of the file to be uploaded.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CorpusUploadsRequest(
-            string mimeType)
+            string mimeType,
+            string? fileName)
         {
             this.MimeType = mimeType ?? throw new global::System.ArgumentNullException(nameof(mimeType));
+            this.FileName = fileName;
         }
 
         /// <summary>
