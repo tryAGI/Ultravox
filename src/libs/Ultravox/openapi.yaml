@@ -2391,6 +2391,10 @@ components:
           minLength: 1
           type: string
           description: The MIME type of the file to be uploaded.
+        fileName:
+          type: string
+          description: The name of the file to be uploaded.
+          default: ''
     CorpusUploadsResponse:
       required:
         - documentId
