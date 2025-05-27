@@ -36,6 +36,79 @@ paths:
                 $ref: '#/components/schemas/Account'
       security:
         - apiKeyAuth: [ ]
+  /api/accounts/me/billing:
+    get:
+      tags:
+        - accounts
+      description: Gets high-level billing information for the current account.
+      operationId: accounts_me_billing_retrieve
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountBillingInfo'
+      security:
+        - apiKeyAuth: [ ]
+  /api/accounts/me/billing/invoices:
+    get:
+      tags:
+        - accounts
+      description: Lists invoices for the current account.
+      operationId: accounts_me_billing_invoices_retrieve
+      parameters:
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            minLength: 1
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedInvoiceList'
+      security:
+        - apiKeyAuth: [ ]
+  /api/accounts/me/billing/usage:
+    get:
+      tags:
+        - accounts
+      description: Gets usage information for the current account in the given period.
+      operationId: accounts_me_billing_usage_retrieve
+      parameters:
+        - name: fromDate
+          in: query
+          description: 'Start date (UTC, inclusive) for per-day usage information. Defaults to the start of the current month.'
+          schema:
+            type: string
+            format: date
+        - name: toDate
+          in: query
+          description: 'End date (UTC, exclusive) for per-day usage information. Max 90 days after fromDate.'
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageResponse'
+      security:
+        - apiKeyAuth: [ ]
   /api/accounts/me/billing_subscription:
     get:
       tags:
@@ -1975,6 +2048,8 @@ components:
         - freeTimeUsed
         - hasActiveSubscription
         - name
+        - subscriptionExpiration
+        - subscriptionTier
       type: object
       properties:
         name:
@@ -1994,6 +2069,17 @@ components:
         hasActiveSubscription:
           type: boolean
           description: Whether the account has an active subscription.
+        subscriptionTier:
+          type: string
+          description: The current subscription tier for this account.
+          nullable: true
+          readOnly: true
+        subscriptionExpiration:
+          type: string
+          description: 'The expiration date of the current subscription for this account, if any. This is the point at which access will end unless credit remains.'
+          format: date-time
+          nullable: true
+          readOnly: true
         activeCalls:
           type: integer
           description: The number of active calls for this account.
@@ -2011,6 +2097,23 @@ components:
         allowedCorpora:
           type: integer
           description: The maximum number of corpora allowed for this account.
+          nullable: true
+          readOnly: true
+    AccountBillingInfo:
+      required:
+        - billingEmail
+        - paymentMethod
+      type: object
+      properties:
+        paymentMethod:
+          type: string
+          description: Obfuscated current payment method.
+          nullable: true
+          readOnly: true
+        billingEmail:
+          type: string
+          description: Email address for billing notifications.
+          format: email
           nullable: true
           readOnly: true
     AccountTtsKeys:
@@ -2061,6 +2164,29 @@ components:
               type: integer
           description: Statistics about the agent's usage
           readOnly: true
+    BillingReasonEnum:
+      enum:
+        - manual
+        - subscription_create
+        - subscription_cycle
+        - subscription_threshold
+        - subscription_update
+      type: string
+      description: "* `manual` - manual\n* `subscription_create` - subscription_create\n* `subscription_cycle` - subscription_cycle\n* `subscription_threshold` - subscription_threshold\n* `subscription_update` - subscription_update"
+    BillingUsageDay:
+      required:
+        - date
+        - minutes
+      type: object
+      properties:
+        date:
+          type: string
+          description: The date (UTC) of the usage.
+          format: date
+        minutes:
+          type: number
+          description: Total minutes billed on this date.
+          format: double
     Call:
       required:
         - callId
@@ -2454,6 +2580,44 @@ components:
         - MESSAGE_MEDIUM_VOICE
         - MESSAGE_MEDIUM_TEXT
       type: string
+    Invoice:
+      required:
+        - amount
+        - billingReason
+        - invoiceDate
+        - invoiceNumber
+        - invoiceStatus
+        - invoiceUrl
+      type: object
+      properties:
+        invoiceDate:
+          type: string
+          description: When the invoice became effective.
+          format: date-time
+          readOnly: true
+        amount:
+          type: integer
+          readOnly: true
+        billingReason:
+          allOf:
+            - $ref: '#/components/schemas/BillingReasonEnum'
+          readOnly: true
+        invoiceNumber:
+          type: string
+          readOnly: true
+        invoiceStatus:
+          allOf:
+            - $ref: '#/components/schemas/InvoiceStatusEnum'
+          readOnly: true
+        invoiceUrl:
+          type: string
+          format: uri
+    InvoiceStatusEnum:
+      enum:
+        - paid
+        - unpaid
+      type: string
+      description: "* `paid` - paid\n* `unpaid` - unpaid"
     KeyPrefix:
       required:
         - prefix
@@ -2589,6 +2753,27 @@ components:
         total:
           type: integer
           example: 123
+    PaginatedInvoiceList:
+      required:
+        - next
+        - previous
+        - results
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Invoice'
+        next:
+          type: string
+          format: uri
+          nullable: true
+          readOnly: true
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          readOnly: true
     PaginatedModelAliasList:
       required:
         - results
@@ -2921,6 +3106,21 @@ components:
           readOnly: true
         errorCount:
           type: integer
+          readOnly: true
+    UsageResponse:
+      required:
+        - dailyUsage
+        - totalMinutes
+      type: object
+      properties:
+        dailyUsage:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingUsageDay'
+        totalMinutes:
+          type: number
+          description: Total billed usage within the requested period in minutes.
+          format: double
           readOnly: true
     Voice:
       required:

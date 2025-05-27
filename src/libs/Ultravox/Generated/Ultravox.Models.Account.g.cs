@@ -46,6 +46,20 @@ namespace Ultravox
         public required bool HasActiveSubscription { get; set; }
 
         /// <summary>
+        /// The current subscription tier for this account.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("subscriptionTier")]
+        public string? SubscriptionTier { get; set; }
+
+        /// <summary>
+        /// The expiration date of the current subscription for this account, if any. This is the point at which access will end unless credit remains.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("subscriptionExpiration")]
+        public global::System.DateTime? SubscriptionExpiration { get; set; }
+
+        /// <summary>
         /// The number of active calls for this account.<br/>
         /// Included only in responses
         /// </summary>
@@ -100,6 +114,14 @@ namespace Ultravox
         /// <param name="hasActiveSubscription">
         /// Whether the account has an active subscription.
         /// </param>
+        /// <param name="subscriptionTier">
+        /// The current subscription tier for this account.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="subscriptionExpiration">
+        /// The expiration date of the current subscription for this account, if any. This is the point at which access will end unless credit remains.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="activeCalls">
         /// The number of active calls for this account.<br/>
         /// Included only in responses
@@ -121,6 +143,8 @@ namespace Ultravox
 #endif
         public Account(
             bool hasActiveSubscription,
+            string? subscriptionTier,
+            global::System.DateTime? subscriptionExpiration,
             int? allowedConcurrentCalls,
             int? allowedVoices,
             int? allowedCorpora,
@@ -135,6 +159,8 @@ namespace Ultravox
             this.BillingUrl = billingUrl;
             this.FreeTimeUsed = freeTimeUsed;
             this.FreeTimeRemaining = freeTimeRemaining;
+            this.SubscriptionTier = subscriptionTier;
+            this.SubscriptionExpiration = subscriptionExpiration;
             this.ActiveCalls = activeCalls;
             this.AllowedConcurrentCalls = allowedConcurrentCalls;
             this.AllowedVoices = allowedVoices;
