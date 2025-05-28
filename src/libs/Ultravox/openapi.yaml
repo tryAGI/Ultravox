@@ -90,7 +90,7 @@ paths:
       parameters:
         - name: fromDate
           in: query
-          description: 'Start date (UTC, inclusive) for per-day usage information. Defaults to the start of the current month.'
+          description: 'Start date (UTC, inclusive) for per-day usage information. Defaults to the start of monthly billing cycle.'
           schema:
             type: string
             format: date
