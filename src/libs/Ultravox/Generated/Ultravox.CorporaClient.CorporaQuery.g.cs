@@ -44,7 +44,7 @@ namespace Ultravox
                 corpusId: ref corpusId,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/corpora/{corpusId}/query",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

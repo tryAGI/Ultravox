@@ -44,7 +44,7 @@ namespace Ultravox
                 webhookId: ref webhookId,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/webhooks/{webhookId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

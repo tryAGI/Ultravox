@@ -37,7 +37,7 @@ namespace Ultravox
                 httpClient: HttpClient,
                 apiKeyPrefix: ref apiKeyPrefix);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/api_keys/{apiKeyPrefix}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

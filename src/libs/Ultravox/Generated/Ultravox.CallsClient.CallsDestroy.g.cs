@@ -32,7 +32,7 @@ namespace Ultravox
                 httpClient: HttpClient,
                 callId: ref callId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/calls/{callId}",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

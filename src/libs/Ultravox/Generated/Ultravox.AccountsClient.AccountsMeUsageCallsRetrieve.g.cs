@@ -67,7 +67,7 @@ namespace Ultravox
                 toDate: ref toDate,
                 voiceId: ref voiceId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/accounts/me/usage/calls",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

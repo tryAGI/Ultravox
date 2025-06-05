@@ -42,7 +42,7 @@ namespace Ultravox
                 callId: ref callId,
                 callStageId: ref callStageId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/calls/{callId}/stages/{callStageId}/tools",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

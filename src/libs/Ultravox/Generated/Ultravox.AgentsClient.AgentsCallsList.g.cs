@@ -47,7 +47,7 @@ namespace Ultravox
                 cursor: ref cursor,
                 pageSize: ref pageSize);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/agents/{agentId}/calls",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
