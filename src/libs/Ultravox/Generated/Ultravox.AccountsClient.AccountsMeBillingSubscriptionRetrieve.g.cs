@@ -27,7 +27,7 @@ namespace Ultravox
             PrepareAccountsMeBillingSubscriptionRetrieveArguments(
                 httpClient: HttpClient);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/accounts/me/billing_subscription",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

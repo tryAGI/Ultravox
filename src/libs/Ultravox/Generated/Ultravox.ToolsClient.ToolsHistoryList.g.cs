@@ -47,7 +47,7 @@ namespace Ultravox
                 pageSize: ref pageSize,
                 toolId: ref toolId);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/tools/{toolId}/history",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

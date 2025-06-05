@@ -51,7 +51,7 @@ namespace Ultravox
                 priorCallId: ref priorCallId,
                 request: request);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/calls",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

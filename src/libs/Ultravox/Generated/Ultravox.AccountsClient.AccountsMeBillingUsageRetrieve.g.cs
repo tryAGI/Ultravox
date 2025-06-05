@@ -42,7 +42,7 @@ namespace Ultravox
                 fromDate: ref fromDate,
                 toDate: ref toDate);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/accounts/me/billing/usage",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

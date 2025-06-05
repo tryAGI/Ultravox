@@ -52,7 +52,7 @@ namespace Ultravox
                 cursor: ref cursor,
                 pageSize: ref pageSize);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/calls/{callId}/stages/{callStageId}/messages",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

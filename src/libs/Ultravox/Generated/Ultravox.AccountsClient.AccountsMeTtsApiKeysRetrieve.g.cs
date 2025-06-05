@@ -32,7 +32,7 @@ namespace Ultravox
             PrepareAccountsMeTtsApiKeysRetrieveArguments(
                 httpClient: HttpClient);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/accounts/me/tts_api_keys",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();

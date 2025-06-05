@@ -44,7 +44,7 @@ namespace Ultravox
                 format: ref format,
                 lang: ref lang);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/schema/",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 

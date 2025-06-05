@@ -32,7 +32,7 @@ namespace Ultravox
             PrepareAccountsMeRetrieveArguments(
                 httpClient: HttpClient);
 
-            var __pathBuilder = new PathBuilder(
+            var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/accounts/me",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
