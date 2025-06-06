@@ -2048,7 +2048,9 @@ components:
         - freeTimeUsed
         - hasActiveSubscription
         - name
+        - subscriptionCadence
         - subscriptionExpiration
+        - subscriptionScheduledUpdate
         - subscriptionTier
       type: object
       properties:
@@ -2074,9 +2076,20 @@ components:
           description: The current subscription tier for this account.
           nullable: true
           readOnly: true
+        subscriptionCadence:
+          type: string
+          description: How often the subscription is billed for this account.
+          nullable: true
+          readOnly: true
         subscriptionExpiration:
           type: string
           description: 'The expiration date of the current subscription for this account, if any. This is the point at which access will end unless credit remains.'
+          format: date-time
+          nullable: true
+          readOnly: true
+        subscriptionScheduledUpdate:
+          type: string
+          description: The point in the future where this account's subscription is scheduled to change.
           format: date-time
           nullable: true
           readOnly: true
