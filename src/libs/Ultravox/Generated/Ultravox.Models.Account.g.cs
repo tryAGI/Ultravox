@@ -53,11 +53,25 @@ namespace Ultravox
         public string? SubscriptionTier { get; set; }
 
         /// <summary>
+        /// How often the subscription is billed for this account.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("subscriptionCadence")]
+        public string? SubscriptionCadence { get; set; }
+
+        /// <summary>
         /// The expiration date of the current subscription for this account, if any. This is the point at which access will end unless credit remains.<br/>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("subscriptionExpiration")]
         public global::System.DateTime? SubscriptionExpiration { get; set; }
+
+        /// <summary>
+        /// The point in the future where this account's subscription is scheduled to change.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("subscriptionScheduledUpdate")]
+        public global::System.DateTime? SubscriptionScheduledUpdate { get; set; }
 
         /// <summary>
         /// The number of active calls for this account.<br/>
@@ -118,8 +132,16 @@ namespace Ultravox
         /// The current subscription tier for this account.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="subscriptionCadence">
+        /// How often the subscription is billed for this account.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="subscriptionExpiration">
         /// The expiration date of the current subscription for this account, if any. This is the point at which access will end unless credit remains.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="subscriptionScheduledUpdate">
+        /// The point in the future where this account's subscription is scheduled to change.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="activeCalls">
@@ -144,7 +166,9 @@ namespace Ultravox
         public Account(
             bool hasActiveSubscription,
             string? subscriptionTier,
+            string? subscriptionCadence,
             global::System.DateTime? subscriptionExpiration,
+            global::System.DateTime? subscriptionScheduledUpdate,
             int? allowedConcurrentCalls,
             int? allowedVoices,
             int? allowedCorpora,
@@ -160,7 +184,9 @@ namespace Ultravox
             this.FreeTimeUsed = freeTimeUsed;
             this.FreeTimeRemaining = freeTimeRemaining;
             this.SubscriptionTier = subscriptionTier;
+            this.SubscriptionCadence = subscriptionCadence;
             this.SubscriptionExpiration = subscriptionExpiration;
+            this.SubscriptionScheduledUpdate = subscriptionScheduledUpdate;
             this.ActiveCalls = activeCalls;
             this.AllowedConcurrentCalls = allowedConcurrentCalls;
             this.AllowedVoices = allowedVoices;
