@@ -109,17 +109,6 @@ paths:
                 $ref: '#/components/schemas/UsageResponse'
       security:
         - apiKeyAuth: [ ]
-  /api/accounts/me/billing_subscription:
-    get:
-      tags:
-        - accounts
-      description: Redirects to the billing portal for the current account.
-      operationId: accounts_me_billing_subscription_retrieve
-      responses:
-        '302':
-          description: No response body
-      security:
-        - apiKeyAuth: [ ]
   /api/accounts/me/tts_api_keys:
     get:
       tags:
