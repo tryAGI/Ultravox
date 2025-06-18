@@ -88,20 +88,29 @@ namespace Ultravox
             if (!__response.IsSuccessStatusCode)
             {
                 string? __content_default = null;
+                global::System.Exception? __exception_default = null;
                 string? __value_default = null;
-                if (ReadResponseAsString)
+                try
                 {
-                    __content_default = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                    __value_default = global::System.Text.Json.JsonSerializer.Deserialize(__content_default, typeof(string), JsonSerializerContext) as string;
+                    if (ReadResponseAsString)
+                    {
+                        __content_default = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                        __value_default = global::System.Text.Json.JsonSerializer.Deserialize(__content_default, typeof(string), JsonSerializerContext) as string;
+                    }
+                    else
+                    {
+                        var __contentStream_default = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                        __value_default = await global::System.Text.Json.JsonSerializer.DeserializeAsync(__contentStream_default, typeof(string), JsonSerializerContext).ConfigureAwait(false) as string;
+                    }
                 }
-                else
+                catch (global::System.Exception __ex)
                 {
-                    var __contentStream_default = await __response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-                    __value_default = await global::System.Text.Json.JsonSerializer.DeserializeAsync(__contentStream_default, typeof(string), JsonSerializerContext).ConfigureAwait(false) as string;
+                    __exception_default = __ex;
                 }
 
                 throw new global::Ultravox.ApiException<string>(
                     message: __content_default ?? __response.ReasonPhrase ?? string.Empty,
+                    innerException: __exception_default,
                     statusCode: __response.StatusCode)
                 {
                     ResponseBody = __content_default,
@@ -133,8 +142,10 @@ namespace Ultravox
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    return __content;
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Ultravox.ApiException(
                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
@@ -148,16 +159,22 @@ namespace Ultravox
                             h => h.Value),
                     };
                 }
-
-                return __content;
             }
             else
             {
                 try
                 {
                     __response.EnsureSuccessStatusCode();
+
+                    var __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return __content;
                 }
-                catch (global::System.Net.Http.HttpRequestException __ex)
+                catch (global::System.Exception __ex)
                 {
                     throw new global::Ultravox.ApiException(
                         message: __response.ReasonPhrase ?? string.Empty,
@@ -170,14 +187,6 @@ namespace Ultravox
                             h => h.Value),
                     };
                 }
-
-                var __content = await __response.Content.ReadAsStringAsync(
-#if NET5_0_OR_GREATER
-                    cancellationToken
-#endif
-                ).ConfigureAwait(false);
-
-                return __content;
             }
         }
     }
