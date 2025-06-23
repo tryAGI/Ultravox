@@ -58,6 +58,12 @@ namespace Ultravox
         public global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? EndReason { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("billedDuration")]
+        public string? BilledDuration { get; set; }
+
+        /// <summary>
         /// Who was supposed to talk first when the call started. Typically set to FIRST_SPEAKER_USER for outgoing calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.<br/>
         /// Included only in responses
         /// </summary>
@@ -269,6 +275,9 @@ namespace Ultravox
         /// * `system_error` - System error<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="billedDuration">
+        /// Included only in responses
+        /// </param>
         /// <param name="firstSpeakerSettings">
         /// Settings for the initial message to get the call started.
         /// </param>
@@ -352,6 +361,7 @@ namespace Ultravox
             global::System.DateTime? joined,
             global::System.DateTime? ended,
             global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? endReason,
+            string? billedDuration,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
             string? joinTimeout,
             string? joinUrl,
@@ -385,6 +395,7 @@ namespace Ultravox
             this.Joined = joined;
             this.Ended = ended;
             this.EndReason = endReason;
+            this.BilledDuration = billedDuration;
             this.InactivityMessages = inactivityMessages;
             this.InitialOutputMedium = initialOutputMedium;
             this.JoinTimeout = joinTimeout;
