@@ -4085,8 +4085,11 @@ components:
           format: int32
         responseMimeType:
           type: string
-          description: "The real mime type of the audio returned by the API. If unset, the Content-Type response header\n will be used. This is useful for APIs whose response bodies don't strictly adhere to what the\n API claims via header. For example, if your API claims to return audio/wav but omits the WAV\n header (thus really returning raw PCM), set this to audio/l16."
-      description: "Specification for a voice served by some generic REST-based TTS API. The API must\n accept an application/json POST request (as defined below) and return either WAV\n or raw PCM audio with an appropriate Content-Type response header.\n Note that this simple API implies a lack of either input streaming or audio timing\n information, so more specific voice types are preferable when available."
+          description: "The real mime type of the content returned by the API. If unset, the Content-Type response header\n will be used. This is useful for APIs whose response bodies don't strictly adhere to what the\n API claims via header. For example, if your API claims to return audio/wav but omits the WAV\n header (thus really returning raw PCM), set this to audio/l16. Similarly, if your API claims to\n return JSON but actually streams JSON Lines, set this to application/jsonl."
+        jsonAudioFieldPath:
+          type: string
+          description: "For JSON responses, the path to the field containing base64-encoded audio data. The data must\n be PCM audio, optionally with a WAV header."
+      description: "Specification for a voice served by some generic REST-based TTS API. The API must\n accept an application/json POST request (as defined below) and return either WAV\n audio, raw PCM audio, or application/json with a base64 encoded audio data field\n that itself corresponds to WAV or raw PCM audio.\n Note that this simple API implies a lack of either input streaming or audio timing\n information, so more specific voice types are preferable when available."
     ultravox.v1.HeaderApiKeyRequirement:
       type: object
       properties:

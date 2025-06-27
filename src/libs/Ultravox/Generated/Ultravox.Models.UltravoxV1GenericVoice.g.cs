@@ -6,7 +6,8 @@ namespace Ultravox
     /// <summary>
     /// Specification for a voice served by some generic REST-based TTS API. The API must<br/>
     ///  accept an application/json POST request (as defined below) and return either WAV<br/>
-    ///  or raw PCM audio with an appropriate Content-Type response header.<br/>
+    ///  audio, raw PCM audio, or application/json with a base64 encoded audio data field<br/>
+    ///  that itself corresponds to WAV or raw PCM audio.<br/>
     ///  Note that this simple API implies a lack of either input streaming or audio timing<br/>
     ///  information, so more specific voice types are preferable when available.
     /// </summary>
@@ -47,13 +48,21 @@ namespace Ultravox
         public int? ResponseWordsPerMinute { get; set; }
 
         /// <summary>
-        /// The real mime type of the audio returned by the API. If unset, the Content-Type response header<br/>
+        /// The real mime type of the content returned by the API. If unset, the Content-Type response header<br/>
         ///  will be used. This is useful for APIs whose response bodies don't strictly adhere to what the<br/>
         ///  API claims via header. For example, if your API claims to return audio/wav but omits the WAV<br/>
-        ///  header (thus really returning raw PCM), set this to audio/l16.
+        ///  header (thus really returning raw PCM), set this to audio/l16. Similarly, if your API claims to<br/>
+        ///  return JSON but actually streams JSON Lines, set this to application/jsonl.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("responseMimeType")]
         public string? ResponseMimeType { get; set; }
+
+        /// <summary>
+        /// For JSON responses, the path to the field containing base64-encoded audio data. The data must<br/>
+        ///  be PCM audio, optionally with a WAV header.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("jsonAudioFieldPath")]
+        public string? JsonAudioFieldPath { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -84,10 +93,15 @@ namespace Ultravox
         ///  Defaults to 150 and is unused for non-streaming responses.
         /// </param>
         /// <param name="responseMimeType">
-        /// The real mime type of the audio returned by the API. If unset, the Content-Type response header<br/>
+        /// The real mime type of the content returned by the API. If unset, the Content-Type response header<br/>
         ///  will be used. This is useful for APIs whose response bodies don't strictly adhere to what the<br/>
         ///  API claims via header. For example, if your API claims to return audio/wav but omits the WAV<br/>
-        ///  header (thus really returning raw PCM), set this to audio/l16.
+        ///  header (thus really returning raw PCM), set this to audio/l16. Similarly, if your API claims to<br/>
+        ///  return JSON but actually streams JSON Lines, set this to application/jsonl.
+        /// </param>
+        /// <param name="jsonAudioFieldPath">
+        /// For JSON responses, the path to the field containing base64-encoded audio data. The data must<br/>
+        ///  be PCM audio, optionally with a WAV header.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -98,7 +112,8 @@ namespace Ultravox
             object? body,
             int? responseSampleRate,
             int? responseWordsPerMinute,
-            string? responseMimeType)
+            string? responseMimeType,
+            string? jsonAudioFieldPath)
         {
             this.Url = url;
             this.Headers = headers;
@@ -106,6 +121,7 @@ namespace Ultravox
             this.ResponseSampleRate = responseSampleRate;
             this.ResponseWordsPerMinute = responseWordsPerMinute;
             this.ResponseMimeType = responseMimeType;
+            this.JsonAudioFieldPath = jsonAudioFieldPath;
         }
 
         /// <summary>
