@@ -684,6 +684,16 @@ paths:
           description: The pagination cursor value.
           schema:
             type: string
+        - name: mode
+          in: query
+          description: "* `last_stage` - Returns all messages for the call's last stage, similar to most call fields\n* `in_call` - Returns messages from all stages, excluding initialMessages"
+          schema:
+            minLength: 1
+            enum:
+              - last_stage
+              - in_call
+            type: string
+            default: last_stage
         - name: pageSize
           in: query
           description: Number of results to return per page.

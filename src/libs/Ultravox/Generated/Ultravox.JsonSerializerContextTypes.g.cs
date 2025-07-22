@@ -698,22 +698,26 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveFormat? Type168 { get; set; }
+        public global::Ultravox.CallsMessagesListMode? Type168 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveLang? Type169 { get; set; }
+        public global::Ultravox.SchemaRetrieveFormat? Type169 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type170 { get; set; }
+        public global::Ultravox.SchemaRetrieveLang? Type170 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type171 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type171 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type172 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type172 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type173 { get; set; }
     }
 }
