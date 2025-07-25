@@ -74,6 +74,13 @@ namespace Ultravox
         public global::System.DateTime? SubscriptionScheduledUpdate { get; set; }
 
         /// <summary>
+        /// When this account's subscription renews, if applicable.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("subscriptionRenewal")]
+        public global::System.DateTime? SubscriptionRenewal { get; set; }
+
+        /// <summary>
         /// The number of active calls for this account.<br/>
         /// Included only in responses
         /// </summary>
@@ -144,6 +151,10 @@ namespace Ultravox
         /// The point in the future where this account's subscription is scheduled to change.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="subscriptionRenewal">
+        /// When this account's subscription renews, if applicable.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="activeCalls">
         /// The number of active calls for this account.<br/>
         /// Included only in responses
@@ -169,6 +180,7 @@ namespace Ultravox
             string? subscriptionCadence,
             global::System.DateTime? subscriptionExpiration,
             global::System.DateTime? subscriptionScheduledUpdate,
+            global::System.DateTime? subscriptionRenewal,
             int? allowedConcurrentCalls,
             int? allowedVoices,
             int? allowedCorpora,
@@ -187,6 +199,7 @@ namespace Ultravox
             this.SubscriptionCadence = subscriptionCadence;
             this.SubscriptionExpiration = subscriptionExpiration;
             this.SubscriptionScheduledUpdate = subscriptionScheduledUpdate;
+            this.SubscriptionRenewal = subscriptionRenewal;
             this.ActiveCalls = activeCalls;
             this.AllowedConcurrentCalls = allowedConcurrentCalls;
             this.AllowedVoices = allowedVoices;

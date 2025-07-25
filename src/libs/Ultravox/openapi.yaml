@@ -2097,6 +2097,7 @@ components:
         - name
         - subscriptionCadence
         - subscriptionExpiration
+        - subscriptionRenewal
         - subscriptionScheduledUpdate
         - subscriptionTier
       type: object
@@ -2137,6 +2138,12 @@ components:
         subscriptionScheduledUpdate:
           type: string
           description: The point in the future where this account's subscription is scheduled to change.
+          format: date-time
+          nullable: true
+          readOnly: true
+        subscriptionRenewal:
+          type: string
+          description: 'When this account''s subscription renews, if applicable.'
           format: date-time
           nullable: true
           readOnly: true
