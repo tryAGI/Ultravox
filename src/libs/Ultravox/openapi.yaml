@@ -3195,6 +3195,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EventsEnum'
+        status:
+          allOf:
+            - $ref: '#/components/schemas/StatusEnum'
+          readOnly: true
+        lastStatusChange:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+        recentFailures:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookFailure'
+          description: 'A list of recent failures for this webhook, if any.'
+          readOnly: true
     SeverityEnum:
       enum:
         - debug
@@ -3202,6 +3217,12 @@ components:
         - warning
         - error
       type: string
+    StatusEnum:
+      enum:
+        - normal
+        - unhealthy
+      type: string
+      description: "* `normal` - NORMAL\n* `unhealthy` - UNHEALTHY"
     Tool:
       required:
         - created
@@ -3289,6 +3310,9 @@ components:
       required:
         - created
         - events
+        - lastStatusChange
+        - recentFailures
+        - status
         - url
         - webhookId
       type: object
@@ -3314,6 +3338,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EventsEnum'
+        status:
+          allOf:
+            - $ref: '#/components/schemas/StatusEnum'
+          readOnly: true
+        lastStatusChange:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+        recentFailures:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookFailure'
+          description: 'A list of recent failures for this webhook, if any.'
+          readOnly: true
+    WebhookFailure:
+      required:
+        - failure
+        - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        failure:
+          type: string
     ultravox.v1.CallTemplate:
       type: object
       properties:
