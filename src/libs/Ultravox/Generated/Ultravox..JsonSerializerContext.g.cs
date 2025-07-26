@@ -49,6 +49,8 @@ namespace Ultravox
             typeof(global::Ultravox.JsonConverters.InvoiceStatusEnumNullableJsonConverter),
             typeof(global::Ultravox.JsonConverters.OwnershipEnumJsonConverter),
             typeof(global::Ultravox.JsonConverters.OwnershipEnumNullableJsonConverter),
+            typeof(global::Ultravox.JsonConverters.StatusEnumJsonConverter),
+            typeof(global::Ultravox.JsonConverters.StatusEnumNullableJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1CorpusStatsStatusJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1CorpusStatsStatusNullableJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1SourceStatsStatusJsonConverter),
