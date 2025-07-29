@@ -21,12 +21,6 @@ namespace Ultravox
         public global::Ultravox.KeyPrefix? Cartesia { get; set; }
 
         /// <summary>
-        /// The PlayHT API key.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("playHt")]
-        public global::Ultravox.KeyPrefix? PlayHt { get; set; }
-
-        /// <summary>
         /// The LMNT API key.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("lmnt")]
@@ -47,9 +41,6 @@ namespace Ultravox
         /// <param name="cartesia">
         /// The Cartesia API key.
         /// </param>
-        /// <param name="playHt">
-        /// The PlayHT API key.
-        /// </param>
         /// <param name="lmnt">
         /// The LMNT API key.
         /// </param>
@@ -59,12 +50,10 @@ namespace Ultravox
         public AccountTtsKeys(
             global::Ultravox.KeyPrefix? elevenLabs,
             global::Ultravox.KeyPrefix? cartesia,
-            global::Ultravox.KeyPrefix? playHt,
             global::Ultravox.KeyPrefix? lmnt)
         {
             this.ElevenLabs = elevenLabs;
             this.Cartesia = cartesia;
-            this.PlayHt = playHt;
             this.Lmnt = lmnt;
         }
 

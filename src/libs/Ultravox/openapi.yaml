@@ -1773,6 +1773,15 @@ paths:
       description: List all voices in your account.
       operationId: voices_list
       parameters:
+        - name: billingStyle
+          in: query
+          description: "The billing style used to filter results.\n\n* `VOICE_BILLING_STYLE_INCLUDED` - Voices with no additional charges beyond the cost of the call\n* `VOICE_BILLING_STYLE_EXTERNAL` - Voices with costs billed directly by the TTS provider"
+          schema:
+            minLength: 1
+            enum:
+              - VOICE_BILLING_STYLE_INCLUDED
+              - VOICE_BILLING_STYLE_EXTERNAL
+            type: string
         - name: cursor
           in: query
           description: The pagination cursor value.
@@ -1780,8 +1789,12 @@ paths:
             type: string
         - name: ownership
           in: query
-          description: The ownership used filter results
+          description: "The ownership used to filter results.\n\n* `private` - Only private voices\n* `public` - Only public voices"
           schema:
+            minLength: 1
+            enum:
+              - private
+              - public
             type: string
         - name: pageSize
           in: query
@@ -1790,8 +1803,9 @@ paths:
             type: integer
         - name: search
           in: query
-          description: The search string used to filter results
+          description: The search string used to filter results.
           schema:
+            minLength: 1
             type: string
       responses:
         '200':
@@ -1828,8 +1842,11 @@ paths:
                   type: string
                   description: 'Optional description for the voice. If not provided, a default description will be generated.'
                   example: 'Voice recorded on Jan 1, 2024'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Voice'
       responses:
-        '200':
+        '201':
           description: ''
           content:
             application/json:
@@ -1840,6 +1857,8 @@ paths:
       x-codeSamples:
         - lang: curl
           source: "curl --request POST \\\n--url https://api.ultravox.ai/api/voices \\\n--header 'Content-Type: multipart/form-data' \\\n--header 'X-API-Key: <your-api-key>' \\\n--form 'file=@/path/to/voice.mp3' \\\n--form 'name=My Custom Voice' \\\n--form 'description=Voice recorded on Jan 1, 2024'"
+        - lang: curl
+          source: "curl --request POST \\\n--url https://api.ultravox.ai/api/voices \\\n--header 'Content-Type: application/json' \\\n--header 'X-API-Key: <your-api-key>' \\\n-d '{\"name\": \"My Custom Voice\", \"description\": \"Example ElevenLabs voice\", \"definition\": {\"elevenLabs\": {\"voiceId\": \"21m00Tcm4TlvDq8ikWAM\", \"model\": \"eleven_turbo_v2_5\"}} }'"
   '/api/voices/{voice_id}':
     get:
       tags:
@@ -1852,6 +1871,57 @@ paths:
           schema:
             type: string
             format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Voice'
+      security:
+        - apiKeyAuth: [ ]
+    put:
+      tags:
+        - voices
+      operationId: voices_update
+      parameters:
+        - name: voice_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Voice'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Voice'
+      security:
+        - apiKeyAuth: [ ]
+    patch:
+      tags:
+        - voices
+      operationId: voices_partial_update
+      parameters:
+        - name: voice_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedVoice'
       responses:
         '200':
           description: ''
@@ -2194,10 +2264,6 @@ components:
           allOf:
             - $ref: '#/components/schemas/KeyPrefix'
           description: The Cartesia API key.
-        playHt:
-          allOf:
-            - $ref: '#/components/schemas/KeyPrefix'
-          description: The PlayHT API key.
         lmnt:
           allOf:
             - $ref: '#/components/schemas/KeyPrefix'
@@ -2240,6 +2306,11 @@ components:
         - subscription_update
       type: string
       description: "* `manual` - manual\n* `subscription_create` - subscription_create\n* `subscription_cycle` - subscription_cycle\n* `subscription_threshold` - subscription_threshold\n* `subscription_update` - subscription_update"
+    BillingStyleEnum:
+      enum:
+        - VOICE_BILLING_STYLE_INCLUDED
+        - VOICE_BILLING_STYLE_EXTERNAL
+      type: string
     BillingUsageDay:
       required:
         - date
@@ -3163,14 +3234,40 @@ components:
           type: string
           description: "Your Cartesia API key.\nhttps://play.cartesia.ai/keys"
           nullable: true
-        playHt:
-          type: string
-          description: "Your PlayHT API key.\nNote: This must come from play.ht, not play.ai. Their users are NOT interchangeable!\nhttps://play.ht/studio/api-access"
-          nullable: true
         lmnt:
           type: string
           description: "Your LMNT API key.\nhttps://app.lmnt.com/account#api-keys"
           nullable: true
+    PatchedVoice:
+      type: object
+      properties:
+        voiceId:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          maxLength: 40
+          type: string
+        description:
+          maxLength: 240
+          type: string
+          nullable: true
+        previewUrl:
+          type: string
+          format: uri
+          nullable: true
+          readOnly: true
+        ownership:
+          allOf:
+            - $ref: '#/components/schemas/OwnershipEnum'
+          readOnly: true
+        billingStyle:
+          allOf:
+            - $ref: '#/components/schemas/BillingStyleEnum'
+          description: "How billing works for this voice.\nVOICE_BILLING_STYLE_INCLUDED - The cost of this voice is included in the call cost. There are no additional charges for it.\nVOICE_BILLING_STYLE_EXTERNAL - This voice requires an API key for its provider, who will bill for usage separately."
+          readOnly: true
+        definition:
+          $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
     PatchedWebhook:
       type: object
       properties:
@@ -3279,7 +3376,8 @@ components:
           readOnly: true
     Voice:
       required:
-        - description
+        - billingStyle
+        - definition
         - name
         - ownership
         - previewUrl
@@ -3291,12 +3389,12 @@ components:
           format: uuid
           readOnly: true
         name:
+          maxLength: 40
           type: string
-          readOnly: true
         description:
+          maxLength: 240
           type: string
           nullable: true
-          readOnly: true
         previewUrl:
           type: string
           format: uri
@@ -3306,6 +3404,13 @@ components:
           allOf:
             - $ref: '#/components/schemas/OwnershipEnum'
           readOnly: true
+        billingStyle:
+          allOf:
+            - $ref: '#/components/schemas/BillingStyleEnum'
+          description: "How billing works for this voice.\nVOICE_BILLING_STYLE_INCLUDED - The cost of this voice is included in the call cost. There are no additional charges for it.\nVOICE_BILLING_STYLE_EXTERNAL - This voice requires an API key for its provider, who will bill for usage separately."
+          readOnly: true
+        definition:
+          $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
     Webhook:
       required:
         - created
@@ -4064,10 +4169,6 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CartesiaVoice'
           description: A voice served by Cartesia.
-        playHt:
-          allOf:
-            - $ref: '#/components/schemas/ultravox.v1.PlayHtVoice'
-          description: A voice served by PlayHT.
         lmnt:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.LmntVoice'
@@ -4246,50 +4347,6 @@ components:
             type: string
           description: The mime types in this set.
       description: "A set of mime types. Entries may be a full mime type (e.g. \"text/html\") or a\n type without a subtype (e.g. \"text\"). Entries without a subtype will match\n all subtypes (e.g. \"text\" will match \"text/html\", \"text/plain\", etc.)."
-    ultravox.v1.PlayHtVoice:
-      type: object
-      properties:
-        userId:
-          type: string
-          description: "The \"user id\" for the PlayHT API. This must be the user who owns the Play API key\n associated with your Ultravox account."
-        voiceId:
-          type: string
-          description: The ID of the voice in PlayHT. Typically an s3 location.
-        model:
-          type: string
-          description: The PlayHT model (aka "engine") to use.
-        speed:
-          type: number
-          description: The speaking rate. Must be between 0 and 5. Defaults to 1.
-          format: float
-        quality:
-          type: string
-          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
-        temperature:
-          type: number
-          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
-          format: float
-        emotion:
-          type: number
-          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
-          format: float
-        voiceGuidance:
-          type: number
-          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
-          format: float
-        styleGuidance:
-          type: number
-          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
-          format: float
-        textGuidance:
-          type: number
-          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
-          format: float
-        voiceConditioningSeconds:
-          type: number
-          description: See https://docs.play.ht/reference/api-generate-tts-audio-stream.
-          format: float
-      description: Specification for a voice served by PlayHT.
     ultravox.v1.QueryApiKeyRequirement:
       type: object
       properties:

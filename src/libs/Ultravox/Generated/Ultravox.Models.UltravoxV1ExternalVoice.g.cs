@@ -24,12 +24,6 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CartesiaVoice? Cartesia { get; set; }
 
         /// <summary>
-        /// A voice served by PlayHT.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("playHt")]
-        public global::Ultravox.UltravoxV1PlayHtVoice? PlayHt { get; set; }
-
-        /// <summary>
         /// A voice served by LMNT.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("lmnt")]
@@ -56,9 +50,6 @@ namespace Ultravox
         /// <param name="cartesia">
         /// A voice served by Cartesia.
         /// </param>
-        /// <param name="playHt">
-        /// A voice served by PlayHT.
-        /// </param>
         /// <param name="lmnt">
         /// A voice served by LMNT.
         /// </param>
@@ -71,13 +62,11 @@ namespace Ultravox
         public UltravoxV1ExternalVoice(
             global::Ultravox.UltravoxV1ElevenLabsVoice? elevenLabs,
             global::Ultravox.UltravoxV1CartesiaVoice? cartesia,
-            global::Ultravox.UltravoxV1PlayHtVoice? playHt,
             global::Ultravox.UltravoxV1LmntVoice? lmnt,
             global::Ultravox.UltravoxV1GenericVoice? generic)
         {
             this.ElevenLabs = elevenLabs;
             this.Cartesia = cartesia;
-            this.PlayHt = playHt;
             this.Lmnt = lmnt;
             this.Generic = generic;
         }
