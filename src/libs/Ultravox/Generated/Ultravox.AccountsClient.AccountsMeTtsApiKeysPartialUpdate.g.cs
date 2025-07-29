@@ -176,11 +176,6 @@ namespace Ultravox
         /// Your Cartesia API key.<br/>
         /// https://play.cartesia.ai/keys
         /// </param>
-        /// <param name="playHt">
-        /// Your PlayHT API key.<br/>
-        /// Note: This must come from play.ht, not play.ai. Their users are NOT interchangeable!<br/>
-        /// https://play.ht/studio/api-access
-        /// </param>
         /// <param name="lmnt">
         /// Your LMNT API key.<br/>
         /// https://app.lmnt.com/account#api-keys
@@ -190,7 +185,6 @@ namespace Ultravox
         public async global::System.Threading.Tasks.Task<global::Ultravox.AccountTtsKeys> AccountsMeTtsApiKeysPartialUpdateAsync(
             string? elevenLabs = default,
             string? cartesia = default,
-            string? playHt = default,
             string? lmnt = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -198,7 +192,6 @@ namespace Ultravox
             {
                 ElevenLabs = elevenLabs,
                 Cartesia = cartesia,
-                PlayHt = playHt,
                 Lmnt = lmnt,
             };
 

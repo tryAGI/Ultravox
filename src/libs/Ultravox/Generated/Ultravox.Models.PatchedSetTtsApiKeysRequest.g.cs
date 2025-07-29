@@ -23,14 +23,6 @@ namespace Ultravox
         public string? Cartesia { get; set; }
 
         /// <summary>
-        /// Your PlayHT API key.<br/>
-        /// Note: This must come from play.ht, not play.ai. Their users are NOT interchangeable!<br/>
-        /// https://play.ht/studio/api-access
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("playHt")]
-        public string? PlayHt { get; set; }
-
-        /// <summary>
         /// Your LMNT API key.<br/>
         /// https://app.lmnt.com/account#api-keys
         /// </summary>
@@ -54,11 +46,6 @@ namespace Ultravox
         /// Your Cartesia API key.<br/>
         /// https://play.cartesia.ai/keys
         /// </param>
-        /// <param name="playHt">
-        /// Your PlayHT API key.<br/>
-        /// Note: This must come from play.ht, not play.ai. Their users are NOT interchangeable!<br/>
-        /// https://play.ht/studio/api-access
-        /// </param>
         /// <param name="lmnt">
         /// Your LMNT API key.<br/>
         /// https://app.lmnt.com/account#api-keys
@@ -69,12 +56,10 @@ namespace Ultravox
         public PatchedSetTtsApiKeysRequest(
             string? elevenLabs,
             string? cartesia,
-            string? playHt,
             string? lmnt)
         {
             this.ElevenLabs = elevenLabs;
             this.Cartesia = cartesia;
-            this.PlayHt = playHt;
             this.Lmnt = lmnt;
         }
 

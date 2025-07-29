@@ -5,71 +5,51 @@ namespace Ultravox
 {
     public partial class VoicesClient
     {
-        partial void PrepareVoicesListArguments(
+        partial void PrepareVoicesPartialUpdateArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref global::Ultravox.VoicesListBillingStyle? billingStyle,
-            ref string? cursor,
-            ref global::Ultravox.VoicesListOwnership? ownership,
-            ref int? pageSize,
-            ref string? search);
-        partial void PrepareVoicesListRequest(
+            ref global::System.Guid voiceId,
+            global::Ultravox.PatchedVoice request);
+        partial void PrepareVoicesPartialUpdateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Ultravox.VoicesListBillingStyle? billingStyle,
-            string? cursor,
-            global::Ultravox.VoicesListOwnership? ownership,
-            int? pageSize,
-            string? search);
-        partial void ProcessVoicesListResponse(
+            global::System.Guid voiceId,
+            global::Ultravox.PatchedVoice request);
+        partial void ProcessVoicesPartialUpdateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessVoicesListResponseContent(
+        partial void ProcessVoicesPartialUpdateResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// List all voices in your account.
+        /// 
         /// </summary>
-        /// <param name="billingStyle"></param>
-        /// <param name="cursor"></param>
-        /// <param name="ownership"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="search"></param>
+        /// <param name="voiceId"></param>
+        /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedVoiceList> VoicesListAsync(
-            global::Ultravox.VoicesListBillingStyle? billingStyle = default,
-            string? cursor = default,
-            global::Ultravox.VoicesListOwnership? ownership = default,
-            int? pageSize = default,
-            string? search = default,
+        public async global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesPartialUpdateAsync(
+            global::System.Guid voiceId,
+            global::Ultravox.PatchedVoice request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
-            PrepareVoicesListArguments(
+            PrepareVoicesPartialUpdateArguments(
                 httpClient: HttpClient,
-                billingStyle: ref billingStyle,
-                cursor: ref cursor,
-                ownership: ref ownership,
-                pageSize: ref pageSize,
-                search: ref search);
+                voiceId: ref voiceId,
+                request: request);
 
             var __pathBuilder = new global::Ultravox.PathBuilder(
-                path: "/api/voices",
+                path: $"/api/voices/{voiceId}",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("billingStyle", billingStyle?.ToValueString()) 
-                .AddOptionalParameter("cursor", cursor) 
-                .AddOptionalParameter("ownership", ownership?.ToValueString()) 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("search", search) 
-                ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                method: global::System.Net.Http.HttpMethod.Get,
+                method: new global::System.Net.Http.HttpMethod("PATCH"),
                 requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
             __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -91,18 +71,21 @@ namespace Ultravox
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
+            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                content: __httpRequestContentBody,
+                encoding: global::System.Text.Encoding.UTF8,
+                mediaType: "application/json");
+            __httpRequest.Content = __httpRequestContent;
 
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareVoicesListRequest(
+            PrepareVoicesPartialUpdateRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                billingStyle: billingStyle,
-                cursor: cursor,
-                ownership: ownership,
-                pageSize: pageSize,
-                search: search);
+                voiceId: voiceId,
+                request: request);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -112,7 +95,7 @@ namespace Ultravox
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessVoicesListResponse(
+            ProcessVoicesPartialUpdateResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
 
@@ -128,7 +111,7 @@ namespace Ultravox
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessVoicesListResponseContent(
+                ProcessVoicesPartialUpdateResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -138,7 +121,7 @@ namespace Ultravox
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Ultravox.PaginatedVoiceList.FromJson(__content, JsonSerializerContext) ??
+                        global::Ultravox.Voice.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -169,7 +152,7 @@ namespace Ultravox
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Ultravox.PaginatedVoiceList.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Ultravox.Voice.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
@@ -186,6 +169,40 @@ namespace Ultravox
                     };
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="voiceId"></param>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <param name="definition">
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for a call.<br/>
+        ///  Such voices are significantly less validated than normal voices and you'll be<br/>
+        ///  responsible for your own TTS-related errors.<br/>
+        ///  Exactly one field must be set.
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesPartialUpdateAsync(
+            global::System.Guid voiceId,
+            string? name = default,
+            string? description = default,
+            global::Ultravox.UltravoxV1ExternalVoice? definition = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Ultravox.PatchedVoice
+            {
+                Name = name,
+                Description = description,
+                Definition = definition,
+            };
+
+            return await VoicesPartialUpdateAsync(
+                voiceId: voiceId,
+                request: __request,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
