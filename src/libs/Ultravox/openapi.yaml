@@ -1766,6 +1766,35 @@ paths:
               schema: { }
       security:
         - apiKeyAuth: [ ]
+  /api/voice_preview:
+    post:
+      tags:
+        - voices
+      description: 'Performs a test generation of a voice, returning the resulting audio or error.'
+      operationId: preview_voice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Voice'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            audio/wav:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: { }
+      security:
+        - apiKeyAuth: [ ]
   /api/voices:
     get:
       tags:
@@ -1945,6 +1974,38 @@ paths:
       responses:
         '204':
           description: No response body
+      security:
+        - apiKeyAuth: [ ]
+  '/api/voices/{voice_id}/preview':
+    get:
+      tags:
+        - voices
+      description: 'Provides an audio sample for a voice, or the error caused by using it.'
+      operationId: voices_preview_retrieve
+      parameters:
+        - name: voice_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            audio/wav:
+              schema:
+                type: string
+                format: binary
+        '302':
+          description: No response body
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: { }
       security:
         - apiKeyAuth: [ ]
   /api/webhooks:
