@@ -3313,10 +3313,14 @@ components:
           maxLength: 240
           type: string
           nullable: true
+        primaryLanguage:
+          maxLength: 10
+          type: string
+          description: BCP47 language code for the primary language supported by this voice.
+          nullable: true
         previewUrl:
           type: string
           format: uri
-          nullable: true
           readOnly: true
         ownership:
           allOf:
@@ -3456,10 +3460,14 @@ components:
           maxLength: 240
           type: string
           nullable: true
+        primaryLanguage:
+          maxLength: 10
+          type: string
+          description: BCP47 language code for the primary language supported by this voice.
+          nullable: true
         previewUrl:
           type: string
           format: uri
-          nullable: true
           readOnly: true
         ownership:
           allOf:

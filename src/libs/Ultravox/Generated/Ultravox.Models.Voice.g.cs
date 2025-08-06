@@ -29,10 +29,17 @@ namespace Ultravox
         public string? Description { get; set; }
 
         /// <summary>
+        /// BCP47 language code for the primary language supported by this voice.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("primaryLanguage")]
+        public string? PrimaryLanguage { get; set; }
+
+        /// <summary>
         /// Included only in responses
         /// </summary>
+        /// <default>default!</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("previewUrl")]
-        public string? PreviewUrl { get; set; }
+        public string PreviewUrl { get; set; } = default!;
 
         /// <summary>
         /// Included only in responses
@@ -77,6 +84,9 @@ namespace Ultravox
         /// </param>
         /// <param name="name"></param>
         /// <param name="description"></param>
+        /// <param name="primaryLanguage">
+        /// BCP47 language code for the primary language supported by this voice.
+        /// </param>
         /// <param name="previewUrl">
         /// Included only in responses
         /// </param>
@@ -102,8 +112,9 @@ namespace Ultravox
             string name,
             global::Ultravox.UltravoxV1ExternalVoice definition,
             string? description,
-            string? previewUrl,
+            string? primaryLanguage,
             global::System.Guid voiceId = default!,
+            string previewUrl = default!,
             global::Ultravox.OwnershipEnum ownership = default!,
             global::Ultravox.BillingStyleEnum billingStyle = default!)
         {
@@ -111,6 +122,7 @@ namespace Ultravox
             this.Definition = definition ?? throw new global::System.ArgumentNullException(nameof(definition));
             this.VoiceId = voiceId;
             this.Description = description;
+            this.PrimaryLanguage = primaryLanguage;
             this.PreviewUrl = previewUrl;
             this.Ownership = ownership;
             this.BillingStyle = billingStyle;
