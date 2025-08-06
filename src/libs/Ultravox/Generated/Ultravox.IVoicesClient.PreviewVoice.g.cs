@@ -19,6 +19,9 @@ namespace Ultravox
         /// </summary>
         /// <param name="name"></param>
         /// <param name="description"></param>
+        /// <param name="primaryLanguage">
+        /// BCP47 language code for the primary language supported by this voice.
+        /// </param>
         /// <param name="definition">
         /// A voice not known to Ultravox Realtime that can nonetheless be used for a call.<br/>
         ///  Such voices are significantly less validated than normal voices and you'll be<br/>
@@ -31,6 +34,7 @@ namespace Ultravox
             string name,
             global::Ultravox.UltravoxV1ExternalVoice definition,
             string? description = default,
+            string? primaryLanguage = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
