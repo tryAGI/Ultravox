@@ -1830,6 +1830,12 @@ paths:
           description: Number of results to return per page.
           schema:
             type: integer
+        - name: primaryLanguage
+          in: query
+          description: 'The desired primary language for voice results using BCP47. Voices with different regions/scripts/variants but the same language tag may also be included but will be further down the results. If not provided, all languages are included.'
+          schema:
+            minLength: 1
+            type: string
         - name: search
           in: query
           description: The search string used to filter results.

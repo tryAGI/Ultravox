@@ -11,6 +11,7 @@ namespace Ultravox
         /// <param name="cursor"></param>
         /// <param name="ownership"></param>
         /// <param name="pageSize"></param>
+        /// <param name="primaryLanguage"></param>
         /// <param name="search"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
@@ -19,6 +20,7 @@ namespace Ultravox
             string? cursor = default,
             global::Ultravox.VoicesListOwnership? ownership = default,
             int? pageSize = default,
+            string? primaryLanguage = default,
             string? search = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
