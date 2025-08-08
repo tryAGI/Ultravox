@@ -20,6 +20,9 @@ namespace Ultravox
         /// 
         /// </summary>
         /// <param name="webhookId"></param>
+        /// <param name="agentId">
+        /// If set, this webhook will be limited to calls with this agent.
+        /// </param>
         /// <param name="url"></param>
         /// <param name="secrets"></param>
         /// <param name="events"></param>
@@ -27,6 +30,7 @@ namespace Ultravox
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Webhook> WebhooksPartialUpdateAsync(
             global::System.Guid webhookId,
+            global::System.Guid? agentId = default,
             string? url = default,
             global::System.Collections.Generic.IList<string>? secrets = default,
             global::System.Collections.Generic.IList<global::Ultravox.EventsEnum>? events = default,

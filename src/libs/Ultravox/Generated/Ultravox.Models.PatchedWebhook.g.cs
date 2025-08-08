@@ -15,6 +15,12 @@ namespace Ultravox
         public global::System.Guid? WebhookId { get; set; }
 
         /// <summary>
+        /// If set, this webhook will be limited to calls with this agent.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agentId")]
+        public global::System.Guid? AgentId { get; set; }
+
+        /// <summary>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created")]
@@ -70,6 +76,9 @@ namespace Ultravox
         /// <param name="webhookId">
         /// Included only in responses
         /// </param>
+        /// <param name="agentId">
+        /// If set, this webhook will be limited to calls with this agent.
+        /// </param>
         /// <param name="created">
         /// Included only in responses
         /// </param>
@@ -91,6 +100,7 @@ namespace Ultravox
 #endif
         public PatchedWebhook(
             global::System.Guid? webhookId,
+            global::System.Guid? agentId,
             global::System.DateTime? created,
             string? url,
             global::System.Collections.Generic.IList<string>? secrets,
@@ -100,6 +110,7 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.WebhookFailure>? recentFailures)
         {
             this.WebhookId = webhookId;
+            this.AgentId = agentId;
             this.Created = created;
             this.Url = url;
             this.Secrets = secrets;
