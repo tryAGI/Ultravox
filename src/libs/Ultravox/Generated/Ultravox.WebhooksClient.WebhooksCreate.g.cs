@@ -168,6 +168,9 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="agentId">
+        /// If set, this webhook will be limited to calls with this agent.
+        /// </param>
         /// <param name="url"></param>
         /// <param name="secrets"></param>
         /// <param name="events"></param>
@@ -176,11 +179,13 @@ namespace Ultravox
         public async global::System.Threading.Tasks.Task<global::Ultravox.Webhook> WebhooksCreateAsync(
             string url,
             global::System.Collections.Generic.IList<global::Ultravox.EventsEnum> events,
+            global::System.Guid? agentId = default,
             global::System.Collections.Generic.IList<string>? secrets = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.Webhook
             {
+                AgentId = agentId,
                 Url = url,
                 Secrets = secrets,
                 Events = events,

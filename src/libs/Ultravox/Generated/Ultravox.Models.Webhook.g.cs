@@ -16,6 +16,12 @@ namespace Ultravox
         public global::System.Guid WebhookId { get; set; } = default!;
 
         /// <summary>
+        /// If set, this webhook will be limited to calls with this agent.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agentId")]
+        public global::System.Guid? AgentId { get; set; }
+
+        /// <summary>
         /// Included only in responses
         /// </summary>
         /// <default>default!</default>
@@ -76,6 +82,9 @@ namespace Ultravox
         /// <param name="webhookId">
         /// Included only in responses
         /// </param>
+        /// <param name="agentId">
+        /// If set, this webhook will be limited to calls with this agent.
+        /// </param>
         /// <param name="created">
         /// Included only in responses
         /// </param>
@@ -98,6 +107,7 @@ namespace Ultravox
         public Webhook(
             string url,
             global::System.Collections.Generic.IList<global::Ultravox.EventsEnum> events,
+            global::System.Guid? agentId,
             global::System.Collections.Generic.IList<string>? secrets,
             global::System.DateTime? lastStatusChange,
             global::System.Guid webhookId = default!,
@@ -108,6 +118,7 @@ namespace Ultravox
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
             this.Events = events ?? throw new global::System.ArgumentNullException(nameof(events));
             this.WebhookId = webhookId;
+            this.AgentId = agentId;
             this.Created = created;
             this.Secrets = secrets;
             this.Status = status;

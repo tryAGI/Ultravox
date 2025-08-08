@@ -7,11 +7,13 @@ namespace Ultravox
     {
         partial void PrepareWebhooksListArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref global::System.Guid? agentId,
             ref string? cursor,
             ref int? pageSize);
         partial void PrepareWebhooksListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::System.Guid? agentId,
             string? cursor,
             int? pageSize);
         partial void ProcessWebhooksListResponse(
@@ -26,11 +28,13 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="agentId"></param>
         /// <param name="cursor"></param>
         /// <param name="pageSize"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedWebhookList> WebhooksListAsync(
+            global::System.Guid? agentId = default,
             string? cursor = default,
             int? pageSize = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -39,6 +43,7 @@ namespace Ultravox
                 client: HttpClient);
             PrepareWebhooksListArguments(
                 httpClient: HttpClient,
+                agentId: ref agentId,
                 cursor: ref cursor,
                 pageSize: ref pageSize);
 
@@ -46,6 +51,7 @@ namespace Ultravox
                 path: "/api/webhooks",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
+                .AddOptionalParameter("agentId", agentId?.ToString()) 
                 .AddOptionalParameter("cursor", cursor) 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 ; 
@@ -80,6 +86,7 @@ namespace Ultravox
             PrepareWebhooksListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
+                agentId: agentId,
                 cursor: cursor,
                 pageSize: pageSize);
 

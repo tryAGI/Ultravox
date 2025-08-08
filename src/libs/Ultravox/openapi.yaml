@@ -2020,6 +2020,13 @@ paths:
         - webhooks
       operationId: webhooks_list
       parameters:
+        - name: agentId
+          in: query
+          description: Filter webhooks by agent ID.
+          schema:
+            type: string
+            format: uuid
+            nullable: true
         - name: cursor
           in: query
           description: The pagination cursor value.
@@ -3346,6 +3353,11 @@ components:
           type: string
           format: uuid
           readOnly: true
+        agentId:
+          type: string
+          description: 'If set, this webhook will be limited to calls with this agent.'
+          format: uuid
+          nullable: true
         created:
           type: string
           format: date-time
@@ -3501,6 +3513,11 @@ components:
           type: string
           format: uuid
           readOnly: true
+        agentId:
+          type: string
+          description: 'If set, this webhook will be limited to calls with this agent.'
+          format: uuid
+          nullable: true
         created:
           type: string
           format: date-time
