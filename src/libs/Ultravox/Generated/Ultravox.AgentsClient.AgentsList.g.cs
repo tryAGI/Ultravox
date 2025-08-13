@@ -8,12 +8,14 @@ namespace Ultravox
         partial void PrepareAgentsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
-            ref int? pageSize);
+            ref int? pageSize,
+            ref string? search);
         partial void PrepareAgentsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
-            int? pageSize);
+            int? pageSize,
+            string? search);
         partial void ProcessAgentsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,11 +30,13 @@ namespace Ultravox
         /// </summary>
         /// <param name="cursor"></param>
         /// <param name="pageSize"></param>
+        /// <param name="search"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedAgentList> AgentsListAsync(
             string? cursor = default,
             int? pageSize = default,
+            string? search = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -40,7 +44,8 @@ namespace Ultravox
             PrepareAgentsListArguments(
                 httpClient: HttpClient,
                 cursor: ref cursor,
-                pageSize: ref pageSize);
+                pageSize: ref pageSize,
+                search: ref search);
 
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/agents",
@@ -48,6 +53,7 @@ namespace Ultravox
             __pathBuilder 
                 .AddOptionalParameter("cursor", cursor) 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+                .AddOptionalParameter("search", search) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -81,7 +87,8 @@ namespace Ultravox
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 cursor: cursor,
-                pageSize: pageSize);
+                pageSize: pageSize,
+                search: search);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
