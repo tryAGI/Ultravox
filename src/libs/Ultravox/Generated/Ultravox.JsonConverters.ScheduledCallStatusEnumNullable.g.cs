@@ -3,10 +3,10 @@
 namespace Ultravox.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class StatusEnumNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Ultravox.StatusEnum?>
+    public sealed class ScheduledCallStatusEnumNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Ultravox.ScheduledCallStatusEnum?>
     {
         /// <inheritdoc />
-        public override global::Ultravox.StatusEnum? Read(
+        public override global::Ultravox.ScheduledCallStatusEnum? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Ultravox.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Ultravox.StatusEnumExtensions.ToEnum(stringValue);
+                        return global::Ultravox.ScheduledCallStatusEnumExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace Ultravox.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Ultravox.StatusEnum)numValue;
+                    return (global::Ultravox.ScheduledCallStatusEnum)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Ultravox.StatusEnum?);
+                    return default(global::Ultravox.ScheduledCallStatusEnum?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace Ultravox.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Ultravox.StatusEnum? value,
+            global::Ultravox.ScheduledCallStatusEnum? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace Ultravox.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::Ultravox.StatusEnumExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::Ultravox.ScheduledCallStatusEnumExtensions.ToValueString(value.Value));
             }
         }
     }
