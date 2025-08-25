@@ -48,8 +48,8 @@ namespace Ultravox
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.StatusEnumJsonConverter))]
-        public global::Ultravox.StatusEnum? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.WebhookStatusEnumJsonConverter))]
+        public global::Ultravox.WebhookStatusEnum? Status { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -105,7 +105,7 @@ namespace Ultravox
             string? url,
             global::System.Collections.Generic.IList<string>? secrets,
             global::System.Collections.Generic.IList<global::Ultravox.EventsEnum>? events,
-            global::Ultravox.StatusEnum? status,
+            global::Ultravox.WebhookStatusEnum? status,
             global::System.DateTime? lastStatusChange,
             global::System.Collections.Generic.IList<global::Ultravox.WebhookFailure>? recentFailures)
         {

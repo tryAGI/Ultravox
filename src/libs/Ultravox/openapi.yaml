@@ -365,6 +365,230 @@ paths:
                 $ref: '#/components/schemas/Call'
       security:
         - apiKeyAuth: [ ]
+  '/api/agents/{agent_id}/scheduled_batches':
+    get:
+      tags:
+        - agents
+      operationId: agents_scheduled_batches_list
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedScheduledCallBatchList'
+      security:
+        - apiKeyAuth: [ ]
+    post:
+      tags:
+        - agents
+      operationId: agents_scheduled_batches_create
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduledCallBatch'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledCallBatch'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/agents/{agent_id}/scheduled_batches/{batch_id}':
+    get:
+      tags:
+        - agents
+      operationId: agents_scheduled_batches_retrieve
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: batch_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledCallBatch'
+      security:
+        - apiKeyAuth: [ ]
+    patch:
+      tags:
+        - agents
+      operationId: agents_scheduled_batches_partial_update
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: batch_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedScheduledCallBatch'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledCallBatch'
+      security:
+        - apiKeyAuth: [ ]
+    delete:
+      tags:
+        - agents
+      operationId: agents_scheduled_batches_destroy
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: batch_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: No response body
+      security:
+        - apiKeyAuth: [ ]
+  '/api/agents/{agent_id}/scheduled_batches/{batch_id}/created_calls':
+    get:
+      tags:
+        - agents
+      operationId: agents_scheduled_batches_created_calls_list
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: batch_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCallList'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/agents/{agent_id}/scheduled_batches/{batch_id}/scheduled_calls':
+    get:
+      tags:
+        - agents
+      description: List scheduled calls within a batch.
+      operationId: agents_scheduled_batches_scheduled_calls_list
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: batch_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+        - name: status
+          in: query
+          description: "* `FUTURE` - FUTURE\n* `PENDING` - PENDING\n* `SUCCESS` - SUCCESS\n* `EXPIRED` - EXPIRED\n* `ERROR` - ERROR"
+          schema:
+            minLength: 1
+            enum:
+              - FUTURE
+              - PENDING
+              - SUCCESS
+              - EXPIRED
+              - ERROR
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedScheduledCallList'
+      security:
+        - apiKeyAuth: [ ]
   /api/api_keys:
     get:
       tags:
@@ -3074,6 +3298,50 @@ components:
         total:
           type: integer
           example: 123
+    PaginatedScheduledCallBatchList:
+      required:
+        - results
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScheduledCallBatch'
+        total:
+          type: integer
+          example: 123
+    PaginatedScheduledCallList:
+      required:
+        - results
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScheduledCall'
+        total:
+          type: integer
+          example: 123
     PaginatedToolHistoryList:
       required:
         - results
@@ -3303,6 +3571,59 @@ components:
               type: integer
           description: Statistics about the agent's usage
           readOnly: true
+    PatchedScheduledCallBatch:
+      type: object
+      properties:
+        batchId:
+          type: string
+          format: uuid
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        windowStart:
+          type: string
+          description: The start of the time window during which calls can be made.
+          format: date-time
+          nullable: true
+        windowEnd:
+          type: string
+          description: The end of the time window during which calls can be made.
+          format: date-time
+          nullable: true
+        webhookUrl:
+          maxLength: 200
+          type: string
+          description: 'The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing sip medium. Required if any call has a medium other than outgoing sip.'
+          format: uri
+          nullable: true
+        webhookSecret:
+          maxLength: 120
+          type: string
+          description: 'The signing secret for requests made to the webhookUrl. This is used to verify that the request came from Ultravox. If unset, an appropriate secret will be chosen for you (but you''ll still need to make your endpoint aware of it to verify requests).'
+          nullable: true
+        paused:
+          type: boolean
+        totalCount:
+          type: integer
+          description: The total number of calls in this batch.
+          readOnly: true
+        completedCount:
+          type: integer
+          description: The number of calls in this batch that have been completed (created or error).
+          readOnly: true
+        endedAt:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+        calls:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ScheduledCall'
+          writeOnly: true
     PatchedSetTtsApiKeysRequest:
       type: object
       properties:
@@ -3383,7 +3704,7 @@ components:
             $ref: '#/components/schemas/EventsEnum'
         status:
           allOf:
-            - $ref: '#/components/schemas/StatusEnum'
+            - $ref: '#/components/schemas/WebhookStatusEnum'
           readOnly: true
         lastStatusChange:
           type: string
@@ -3396,6 +3717,111 @@ components:
             $ref: '#/components/schemas/WebhookFailure'
           description: 'A list of recent failures for this webhook, if any.'
           readOnly: true
+    ScheduledCall:
+      required:
+        - batchId
+        - callId
+        - error
+        - status
+      type: object
+      properties:
+        status:
+          allOf:
+            - $ref: '#/components/schemas/ScheduledCallStatusEnum'
+          readOnly: true
+        batchId:
+          type: string
+          format: uuid
+          readOnly: true
+        callId:
+          type: string
+          format: uuid
+          nullable: true
+          readOnly: true
+        error:
+          type: string
+          nullable: true
+          readOnly: true
+        medium:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallMedium'
+          description: 'The call medium to use for the call. In particular, allows for specifying per-call recipients for outgoing SIP media.'
+          nullable: true
+        metadata:
+          nullable: true
+        templateContext:
+          description: The context used to render the agent's template.
+          nullable: true
+        experimentalSettings:
+          nullable: true
+    ScheduledCallBatch:
+      required:
+        - batchId
+        - calls
+        - completedCount
+        - created
+        - endedAt
+        - totalCount
+      type: object
+      properties:
+        batchId:
+          type: string
+          format: uuid
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        windowStart:
+          type: string
+          description: The start of the time window during which calls can be made.
+          format: date-time
+          nullable: true
+        windowEnd:
+          type: string
+          description: The end of the time window during which calls can be made.
+          format: date-time
+          nullable: true
+        webhookUrl:
+          maxLength: 200
+          type: string
+          description: 'The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing sip medium. Required if any call has a medium other than outgoing sip.'
+          format: uri
+          nullable: true
+        webhookSecret:
+          maxLength: 120
+          type: string
+          description: 'The signing secret for requests made to the webhookUrl. This is used to verify that the request came from Ultravox. If unset, an appropriate secret will be chosen for you (but you''ll still need to make your endpoint aware of it to verify requests).'
+          nullable: true
+        paused:
+          type: boolean
+        totalCount:
+          type: integer
+          description: The total number of calls in this batch.
+          readOnly: true
+        completedCount:
+          type: integer
+          description: The number of calls in this batch that have been completed (created or error).
+          readOnly: true
+        endedAt:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+        calls:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/ScheduledCall'
+          writeOnly: true
+    ScheduledCallStatusEnum:
+      enum:
+        - FUTURE
+        - PENDING
+        - SUCCESS
+        - EXPIRED
+        - ERROR
+      type: string
     SeverityEnum:
       enum:
         - debug
@@ -3403,12 +3829,6 @@ components:
         - warning
         - error
       type: string
-    StatusEnum:
-      enum:
-        - normal
-        - unhealthy
-      type: string
-      description: "* `normal` - NORMAL\n* `unhealthy` - UNHEALTHY"
     Tool:
       required:
         - created
@@ -3543,7 +3963,7 @@ components:
             $ref: '#/components/schemas/EventsEnum'
         status:
           allOf:
-            - $ref: '#/components/schemas/StatusEnum'
+            - $ref: '#/components/schemas/WebhookStatusEnum'
           readOnly: true
         lastStatusChange:
           type: string
@@ -3567,6 +3987,12 @@ components:
           format: date-time
         failure:
           type: string
+    WebhookStatusEnum:
+      enum:
+        - normal
+        - unhealthy
+      type: string
+      description: "* `normal` - NORMAL\n* `unhealthy` - UNHEALTHY"
     ultravox.v1.CallTemplate:
       type: object
       properties:

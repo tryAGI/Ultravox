@@ -7,7 +7,7 @@ namespace Ultravox
     /// * `normal` - NORMAL<br/>
     /// * `unhealthy` - UNHEALTHY
     /// </summary>
-    public enum StatusEnum
+    public enum WebhookStatusEnum
     {
         /// <summary>
         /// 
@@ -22,29 +22,29 @@ namespace Ultravox
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class StatusEnumExtensions
+    public static class WebhookStatusEnumExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this StatusEnum value)
+        public static string ToValueString(this WebhookStatusEnum value)
         {
             return value switch
             {
-                StatusEnum.Normal => "normal",
-                StatusEnum.Unhealthy => "unhealthy",
+                WebhookStatusEnum.Normal => "normal",
+                WebhookStatusEnum.Unhealthy => "unhealthy",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static StatusEnum? ToEnum(string value)
+        public static WebhookStatusEnum? ToEnum(string value)
         {
             return value switch
             {
-                "normal" => StatusEnum.Normal,
-                "unhealthy" => StatusEnum.Unhealthy,
+                "normal" => WebhookStatusEnum.Normal,
+                "unhealthy" => WebhookStatusEnum.Unhealthy,
                 _ => null,
             };
         }
