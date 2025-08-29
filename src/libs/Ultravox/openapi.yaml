@@ -109,6 +109,38 @@ paths:
                 $ref: '#/components/schemas/UsageResponse'
       security:
         - apiKeyAuth: [ ]
+  /api/accounts/me/telephony_api_keys:
+    get:
+      tags:
+        - accounts
+      operationId: accounts_me_telephony_api_keys_retrieve
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountTelephonyKeys'
+      security:
+        - apiKeyAuth: [ ]
+    patch:
+      tags:
+        - accounts
+      operationId: accounts_me_telephony_api_keys_partial_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSetTelephonyApiKeysRequest'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountTelephonyKeys'
+      security:
+        - apiKeyAuth: [ ]
   /api/accounts/me/tts_api_keys:
     get:
       tags:
@@ -2557,6 +2589,13 @@ components:
           format: email
           nullable: true
           readOnly: true
+    AccountTelephonyKeys:
+      type: object
+      properties:
+        telnyx:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The Telnyx API key.
     AccountTtsKeys:
       type: object
       properties:
@@ -3624,6 +3663,13 @@ components:
           items:
             $ref: '#/components/schemas/ScheduledCall'
           writeOnly: true
+    PatchedSetTelephonyApiKeysRequest:
+      type: object
+      properties:
+        telnyx:
+          type: string
+          description: "Your Telnyx API key.\nhttps://portal.telnyx.com/#/api-keys"
+          nullable: true
     PatchedSetTtsApiKeysRequest:
       type: object
       properties:
