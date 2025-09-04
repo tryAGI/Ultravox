@@ -397,6 +397,121 @@ paths:
                 $ref: '#/components/schemas/Call'
       security:
         - apiKeyAuth: [ ]
+  '/api/agents/{agent_id}/revisions':
+    get:
+      tags:
+        - agents
+      operationId: agents_revisions_list
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAgentRevisionList'
+      security:
+        - apiKeyAuth: [ ]
+    post:
+      tags:
+        - agents
+      operationId: agents_revisions_create
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentRevision'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentRevision'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/agents/{agent_id}/revisions/{revision_id}':
+    get:
+      tags:
+        - agents
+      summary: Get agent revision details.
+      description: Retrieve detailed information about a specific agent revision.
+      operationId: agents_revisions_retrieve
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: revision_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentRevision'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/agents/{agent_id}/revisions/{revision_id}/publish':
+    post:
+      tags:
+        - agents
+      summary: Publish an agent revision.
+      description: 'Sets a specific agent revision as the published version, which will be used for all subsequent calls to this agent.'
+      operationId: agents_revisions_publish_create
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: revision_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+      security:
+        - apiKeyAuth: [ ]
   '/api/agents/{agent_id}/scheduled_batches':
     get:
       tags:
@@ -2615,12 +2730,18 @@ components:
       required:
         - agentId
         - created
+        - publishedRevisionId
         - statistics
       type: object
       properties:
         agentId:
           type: string
           format: uuid
+          readOnly: true
+        publishedRevisionId:
+          type: string
+          format: uuid
+          nullable: true
           readOnly: true
         name:
           maxLength: 64
@@ -2640,6 +2761,27 @@ components:
               type: integer
           description: Statistics about the agent's usage
           readOnly: true
+    AgentRevision:
+      required:
+        - callTemplate
+        - created
+        - isPublished
+        - revisionId
+      type: object
+      properties:
+        revisionId:
+          type: string
+          format: uuid
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        isPublished:
+          type: boolean
+          readOnly: true
+        callTemplate:
+          $ref: '#/components/schemas/ultravox.v1.CallTemplate'
     BillingReasonEnum:
       enum:
         - manual
@@ -3206,6 +3348,28 @@ components:
         total:
           type: integer
           example: 123
+    PaginatedAgentRevisionList:
+      required:
+        - results
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentRevision'
+        total:
+          type: integer
+          example: 123
     PaginatedCallEventList:
       required:
         - results
@@ -3591,6 +3755,11 @@ components:
         agentId:
           type: string
           format: uuid
+          readOnly: true
+        publishedRevisionId:
+          type: string
+          format: uuid
+          nullable: true
           readOnly: true
         name:
           maxLength: 64

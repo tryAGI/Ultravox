@@ -16,6 +16,12 @@ namespace Ultravox
         public global::System.Guid AgentId { get; set; } = default!;
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("publishedRevisionId")]
+        public global::System.Guid? PublishedRevisionId { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -54,6 +60,9 @@ namespace Ultravox
         /// <param name="agentId">
         /// Included only in responses
         /// </param>
+        /// <param name="publishedRevisionId">
+        /// Included only in responses
+        /// </param>
         /// <param name="name"></param>
         /// <param name="created">
         /// Included only in responses
@@ -67,6 +76,7 @@ namespace Ultravox
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Agent(
+            global::System.Guid? publishedRevisionId,
             string? name,
             global::Ultravox.UltravoxV1CallTemplate? callTemplate,
             global::System.Guid agentId = default!,
@@ -74,6 +84,7 @@ namespace Ultravox
             global::Ultravox.AgentStatistics statistics = default!)
         {
             this.AgentId = agentId;
+            this.PublishedRevisionId = publishedRevisionId;
             this.Name = name;
             this.Created = created;
             this.CallTemplate = callTemplate;
