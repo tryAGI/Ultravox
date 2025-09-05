@@ -30,6 +30,13 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1LmntVoice? Lmnt { get; set; }
 
         /// <summary>
+        /// A voice served by Google, using bidirectional streaming.<br/>
+        ///  (For non-streaming or output-only streaming, use generic.)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("google")]
+        public global::Ultravox.UltravoxV1GoogleVoice? Google { get; set; }
+
+        /// <summary>
         /// A voice served by a generic REST-based TTS API.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generic")]
@@ -53,6 +60,10 @@ namespace Ultravox
         /// <param name="lmnt">
         /// A voice served by LMNT.
         /// </param>
+        /// <param name="google">
+        /// A voice served by Google, using bidirectional streaming.<br/>
+        ///  (For non-streaming or output-only streaming, use generic.)
+        /// </param>
         /// <param name="generic">
         /// A voice served by a generic REST-based TTS API.
         /// </param>
@@ -63,11 +74,13 @@ namespace Ultravox
             global::Ultravox.UltravoxV1ElevenLabsVoice? elevenLabs,
             global::Ultravox.UltravoxV1CartesiaVoice? cartesia,
             global::Ultravox.UltravoxV1LmntVoice? lmnt,
+            global::Ultravox.UltravoxV1GoogleVoice? google,
             global::Ultravox.UltravoxV1GenericVoice? generic)
         {
             this.ElevenLabs = elevenLabs;
             this.Cartesia = cartesia;
             this.Lmnt = lmnt;
+            this.Google = google;
             this.Generic = generic;
         }
 

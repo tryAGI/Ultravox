@@ -30,6 +30,14 @@ namespace Ultravox
         public string? Lmnt { get; set; }
 
         /// <summary>
+        /// A service account JSON key for your Google Cloud project with the Text-to-Speech API enabled.<br/>
+        /// https://cloud.google.com/text-to-speech/docs/quickstart-client-libraries#before-you-begin<br/>
+        /// https://cloud.google.com/iam/docs/keys-create-delete#creating
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("google")]
+        public string? Google { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -50,17 +58,24 @@ namespace Ultravox
         /// Your LMNT API key.<br/>
         /// https://app.lmnt.com/account#api-keys
         /// </param>
+        /// <param name="google">
+        /// A service account JSON key for your Google Cloud project with the Text-to-Speech API enabled.<br/>
+        /// https://cloud.google.com/text-to-speech/docs/quickstart-client-libraries#before-you-begin<br/>
+        /// https://cloud.google.com/iam/docs/keys-create-delete#creating
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PatchedSetTtsApiKeysRequest(
             string? elevenLabs,
             string? cartesia,
-            string? lmnt)
+            string? lmnt,
+            string? google)
         {
             this.ElevenLabs = elevenLabs;
             this.Cartesia = cartesia;
             this.Lmnt = lmnt;
+            this.Google = google;
         }
 
         /// <summary>
