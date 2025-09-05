@@ -180,12 +180,18 @@ namespace Ultravox
         /// Your LMNT API key.<br/>
         /// https://app.lmnt.com/account#api-keys
         /// </param>
+        /// <param name="google">
+        /// A service account JSON key for your Google Cloud project with the Text-to-Speech API enabled.<br/>
+        /// https://cloud.google.com/text-to-speech/docs/quickstart-client-libraries#before-you-begin<br/>
+        /// https://cloud.google.com/iam/docs/keys-create-delete#creating
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.AccountTtsKeys> AccountsMeTtsApiKeysPartialUpdateAsync(
             string? elevenLabs = default,
             string? cartesia = default,
             string? lmnt = default,
+            string? google = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.PatchedSetTtsApiKeysRequest
@@ -193,6 +199,7 @@ namespace Ultravox
                 ElevenLabs = elevenLabs,
                 Cartesia = cartesia,
                 Lmnt = lmnt,
+                Google = google,
             };
 
             return await AccountsMeTtsApiKeysPartialUpdateAsync(

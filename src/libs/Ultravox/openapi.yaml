@@ -2611,6 +2611,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/KeyPrefix'
           description: The LMNT API key.
+        google:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The Google service account key.
     Agent:
       required:
         - agentId
@@ -3696,6 +3700,10 @@ components:
           type: string
           description: "Your LMNT API key.\nhttps://app.lmnt.com/account#api-keys"
           nullable: true
+        google:
+          type: string
+          description: "A service account JSON key for your Google Cloud project with the Text-to-Speech API enabled.\nhttps://cloud.google.com/text-to-speech/docs/quickstart-client-libraries#before-you-begin\nhttps://cloud.google.com/iam/docs/keys-create-delete#creating"
+          nullable: true
     PatchedVoice:
       type: object
       properties:
@@ -4754,6 +4762,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.LmntVoice'
           description: A voice served by LMNT.
+        google:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.GoogleVoice'
+          description: "A voice served by Google, using bidirectional streaming.\n (For non-streaming or output-only streaming, use generic.)"
         generic:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.GenericVoice'
@@ -4839,6 +4851,17 @@ components:
           type: string
           description: "For JSON responses, the path to the field containing base64-encoded audio data. The data must\n be PCM audio, optionally with a WAV header."
       description: "Specification for a voice served by some generic REST-based TTS API. The API must\n accept an application/json POST request (as defined below) and return either WAV\n audio, raw PCM audio, or application/json with a base64 encoded audio data field\n that itself corresponds to WAV or raw PCM audio.\n Note that this simple API implies a lack of either input streaming or audio timing\n information, so more specific voice types are preferable when available."
+    ultravox.v1.GoogleVoice:
+      type: object
+      properties:
+        voiceId:
+          type: string
+          description: 'The ID (name) of the voice in Google, e.g. "en-US-Chirp3-HD-Charon".'
+        speakingRate:
+          type: number
+          description: "The speaking rate. Must be between 0.25 and 2. Defaults to 1.\n See https://cloud.google.com/python/docs/reference/texttospeech/latest/google.cloud.texttospeech_v1.types.StreamingAudioConfig"
+          format: float
+      description: "Specification for a voice served by Google.\n This implementation uses bidirectional streaming, so voices prior to Chirp3 are not supported."
     ultravox.v1.HeaderApiKeyRequirement:
       type: object
       properties:
