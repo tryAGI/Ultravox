@@ -2935,6 +2935,7 @@ components:
           description: The initial state of the call stage which is readable/writable by tools.
     CallStatistics:
       required:
+        - billedMinutes
         - duration
         - joinedCount
         - totalCount
@@ -2949,6 +2950,10 @@ components:
         joinedCount:
           type: integer
           description: Number of calls that were joined
+        billedMinutes:
+          type: number
+          description: Total billed minutes.
+          format: double
     CallTombstone:
       required:
         - accountId
@@ -3063,6 +3068,7 @@ components:
           format: uri
     DailyCallStatistics:
       required:
+        - billedMinutes
         - date
         - duration
         - joinedCount
@@ -3078,6 +3084,10 @@ components:
         joinedCount:
           type: integer
           description: Number of calls that were joined
+        billedMinutes:
+          type: number
+          description: Total billed minutes.
+          format: double
         date:
           type: string
           description: Date of usage
