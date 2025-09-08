@@ -30,6 +30,13 @@ namespace Ultravox
         public required int JoinedCount { get; set; }
 
         /// <summary>
+        /// Total billed minutes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("billedMinutes")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required double BilledMinutes { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,17 +54,22 @@ namespace Ultravox
         /// <param name="joinedCount">
         /// Number of calls that were joined
         /// </param>
+        /// <param name="billedMinutes">
+        /// Total billed minutes.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CallStatistics(
             int totalCount,
             string duration,
-            int joinedCount)
+            int joinedCount,
+            double billedMinutes)
         {
             this.TotalCount = totalCount;
             this.Duration = duration ?? throw new global::System.ArgumentNullException(nameof(duration));
             this.JoinedCount = joinedCount;
+            this.BilledMinutes = billedMinutes;
         }
 
         /// <summary>
