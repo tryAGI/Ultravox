@@ -207,6 +207,13 @@ namespace Ultravox
         public string? Summary { get; set; }
 
         /// <summary>
+        /// The ID of the agent used for this call.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agentId")]
+        public string? AgentId { get; set; }
+
+        /// <summary>
         /// Experimental settings for the call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("experimentalSettings")]
@@ -335,6 +342,10 @@ namespace Ultravox
         /// A summary of the call.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="agentId">
+        /// The ID of the agent used for this call.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="experimentalSettings">
         /// Experimental settings for the call.
         /// </param>
@@ -378,6 +389,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1VadSettings? vadSettings,
             string? shortSummary,
             string? summary,
+            string? agentId,
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnectionConfig,
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
@@ -414,6 +426,7 @@ namespace Ultravox
             this.VadSettings = vadSettings;
             this.ShortSummary = shortSummary;
             this.Summary = summary;
+            this.AgentId = agentId;
             this.DataConnectionConfig = dataConnectionConfig;
         }
 

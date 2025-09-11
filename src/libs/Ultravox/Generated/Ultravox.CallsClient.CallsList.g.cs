@@ -7,6 +7,7 @@ namespace Ultravox
     {
         partial void PrepareCallsListArguments(
             global::System.Net.Http.HttpClient httpClient,
+            global::System.Collections.Generic.IList<global::System.Guid>? agentIds,
             ref string? cursor,
             ref string? durationMax,
             ref string? durationMin,
@@ -20,6 +21,7 @@ namespace Ultravox
         partial void PrepareCallsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::System.Collections.Generic.IList<global::System.Guid>? agentIds,
             string? cursor,
             string? durationMax,
             string? durationMin,
@@ -42,6 +44,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="agentIds"></param>
         /// <param name="cursor"></param>
         /// <param name="durationMax"></param>
         /// <param name="durationMin"></param>
@@ -55,6 +58,7 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedCallList> CallsListAsync(
+            global::System.Collections.Generic.IList<global::System.Guid>? agentIds = default,
             string? cursor = default,
             string? durationMax = default,
             string? durationMin = default,
@@ -71,6 +75,7 @@ namespace Ultravox
                 client: HttpClient);
             PrepareCallsListArguments(
                 httpClient: HttpClient,
+                agentIds: agentIds,
                 cursor: ref cursor,
                 durationMax: ref durationMax,
                 durationMin: ref durationMin,
@@ -86,6 +91,7 @@ namespace Ultravox
                 path: "/api/calls",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
+                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString(), delimiter: ",", explode: true) 
                 .AddOptionalParameter("cursor", cursor) 
                 .AddOptionalParameter("durationMax", durationMax) 
                 .AddOptionalParameter("durationMin", durationMin) 
@@ -128,6 +134,7 @@ namespace Ultravox
             PrepareCallsListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
+                agentIds: agentIds,
                 cursor: cursor,
                 durationMax: durationMax,
                 durationMin: durationMin,
