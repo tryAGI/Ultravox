@@ -7,6 +7,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="agentIds"></param>
         /// <param name="cursor"></param>
         /// <param name="durationMax"></param>
         /// <param name="durationMin"></param>
@@ -20,6 +21,7 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.PaginatedCallList> CallsListAsync(
+            global::System.Collections.Generic.IList<global::System.Guid>? agentIds = default,
             string? cursor = default,
             string? durationMax = default,
             string? durationMin = default,

@@ -7,6 +7,7 @@ namespace Ultravox
     {
         partial void PrepareAccountsMeUsageCallsRetrieveArguments(
             global::System.Net.Http.HttpClient httpClient,
+            global::System.Collections.Generic.IList<global::System.Guid>? agentIds,
             ref string? durationMax,
             ref string? durationMin,
             ref global::System.DateTime? fromDate,
@@ -17,6 +18,7 @@ namespace Ultravox
         partial void PrepareAccountsMeUsageCallsRetrieveRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::System.Collections.Generic.IList<global::System.Guid>? agentIds,
             string? durationMax,
             string? durationMin,
             global::System.DateTime? fromDate,
@@ -36,6 +38,7 @@ namespace Ultravox
         /// <summary>
         /// Gets aggregated call usage.
         /// </summary>
+        /// <param name="agentIds"></param>
         /// <param name="durationMax"></param>
         /// <param name="durationMin"></param>
         /// <param name="fromDate"></param>
@@ -46,6 +49,7 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.CallUsage> AccountsMeUsageCallsRetrieveAsync(
+            global::System.Collections.Generic.IList<global::System.Guid>? agentIds = default,
             string? durationMax = default,
             string? durationMin = default,
             global::System.DateTime? fromDate = default,
@@ -59,6 +63,7 @@ namespace Ultravox
                 client: HttpClient);
             PrepareAccountsMeUsageCallsRetrieveArguments(
                 httpClient: HttpClient,
+                agentIds: agentIds,
                 durationMax: ref durationMax,
                 durationMin: ref durationMin,
                 fromDate: ref fromDate,
@@ -71,6 +76,7 @@ namespace Ultravox
                 path: "/api/accounts/me/usage/calls",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
+                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString(), delimiter: ",", explode: true) 
                 .AddOptionalParameter("durationMax", durationMax) 
                 .AddOptionalParameter("durationMin", durationMin) 
                 .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-dd")) 
@@ -110,6 +116,7 @@ namespace Ultravox
             PrepareAccountsMeUsageCallsRetrieveRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
+                agentIds: agentIds,
                 durationMax: durationMax,
                 durationMin: durationMin,
                 fromDate: fromDate,

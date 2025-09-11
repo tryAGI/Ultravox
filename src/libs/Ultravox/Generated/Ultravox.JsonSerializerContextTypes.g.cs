@@ -754,42 +754,46 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.AgentsScheduledBatchesScheduledCallsListStatus? Type182 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Guid>? Type182 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.CallsEventsListMinimumSeverity? Type183 { get; set; }
+        public global::Ultravox.AgentsScheduledBatchesScheduledCallsListStatus? Type183 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.CallsMessagesListMode? Type184 { get; set; }
+        public global::Ultravox.CallsEventsListMinimumSeverity? Type184 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveFormat? Type185 { get; set; }
+        public global::Ultravox.CallsMessagesListMode? Type185 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.SchemaRetrieveLang? Type186 { get; set; }
+        public global::Ultravox.SchemaRetrieveFormat? Type186 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.VoicesListBillingStyle? Type187 { get; set; }
+        public global::Ultravox.SchemaRetrieveLang? Type187 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.VoicesListOwnership? Type188 { get; set; }
+        public global::Ultravox.VoicesListBillingStyle? Type188 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type189 { get; set; }
+        public global::Ultravox.VoicesListOwnership? Type189 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type190 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type190 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type191 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type191 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type192 { get; set; }
     }
 }
