@@ -16,6 +16,12 @@ namespace Ultravox
         public int? Calls { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("totalBilledMinutes")]
+        public int? TotalBilledMinutes { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -25,13 +31,16 @@ namespace Ultravox
         /// Initializes a new instance of the <see cref="AgentStatistics" /> class.
         /// </summary>
         /// <param name="calls"></param>
+        /// <param name="totalBilledMinutes"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentStatistics(
-            int? calls)
+            int? calls,
+            int? totalBilledMinutes)
         {
             this.Calls = calls;
+            this.TotalBilledMinutes = totalBilledMinutes;
         }
 
         /// <summary>

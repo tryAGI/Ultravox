@@ -12,6 +12,7 @@ namespace Ultravox
             ref global::Ultravox.VoicesListOwnership? ownership,
             ref int? pageSize,
             ref string? primaryLanguage,
+            ref global::Ultravox.VoicesListProvider? provider,
             ref string? search);
         partial void PrepareVoicesListRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -21,6 +22,7 @@ namespace Ultravox
             global::Ultravox.VoicesListOwnership? ownership,
             int? pageSize,
             string? primaryLanguage,
+            global::Ultravox.VoicesListProvider? provider,
             string? search);
         partial void ProcessVoicesListResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -39,6 +41,7 @@ namespace Ultravox
         /// <param name="ownership"></param>
         /// <param name="pageSize"></param>
         /// <param name="primaryLanguage"></param>
+        /// <param name="provider"></param>
         /// <param name="search"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
@@ -48,6 +51,7 @@ namespace Ultravox
             global::Ultravox.VoicesListOwnership? ownership = default,
             int? pageSize = default,
             string? primaryLanguage = default,
+            global::Ultravox.VoicesListProvider? provider = default,
             string? search = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -60,6 +64,7 @@ namespace Ultravox
                 ownership: ref ownership,
                 pageSize: ref pageSize,
                 primaryLanguage: ref primaryLanguage,
+                provider: ref provider,
                 search: ref search);
 
             var __pathBuilder = new global::Ultravox.PathBuilder(
@@ -71,6 +76,7 @@ namespace Ultravox
                 .AddOptionalParameter("ownership", ownership?.ToValueString()) 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 .AddOptionalParameter("primaryLanguage", primaryLanguage) 
+                .AddOptionalParameter("provider", provider?.ToValueString()) 
                 .AddOptionalParameter("search", search) 
                 ; 
             var __path = __pathBuilder.ToString();
@@ -109,6 +115,7 @@ namespace Ultravox
                 ownership: ownership,
                 pageSize: pageSize,
                 primaryLanguage: primaryLanguage,
+                provider: provider,
                 search: search);
 
             using var __response = await HttpClient.SendAsync(

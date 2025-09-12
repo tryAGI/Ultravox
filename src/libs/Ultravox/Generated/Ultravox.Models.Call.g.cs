@@ -207,6 +207,14 @@ namespace Ultravox
         public string? Summary { get; set; }
 
         /// <summary>
+        /// The agent used for this call.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
+        public global::Ultravox.AgentBasic Agent { get; set; } = default!;
+
+        /// <summary>
         /// The ID of the agent used for this call.<br/>
         /// Included only in responses
         /// </summary>
@@ -342,6 +350,10 @@ namespace Ultravox
         /// A summary of the call.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="agent">
+        /// The agent used for this call.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="agentId">
         /// The ID of the agent used for this call.<br/>
         /// Included only in responses
@@ -394,7 +406,8 @@ namespace Ultravox
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
             global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!,
-            int errorCount = default!)
+            int errorCount = default!,
+            global::Ultravox.AgentBasic agent = default!)
         {
             this.FirstSpeakerSettings = firstSpeakerSettings ?? throw new global::System.ArgumentNullException(nameof(firstSpeakerSettings));
             this.ExperimentalSettings = experimentalSettings ?? throw new global::System.ArgumentNullException(nameof(experimentalSettings));
@@ -426,6 +439,7 @@ namespace Ultravox
             this.VadSettings = vadSettings;
             this.ShortSummary = shortSummary;
             this.Summary = summary;
+            this.Agent = agent;
             this.AgentId = agentId;
             this.DataConnectionConfig = dataConnectionConfig;
         }

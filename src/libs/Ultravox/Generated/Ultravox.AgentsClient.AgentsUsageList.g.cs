@@ -5,24 +5,32 @@ namespace Ultravox
 {
     public partial class AgentsClient
     {
-        partial void PrepareAgentsListArguments(
+        partial void PrepareAgentsUsageListArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string? cursor,
-            ref int? pageSize,
+            global::System.Collections.Generic.IList<global::System.Guid>? agentIds,
+            ref string? durationMax,
+            ref string? durationMin,
+            ref global::System.DateTime? fromDate,
+            global::System.Collections.Generic.Dictionary<string, string>? metadata,
             ref string? search,
-            ref string? sort);
-        partial void PrepareAgentsListRequest(
+            ref global::System.DateTime? toDate,
+            ref global::System.Guid? voiceId);
+        partial void PrepareAgentsUsageListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string? cursor,
-            int? pageSize,
+            global::System.Collections.Generic.IList<global::System.Guid>? agentIds,
+            string? durationMax,
+            string? durationMin,
+            global::System.DateTime? fromDate,
+            global::System.Collections.Generic.Dictionary<string, string>? metadata,
             string? search,
-            string? sort);
-        partial void ProcessAgentsListResponse(
+            global::System.DateTime? toDate,
+            global::System.Guid? voiceId);
+        partial void ProcessAgentsUsageListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAgentsListResponseContent(
+        partial void ProcessAgentsUsageListResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
@@ -30,36 +38,52 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="cursor"></param>
-        /// <param name="pageSize"></param>
+        /// <param name="agentIds"></param>
+        /// <param name="durationMax"></param>
+        /// <param name="durationMin"></param>
+        /// <param name="fromDate"></param>
+        /// <param name="metadata"></param>
         /// <param name="search"></param>
-        /// <param name="sort"></param>
+        /// <param name="toDate"></param>
+        /// <param name="voiceId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedAgentList> AgentsListAsync(
-            string? cursor = default,
-            int? pageSize = default,
+        public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>> AgentsUsageListAsync(
+            global::System.Collections.Generic.IList<global::System.Guid>? agentIds = default,
+            string? durationMax = default,
+            string? durationMin = default,
+            global::System.DateTime? fromDate = default,
+            global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
             string? search = default,
-            string? sort = default,
+            global::System.DateTime? toDate = default,
+            global::System.Guid? voiceId = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareAgentsListArguments(
+            PrepareAgentsUsageListArguments(
                 httpClient: HttpClient,
-                cursor: ref cursor,
-                pageSize: ref pageSize,
+                agentIds: agentIds,
+                durationMax: ref durationMax,
+                durationMin: ref durationMin,
+                fromDate: ref fromDate,
+                metadata: metadata,
                 search: ref search,
-                sort: ref sort);
+                toDate: ref toDate,
+                voiceId: ref voiceId);
 
             var __pathBuilder = new global::Ultravox.PathBuilder(
-                path: "/api/agents",
+                path: "/api/agents/usage",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder 
-                .AddOptionalParameter("cursor", cursor) 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString(), delimiter: ",", explode: true) 
+                .AddOptionalParameter("durationMax", durationMax) 
+                .AddOptionalParameter("durationMin", durationMin) 
+                .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-dd")) 
+                .AddOptionalParameter("metadata", metadata?.ToString()) 
                 .AddOptionalParameter("search", search) 
-                .AddOptionalParameter("sort", sort) 
+                .AddOptionalParameter("toDate", toDate?.ToString("yyyy-MM-dd")) 
+                .AddOptionalParameter("voiceId", voiceId?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -89,13 +113,17 @@ namespace Ultravox
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAgentsListRequest(
+            PrepareAgentsUsageListRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
-                cursor: cursor,
-                pageSize: pageSize,
+                agentIds: agentIds,
+                durationMax: durationMax,
+                durationMin: durationMin,
+                fromDate: fromDate,
+                metadata: metadata,
                 search: search,
-                sort: sort);
+                toDate: toDate,
+                voiceId: voiceId);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,
@@ -105,7 +133,7 @@ namespace Ultravox
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAgentsListResponse(
+            ProcessAgentsUsageListResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
 
@@ -121,7 +149,7 @@ namespace Ultravox
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAgentsListResponseContent(
+                ProcessAgentsUsageListResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -131,7 +159,7 @@ namespace Ultravox
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Ultravox.PaginatedAgentList.FromJson(__content, JsonSerializerContext) ??
+                        global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>), JsonSerializerContext) as global::System.Collections.Generic.IList<global::Ultravox.AgentUsage> ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -162,7 +190,7 @@ namespace Ultravox
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Ultravox.PaginatedAgentList.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>), JsonSerializerContext).ConfigureAwait(false) as global::System.Collections.Generic.IList<global::Ultravox.AgentUsage> ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
