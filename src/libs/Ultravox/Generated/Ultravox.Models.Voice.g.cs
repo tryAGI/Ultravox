@@ -61,6 +61,12 @@ namespace Ultravox
         public global::Ultravox.BillingStyleEnum BillingStyle { get; set; } = default!;
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
+        public string? Provider { get; set; }
+
+        /// <summary>
         /// A voice not known to Ultravox Realtime that can nonetheless be used for a call.<br/>
         ///  Such voices are significantly less validated than normal voices and you'll be<br/>
         ///  responsible for your own TTS-related errors.<br/>
@@ -99,6 +105,9 @@ namespace Ultravox
         /// VOICE_BILLING_STYLE_EXTERNAL - This voice requires an API key for its provider, who will bill for usage separately.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="provider">
+        /// Included only in responses
+        /// </param>
         /// <param name="definition">
         /// A voice not known to Ultravox Realtime that can nonetheless be used for a call.<br/>
         ///  Such voices are significantly less validated than normal voices and you'll be<br/>
@@ -113,6 +122,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1ExternalVoice definition,
             string? description,
             string? primaryLanguage,
+            string? provider,
             global::System.Guid voiceId = default!,
             string previewUrl = default!,
             global::Ultravox.OwnershipEnum ownership = default!,
@@ -126,6 +136,7 @@ namespace Ultravox
             this.PreviewUrl = previewUrl;
             this.Ownership = ownership;
             this.BillingStyle = billingStyle;
+            this.Provider = provider;
         }
 
         /// <summary>

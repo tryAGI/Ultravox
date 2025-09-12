@@ -260,6 +260,11 @@ paths:
           schema:
             minLength: 1
             type: string
+        - name: sort
+          in: query
+          description: Which field to use when ordering the results.
+          schema:
+            type: string
       responses:
         '200':
           description: ''
@@ -627,6 +632,72 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaginatedScheduledCallList'
+      security:
+        - apiKeyAuth: [ ]
+  /api/agents/usage:
+    get:
+      tags:
+        - agents
+      operationId: agents_usage_list
+      parameters:
+        - name: agentIds
+          in: query
+          description: Filter calls by the agent IDs.
+          schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+        - name: durationMax
+          in: query
+          description: Maximum duration of calls
+          schema:
+            type: string
+        - name: durationMin
+          in: query
+          description: Minimum duration of calls
+          schema:
+            type: string
+        - name: fromDate
+          in: query
+          description: Start date (inclusive) for filtering calls by creation date
+          schema:
+            type: string
+            format: date
+        - name: metadata
+          in: query
+          description: Filter calls by metadata. Use metadata.key=value to filter by specific key-value pairs.
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+        - name: search
+          in: query
+          description: The search string used to filter results
+          schema:
+            minLength: 1
+            type: string
+        - name: toDate
+          in: query
+          description: End date (inclusive) for filtering calls by creation date
+          schema:
+            type: string
+            format: date
+        - name: voiceId
+          in: query
+          description: Filter calls by the associated voice ID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AgentUsage'
       security:
         - apiKeyAuth: [ ]
   /api/api_keys:
@@ -2122,6 +2193,18 @@ paths:
           schema:
             minLength: 1
             type: string
+        - name: provider
+          in: query
+          description: "The provider used to filter results.\n\n* `lmnt` - LMNT\n* `cartesia` - Cartesia\n* `google` - Google\n* `eleven_labs` - Eleven Labs\n* `inworld` - Inworld"
+          schema:
+            minLength: 1
+            enum:
+              - lmnt
+              - cartesia
+              - google
+              - eleven_labs
+              - inworld
+            type: string
         - name: search
           in: query
           description: The search string used to filter results.
@@ -2672,8 +2755,50 @@ components:
           properties:
             calls:
               type: integer
+            totalBilledMinutes:
+              type: integer
           description: Statistics about the agent's usage
           readOnly: true
+    AgentBasic:
+      required:
+        - agentId
+        - name
+      type: object
+      properties:
+        agentId:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+    AgentDailyUsage:
+      required:
+        - billedMinutes
+        - calls
+        - date
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+        billedMinutes:
+          type: number
+          format: double
+        calls:
+          type: integer
+    AgentUsage:
+      required:
+        - agent
+        - usage
+      type: object
+      properties:
+        agent:
+          $ref: '#/components/schemas/_AgentUsageAgent'
+        usage:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentDailyUsage'
     BillingReasonEnum:
       enum:
         - manual
@@ -2704,6 +2829,7 @@ components:
           format: double
     Call:
       required:
+        - agent
         - agentId
         - billedDuration
         - callId
@@ -2845,6 +2971,11 @@ components:
           type: string
           description: A summary of the call.
           nullable: true
+          readOnly: true
+        agent:
+          allOf:
+            - $ref: '#/components/schemas/AgentBasic'
+          description: The agent used for this call.
           readOnly: true
         agentId:
           type: string
@@ -3663,6 +3794,8 @@ components:
           properties:
             calls:
               type: integer
+            totalBilledMinutes:
+              type: integer
           description: Statistics about the agent's usage
           readOnly: true
     PatchedScheduledCallBatch:
@@ -3775,6 +3908,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/BillingStyleEnum'
           description: "How billing works for this voice.\nVOICE_BILLING_STYLE_INCLUDED - The cost of this voice is included in the call cost. There are no additional charges for it.\nVOICE_BILLING_STYLE_EXTERNAL - This voice requires an API key for its provider, who will bill for usage separately."
+          readOnly: true
+        provider:
+          type: string
+          nullable: true
           readOnly: true
         definition:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
@@ -3995,6 +4132,7 @@ components:
         - name
         - ownership
         - previewUrl
+        - provider
         - voiceId
       type: object
       properties:
@@ -4026,6 +4164,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/BillingStyleEnum'
           description: "How billing works for this voice.\nVOICE_BILLING_STYLE_INCLUDED - The cost of this voice is included in the call cost. There are no additional charges for it.\nVOICE_BILLING_STYLE_EXTERNAL - This voice requires an API key for its provider, who will bill for usage separately."
+          readOnly: true
+        provider:
+          type: string
+          nullable: true
           readOnly: true
         definition:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
@@ -4098,6 +4240,19 @@ components:
         - unhealthy
       type: string
       description: "* `normal` - NORMAL\n* `unhealthy` - UNHEALTHY"
+    _AgentUsageAgent:
+      required:
+        - agentId
+        - name
+      type: object
+      properties:
+        agentId:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
     ultravox.v1.CallTemplate:
       type: object
       properties:
