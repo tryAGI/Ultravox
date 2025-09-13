@@ -22,7 +22,7 @@ namespace Ultravox
             global::Ultravox.VoicesListOwnership? ownership = default,
             int? pageSize = default,
             string? primaryLanguage = default,
-            global::Ultravox.VoicesListProvider? provider = default,
+            global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>? provider = default,
             string? search = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -3,10 +3,10 @@
 namespace Ultravox.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class VoicesListProviderJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Ultravox.VoicesListProvider>
+    public sealed class VoicesListProviderItemNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Ultravox.VoicesListProviderItem?>
     {
         /// <inheritdoc />
-        public override global::Ultravox.VoicesListProvider Read(
+        public override global::Ultravox.VoicesListProviderItem? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Ultravox.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Ultravox.VoicesListProviderExtensions.ToEnum(stringValue) ?? default;
+                        return global::Ultravox.VoicesListProviderItemExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace Ultravox.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Ultravox.VoicesListProvider)numValue;
+                    return (global::Ultravox.VoicesListProviderItem)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Ultravox.VoicesListProvider);
+                    return default(global::Ultravox.VoicesListProviderItem?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace Ultravox.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Ultravox.VoicesListProvider value,
+            global::Ultravox.VoicesListProviderItem? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::Ultravox.VoicesListProviderExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::Ultravox.VoicesListProviderItemExtensions.ToValueString(value.Value));
+            }
         }
     }
 }

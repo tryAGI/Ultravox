@@ -4,9 +4,13 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    /// * `lmnt` - LMNT<br/>
+    /// * `cartesia` - Cartesia<br/>
+    /// * `google` - Google<br/>
+    /// * `eleven_labs` - Eleven Labs<br/>
+    /// * `inworld` - Inworld
     /// </summary>
-    public enum VoicesListProvider
+    public enum VoicesListProviderItem
     {
         /// <summary>
         /// 
@@ -33,35 +37,35 @@ namespace Ultravox
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class VoicesListProviderExtensions
+    public static class VoicesListProviderItemExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this VoicesListProvider value)
+        public static string ToValueString(this VoicesListProviderItem value)
         {
             return value switch
             {
-                VoicesListProvider.Lmnt => "lmnt",
-                VoicesListProvider.Cartesia => "cartesia",
-                VoicesListProvider.Google => "google",
-                VoicesListProvider.ElevenLabs => "eleven_labs",
-                VoicesListProvider.Inworld => "inworld",
+                VoicesListProviderItem.Lmnt => "lmnt",
+                VoicesListProviderItem.Cartesia => "cartesia",
+                VoicesListProviderItem.Google => "google",
+                VoicesListProviderItem.ElevenLabs => "eleven_labs",
+                VoicesListProviderItem.Inworld => "inworld",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static VoicesListProvider? ToEnum(string value)
+        public static VoicesListProviderItem? ToEnum(string value)
         {
             return value switch
             {
-                "lmnt" => VoicesListProvider.Lmnt,
-                "cartesia" => VoicesListProvider.Cartesia,
-                "google" => VoicesListProvider.Google,
-                "eleven_labs" => VoicesListProvider.ElevenLabs,
-                "inworld" => VoicesListProvider.Inworld,
+                "lmnt" => VoicesListProviderItem.Lmnt,
+                "cartesia" => VoicesListProviderItem.Cartesia,
+                "google" => VoicesListProviderItem.Google,
+                "eleven_labs" => VoicesListProviderItem.ElevenLabs,
+                "inworld" => VoicesListProviderItem.Inworld,
                 _ => null,
             };
         }
