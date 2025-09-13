@@ -12,7 +12,7 @@ namespace Ultravox
             ref global::Ultravox.VoicesListOwnership? ownership,
             ref int? pageSize,
             ref string? primaryLanguage,
-            ref global::Ultravox.VoicesListProvider? provider,
+            global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>? provider,
             ref string? search);
         partial void PrepareVoicesListRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -22,7 +22,7 @@ namespace Ultravox
             global::Ultravox.VoicesListOwnership? ownership,
             int? pageSize,
             string? primaryLanguage,
-            global::Ultravox.VoicesListProvider? provider,
+            global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>? provider,
             string? search);
         partial void ProcessVoicesListResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -51,7 +51,7 @@ namespace Ultravox
             global::Ultravox.VoicesListOwnership? ownership = default,
             int? pageSize = default,
             string? primaryLanguage = default,
-            global::Ultravox.VoicesListProvider? provider = default,
+            global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>? provider = default,
             string? search = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -64,7 +64,7 @@ namespace Ultravox
                 ownership: ref ownership,
                 pageSize: ref pageSize,
                 primaryLanguage: ref primaryLanguage,
-                provider: ref provider,
+                provider: provider,
                 search: ref search);
 
             var __pathBuilder = new global::Ultravox.PathBuilder(
@@ -76,7 +76,7 @@ namespace Ultravox
                 .AddOptionalParameter("ownership", ownership?.ToValueString()) 
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 .AddOptionalParameter("primaryLanguage", primaryLanguage) 
-                .AddOptionalParameter("provider", provider?.ToValueString()) 
+                .AddOptionalParameter("provider", provider, selector: static x => x.ToValueString(), delimiter: ",", explode: true) 
                 .AddOptionalParameter("search", search) 
                 ; 
             var __path = __pathBuilder.ToString();

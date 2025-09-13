@@ -2195,16 +2195,18 @@ paths:
             type: string
         - name: provider
           in: query
-          description: "The provider used to filter results.\n\n* `lmnt` - LMNT\n* `cartesia` - Cartesia\n* `google` - Google\n* `eleven_labs` - Eleven Labs\n* `inworld` - Inworld"
+          description: The providers used to filter results.
           schema:
-            minLength: 1
-            enum:
-              - lmnt
-              - cartesia
-              - google
-              - eleven_labs
-              - inworld
-            type: string
+            type: array
+            items:
+              enum:
+                - lmnt
+                - cartesia
+                - google
+                - eleven_labs
+                - inworld
+              type: string
+              description: "* `lmnt` - LMNT\n* `cartesia` - Cartesia\n* `google` - Google\n* `eleven_labs` - Eleven Labs\n* `inworld` - Inworld"
         - name: search
           in: query
           description: The search string used to filter results.
