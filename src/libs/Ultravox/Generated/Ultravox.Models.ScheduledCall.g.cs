@@ -36,7 +36,7 @@ namespace Ultravox
         public string? Error { get; set; }
 
         /// <summary>
-        /// The call medium to use for the call. In particular, allows for specifying per-call recipients for outgoing SIP media.
+        /// The call medium to use for the call. In particular, allows for specifying per-call recipients for outgoing media.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("medium")]
         public global::Ultravox.UltravoxV1CallMedium? Medium { get; set; }
@@ -81,7 +81,7 @@ namespace Ultravox
         /// Included only in responses
         /// </param>
         /// <param name="medium">
-        /// The call medium to use for the call. In particular, allows for specifying per-call recipients for outgoing SIP media.
+        /// The call medium to use for the call. In particular, allows for specifying per-call recipients for outgoing media.
         /// </param>
         /// <param name="metadata"></param>
         /// <param name="templateContext">

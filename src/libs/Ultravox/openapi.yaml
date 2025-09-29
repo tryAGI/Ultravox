@@ -109,36 +109,36 @@ paths:
                 $ref: '#/components/schemas/UsageResponse'
       security:
         - apiKeyAuth: [ ]
-  /api/accounts/me/telephony_api_keys:
+  /api/accounts/me/telephony_config:
     get:
       tags:
         - accounts
-      operationId: accounts_me_telephony_api_keys_retrieve
+      operationId: accounts_me_telephony_config_retrieve
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountTelephonyKeys'
+                $ref: '#/components/schemas/AccountTelephonyConfigOutput'
       security:
         - apiKeyAuth: [ ]
     patch:
       tags:
         - accounts
-      operationId: accounts_me_telephony_api_keys_partial_update
+      operationId: accounts_me_telephony_config_partial_update
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedSetTelephonyApiKeysRequest'
+              $ref: '#/components/schemas/PatchedAccountTelephonyConfig'
       responses:
         '200':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountTelephonyKeys'
+                $ref: '#/components/schemas/AccountTelephonyConfigOutput'
       security:
         - apiKeyAuth: [ ]
   /api/accounts/me/tts_api_keys:
@@ -2698,13 +2698,21 @@ components:
           format: email
           nullable: true
           readOnly: true
-    AccountTelephonyKeys:
+    AccountTelephonyConfigOutput:
       type: object
       properties:
+        twilio:
+          allOf:
+            - $ref: '#/components/schemas/TwilioConfigOutput'
+          description: Your Twilio configuration.
         telnyx:
           allOf:
-            - $ref: '#/components/schemas/KeyPrefix'
-          description: The Telnyx API key.
+            - $ref: '#/components/schemas/TelnyxConfigOutput'
+          description: Your Telnyx configuration.
+        plivo:
+          allOf:
+            - $ref: '#/components/schemas/PlivoConfigOutput'
+          description: Your Plivo configuration.
     AccountTtsKeys:
       type: object
       properties:
@@ -3768,6 +3776,21 @@ components:
         revoked:
           type: boolean
           description: 'If the API key is revoked, clients cannot use it anymore. (This cannot be undone.)'
+    PatchedAccountTelephonyConfig:
+      type: object
+      properties:
+        twilio:
+          allOf:
+            - $ref: '#/components/schemas/TwilioConfig'
+          description: Your Twilio configuration. See https://console.twilio.com/
+        telnyx:
+          allOf:
+            - $ref: '#/components/schemas/TelnyxConfig'
+          description: Your Telnyx configuration. See https://portal.telnyx.com/
+        plivo:
+          allOf:
+            - $ref: '#/components/schemas/PlivoConfig'
+          description: Your Plivo configuration. See https://console.plivo.com/dashboard/
     PatchedAgent:
       type: object
       properties:
@@ -3824,7 +3847,7 @@ components:
         webhookUrl:
           maxLength: 200
           type: string
-          description: 'The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing sip medium. Required if any call has a medium other than outgoing sip.'
+          description: 'The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing medium. Required if any call has a non-outgoing medium and not allowed otherwise.'
           format: uri
           nullable: true
         webhookSecret:
@@ -3853,13 +3876,6 @@ components:
           items:
             $ref: '#/components/schemas/ScheduledCall'
           writeOnly: true
-    PatchedSetTelephonyApiKeysRequest:
-      type: object
-      properties:
-        telnyx:
-          type: string
-          description: "Your Telnyx API key.\nhttps://portal.telnyx.com/#/api-keys"
-          nullable: true
     PatchedSetTtsApiKeysRequest:
       type: object
       properties:
@@ -3961,6 +3977,31 @@ components:
             $ref: '#/components/schemas/WebhookFailure'
           description: 'A list of recent failures for this webhook, if any.'
           readOnly: true
+    PlivoConfig:
+      required:
+        - authId
+        - authToken
+      type: object
+      properties:
+        authId:
+          type: string
+          description: Your Plivo Auth ID.
+        authToken:
+          type: string
+          description: Your Plivo Auth Token.
+    PlivoConfigOutput:
+      required:
+        - authId
+        - authTokenPrefix
+      type: object
+      properties:
+        authId:
+          type: string
+          description: Your Plivo Auth ID.
+        authTokenPrefix:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The prefix of your Plivo Auth Token.
     ScheduledCall:
       required:
         - batchId
@@ -3989,7 +4030,7 @@ components:
         medium:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallMedium'
-          description: 'The call medium to use for the call. In particular, allows for specifying per-call recipients for outgoing SIP media.'
+          description: 'The call medium to use for the call. In particular, allows for specifying per-call recipients for outgoing media.'
           nullable: true
         metadata:
           nullable: true
@@ -4029,7 +4070,7 @@ components:
         webhookUrl:
           maxLength: 200
           type: string
-          description: 'The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing sip medium. Required if any call has a medium other than outgoing sip.'
+          description: 'The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing medium. Required if any call has a non-outgoing medium and not allowed otherwise.'
           format: uri
           nullable: true
         webhookSecret:
@@ -4073,6 +4114,48 @@ components:
         - warning
         - error
       type: string
+    TelnyxConfig:
+      required:
+        - accountSid
+        - apiKey
+        - applicationSid
+        - publicKey
+      type: object
+      properties:
+        accountSid:
+          type: string
+          description: Your Telnyx Account SID. See https://portal.telnyx.com/#/account/general
+        apiKey:
+          type: string
+          description: Your Telnyx API Key. See https://portal.telnyx.com/#/api-keys
+        publicKey:
+          type: string
+          description: Your Telnyx Public Key. See https://portal.telnyx.com/#/api-keys/public-key
+        applicationSid:
+          type: string
+          description: Your Telnyx Application SID. This must be configured with an Outbound Voice Profile that allows calls to your destination. See https://portal.telnyx.com/#/call-control/texml
+    TelnyxConfigOutput:
+      required:
+        - accountSid
+        - apiKeyPrefix
+        - applicationSid
+        - publicKeyPrefix
+      type: object
+      properties:
+        accountSid:
+          type: string
+          description: Your Telnyx Account SID.
+        apiKeyPrefix:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The prefix of your Telnyx API Key.
+        publicKeyPrefix:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The prefix of your Telnyx Public Key.
+        applicationSid:
+          type: string
+          description: Your Telnyx Application SID.
     Tool:
       required:
         - created
@@ -4112,6 +4195,31 @@ components:
         errorCount:
           type: integer
           readOnly: true
+    TwilioConfig:
+      required:
+        - accountSid
+        - authToken
+      type: object
+      properties:
+        accountSid:
+          type: string
+          description: Your Twilio Account SID.
+        authToken:
+          type: string
+          description: Your Twilio Auth Token.
+    TwilioConfigOutput:
+      required:
+        - accountSid
+        - authTokenPrefix
+      type: object
+      properties:
+        accountSid:
+          type: string
+          description: Your Twilio Account SID.
+        authTokenPrefix:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The prefix of your Twilio Auth Token.
     UsageResponse:
       required:
         - dailyUsage
@@ -4631,6 +4739,11 @@ components:
       description: Details for a Exotel call.
     ultravox.v1.CallMedium_PlivoMedium:
       type: object
+      properties:
+        outgoing:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.PlivoMedium_OutgoingRequestParams'
+          description: "If set, Ultravox will directly create a call with Plivo. Plivo must be configured\n for the requesting account."
       description: Details for a Plivo call.
     ultravox.v1.CallMedium_SipMedium:
       type: object
@@ -4646,9 +4759,19 @@ components:
       description: Details for a SIP call. Exactly one of incoming or outgoing must be set.
     ultravox.v1.CallMedium_TelnyxMedium:
       type: object
+      properties:
+        outgoing:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.TelnyxMedium_OutgoingRequestParams'
+          description: "If set, Ultravox will directly create a call with Telnyx. Telnyx must be configured\n for the requesting account."
       description: Details for a Telnyx call.
     ultravox.v1.CallMedium_TwilioMedium:
       type: object
+      properties:
+        outgoing:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.TwilioMedium_OutgoingRequestParams'
+          description: "If set, Ultravox will directly create a call with Twilio. Twilio must be configured\n for the requesting account."
       description: Details for a Twilio call.
     ultravox.v1.CallMedium_WebRtcMedium:
       type: object
@@ -5148,6 +5271,19 @@ components:
             type: string
           description: The mime types in this set.
       description: "A set of mime types. Entries may be a full mime type (e.g. \"text/html\") or a\n type without a subtype (e.g. \"text\"). Entries without a subtype will match\n all subtypes (e.g. \"text\" will match \"text/html\", \"text/plain\", etc.)."
+    ultravox.v1.PlivoMedium_OutgoingRequestParams:
+      type: object
+      properties:
+        to:
+          type: string
+          description: 'The phone number(s) or sip URI(s) to call, separated by `<` if multiple.'
+        from:
+          type: string
+          description: 'The phone number initiating the call, in E.164 format (e.g. +14155552671).'
+        additionalParams:
+          type: object
+          description: "Additional parameters to include in the Plivo call creation request.\n See https://www.plivo.com/docs/voice/api/call/make-a-call"
+      description: Parameters for a Plivo call creation request.
     ultravox.v1.QueryApiKeyRequirement:
       type: object
       properties:
@@ -5455,6 +5591,19 @@ components:
           type: string
           description: The predefined text response to be returned immediately
       description: "A predefined, static response for a tool. When a tool has a static response, it\n can be returned immediately, without waiting for full tool execution."
+    ultravox.v1.TelnyxMedium_OutgoingRequestParams:
+      type: object
+      properties:
+        to:
+          type: string
+          description: The phone number to call in E.164 format (e.g. +14155552671).
+        from:
+          type: string
+          description: The phone number initiating the call.
+        additionalParams:
+          type: object
+          description: "Additional parameters to include in the Telnyx call creation request.\n See https://developers.telnyx.com/api/call-scripting/initiate-texml-call"
+      description: Parameters for a Telnyx call creation request.
     ultravox.v1.TimedMessage:
       type: object
       properties:
@@ -5487,6 +5636,19 @@ components:
             type: string
           description: Dynamic parameters that must be overridden with an explicit (static) value.
       description: 'The requirements for using a tool, which must be satisfied when creating a call with the tool.'
+    ultravox.v1.TwilioMedium_OutgoingRequestParams:
+      type: object
+      properties:
+        to:
+          type: string
+          description: 'The phone number, in E.164 format (e.g. +14155552671), (or sip address) to call.'
+        from:
+          type: string
+          description: "The phone number or client identifier to use as the caller id. If `to` is a phone\n number, `from` must be a phone number owned by your Twilio account."
+        additionalParams:
+          type: object
+          description: "Additional parameters to include in the Twilio call creation request.\n See https://www.twilio.com/docs/voice/api/call-resource#request-body-parameters"
+      description: Parameters for a Twilio call creation request.
     ultravox.v1.UltravoxCallTokenRequirement:
       type: object
       properties:

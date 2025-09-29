@@ -26,7 +26,7 @@ namespace Ultravox
         ///  This works for both inbound and outbound calls.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("twilio")]
-        public object? Twilio { get; set; }
+        public global::Ultravox.UltravoxV1CallMediumTwilioMedium? Twilio { get; set; }
 
         /// <summary>
         /// The call will use a plain websocket connection. This is unlikely to yield an acceptable user<br/>
@@ -45,7 +45,7 @@ namespace Ultravox
         ///  This works for both inbound and outbound calls.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("telnyx")]
-        public object? Telnyx { get; set; }
+        public global::Ultravox.UltravoxV1CallMediumTelnyxMedium? Telnyx { get; set; }
 
         /// <summary>
         /// The call will use Plivo's AudioStreams protocol.<br/>
@@ -55,7 +55,7 @@ namespace Ultravox
         ///  This works for both inbound and outbound calls.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("plivo")]
-        public object? Plivo { get; set; }
+        public global::Ultravox.UltravoxV1CallMediumPlivoMedium? Plivo { get; set; }
 
         /// <summary>
         /// The call will use Exotel's "Voicebot" protocol.<br/>
@@ -126,10 +126,10 @@ namespace Ultravox
 #endif
         public UltravoxV1CallMedium(
             object? webRtc,
-            object? twilio,
+            global::Ultravox.UltravoxV1CallMediumTwilioMedium? twilio,
             global::Ultravox.UltravoxV1CallMediumWebSocketMedium? serverWebSocket,
-            object? telnyx,
-            object? plivo,
+            global::Ultravox.UltravoxV1CallMediumTelnyxMedium? telnyx,
+            global::Ultravox.UltravoxV1CallMediumPlivoMedium? plivo,
             object? exotel,
             global::Ultravox.UltravoxV1CallMediumSipMedium? sip)
         {
