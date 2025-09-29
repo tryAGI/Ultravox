@@ -5,16 +5,16 @@ namespace Ultravox
 {
     public partial class AccountsClient
     {
-        partial void PrepareAccountsMeTelephonyApiKeysRetrieveArguments(
+        partial void PrepareAccountsMeTelephonyConfigRetrieveArguments(
             global::System.Net.Http.HttpClient httpClient);
-        partial void PrepareAccountsMeTelephonyApiKeysRetrieveRequest(
+        partial void PrepareAccountsMeTelephonyConfigRetrieveRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage);
-        partial void ProcessAccountsMeTelephonyApiKeysRetrieveResponse(
+        partial void ProcessAccountsMeTelephonyConfigRetrieveResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAccountsMeTelephonyApiKeysRetrieveResponseContent(
+        partial void ProcessAccountsMeTelephonyConfigRetrieveResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
@@ -24,16 +24,16 @@ namespace Ultravox
         /// </summary>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.AccountTelephonyKeys> AccountsMeTelephonyApiKeysRetrieveAsync(
+        public async global::System.Threading.Tasks.Task<global::Ultravox.AccountTelephonyConfigOutput> AccountsMeTelephonyConfigRetrieveAsync(
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareAccountsMeTelephonyApiKeysRetrieveArguments(
+            PrepareAccountsMeTelephonyConfigRetrieveArguments(
                 httpClient: HttpClient);
 
             var __pathBuilder = new global::Ultravox.PathBuilder(
-                path: "/api/accounts/me/telephony_api_keys",
+                path: "/api/accounts/me/telephony_config",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -63,7 +63,7 @@ namespace Ultravox
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAccountsMeTelephonyApiKeysRetrieveRequest(
+            PrepareAccountsMeTelephonyConfigRetrieveRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest);
 
@@ -75,7 +75,7 @@ namespace Ultravox
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAccountsMeTelephonyApiKeysRetrieveResponse(
+            ProcessAccountsMeTelephonyConfigRetrieveResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
 
@@ -91,7 +91,7 @@ namespace Ultravox
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAccountsMeTelephonyApiKeysRetrieveResponseContent(
+                ProcessAccountsMeTelephonyConfigRetrieveResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -101,7 +101,7 @@ namespace Ultravox
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Ultravox.AccountTelephonyKeys.FromJson(__content, JsonSerializerContext) ??
+                        global::Ultravox.AccountTelephonyConfigOutput.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -132,7 +132,7 @@ namespace Ultravox
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Ultravox.AccountTelephonyKeys.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Ultravox.AccountTelephonyConfigOutput.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)

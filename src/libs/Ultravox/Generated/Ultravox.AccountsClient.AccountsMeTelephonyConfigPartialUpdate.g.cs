@@ -5,18 +5,18 @@ namespace Ultravox
 {
     public partial class AccountsClient
     {
-        partial void PrepareAccountsMeTelephonyApiKeysPartialUpdateArguments(
+        partial void PrepareAccountsMeTelephonyConfigPartialUpdateArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Ultravox.PatchedSetTelephonyApiKeysRequest request);
-        partial void PrepareAccountsMeTelephonyApiKeysPartialUpdateRequest(
+            global::Ultravox.PatchedAccountTelephonyConfig request);
+        partial void PrepareAccountsMeTelephonyConfigPartialUpdateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Ultravox.PatchedSetTelephonyApiKeysRequest request);
-        partial void ProcessAccountsMeTelephonyApiKeysPartialUpdateResponse(
+            global::Ultravox.PatchedAccountTelephonyConfig request);
+        partial void ProcessAccountsMeTelephonyConfigPartialUpdateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAccountsMeTelephonyApiKeysPartialUpdateResponseContent(
+        partial void ProcessAccountsMeTelephonyConfigPartialUpdateResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
@@ -27,20 +27,20 @@ namespace Ultravox
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.AccountTelephonyKeys> AccountsMeTelephonyApiKeysPartialUpdateAsync(
-            global::Ultravox.PatchedSetTelephonyApiKeysRequest request,
+        public async global::System.Threading.Tasks.Task<global::Ultravox.AccountTelephonyConfigOutput> AccountsMeTelephonyConfigPartialUpdateAsync(
+            global::Ultravox.PatchedAccountTelephonyConfig request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             request = request ?? throw new global::System.ArgumentNullException(nameof(request));
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareAccountsMeTelephonyApiKeysPartialUpdateArguments(
+            PrepareAccountsMeTelephonyConfigPartialUpdateArguments(
                 httpClient: HttpClient,
                 request: request);
 
             var __pathBuilder = new global::Ultravox.PathBuilder(
-                path: "/api/accounts/me/telephony_api_keys",
+                path: "/api/accounts/me/telephony_config",
                 baseUri: HttpClient.BaseAddress); 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -76,7 +76,7 @@ namespace Ultravox
             PrepareRequest(
                 client: HttpClient,
                 request: __httpRequest);
-            PrepareAccountsMeTelephonyApiKeysPartialUpdateRequest(
+            PrepareAccountsMeTelephonyConfigPartialUpdateRequest(
                 httpClient: HttpClient,
                 httpRequestMessage: __httpRequest,
                 request: request);
@@ -89,7 +89,7 @@ namespace Ultravox
             ProcessResponse(
                 client: HttpClient,
                 response: __response);
-            ProcessAccountsMeTelephonyApiKeysPartialUpdateResponse(
+            ProcessAccountsMeTelephonyConfigPartialUpdateResponse(
                 httpClient: HttpClient,
                 httpResponseMessage: __response);
 
@@ -105,7 +105,7 @@ namespace Ultravox
                     client: HttpClient,
                     response: __response,
                     content: ref __content);
-                ProcessAccountsMeTelephonyApiKeysPartialUpdateResponseContent(
+                ProcessAccountsMeTelephonyConfigPartialUpdateResponseContent(
                     httpClient: HttpClient,
                     httpResponseMessage: __response,
                     content: ref __content);
@@ -115,7 +115,7 @@ namespace Ultravox
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::Ultravox.AccountTelephonyKeys.FromJson(__content, JsonSerializerContext) ??
+                        global::Ultravox.AccountTelephonyConfigOutput.FromJson(__content, JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -146,7 +146,7 @@ namespace Ultravox
                     ).ConfigureAwait(false);
 
                     return
-                        await global::Ultravox.AccountTelephonyKeys.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        await global::Ultravox.AccountTelephonyConfigOutput.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
@@ -168,22 +168,31 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="twilio">
+        /// Your Twilio configuration. See https://console.twilio.com/
+        /// </param>
         /// <param name="telnyx">
-        /// Your Telnyx API key.<br/>
-        /// https://portal.telnyx.com/#/api-keys
+        /// Your Telnyx configuration. See https://portal.telnyx.com/
+        /// </param>
+        /// <param name="plivo">
+        /// Your Plivo configuration. See https://console.plivo.com/dashboard/
         /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.AccountTelephonyKeys> AccountsMeTelephonyApiKeysPartialUpdateAsync(
-            string? telnyx = default,
+        public async global::System.Threading.Tasks.Task<global::Ultravox.AccountTelephonyConfigOutput> AccountsMeTelephonyConfigPartialUpdateAsync(
+            global::Ultravox.TwilioConfig? twilio = default,
+            global::Ultravox.TelnyxConfig? telnyx = default,
+            global::Ultravox.PlivoConfig? plivo = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Ultravox.PatchedSetTelephonyApiKeysRequest
+            var __request = new global::Ultravox.PatchedAccountTelephonyConfig
             {
+                Twilio = twilio,
                 Telnyx = telnyx,
+                Plivo = plivo,
             };
 
-            return await AccountsMeTelephonyApiKeysPartialUpdateAsync(
+            return await AccountsMeTelephonyConfigPartialUpdateAsync(
                 request: __request,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }

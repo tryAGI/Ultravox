@@ -33,7 +33,7 @@ namespace Ultravox
         public global::System.DateTime? WindowEnd { get; set; }
 
         /// <summary>
-        /// The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing sip medium. Required if any call has a medium other than outgoing sip.
+        /// The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing medium. Required if any call has a non-outgoing medium and not allowed otherwise.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhookUrl")]
         public string? WebhookUrl { get; set; }
@@ -98,7 +98,7 @@ namespace Ultravox
         /// The end of the time window during which calls can be made.
         /// </param>
         /// <param name="webhookUrl">
-        /// The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing sip medium. Required if any call has a medium other than outgoing sip.
+        /// The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing medium. Required if any call has a non-outgoing medium and not allowed otherwise.
         /// </param>
         /// <param name="webhookSecret">
         /// The signing secret for requests made to the webhookUrl. This is used to verify that the request came from Ultravox. If unset, an appropriate secret will be chosen for you (but you'll still need to make your endpoint aware of it to verify requests).

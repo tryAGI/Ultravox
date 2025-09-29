@@ -2,7 +2,7 @@
 
 namespace Ultravox
 {
-    public sealed partial class AccountTelephonyKeys
+    public sealed partial class TelnyxConfig
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -34,14 +34,14 @@ namespace Ultravox
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Ultravox.AccountTelephonyKeys? FromJson(
+        public static global::Ultravox.TelnyxConfig? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Ultravox.AccountTelephonyKeys),
-                jsonSerializerContext) as global::Ultravox.AccountTelephonyKeys;
+                typeof(global::Ultravox.TelnyxConfig),
+                jsonSerializerContext) as global::Ultravox.TelnyxConfig;
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace Ultravox
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Ultravox.AccountTelephonyKeys? FromJson(
+        public static global::Ultravox.TelnyxConfig? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Ultravox.AccountTelephonyKeys>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Ultravox.TelnyxConfig>(
                 json,
                 jsonSerializerOptions);
         }
@@ -63,14 +63,14 @@ namespace Ultravox
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Ultravox.AccountTelephonyKeys?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Ultravox.TelnyxConfig?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Ultravox.AccountTelephonyKeys),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Ultravox.AccountTelephonyKeys;
+                typeof(global::Ultravox.TelnyxConfig),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Ultravox.TelnyxConfig;
         }
 
         /// <summary>
@@ -80,11 +80,11 @@ namespace Ultravox
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Ultravox.AccountTelephonyKeys?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Ultravox.TelnyxConfig?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Ultravox.AccountTelephonyKeys?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Ultravox.TelnyxConfig?>(
                 jsonStream,
                 jsonSerializerOptions);
         }
