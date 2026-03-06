@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    /// Included only in responses
     /// </summary>
     public sealed partial class CallEventExtras
     {

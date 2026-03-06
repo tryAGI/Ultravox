@@ -11,23 +11,23 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        CORPUSSTATUSUNSPECIFIED,
+        CorpusStatusUnspecified,
         /// <summary>
         /// 
         /// </summary>
-        CORPUSSTATUSEMPTY,
+        CorpusStatusEmpty,
         /// <summary>
         /// 
         /// </summary>
-        CORPUSSTATUSINITIALIZING,
+        CorpusStatusInitializing,
         /// <summary>
         /// 
         /// </summary>
-        CORPUSSTATUSREADY,
+        CorpusStatusReady,
         /// <summary>
         /// 
         /// </summary>
-        CORPUSSTATUSUPDATING,
+        CorpusStatusUpdating,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1CorpusStatsStatus.CORPUSSTATUSUNSPECIFIED => "CORPUS_STATUS_UNSPECIFIED",
-                UltravoxV1CorpusStatsStatus.CORPUSSTATUSEMPTY => "CORPUS_STATUS_EMPTY",
-                UltravoxV1CorpusStatsStatus.CORPUSSTATUSINITIALIZING => "CORPUS_STATUS_INITIALIZING",
-                UltravoxV1CorpusStatsStatus.CORPUSSTATUSREADY => "CORPUS_STATUS_READY",
-                UltravoxV1CorpusStatsStatus.CORPUSSTATUSUPDATING => "CORPUS_STATUS_UPDATING",
+                UltravoxV1CorpusStatsStatus.CorpusStatusUnspecified => "CORPUS_STATUS_UNSPECIFIED",
+                UltravoxV1CorpusStatsStatus.CorpusStatusEmpty => "CORPUS_STATUS_EMPTY",
+                UltravoxV1CorpusStatsStatus.CorpusStatusInitializing => "CORPUS_STATUS_INITIALIZING",
+                UltravoxV1CorpusStatsStatus.CorpusStatusReady => "CORPUS_STATUS_READY",
+                UltravoxV1CorpusStatsStatus.CorpusStatusUpdating => "CORPUS_STATUS_UPDATING",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Ultravox
         {
             return value switch
             {
-                "CORPUS_STATUS_UNSPECIFIED" => UltravoxV1CorpusStatsStatus.CORPUSSTATUSUNSPECIFIED,
-                "CORPUS_STATUS_EMPTY" => UltravoxV1CorpusStatsStatus.CORPUSSTATUSEMPTY,
-                "CORPUS_STATUS_INITIALIZING" => UltravoxV1CorpusStatsStatus.CORPUSSTATUSINITIALIZING,
-                "CORPUS_STATUS_READY" => UltravoxV1CorpusStatsStatus.CORPUSSTATUSREADY,
-                "CORPUS_STATUS_UPDATING" => UltravoxV1CorpusStatsStatus.CORPUSSTATUSUPDATING,
+                "CORPUS_STATUS_UNSPECIFIED" => UltravoxV1CorpusStatsStatus.CorpusStatusUnspecified,
+                "CORPUS_STATUS_EMPTY" => UltravoxV1CorpusStatsStatus.CorpusStatusEmpty,
+                "CORPUS_STATUS_INITIALIZING" => UltravoxV1CorpusStatsStatus.CorpusStatusInitializing,
+                "CORPUS_STATUS_READY" => UltravoxV1CorpusStatsStatus.CorpusStatusReady,
+                "CORPUS_STATUS_UPDATING" => UltravoxV1CorpusStatsStatus.CorpusStatusUpdating,
                 _ => null,
             };
         }

@@ -15,6 +15,7 @@ namespace Ultravox
         global::System.Threading.Tasks.Task<global::Ultravox.UltravoxV1CorpusSource> CorporaSourcesUpdateAsync(
             global::System.Guid corpusId,
             global::System.Guid sourceId,
+
             global::Ultravox.UltravoxV1CorpusSource request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
@@ -50,6 +51,12 @@ namespace Ultravox
         /// <param name="upload">
         /// Allows loading from a uploaded document.
         /// </param>
+        /// <param name="advanced">
+        /// Allows loading from an advanced documents source.<br/>
+        ///  This is similar to an upload source, but requires setting example queries<br/>
+        ///  for each document. When a similar query is issued, the document will be<br/>
+        ///  returned in its entirety.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.UltravoxV1CorpusSource> CorporaSourcesUpdateAsync(
@@ -64,6 +71,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1CrawlSpec? loadSpec = default,
             global::Ultravox.UltravoxV1CrawlSpec? crawl = default,
             global::Ultravox.UltravoxV1UploadSpec? upload = default,
+            global::Ultravox.UltravoxV1AdvancedSpec? advanced = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

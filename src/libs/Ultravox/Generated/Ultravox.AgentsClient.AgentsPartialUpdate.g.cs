@@ -32,6 +32,7 @@ namespace Ultravox
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Agent> AgentsPartialUpdateAsync(
             global::System.Guid agentId,
+
             global::Ultravox.PatchedAgent request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

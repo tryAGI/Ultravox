@@ -11,23 +11,23 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        FUTURE,
+        Future,
         /// <summary>
         /// 
         /// </summary>
-        PENDING,
+        Pending,
         /// <summary>
         /// 
         /// </summary>
-        SUCCESS,
+        Success,
         /// <summary>
         /// 
         /// </summary>
-        EXPIRED,
+        Expired,
         /// <summary>
         /// 
         /// </summary>
-        ERROR,
+        Error,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Ultravox
         {
             return value switch
             {
-                AgentsScheduledBatchesScheduledCallsListStatus.FUTURE => "FUTURE",
-                AgentsScheduledBatchesScheduledCallsListStatus.PENDING => "PENDING",
-                AgentsScheduledBatchesScheduledCallsListStatus.SUCCESS => "SUCCESS",
-                AgentsScheduledBatchesScheduledCallsListStatus.EXPIRED => "EXPIRED",
-                AgentsScheduledBatchesScheduledCallsListStatus.ERROR => "ERROR",
+                AgentsScheduledBatchesScheduledCallsListStatus.Future => "FUTURE",
+                AgentsScheduledBatchesScheduledCallsListStatus.Pending => "PENDING",
+                AgentsScheduledBatchesScheduledCallsListStatus.Success => "SUCCESS",
+                AgentsScheduledBatchesScheduledCallsListStatus.Expired => "EXPIRED",
+                AgentsScheduledBatchesScheduledCallsListStatus.Error => "ERROR",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Ultravox
         {
             return value switch
             {
-                "FUTURE" => AgentsScheduledBatchesScheduledCallsListStatus.FUTURE,
-                "PENDING" => AgentsScheduledBatchesScheduledCallsListStatus.PENDING,
-                "SUCCESS" => AgentsScheduledBatchesScheduledCallsListStatus.SUCCESS,
-                "EXPIRED" => AgentsScheduledBatchesScheduledCallsListStatus.EXPIRED,
-                "ERROR" => AgentsScheduledBatchesScheduledCallsListStatus.ERROR,
+                "FUTURE" => AgentsScheduledBatchesScheduledCallsListStatus.Future,
+                "PENDING" => AgentsScheduledBatchesScheduledCallsListStatus.Pending,
+                "SUCCESS" => AgentsScheduledBatchesScheduledCallsListStatus.Success,
+                "EXPIRED" => AgentsScheduledBatchesScheduledCallsListStatus.Expired,
+                "ERROR" => AgentsScheduledBatchesScheduledCallsListStatus.Error,
                 _ => null,
             };
         }

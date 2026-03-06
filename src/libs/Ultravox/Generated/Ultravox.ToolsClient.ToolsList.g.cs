@@ -8,16 +8,18 @@ namespace Ultravox
         partial void PrepareToolsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
-            ref string? ownership,
+            ref global::Ultravox.ToolsListOwnership? ownership,
             ref int? pageSize,
-            ref string? search);
+            ref string? search,
+            ref global::Ultravox.ToolsListSortOrder? sortOrder);
         partial void PrepareToolsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
-            string? ownership,
+            global::Ultravox.ToolsListOwnership? ownership,
             int? pageSize,
-            string? search);
+            string? search,
+            global::Ultravox.ToolsListSortOrder? sortOrder);
         partial void ProcessToolsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -28,19 +30,23 @@ namespace Ultravox
             ref string content);
 
         /// <summary>
-        /// List all tools in your account.
+        /// List tools available to your account.
         /// </summary>
         /// <param name="cursor"></param>
         /// <param name="ownership"></param>
         /// <param name="pageSize"></param>
         /// <param name="search"></param>
+        /// <param name="sortOrder">
+        /// Default Value: default
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedToolList> ToolsListAsync(
             string? cursor = default,
-            string? ownership = default,
+            global::Ultravox.ToolsListOwnership? ownership = default,
             int? pageSize = default,
             string? search = default,
+            global::Ultravox.ToolsListSortOrder? sortOrder = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
@@ -50,16 +56,18 @@ namespace Ultravox
                 cursor: ref cursor,
                 ownership: ref ownership,
                 pageSize: ref pageSize,
-                search: ref search);
+                search: ref search,
+                sortOrder: ref sortOrder);
 
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/tools",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("cursor", cursor) 
-                .AddOptionalParameter("ownership", ownership) 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("search", search) 
+            __pathBuilder
+                .AddOptionalParameter("cursor", cursor)
+                .AddOptionalParameter("ownership", ownership?.ToValueString())
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
+                .AddOptionalParameter("search", search)
+                .AddOptionalParameter("sortOrder", sortOrder?.ToValueString()) 
                 ; 
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
@@ -95,7 +103,8 @@ namespace Ultravox
                 cursor: cursor,
                 ownership: ownership,
                 pageSize: pageSize,
-                search: search);
+                search: search,
+                sortOrder: sortOrder);
 
             using var __response = await HttpClient.SendAsync(
                 request: __httpRequest,

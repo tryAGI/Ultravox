@@ -36,6 +36,7 @@ namespace Ultravox
         public async global::System.Threading.Tasks.Task<global::Ultravox.ScheduledCallBatch> AgentsScheduledBatchesPartialUpdateAsync(
             global::System.Guid agentId,
             global::System.Guid batchId,
+
             global::Ultravox.PatchedScheduledCallBatch request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

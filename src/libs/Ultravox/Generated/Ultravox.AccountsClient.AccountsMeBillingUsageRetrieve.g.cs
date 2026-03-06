@@ -45,8 +45,8 @@ namespace Ultravox
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/accounts/me/billing/usage",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-dd")) 
+            __pathBuilder
+                .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-dd"))
                 .AddOptionalParameter("toDate", toDate?.ToString("yyyy-MM-dd")) 
                 ; 
             var __path = __pathBuilder.ToString();

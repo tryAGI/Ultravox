@@ -67,12 +67,28 @@ namespace Ultravox
         public object? CallState { get; set; }
 
         /// <summary>
-        /// The timespan during the call when this message occurred.<br/>
+        /// The timespan during the call when this message occurred, according<br/>
+        ///  to the input audio stream.<br/>
         ///  This is only set for messages that occurred during the call (stage)<br/>
         ///  and not for messages in the call's (call stage's) initial messages.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timespan")]
         public global::Ultravox.UltravoxV1InCallTimespan? Timespan { get; set; }
+
+        /// <summary>
+        /// The timespan during the call when this message occurred, according<br/>
+        ///  the wall clock, relative to the call's joined time.<br/>
+        ///  This is only set for messages that occurred during the call (stage)<br/>
+        ///  and not for messages in the call's (call stage's) initial messages.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("wallClockTimespan")]
+        public global::Ultravox.UltravoxV1InCallTimespan? WallClockTimespan { get; set; }
+
+        /// <summary>
+        /// Arbitrary metadata associated with the message.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public object? Metadata { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -113,9 +129,19 @@ namespace Ultravox
         /// If the message updated the call state, the new call state.
         /// </param>
         /// <param name="timespan">
-        /// The timespan during the call when this message occurred.<br/>
+        /// The timespan during the call when this message occurred, according<br/>
+        ///  to the input audio stream.<br/>
         ///  This is only set for messages that occurred during the call (stage)<br/>
         ///  and not for messages in the call's (call stage's) initial messages.
+        /// </param>
+        /// <param name="wallClockTimespan">
+        /// The timespan during the call when this message occurred, according<br/>
+        ///  the wall clock, relative to the call's joined time.<br/>
+        ///  This is only set for messages that occurred during the call (stage)<br/>
+        ///  and not for messages in the call's (call stage's) initial messages.
+        /// </param>
+        /// <param name="metadata">
+        /// Arbitrary metadata associated with the message.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -130,7 +156,9 @@ namespace Ultravox
             int? callStageMessageIndex,
             string? callStageId,
             object? callState,
-            global::Ultravox.UltravoxV1InCallTimespan? timespan)
+            global::Ultravox.UltravoxV1InCallTimespan? timespan,
+            global::Ultravox.UltravoxV1InCallTimespan? wallClockTimespan,
+            object? metadata)
         {
             this.Role = role;
             this.Text = text;
@@ -142,6 +170,8 @@ namespace Ultravox
             this.CallStageId = callStageId;
             this.CallState = callState;
             this.Timespan = timespan;
+            this.WallClockTimespan = wallClockTimespan;
+            this.Metadata = metadata;
         }
 
         /// <summary>

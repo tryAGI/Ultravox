@@ -33,6 +33,13 @@ namespace Ultravox
         public string? PrimaryLanguage { get; set; }
 
         /// <summary>
+        /// Human-readable language label with flag emoji and English name (e.g., '🇺🇸 English (United States)').<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("languageLabel")]
+        public string? LanguageLabel { get; set; }
+
+        /// <summary>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("previewUrl")]
@@ -87,6 +94,10 @@ namespace Ultravox
         /// <param name="primaryLanguage">
         /// BCP47 language code for the primary language supported by this voice.
         /// </param>
+        /// <param name="languageLabel">
+        /// Human-readable language label with flag emoji and English name (e.g., '🇺🇸 English (United States)').<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="previewUrl">
         /// Included only in responses
         /// </param>
@@ -116,6 +127,7 @@ namespace Ultravox
             string? name,
             string? description,
             string? primaryLanguage,
+            string? languageLabel,
             string? previewUrl,
             global::Ultravox.OwnershipEnum? ownership,
             global::Ultravox.BillingStyleEnum? billingStyle,
@@ -126,6 +138,7 @@ namespace Ultravox
             this.Name = name;
             this.Description = description;
             this.PrimaryLanguage = primaryLanguage;
+            this.LanguageLabel = languageLabel;
             this.PreviewUrl = previewUrl;
             this.Ownership = ownership;
             this.BillingStyle = billingStyle;

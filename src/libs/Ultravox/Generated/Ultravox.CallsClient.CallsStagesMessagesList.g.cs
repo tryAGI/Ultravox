@@ -55,8 +55,8 @@ namespace Ultravox
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/calls/{callId}/stages/{callStageId}/messages",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("cursor", cursor) 
+            __pathBuilder
+                .AddOptionalParameter("cursor", cursor)
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();

@@ -40,6 +40,15 @@ namespace Ultravox
         public string? Description { get; set; }
 
         /// <summary>
+        /// BCP47 language code for the language used in the recording.<br/>
+        /// Default Value: en<br/>
+        /// Example: en-US
+        /// </summary>
+        /// <example>en-US</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("language")]
+        public string? Language { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -62,6 +71,11 @@ namespace Ultravox
         /// Optional description for the voice. If not provided, a default description will be generated.<br/>
         /// Example: Voice recorded on Jan 1, 2024
         /// </param>
+        /// <param name="language">
+        /// BCP47 language code for the language used in the recording.<br/>
+        /// Default Value: en<br/>
+        /// Example: en-US
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -69,12 +83,14 @@ namespace Ultravox
             byte[] file,
             string filename,
             string name,
-            string? description)
+            string? description,
+            string? language)
         {
             this.File = file ?? throw new global::System.ArgumentNullException(nameof(file));
             this.Filename = filename ?? throw new global::System.ArgumentNullException(nameof(filename));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
+            this.Language = language;
         }
 
         /// <summary>

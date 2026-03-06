@@ -24,6 +24,14 @@ namespace Ultravox
         public double TotalMinutes { get; set; } = default!;
 
         /// <summary>
+        /// Total billed SIP usage within the requested period in minutes.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("totalSipMinutes")]
+        public double TotalSipMinutes { get; set; } = default!;
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,15 +45,21 @@ namespace Ultravox
         /// Total billed usage within the requested period in minutes.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="totalSipMinutes">
+        /// Total billed SIP usage within the requested period in minutes.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UsageResponse(
             global::System.Collections.Generic.IList<global::Ultravox.BillingUsageDay> dailyUsage,
-            double totalMinutes = default!)
+            double totalMinutes = default!,
+            double totalSipMinutes = default!)
         {
             this.DailyUsage = dailyUsage ?? throw new global::System.ArgumentNullException(nameof(dailyUsage));
             this.TotalMinutes = totalMinutes;
+            this.TotalSipMinutes = totalSipMinutes;
         }
 
         /// <summary>

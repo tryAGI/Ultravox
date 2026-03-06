@@ -42,7 +42,7 @@ namespace Ultravox
         public string? LanguageHint { get; set; }
 
         /// <summary>
-        /// Default Value: fixie-ai/ultravox
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         public string? Model { get; set; }
@@ -80,6 +80,12 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("externalVoice")]
         public global::Ultravox.UltravoxV1ExternalVoice? ExternalVoice { get; set; }
+
+        /// <summary>
+        /// Overrides for the selected voice.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voiceOverrides")]
+        public global::Ultravox.UltravoxV1ExternalVoice? VoiceOverrides { get; set; }
 
         /// <summary>
         /// The number of errors in this call stage.<br/>
@@ -127,9 +133,7 @@ namespace Ultravox
         /// <param name="languageHint">
         /// BCP47 language code that may be used to guide speech recognition.
         /// </param>
-        /// <param name="model">
-        /// Default Value: fixie-ai/ultravox
-        /// </param>
+        /// <param name="model"></param>
         /// <param name="systemPrompt"></param>
         /// <param name="temperature">
         /// Included only in responses
@@ -141,6 +145,9 @@ namespace Ultravox
         ///  Such voices are significantly less validated than normal voices and you'll be<br/>
         ///  responsible for your own TTS-related errors.<br/>
         ///  Exactly one field must be set.
+        /// </param>
+        /// <param name="voiceOverrides">
+        /// Overrides for the selected voice.
         /// </param>
         /// <param name="errorCount">
         /// The number of errors in this call stage.<br/>
@@ -165,6 +172,7 @@ namespace Ultravox
             string? timeExceededMessage,
             string? voice,
             global::Ultravox.UltravoxV1ExternalVoice? externalVoice,
+            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides,
             object? experimentalSettings,
             global::System.Guid callId = default!,
             global::System.Guid callStageId = default!,
@@ -184,6 +192,7 @@ namespace Ultravox
             this.TimeExceededMessage = timeExceededMessage;
             this.Voice = voice;
             this.ExternalVoice = externalVoice;
+            this.VoiceOverrides = voiceOverrides;
             this.ErrorCount = errorCount;
             this.ExperimentalSettings = experimentalSettings;
         }

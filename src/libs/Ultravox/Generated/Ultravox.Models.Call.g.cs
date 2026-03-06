@@ -64,6 +64,26 @@ namespace Ultravox
         public string? BilledDuration { get; set; }
 
         /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("billedSideInputTokens")]
+        public int? BilledSideInputTokens { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("billedSideOutputTokens")]
+        public int? BilledSideOutputTokens { get; set; }
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("billingStatus")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.BillingStatusEnumJsonConverter))]
+        public global::Ultravox.BillingStatusEnum BillingStatus { get; set; } = default!;
+
+        /// <summary>
         /// Who was supposed to talk first when the call started. Typically set to FIRST_SPEAKER_USER for outgoing calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.<br/>
         /// Included only in responses
         /// </summary>
@@ -125,7 +145,7 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CallMedium? Medium { get; set; }
 
         /// <summary>
-        /// Default Value: fixie-ai/ultravox
+        /// Default Value: ultravox-v0.7
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         public string? Model { get; set; }
@@ -170,21 +190,18 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1ExternalVoice? ExternalVoice { get; set; }
 
         /// <summary>
+        /// Overrides for the selected voice.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voiceOverrides")]
+        public global::Ultravox.UltravoxV1ExternalVoice? VoiceOverrides { get; set; }
+
+        /// <summary>
         /// Indicates whether a transcript is optional for the call.<br/>
         /// Default Value: true
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcriptOptional")]
         [global::System.Obsolete("This property marked as deprecated.")]
         public bool? TranscriptOptional { get; set; }
-
-        /// <summary>
-        /// The number of errors in this call.<br/>
-        /// Default Value: 0<br/>
-        /// Included only in responses
-        /// </summary>
-        /// <default>default!</default>
-        [global::System.Text.Json.Serialization.JsonPropertyName("errorCount")]
-        public int ErrorCount { get; set; } = default!;
 
         /// <summary>
         /// VAD settings for the call.
@@ -256,6 +273,19 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1DataConnectionConfig? DataConnectionConfig { get; set; }
 
         /// <summary>
+        /// Callbacks configuration for the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("callbacks")]
+        public global::Ultravox.UltravoxV1Callbacks? Callbacks { get; set; }
+
+        /// <summary>
+        /// SIP details for the call, if applicable.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sipDetails")]
+        public global::Ultravox.CallSipDetails? SipDetails { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -293,6 +323,15 @@ namespace Ultravox
         /// <param name="billedDuration">
         /// Included only in responses
         /// </param>
+        /// <param name="billedSideInputTokens">
+        /// Included only in responses
+        /// </param>
+        /// <param name="billedSideOutputTokens">
+        /// Included only in responses
+        /// </param>
+        /// <param name="billingStatus">
+        /// Included only in responses
+        /// </param>
         /// <param name="firstSpeakerSettings">
         /// Settings for the initial message to get the call started.
         /// </param>
@@ -317,7 +356,7 @@ namespace Ultravox
         /// </param>
         /// <param name="medium"></param>
         /// <param name="model">
-        /// Default Value: fixie-ai/ultravox
+        /// Default Value: ultravox-v0.7
         /// </param>
         /// <param name="recordingEnabled">
         /// Default Value: false
@@ -334,10 +373,8 @@ namespace Ultravox
         ///  responsible for your own TTS-related errors.<br/>
         ///  Exactly one field must be set.
         /// </param>
-        /// <param name="errorCount">
-        /// The number of errors in this call.<br/>
-        /// Default Value: 0<br/>
-        /// Included only in responses
+        /// <param name="voiceOverrides">
+        /// Overrides for the selected voice.
         /// </param>
         /// <param name="vadSettings">
         /// VAD settings for the call.
@@ -371,6 +408,13 @@ namespace Ultravox
         /// <param name="dataConnectionConfig">
         /// Settings for exchanging data messages with an additional participant.
         /// </param>
+        /// <param name="callbacks">
+        /// Callbacks configuration for the call.
+        /// </param>
+        /// <param name="sipDetails">
+        /// SIP details for the call, if applicable.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -385,6 +429,8 @@ namespace Ultravox
             global::System.DateTime? ended,
             global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? endReason,
             string? billedDuration,
+            int? billedSideInputTokens,
+            int? billedSideOutputTokens,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
             string? joinTimeout,
             string? joinUrl,
@@ -398,15 +444,18 @@ namespace Ultravox
             string? timeExceededMessage,
             string? voice,
             global::Ultravox.UltravoxV1ExternalVoice? externalVoice,
+            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides,
             global::Ultravox.UltravoxV1VadSettings? vadSettings,
             string? shortSummary,
             string? summary,
             string? agentId,
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnectionConfig,
+            global::Ultravox.UltravoxV1Callbacks? callbacks,
+            global::Ultravox.CallSipDetails? sipDetails,
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
+            global::Ultravox.BillingStatusEnum billingStatus = default!,
             global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!,
-            int errorCount = default!,
             global::Ultravox.AgentBasic agent = default!)
         {
             this.FirstSpeakerSettings = firstSpeakerSettings ?? throw new global::System.ArgumentNullException(nameof(firstSpeakerSettings));
@@ -421,6 +470,9 @@ namespace Ultravox
             this.Ended = ended;
             this.EndReason = endReason;
             this.BilledDuration = billedDuration;
+            this.BilledSideInputTokens = billedSideInputTokens;
+            this.BilledSideOutputTokens = billedSideOutputTokens;
+            this.BillingStatus = billingStatus;
             this.InactivityMessages = inactivityMessages;
             this.InitialOutputMedium = initialOutputMedium;
             this.JoinTimeout = joinTimeout;
@@ -435,13 +487,15 @@ namespace Ultravox
             this.TimeExceededMessage = timeExceededMessage;
             this.Voice = voice;
             this.ExternalVoice = externalVoice;
-            this.ErrorCount = errorCount;
+            this.VoiceOverrides = voiceOverrides;
             this.VadSettings = vadSettings;
             this.ShortSummary = shortSummary;
             this.Summary = summary;
             this.Agent = agent;
             this.AgentId = agentId;
             this.DataConnectionConfig = dataConnectionConfig;
+            this.Callbacks = callbacks;
+            this.SipDetails = sipDetails;
         }
 
         /// <summary>

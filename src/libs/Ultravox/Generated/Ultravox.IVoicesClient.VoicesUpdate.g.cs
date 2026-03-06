@@ -13,6 +13,7 @@ namespace Ultravox
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesUpdateAsync(
             global::System.Guid voiceId,
+
             global::Ultravox.Voice request,
             global::System.Threading.CancellationToken cancellationToken = default);
 

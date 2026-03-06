@@ -55,10 +55,10 @@ namespace Ultravox
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/agents",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("cursor", cursor) 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("search", search) 
+            __pathBuilder
+                .AddOptionalParameter("cursor", cursor)
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
+                .AddOptionalParameter("search", search)
                 .AddOptionalParameter("sort", sort) 
                 ; 
             var __path = __pathBuilder.ToString();

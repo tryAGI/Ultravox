@@ -32,6 +32,7 @@ namespace Ultravox
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.UltravoxV1Corpus> CorporaPartialUpdateAsync(
             global::System.Guid corpusId,
+
             global::Ultravox.UltravoxV1Corpus request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

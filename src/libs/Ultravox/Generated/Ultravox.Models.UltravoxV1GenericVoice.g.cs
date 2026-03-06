@@ -65,6 +65,14 @@ namespace Ultravox
         public string? JsonAudioFieldPath { get; set; }
 
         /// <summary>
+        /// For JSON responses, how audio bytes are encoded into the json_audio_field_path string.<br/>
+        ///  Defaults to base64. Also supports hex.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("jsonByteEncoding")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1GenericVoiceJsonByteEncodingJsonConverter))]
+        public global::Ultravox.UltravoxV1GenericVoiceJsonByteEncoding? JsonByteEncoding { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -103,6 +111,10 @@ namespace Ultravox
         /// For JSON responses, the path to the field containing base64-encoded audio data. The data must<br/>
         ///  be PCM audio, optionally with a WAV header.
         /// </param>
+        /// <param name="jsonByteEncoding">
+        /// For JSON responses, how audio bytes are encoded into the json_audio_field_path string.<br/>
+        ///  Defaults to base64. Also supports hex.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -113,7 +125,8 @@ namespace Ultravox
             int? responseSampleRate,
             int? responseWordsPerMinute,
             string? responseMimeType,
-            string? jsonAudioFieldPath)
+            string? jsonAudioFieldPath,
+            global::Ultravox.UltravoxV1GenericVoiceJsonByteEncoding? jsonByteEncoding)
         {
             this.Url = url;
             this.Headers = headers;
@@ -122,6 +135,7 @@ namespace Ultravox
             this.ResponseWordsPerMinute = responseWordsPerMinute;
             this.ResponseMimeType = responseMimeType;
             this.JsonAudioFieldPath = jsonAudioFieldPath;
+            this.JsonByteEncoding = jsonByteEncoding;
         }
 
         /// <summary>

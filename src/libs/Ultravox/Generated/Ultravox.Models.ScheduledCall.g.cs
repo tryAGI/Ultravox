@@ -42,7 +42,7 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CallMedium? Medium { get; set; }
 
         /// <summary>
-        /// 
+        /// Optional metadata key-value pairs to associate with the call. All values must be strings.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
         public object? Metadata { get; set; }
@@ -83,7 +83,9 @@ namespace Ultravox
         /// <param name="medium">
         /// The call medium to use for the call. In particular, allows for specifying per-call recipients for outgoing media.
         /// </param>
-        /// <param name="metadata"></param>
+        /// <param name="metadata">
+        /// Optional metadata key-value pairs to associate with the call. All values must be strings.
+        /// </param>
         /// <param name="templateContext">
         /// The context used to render the agent's template.
         /// </param>

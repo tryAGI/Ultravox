@@ -7,6 +7,7 @@ namespace Ultravox
     /// * `lmnt` - LMNT<br/>
     /// * `cartesia` - Cartesia<br/>
     /// * `google` - Google<br/>
+    /// * `respeecher` - Respeecher<br/>
     /// * `eleven_labs` - Eleven Labs<br/>
     /// * `inworld` - Inworld
     /// </summary>
@@ -24,6 +25,10 @@ namespace Ultravox
         /// 
         /// </summary>
         Google,
+        /// <summary>
+        /// 
+        /// </summary>
+        Respeecher,
         /// <summary>
         /// 
         /// </summary>
@@ -49,6 +54,7 @@ namespace Ultravox
                 VoicesListProviderItem.Lmnt => "lmnt",
                 VoicesListProviderItem.Cartesia => "cartesia",
                 VoicesListProviderItem.Google => "google",
+                VoicesListProviderItem.Respeecher => "respeecher",
                 VoicesListProviderItem.ElevenLabs => "eleven_labs",
                 VoicesListProviderItem.Inworld => "inworld",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -64,6 +70,7 @@ namespace Ultravox
                 "lmnt" => VoicesListProviderItem.Lmnt,
                 "cartesia" => VoicesListProviderItem.Cartesia,
                 "google" => VoicesListProviderItem.Google,
+                "respeecher" => VoicesListProviderItem.Respeecher,
                 "eleven_labs" => VoicesListProviderItem.ElevenLabs,
                 "inworld" => VoicesListProviderItem.Inworld,
                 _ => null,

@@ -15,6 +15,8 @@ namespace Ultravox
             global::System.Collections.Generic.Dictionary<string, string>? metadata,
             ref int? pageSize,
             ref string? search,
+            ref string? timeOfDayEnd,
+            ref string? timeOfDayStart,
             ref global::System.DateTime? toDate,
             ref global::System.Guid? voiceId);
         partial void PrepareDeletedCallsListRequest(
@@ -28,6 +30,8 @@ namespace Ultravox
             global::System.Collections.Generic.Dictionary<string, string>? metadata,
             int? pageSize,
             string? search,
+            string? timeOfDayEnd,
+            string? timeOfDayStart,
             global::System.DateTime? toDate,
             global::System.Guid? voiceId);
         partial void ProcessDeletedCallsListResponse(
@@ -50,6 +54,12 @@ namespace Ultravox
         /// <param name="metadata"></param>
         /// <param name="pageSize"></param>
         /// <param name="search"></param>
+        /// <param name="timeOfDayEnd">
+        /// Default Value: 23:59:59.999999
+        /// </param>
+        /// <param name="timeOfDayStart">
+        /// Default Value: 00:00:00
+        /// </param>
         /// <param name="toDate"></param>
         /// <param name="voiceId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -63,6 +73,8 @@ namespace Ultravox
             global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
             int? pageSize = default,
             string? search = default,
+            string? timeOfDayEnd = default,
+            string? timeOfDayStart = default,
             global::System.DateTime? toDate = default,
             global::System.Guid? voiceId = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -79,22 +91,26 @@ namespace Ultravox
                 metadata: metadata,
                 pageSize: ref pageSize,
                 search: ref search,
+                timeOfDayEnd: ref timeOfDayEnd,
+                timeOfDayStart: ref timeOfDayStart,
                 toDate: ref toDate,
                 voiceId: ref voiceId);
 
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/deleted_calls",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString(), delimiter: ",", explode: true) 
-                .AddOptionalParameter("cursor", cursor) 
-                .AddOptionalParameter("durationMax", durationMax) 
-                .AddOptionalParameter("durationMin", durationMin) 
-                .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-dd")) 
-                .AddOptionalParameter("metadata", metadata?.ToString()) 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("search", search) 
-                .AddOptionalParameter("toDate", toDate?.ToString("yyyy-MM-dd")) 
+            __pathBuilder
+                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString(), delimiter: ",", explode: true)
+                .AddOptionalParameter("cursor", cursor)
+                .AddOptionalParameter("durationMax", durationMax)
+                .AddOptionalParameter("durationMin", durationMin)
+                .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
+                .AddOptionalParameter("metadata", metadata?.ToString())
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
+                .AddOptionalParameter("search", search)
+                .AddOptionalParameter("timeOfDayEnd", timeOfDayEnd)
+                .AddOptionalParameter("timeOfDayStart", timeOfDayStart)
+                .AddOptionalParameter("toDate", toDate?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                 .AddOptionalParameter("voiceId", voiceId?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
@@ -136,6 +152,8 @@ namespace Ultravox
                 metadata: metadata,
                 pageSize: pageSize,
                 search: search,
+                timeOfDayEnd: timeOfDayEnd,
+                timeOfDayStart: timeOfDayStart,
                 toDate: toDate,
                 voiceId: voiceId);
 

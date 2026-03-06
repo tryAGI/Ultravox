@@ -50,9 +50,9 @@ namespace Ultravox
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/webhooks",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("agentId", agentId?.ToString()) 
-                .AddOptionalParameter("cursor", cursor) 
+            __pathBuilder
+                .AddOptionalParameter("agentId", agentId?.ToString())
+                .AddOptionalParameter("cursor", cursor)
                 .AddOptionalParameter("pageSize", pageSize?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();

@@ -13,15 +13,15 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        CHANNELMODEUNSPECIFIED,
+        ChannelModeUnspecified,
         /// <summary>
         /// 
         /// </summary>
-        CHANNELMODEMIXED,
+        ChannelModeMixed,
         /// <summary>
         /// 
         /// </summary>
-        CHANNELMODESEPARATED,
+        ChannelModeSeparated,
     }
 
     /// <summary>
@@ -36,9 +36,9 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1DataConnectionAudioConfigChannelMode.CHANNELMODEUNSPECIFIED => "CHANNEL_MODE_UNSPECIFIED",
-                UltravoxV1DataConnectionAudioConfigChannelMode.CHANNELMODEMIXED => "CHANNEL_MODE_MIXED",
-                UltravoxV1DataConnectionAudioConfigChannelMode.CHANNELMODESEPARATED => "CHANNEL_MODE_SEPARATED",
+                UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeUnspecified => "CHANNEL_MODE_UNSPECIFIED",
+                UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeMixed => "CHANNEL_MODE_MIXED",
+                UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeSeparated => "CHANNEL_MODE_SEPARATED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -49,9 +49,9 @@ namespace Ultravox
         {
             return value switch
             {
-                "CHANNEL_MODE_UNSPECIFIED" => UltravoxV1DataConnectionAudioConfigChannelMode.CHANNELMODEUNSPECIFIED,
-                "CHANNEL_MODE_MIXED" => UltravoxV1DataConnectionAudioConfigChannelMode.CHANNELMODEMIXED,
-                "CHANNEL_MODE_SEPARATED" => UltravoxV1DataConnectionAudioConfigChannelMode.CHANNELMODESEPARATED,
+                "CHANNEL_MODE_UNSPECIFIED" => UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeUnspecified,
+                "CHANNEL_MODE_MIXED" => UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeMixed,
+                "CHANNEL_MODE_SEPARATED" => UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeSeparated,
                 _ => null,
             };
         }

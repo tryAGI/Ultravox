@@ -60,9 +60,9 @@ namespace Ultravox
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/agents/{agentId}/scheduled_batches/{batchId}/scheduled_calls",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("cursor", cursor) 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+            __pathBuilder
+                .AddOptionalParameter("cursor", cursor)
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
                 .AddOptionalParameter("status", status?.ToValueString()) 
                 ; 
             var __path = __pathBuilder.ToString();

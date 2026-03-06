@@ -41,7 +41,6 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CallTemplate? CallTemplate { get; set; }
 
         /// <summary>
-        /// Statistics about the agent's usage<br/>
         /// Included only in responses
         /// </summary>
         /// <default>default!</default>
@@ -69,7 +68,6 @@ namespace Ultravox
         /// </param>
         /// <param name="callTemplate"></param>
         /// <param name="statistics">
-        /// Statistics about the agent's usage<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER

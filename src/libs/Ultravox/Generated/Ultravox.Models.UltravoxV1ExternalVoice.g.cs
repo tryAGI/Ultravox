@@ -37,6 +37,19 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1GoogleVoice? Google { get; set; }
 
         /// <summary>
+        /// A voice served by Inworld, using bidirectional streaming.<br/>
+        ///  (For non-streaming or output-only streaming, use generic.)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("inworld")]
+        public global::Ultravox.UltravoxV1InworldVoice? Inworld { get; set; }
+
+        /// <summary>
+        /// A voice served by Respeecher, using bidirectional streaming.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("respeecher")]
+        public global::Ultravox.UltravoxV1RespeecherVoice? Respeecher { get; set; }
+
+        /// <summary>
         /// A voice served by a generic REST-based TTS API.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("generic")]
@@ -64,6 +77,13 @@ namespace Ultravox
         /// A voice served by Google, using bidirectional streaming.<br/>
         ///  (For non-streaming or output-only streaming, use generic.)
         /// </param>
+        /// <param name="inworld">
+        /// A voice served by Inworld, using bidirectional streaming.<br/>
+        ///  (For non-streaming or output-only streaming, use generic.)
+        /// </param>
+        /// <param name="respeecher">
+        /// A voice served by Respeecher, using bidirectional streaming.
+        /// </param>
         /// <param name="generic">
         /// A voice served by a generic REST-based TTS API.
         /// </param>
@@ -75,12 +95,16 @@ namespace Ultravox
             global::Ultravox.UltravoxV1CartesiaVoice? cartesia,
             global::Ultravox.UltravoxV1LmntVoice? lmnt,
             global::Ultravox.UltravoxV1GoogleVoice? google,
+            global::Ultravox.UltravoxV1InworldVoice? inworld,
+            global::Ultravox.UltravoxV1RespeecherVoice? respeecher,
             global::Ultravox.UltravoxV1GenericVoice? generic)
         {
             this.ElevenLabs = elevenLabs;
             this.Cartesia = cartesia;
             this.Lmnt = lmnt;
             this.Google = google;
+            this.Inworld = inworld;
+            this.Respeecher = respeecher;
             this.Generic = generic;
         }
 

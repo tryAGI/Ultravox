@@ -12,15 +12,15 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        MESSAGEMEDIUMUNSPECIFIED,
+        MessageMediumUnspecified,
         /// <summary>
         /// 
         /// </summary>
-        MESSAGEMEDIUMVOICE,
+        MessageMediumVoice,
         /// <summary>
         /// 
         /// </summary>
-        MESSAGEMEDIUMTEXT,
+        MessageMediumText,
     }
 
     /// <summary>
@@ -35,9 +35,9 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1StartCallRequestInitialOutputMedium.MESSAGEMEDIUMUNSPECIFIED => "MESSAGE_MEDIUM_UNSPECIFIED",
-                UltravoxV1StartCallRequestInitialOutputMedium.MESSAGEMEDIUMVOICE => "MESSAGE_MEDIUM_VOICE",
-                UltravoxV1StartCallRequestInitialOutputMedium.MESSAGEMEDIUMTEXT => "MESSAGE_MEDIUM_TEXT",
+                UltravoxV1StartCallRequestInitialOutputMedium.MessageMediumUnspecified => "MESSAGE_MEDIUM_UNSPECIFIED",
+                UltravoxV1StartCallRequestInitialOutputMedium.MessageMediumVoice => "MESSAGE_MEDIUM_VOICE",
+                UltravoxV1StartCallRequestInitialOutputMedium.MessageMediumText => "MESSAGE_MEDIUM_TEXT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -48,9 +48,9 @@ namespace Ultravox
         {
             return value switch
             {
-                "MESSAGE_MEDIUM_UNSPECIFIED" => UltravoxV1StartCallRequestInitialOutputMedium.MESSAGEMEDIUMUNSPECIFIED,
-                "MESSAGE_MEDIUM_VOICE" => UltravoxV1StartCallRequestInitialOutputMedium.MESSAGEMEDIUMVOICE,
-                "MESSAGE_MEDIUM_TEXT" => UltravoxV1StartCallRequestInitialOutputMedium.MESSAGEMEDIUMTEXT,
+                "MESSAGE_MEDIUM_UNSPECIFIED" => UltravoxV1StartCallRequestInitialOutputMedium.MessageMediumUnspecified,
+                "MESSAGE_MEDIUM_VOICE" => UltravoxV1StartCallRequestInitialOutputMedium.MessageMediumVoice,
+                "MESSAGE_MEDIUM_TEXT" => UltravoxV1StartCallRequestInitialOutputMedium.MessageMediumText,
                 _ => null,
             };
         }

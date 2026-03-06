@@ -11,11 +11,11 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        MESSAGEMEDIUMVOICE,
+        MessageMediumVoice,
         /// <summary>
         /// 
         /// </summary>
-        MESSAGEMEDIUMTEXT,
+        MessageMediumText,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Ultravox
         {
             return value switch
             {
-                InitialOutputMediumEnum.MESSAGEMEDIUMVOICE => "MESSAGE_MEDIUM_VOICE",
-                InitialOutputMediumEnum.MESSAGEMEDIUMTEXT => "MESSAGE_MEDIUM_TEXT",
+                InitialOutputMediumEnum.MessageMediumVoice => "MESSAGE_MEDIUM_VOICE",
+                InitialOutputMediumEnum.MessageMediumText => "MESSAGE_MEDIUM_TEXT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Ultravox
         {
             return value switch
             {
-                "MESSAGE_MEDIUM_VOICE" => InitialOutputMediumEnum.MESSAGEMEDIUMVOICE,
-                "MESSAGE_MEDIUM_TEXT" => InitialOutputMediumEnum.MESSAGEMEDIUMTEXT,
+                "MESSAGE_MEDIUM_VOICE" => InitialOutputMediumEnum.MessageMediumVoice,
+                "MESSAGE_MEDIUM_TEXT" => InitialOutputMediumEnum.MessageMediumText,
                 _ => null,
             };
         }

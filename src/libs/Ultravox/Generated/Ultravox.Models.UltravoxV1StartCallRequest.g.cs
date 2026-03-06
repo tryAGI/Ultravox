@@ -21,7 +21,7 @@ namespace Ultravox
         public float? Temperature { get; set; }
 
         /// <summary>
-        /// The model used for generations. Defaults to fixie-ai/ultravox.
+        /// The model used for generations. Currently defaults to ultravox-v0.7.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         public string? Model { get; set; }
@@ -159,6 +159,20 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1DataConnectionConfig? DataConnection { get; set; }
 
         /// <summary>
+        /// Callbacks for call lifecycle events.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("callbacks")]
+        public global::Ultravox.UltravoxV1Callbacks? Callbacks { get; set; }
+
+        /// <summary>
+        /// Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).<br/>
+        ///  Only non-price-affecting fields may be overridden (e.g., speed, style, stability).<br/>
+        ///  The provider in the override must match the selected voice's provider.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voiceOverrides")]
+        public global::Ultravox.UltravoxV1ExternalVoice? VoiceOverrides { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -174,7 +188,7 @@ namespace Ultravox
         /// The model temperature, between 0 and 1. Defaults to 0.
         /// </param>
         /// <param name="model">
-        /// The model used for generations. Defaults to fixie-ai/ultravox.
+        /// The model used for generations. Currently defaults to ultravox-v0.7.
         /// </param>
         /// <param name="voice">
         /// The ID (or name if unique) of the voice the agent should use for this call.
@@ -246,6 +260,14 @@ namespace Ultravox
         /// <param name="dataConnection">
         /// Data connection configuration.
         /// </param>
+        /// <param name="callbacks">
+        /// Callbacks for call lifecycle events.
+        /// </param>
+        /// <param name="voiceOverrides">
+        /// Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).<br/>
+        ///  Only non-price-affecting fields may be overridden (e.g., speed, style, stability).<br/>
+        ///  The provider in the override must match the selected voice's provider.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -272,7 +294,9 @@ namespace Ultravox
             object? experimentalSettings,
             global::System.Collections.Generic.Dictionary<string, string>? metadata,
             object? initialState,
-            global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection)
+            global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection,
+            global::Ultravox.UltravoxV1Callbacks? callbacks,
+            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -297,6 +321,8 @@ namespace Ultravox
             this.Metadata = metadata;
             this.InitialState = initialState;
             this.DataConnection = dataConnection;
+            this.Callbacks = callbacks;
+            this.VoiceOverrides = voiceOverrides;
         }
 
         /// <summary>

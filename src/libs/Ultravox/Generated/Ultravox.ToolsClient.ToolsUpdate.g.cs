@@ -32,6 +32,7 @@ namespace Ultravox
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Tool> ToolsUpdateAsync(
             global::System.Guid toolId,
+
             global::Ultravox.Tool request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

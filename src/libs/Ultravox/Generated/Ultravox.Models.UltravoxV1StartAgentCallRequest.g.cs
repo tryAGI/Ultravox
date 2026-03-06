@@ -80,6 +80,28 @@ namespace Ultravox
         public object? ExperimentalSettings { get; set; }
 
         /// <summary>
+        /// Callbacks for call lifecycle events.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("callbacks")]
+        public global::Ultravox.UltravoxV1Callbacks? Callbacks { get; set; }
+
+        /// <summary>
+        /// The name or ID of the voice the agent should be forced to use. Typically this is set<br/>
+        ///  in the agent's CallTemplate and omitted here. Setting here may be useful for scenarios<br/>
+        ///  where your agent uses different voices for different calls.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
+        public string? Voice { get; set; }
+
+        /// <summary>
+        /// Overrides for the agent's forced voice. Only valid when `voice` is set explicitly<br/>
+        ///  in this request. Typically the agent's voice and any relevant overrides should be<br/>
+        ///  set on the agent's CallTemplate instead.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voiceOverrides")]
+        public global::Ultravox.UltravoxV1ExternalVoice? VoiceOverrides { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -125,6 +147,19 @@ namespace Ultravox
         /// <param name="experimentalSettings">
         /// Experimental settings for the call.
         /// </param>
+        /// <param name="callbacks">
+        /// Callbacks for call lifecycle events.
+        /// </param>
+        /// <param name="voice">
+        /// The name or ID of the voice the agent should be forced to use. Typically this is set<br/>
+        ///  in the agent's CallTemplate and omitted here. Setting here may be useful for scenarios<br/>
+        ///  where your agent uses different voices for different calls.
+        /// </param>
+        /// <param name="voiceOverrides">
+        /// Overrides for the agent's forced voice. Only valid when `voice` is set explicitly<br/>
+        ///  in this request. Typically the agent's voice and any relevant overrides should be<br/>
+        ///  set on the agent's CallTemplate instead.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -139,7 +174,10 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartAgentCallRequestInitialOutputMedium? initialOutputMedium,
             global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings,
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection,
-            object? experimentalSettings)
+            object? experimentalSettings,
+            global::Ultravox.UltravoxV1Callbacks? callbacks,
+            string? voice,
+            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides)
         {
             this.TemplateContext = templateContext;
             this.InitialMessages = initialMessages;
@@ -152,6 +190,9 @@ namespace Ultravox
             this.FirstSpeakerSettings = firstSpeakerSettings;
             this.DataConnection = dataConnection;
             this.ExperimentalSettings = experimentalSettings;
+            this.Callbacks = callbacks;
+            this.Voice = voice;
+            this.VoiceOverrides = voiceOverrides;
         }
 
         /// <summary>

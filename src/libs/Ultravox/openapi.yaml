@@ -113,6 +113,7 @@ paths:
     get:
       tags:
         - accounts
+      description: 'DEPRECATED. Prefer the provider-specific endpoints, e.g. /api/telephony_configs/twilio.'
       operationId: accounts_me_telephony_config_retrieve
       responses:
         '200':
@@ -120,12 +121,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountTelephonyConfigOutput'
+                $ref: '#/components/schemas/AccountTelephonyConfig'
+      deprecated: true
       security:
         - apiKeyAuth: [ ]
     patch:
       tags:
         - accounts
+      description: 'DEPRECATED. Prefer the provider-specific endpoints, e.g. /api/telephony_configs/twilio.'
       operationId: accounts_me_telephony_config_partial_update
       requestBody:
         content:
@@ -138,7 +141,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountTelephonyConfigOutput'
+                $ref: '#/components/schemas/AccountTelephonyConfig'
+      deprecated: true
       security:
         - apiKeyAuth: [ ]
   /api/accounts/me/tts_api_keys:
@@ -200,10 +204,10 @@ paths:
             type: string
         - name: fromDate
           in: query
-          description: Start date (inclusive) for filtering calls by creation date
+          description: 'Start datetime (inclusive) for filtering calls by creation date. If no time component is present, this defaults to the start of the day (midnight).'
           schema:
             type: string
-            format: date
+            format: date-time
         - name: metadata
           in: query
           description: Filter calls by metadata. Use metadata.key=value to filter by specific key-value pairs.
@@ -217,12 +221,26 @@ paths:
           schema:
             minLength: 1
             type: string
-        - name: toDate
+        - name: timeOfDayEnd
           in: query
-          description: End date (inclusive) for filtering calls by creation date
+          description: 'Filter calls by the time of day of their creation, regardless of date. Format: HH:MM:SS. Defaults to 23:59:59 if not specified.'
           schema:
             type: string
-            format: date
+            format: time
+            default: '23:59:59.999999'
+        - name: timeOfDayStart
+          in: query
+          description: 'Filter calls by the time of day of their creation, regardless of date. Format: HH:MM:SS. Defaults to 00:00:00 if not specified.'
+          schema:
+            type: string
+            format: time
+            default: '00:00:00'
+        - name: toDate
+          in: query
+          description: 'End datetime (inclusive) for filtering calls by creation date. If no time component is present, this defaults to the end of the day (11:59:59.999999 PM).'
+          schema:
+            type: string
+            format: date-time
         - name: voiceId
           in: query
           description: Filter calls by the associated voice ID
@@ -634,6 +652,34 @@ paths:
                 $ref: '#/components/schemas/PaginatedScheduledCallList'
       security:
         - apiKeyAuth: [ ]
+  '/api/agents/{agent_id}/telephony_xml':
+    post:
+      tags:
+        - agents
+      description: 'Allows supported telephony providers to create incoming calls with an agent, returning XML instructions for handling the call.'
+      operationId: agents_telephony_xml
+      parameters:
+        - name: agent_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              description: Provider-defined request.
+          application/json:
+            schema:
+              description: Provider-defined request.
+      responses:
+        '200':
+          description: ''
+          content:
+            text/xml:
+              schema:
+                description: XML appropriate for the telephony provider.
   /api/agents/usage:
     get:
       tags:
@@ -660,10 +706,10 @@ paths:
             type: string
         - name: fromDate
           in: query
-          description: Start date (inclusive) for filtering calls by creation date
+          description: 'Start datetime (inclusive) for filtering calls by creation date. If no time component is present, this defaults to the start of the day (midnight).'
           schema:
             type: string
-            format: date
+            format: date-time
         - name: metadata
           in: query
           description: Filter calls by metadata. Use metadata.key=value to filter by specific key-value pairs.
@@ -677,12 +723,26 @@ paths:
           schema:
             minLength: 1
             type: string
-        - name: toDate
+        - name: timeOfDayEnd
           in: query
-          description: End date (inclusive) for filtering calls by creation date
+          description: 'Filter calls by the time of day of their creation, regardless of date. Format: HH:MM:SS. Defaults to 23:59:59 if not specified.'
           schema:
             type: string
-            format: date
+            format: time
+            default: '23:59:59.999999'
+        - name: timeOfDayStart
+          in: query
+          description: 'Filter calls by the time of day of their creation, regardless of date. Format: HH:MM:SS. Defaults to 00:00:00 if not specified.'
+          schema:
+            type: string
+            format: time
+            default: '00:00:00'
+        - name: toDate
+          in: query
+          description: 'End datetime (inclusive) for filtering calls by creation date. If no time component is present, this defaults to the end of the day (11:59:59.999999 PM).'
+          schema:
+            type: string
+            format: date-time
         - name: voiceId
           in: query
           description: Filter calls by the associated voice ID
@@ -852,10 +912,10 @@ paths:
             type: string
         - name: fromDate
           in: query
-          description: Start date (inclusive) for filtering calls by creation date
+          description: 'Start datetime (inclusive) for filtering calls by creation date. If no time component is present, this defaults to the start of the day (midnight).'
           schema:
             type: string
-            format: date
+            format: date-time
         - name: metadata
           in: query
           description: Filter calls by metadata. Use metadata.key=value to filter by specific key-value pairs.
@@ -879,12 +939,26 @@ paths:
           description: Which field to use when ordering the results.
           schema:
             type: string
-        - name: toDate
+        - name: timeOfDayEnd
           in: query
-          description: End date (inclusive) for filtering calls by creation date
+          description: 'Filter calls by the time of day of their creation, regardless of date. Format: HH:MM:SS. Defaults to 23:59:59 if not specified.'
           schema:
             type: string
-            format: date
+            format: time
+            default: '23:59:59.999999'
+        - name: timeOfDayStart
+          in: query
+          description: 'Filter calls by the time of day of their creation, regardless of date. Format: HH:MM:SS. Defaults to 00:00:00 if not specified.'
+          schema:
+            type: string
+            format: time
+            default: '00:00:00'
+        - name: toDate
+          in: query
+          description: 'End datetime (inclusive) for filtering calls by creation date. If no time component is present, this defaults to the end of the day (11:59:59.999999 PM).'
+          schema:
+            type: string
+            format: date-time
         - name: voiceId
           in: query
           description: Filter calls by the associated voice ID
@@ -988,13 +1062,14 @@ paths:
             type: string
         - name: minimum_severity
           in: query
-          description: The minimum severity of events to include.
+          description: "The minimum severity of events to include.\n\n* `debug` - debug\n* `info` - info\n* `warning` - warning\n* `error` - error"
           schema:
+            minLength: 1
             enum:
               - debug
-              - error
               - info
               - warning
+              - error
             type: string
             default: info
         - name: pageSize
@@ -1006,6 +1081,7 @@ paths:
           in: query
           description: 'If set, restricts returned events to those of the given type.'
           schema:
+            minLength: 1
             type: string
       responses:
         '200':
@@ -1079,6 +1155,51 @@ paths:
                 type: string
                 format: binary
         '302':
+          description: No response body
+      security:
+        - apiKeyAuth: [ ]
+  '/api/calls/{call_id}/send_data_message':
+    post:
+      tags:
+        - calls
+      operationId: send_data_message_to_call
+      parameters:
+        - name: call_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendCallDataMessage'
+        required: true
+      responses:
+        '204':
+          description: No response body
+      security:
+        - apiKeyAuth: [ ]
+  '/api/calls/{call_id}/sip_logs':
+    get:
+      tags:
+        - calls
+      description: 'Redirects to sip logs for the call, if available.'
+      operationId: calls_sip_logs_retrieve
+      parameters:
+        - name: call_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '302':
+          description: No response body
+        '404':
+          description: No response body
+        '425':
           description: No response body
       security:
         - apiKeyAuth: [ ]
@@ -1715,10 +1836,10 @@ paths:
             type: string
         - name: fromDate
           in: query
-          description: Start date (inclusive) for filtering calls by creation date
+          description: 'Start datetime (inclusive) for filtering calls by creation date. If no time component is present, this defaults to the start of the day (midnight).'
           schema:
             type: string
-            format: date
+            format: date-time
         - name: metadata
           in: query
           description: Filter calls by metadata. Use metadata.key=value to filter by specific key-value pairs.
@@ -1737,12 +1858,26 @@ paths:
           schema:
             minLength: 1
             type: string
-        - name: toDate
+        - name: timeOfDayEnd
           in: query
-          description: End date (inclusive) for filtering calls by creation date
+          description: 'Filter calls by the time of day of their creation, regardless of date. Format: HH:MM:SS. Defaults to 23:59:59 if not specified.'
           schema:
             type: string
-            format: date
+            format: time
+            default: '23:59:59.999999'
+        - name: timeOfDayStart
+          in: query
+          description: 'Filter calls by the time of day of their creation, regardless of date. Format: HH:MM:SS. Defaults to 00:00:00 if not specified.'
+          schema:
+            type: string
+            format: time
+            default: '00:00:00'
+        - name: toDate
+          in: query
+          description: 'End datetime (inclusive) for filtering calls by creation date. If no time component is present, this defaults to the end of the day (11:59:59.999999 PM).'
+          schema:
+            type: string
+            format: date-time
         - name: voiceId
           in: query
           description: Filter calls by the associated voice ID
@@ -1944,11 +2079,326 @@ paths:
                 additionalProperties: { }
       security:
         - { }
+  /api/sip:
+    get:
+      tags:
+        - sip
+      operationId: sip_retrieve
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SipConfig'
+      security:
+        - apiKeyAuth: [ ]
+    patch:
+      tags:
+        - sip
+      operationId: sip_partial_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSipConfig'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SipConfig'
+      security:
+        - apiKeyAuth: [ ]
+  /api/sip/registrations:
+    get:
+      tags:
+        - sip
+      operationId: sip_registrations_list
+      parameters:
+        - name: cursor
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          description: Number of results to return per page.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSipRegistrationList'
+      security:
+        - apiKeyAuth: [ ]
+    post:
+      tags:
+        - sip
+      operationId: sip_registrations_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SipRegistration'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SipRegistration'
+      security:
+        - apiKeyAuth: [ ]
+  '/api/sip/registrations/{registration_id}':
+    get:
+      tags:
+        - sip
+      operationId: sip_registrations_retrieve
+      parameters:
+        - name: registration_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SipRegistration'
+      security:
+        - apiKeyAuth: [ ]
+    patch:
+      tags:
+        - sip
+      operationId: sip_registrations_partial_update
+      parameters:
+        - name: registration_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSipRegistration'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SipRegistration'
+      security:
+        - apiKeyAuth: [ ]
+    delete:
+      tags:
+        - sip
+      operationId: sip_registrations_destroy
+      parameters:
+        - name: registration_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No response body
+      security:
+        - apiKeyAuth: [ ]
+  /api/telephony_configs/plivo:
+    get:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_plivo_retrieve
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlivoConfig'
+      security:
+        - apiKeyAuth: [ ]
+    post:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_plivo_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlivoConfig'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlivoConfig'
+      security:
+        - apiKeyAuth: [ ]
+    patch:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_plivo_partial_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPlivoConfig'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlivoConfig'
+      security:
+        - apiKeyAuth: [ ]
+    delete:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_plivo_destroy
+      responses:
+        '204':
+          description: No response body
+      security:
+        - apiKeyAuth: [ ]
+  /api/telephony_configs/telnyx:
+    get:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_telnyx_retrieve
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelnyxConfig'
+      security:
+        - apiKeyAuth: [ ]
+    post:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_telnyx_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelnyxConfig'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelnyxConfig'
+      security:
+        - apiKeyAuth: [ ]
+    patch:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_telnyx_partial_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTelnyxConfig'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelnyxConfig'
+      security:
+        - apiKeyAuth: [ ]
+    delete:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_telnyx_destroy
+      responses:
+        '204':
+          description: No response body
+      security:
+        - apiKeyAuth: [ ]
+  /api/telephony_configs/twilio:
+    get:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_twilio_retrieve
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwilioConfig'
+      security:
+        - apiKeyAuth: [ ]
+    post:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_twilio_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwilioConfig'
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwilioConfig'
+      security:
+        - apiKeyAuth: [ ]
+    patch:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_twilio_partial_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTwilioConfig'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwilioConfig'
+      security:
+        - apiKeyAuth: [ ]
+    delete:
+      tags:
+        - telephony_configs
+      operationId: telephony_configs_twilio_destroy
+      responses:
+        '204':
+          description: No response body
+      security:
+        - apiKeyAuth: [ ]
   /api/tools:
     get:
       tags:
         - tools
-      description: List all tools in your account.
+      description: List tools available to your account.
       operationId: tools_list
       parameters:
         - name: cursor
@@ -1958,8 +2408,12 @@ paths:
             type: string
         - name: ownership
           in: query
-          description: The ownership used to filter results
+          description: "The ownership used to filter results.\n\n* `private` - Only private tools\n* `public` - Only public tools"
           schema:
+            minLength: 1
+            enum:
+              - private
+              - public
             type: string
         - name: pageSize
           in: query
@@ -1968,9 +2422,24 @@ paths:
             type: integer
         - name: search
           in: query
-          description: The search string used to filter results
+          description: The search string used to filter results.
           schema:
+            minLength: 1
             type: string
+        - name: sortOrder
+          in: query
+          description: "How results should be ordered. If a cursor is provided, this parameter must match the sortOrder used in the previous request for results to be sensible.\n\n* `display` - Display order. Public tools by name first, then private tools with most recent first.\n* `alphabetic` - Name ascending\n* `reverseAlphabetic` - Name descending\n* `chronologic` - Creation order with oldest first.\n* `reverseChronologic` - Creation order with newest first.\n* `default` - Default ordering. Same as reverseChronologic but with private tools first."
+          schema:
+            minLength: 1
+            enum:
+              - display
+              - alphabetic
+              - reverseAlphabetic
+              - chronologic
+              - reverseChronologic
+              - default
+            type: string
+            default: default
       responses:
         '200':
           description: ''
@@ -2203,10 +2672,11 @@ paths:
                 - lmnt
                 - cartesia
                 - google
+                - respeecher
                 - eleven_labs
                 - inworld
               type: string
-              description: "* `lmnt` - LMNT\n* `cartesia` - Cartesia\n* `google` - Google\n* `eleven_labs` - Eleven Labs\n* `inworld` - Inworld"
+              description: "* `lmnt` - LMNT\n* `cartesia` - Cartesia\n* `google` - Google\n* `respeecher` - Respeecher\n* `eleven_labs` - Eleven Labs\n* `inworld` - Inworld"
         - name: search
           in: query
           description: The search string used to filter results.
@@ -2248,6 +2718,11 @@ paths:
                   type: string
                   description: 'Optional description for the voice. If not provided, a default description will be generated.'
                   example: 'Voice recorded on Jan 1, 2024'
+                language:
+                  type: string
+                  description: BCP47 language code for the language used in the recording.
+                  default: en
+                  example: en-US
           application/json:
             schema:
               $ref: '#/components/schemas/Voice'
@@ -2698,21 +3173,24 @@ components:
           format: email
           nullable: true
           readOnly: true
-    AccountTelephonyConfigOutput:
+    AccountTelephonyConfig:
       type: object
       properties:
         twilio:
           allOf:
-            - $ref: '#/components/schemas/TwilioConfigOutput'
-          description: Your Twilio configuration.
+            - $ref: '#/components/schemas/TwilioConfig'
+          description: Your Twilio configuration. See https://console.twilio.com/
+          nullable: true
         telnyx:
           allOf:
-            - $ref: '#/components/schemas/TelnyxConfigOutput'
-          description: Your Telnyx configuration.
+            - $ref: '#/components/schemas/TelnyxConfig'
+          description: Your Telnyx configuration. See https://portal.telnyx.com/
+          nullable: true
         plivo:
           allOf:
-            - $ref: '#/components/schemas/PlivoConfigOutput'
-          description: Your Plivo configuration.
+            - $ref: '#/components/schemas/PlivoConfig'
+          description: Your Plivo configuration. See https://console.plivo.com/dashboard/
+          nullable: true
     AccountTtsKeys:
       type: object
       properties:
@@ -2732,6 +3210,14 @@ components:
           allOf:
             - $ref: '#/components/schemas/KeyPrefix'
           description: The Google service account key.
+        inworld:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The Inworld API key.
+        respeecher:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The Respeecher API key.
     Agent:
       required:
         - agentId
@@ -2761,14 +3247,22 @@ components:
             - $ref: '#/components/schemas/ultravox.v1.CallTemplate'
           nullable: true
         statistics:
-          type: object
-          properties:
-            calls:
-              type: integer
-            totalBilledMinutes:
-              type: integer
-          description: Statistics about the agent's usage
+          allOf:
+            - $ref: '#/components/schemas/AgentStatistics'
           readOnly: true
+    AgentAllowance:
+      required:
+        - agentId
+      type: object
+      properties:
+        agentId:
+          type: string
+          description: The ID of the agent to allow.
+          format: uuid
+        toUserPattern:
+          maxLength: 200
+          type: string
+          description: A pattern to apply to the to user part of the URI of any incoming sip INVITE that determines how this agent can be reached. Defaults to ^agent_<agent_id>$ if not specified.
     AgentBasic:
       required:
         - agentId
@@ -2797,6 +3291,15 @@ components:
           format: double
         calls:
           type: integer
+    AgentStatistics:
+      required:
+        - calls
+      type: object
+      properties:
+        calls:
+          type: integer
+          default: 0
+          readOnly: true
     AgentUsage:
       required:
         - agent
@@ -2804,7 +3307,7 @@ components:
       type: object
       properties:
         agent:
-          $ref: '#/components/schemas/_AgentUsageAgent'
+          $ref: '#/components/schemas/AgentBasic'
         usage:
           type: array
           items:
@@ -2818,6 +3321,19 @@ components:
         - subscription_update
       type: string
       description: "* `manual` - manual\n* `subscription_create` - subscription_create\n* `subscription_cycle` - subscription_cycle\n* `subscription_threshold` - subscription_threshold\n* `subscription_update` - subscription_update"
+    BillingStatusEnum:
+      enum:
+        - BILLING_STATUS_PENDING
+        - BILLING_STATUS_FREE_CONSOLE
+        - BILLING_STATUS_FREE_ZERO_EFFECTIVE_DURATION
+        - BILLING_STATUS_FREE_MINUTES
+        - BILLING_STATUS_FREE_SYSTEM_ERROR
+        - BILLING_STATUS_FREE_OTHER
+        - BILLING_STATUS_BILLED
+        - BILLING_STATUS_REFUNDED
+        - BILLING_STATUS_UNSPECIFIED
+      type: string
+      description: "* BILLING_STATUS_PENDING* - The call hasn't been billed yet, but will be in the future. This is the case for ongoing calls for example. (Note: Calls created before May 28, 2025 may have this status even if they were billed.)\n* BILLING_STATUS_FREE_CONSOLE* - The call was free because it was initiated on https://app.ultravox.ai.\n* BILLING_STATUS_FREE_ZERO_EFFECTIVE_DURATION* - The call was free because its effective duration was zero. (Note: There may still be a non-zero sip bill in this case.)\n* BILLING_STATUS_FREE_MINUTES* - The call was unbilled but counted against the account's free minutes. (Note: There may still be a non-zero sip bill in this case.)\n* BILLING_STATUS_FREE_SYSTEM_ERROR* - The call was free because it ended due to a system error.\n* BILLING_STATUS_FREE_OTHER* - The call is in an undocumented free billing state.\n* BILLING_STATUS_BILLED* - The call was billed. See billedDuration for the billed duration.\n* BILLING_STATUS_REFUNDED* - The call was billed but was later refunded.\n* BILLING_STATUS_UNSPECIFIED* - The call is in an unexpected billing state. Please contact support."
     BillingStyleEnum:
       enum:
         - VOICE_BILLING_STYLE_INCLUDED
@@ -2827,6 +3343,7 @@ components:
       required:
         - date
         - minutes
+        - sipMinutes
       type: object
       properties:
         date:
@@ -2837,17 +3354,23 @@ components:
           type: number
           description: Total minutes billed on this date.
           format: double
+        sipMinutes:
+          type: number
+          description: Total SIP minutes billed on this date.
+          format: double
     Call:
       required:
         - agent
         - agentId
         - billedDuration
+        - billedSideInputTokens
+        - billedSideOutputTokens
+        - billingStatus
         - callId
         - clientVersion
         - created
         - endReason
         - ended
-        - errorCount
         - experimentalSettings
         - firstSpeaker
         - firstSpeakerSettings
@@ -2858,6 +3381,7 @@ components:
         - metadata
         - requestContext
         - shortSummary
+        - sipDetails
         - summary
       type: object
       properties:
@@ -2894,6 +3418,18 @@ components:
         billedDuration:
           type: string
           nullable: true
+          readOnly: true
+        billedSideInputTokens:
+          type: integer
+          nullable: true
+          readOnly: true
+        billedSideOutputTokens:
+          type: integer
+          nullable: true
+          readOnly: true
+        billingStatus:
+          allOf:
+            - $ref: '#/components/schemas/BillingStatusEnum'
           readOnly: true
         firstSpeaker:
           allOf:
@@ -2936,7 +3472,7 @@ components:
           nullable: true
         model:
           type: string
-          default: fixie-ai/ultravox
+          default: ultravox-v0.7
         recordingEnabled:
           type: boolean
           default: false
@@ -2957,16 +3493,15 @@ components:
           nullable: true
         externalVoice:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+        voiceOverrides:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+          description: Overrides for the selected voice.
         transcriptOptional:
           type: boolean
           description: Indicates whether a transcript is optional for the call.
           default: true
           deprecated: true
-        errorCount:
-          type: integer
-          description: The number of errors in this call.
-          default: 0
-          readOnly: true
         vadSettings:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.VadSettings'
@@ -3008,14 +3543,26 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.DataConnectionConfig'
           description: Settings for exchanging data messages with an additional participant.
+        callbacks:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.Callbacks'
+          description: Callbacks configuration for the call.
+        sipDetails:
+          allOf:
+            - $ref: '#/components/schemas/CallSipDetails'
+          description: 'SIP details for the call, if applicable.'
+          nullable: true
+          readOnly: true
     CallEvent:
       required:
         - callId
         - callStageId
         - callTimestamp
+        - extras
         - severity
         - text
         - type
+        - wallClockTimestamp
       type: object
       properties:
         callId:
@@ -3040,7 +3587,30 @@ components:
         text:
           type: string
         extras:
+          type: object
+          additionalProperties: { }
           nullable: true
+          readOnly: true
+        wallClockTimestamp:
+          type: string
+          description: 'The wall clock timestamp of the event, relative to call start.'
+          nullable: true
+    CallSipDetails:
+      required:
+        - billedDuration
+        - terminationReason
+      type: object
+      properties:
+        billedDuration:
+          type: string
+          nullable: true
+          readOnly: true
+        terminationReason:
+          oneOf:
+            - $ref: '#/components/schemas/TerminationReasonEnum'
+            - $ref: '#/components/schemas/NullEnum'
+          nullable: true
+          readOnly: true
     CallStage:
       required:
         - callId
@@ -3076,7 +3646,6 @@ components:
           nullable: true
         model:
           type: string
-          default: fixie-ai/ultravox
         systemPrompt:
           type: string
           nullable: true
@@ -3092,6 +3661,10 @@ components:
           nullable: true
         externalVoice:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+        voiceOverrides:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+          description: Overrides for the selected voice.
         errorCount:
           type: integer
           description: The number of errors in this call stage.
@@ -3108,6 +3681,7 @@ components:
       required:
         - billedMinutes
         - duration
+        - errorCount
         - joinedCount
         - totalCount
       type: object
@@ -3115,6 +3689,9 @@ components:
         totalCount:
           type: integer
           description: Total number of calls
+        errorCount:
+          type: integer
+          description: Number of calls that ended in error
         duration:
           type: string
           description: Total duration of all calls
@@ -3202,6 +3779,7 @@ components:
       required:
         - allTime
         - daily
+        - hourly
       type: object
       properties:
         allTime:
@@ -3213,6 +3791,11 @@ components:
           items:
             $ref: '#/components/schemas/DailyCallStatistics'
           description: Call usage per day
+        hourly:
+          type: array
+          items:
+            $ref: '#/components/schemas/HourlyCallStatistics'
+          description: Call counts by date and hour
     CorpusUploadsRequest:
       required:
         - mimeType
@@ -3242,6 +3825,7 @@ components:
         - billedMinutes
         - date
         - duration
+        - errorCount
         - joinedCount
         - totalCount
       type: object
@@ -3249,6 +3833,9 @@ components:
         totalCount:
           type: integer
           description: Total number of calls
+        errorCount:
+          type: integer
+          description: Number of calls that ended in error
         duration:
           type: string
           description: Total duration of all calls
@@ -3278,13 +3865,48 @@ components:
         - call.started
         - call.joined
         - call.ended
+        - call.billed
       type: string
-      description: "* `call.started` - Fired when a call starts\n* `call.joined` - Fired when a call is joined\n* `call.ended` - Fired when a call ends"
+      description: "* `call.started` - Fired when a call starts\n* `call.joined` - Fired when a call is joined\n* `call.ended` - Fired when a call ends\n* `call.billed` - Fired when a call is billed"
     FirstSpeakerEnum:
       enum:
         - FIRST_SPEAKER_AGENT
         - FIRST_SPEAKER_USER
       type: string
+    HourlyCallStatistics:
+      required:
+        - billedMinutes
+        - date
+        - duration
+        - errorCount
+        - hour
+        - joinedCount
+        - totalCount
+      type: object
+      properties:
+        totalCount:
+          type: integer
+          description: Total number of calls
+        errorCount:
+          type: integer
+          description: Number of calls that ended in error
+        duration:
+          type: string
+          description: Total duration of all calls
+        joinedCount:
+          type: integer
+          description: Number of calls that were joined
+        billedMinutes:
+          type: number
+          description: Total billed minutes.
+          format: double
+        date:
+          type: string
+          description: Date of the bucket
+          format: date
+        hour:
+          type: integer
+          description: Hour of day (0-23) UTC
     InitialOutputMediumEnum:
       enum:
         - MESSAGE_MEDIUM_VOICE
@@ -3572,6 +4194,28 @@ components:
         total:
           type: integer
           example: 123
+    PaginatedSipRegistrationList:
+      required:
+        - results
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          format: uri
+          nullable: true
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SipRegistration'
+        total:
+          type: integer
+          example: 123
     PaginatedToolHistoryList:
       required:
         - results
@@ -3783,14 +4427,17 @@ components:
           allOf:
             - $ref: '#/components/schemas/TwilioConfig'
           description: Your Twilio configuration. See https://console.twilio.com/
+          nullable: true
         telnyx:
           allOf:
             - $ref: '#/components/schemas/TelnyxConfig'
           description: Your Telnyx configuration. See https://portal.telnyx.com/
+          nullable: true
         plivo:
           allOf:
             - $ref: '#/components/schemas/PlivoConfig'
           description: Your Plivo configuration. See https://console.plivo.com/dashboard/
+          nullable: true
     PatchedAgent:
       type: object
       properties:
@@ -3815,13 +4462,39 @@ components:
             - $ref: '#/components/schemas/ultravox.v1.CallTemplate'
           nullable: true
         statistics:
+          allOf:
+            - $ref: '#/components/schemas/AgentStatistics'
+          readOnly: true
+    PatchedPlivoConfig:
+      type: object
+      properties:
+        callCreationAllowedAgentIds:
+          maxItems: 100
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of agents for whom calls may be directly created by this telephony provider to facilitate incoming calls. May not be set if callCreationAllowAllAgents is true.
+        callCreationAllowAllAgents:
+          type: boolean
+          description: 'If true, calls may be directly created by this telephony provider for all agents. If false, only agents listed in callCreationAllowedAgentIds are allowed.'
+          default: false
+        requestContextMapping:
           type: object
-          properties:
-            calls:
-              type: integer
-            totalBilledMinutes:
-              type: integer
-          description: Statistics about the agent's usage
+          additionalProperties:
+            type: string
+          description: Maps (dot separated) request fields to (dot separated) context fields for incoming call creation.
+        authId:
+          type: string
+          description: Your Plivo Auth ID.
+        authToken:
+          type: string
+          description: Your Plivo Auth Token.
+          writeOnly: true
+        authTokenPrefix:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The prefix of your Plivo Auth Token.
           readOnly: true
     PatchedScheduledCallBatch:
       type: object
@@ -3895,6 +4568,144 @@ components:
           type: string
           description: "A service account JSON key for your Google Cloud project with the Text-to-Speech API enabled.\nhttps://cloud.google.com/text-to-speech/docs/quickstart-client-libraries#before-you-begin\nhttps://cloud.google.com/iam/docs/keys-create-delete#creating"
           nullable: true
+        inworld:
+          type: string
+          description: "Your Inworld API key.\nhttps://platform.inworld.ai/login"
+          nullable: true
+        respeecher:
+          type: string
+          description: "Your Respeecher API key.\nhttps://space.respeecher.com/api-keys"
+          nullable: true
+    PatchedSipConfig:
+      type: object
+      properties:
+        allowedCidrRanges:
+          type: array
+          items:
+            type: string
+            format: ipv4-cidr
+          description: The list of IPv4 CIDR ranges from which incoming SIP calls will be accepted.
+        allowAllAgents:
+          type: boolean
+          description: 'If true, adds an implicit allowance for requests matching agent_<agent_id>@<anydomain> for any of your agents.'
+          default: false
+        allowedAgents:
+          maxItems: 20
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentAllowance'
+          description: Calls must match a pattern for one of these agents (or the global agent pattern if allowAllAgents is true) to be accepted.
+        domain:
+          type: string
+          description: The domain used for SIP invites for your account.
+          readOnly: true
+    PatchedSipRegistration:
+      type: object
+      properties:
+        registrationId:
+          type: string
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        username:
+          maxLength: 60
+          type: string
+          description: The SIP username to register as.
+        password:
+          type: string
+          description: The SIP password for username.
+          writeOnly: true
+        proxy:
+          maxLength: 100
+          type: string
+          description: The SIP server to register with.
+        outboundProxy:
+          maxLength: 100
+          type: string
+          description: 'A proxy used to reach your SIP server for registration. Most often unset, but may be used if you need to register as `alice@trunk.com` using `proxy.trunk.com` for example.'
+          nullable: true
+        authUser:
+          maxLength: 60
+          type: string
+          description: 'The authentication username, if different from the SIP username. Most often unset.'
+          nullable: true
+    PatchedTelnyxConfig:
+      type: object
+      properties:
+        callCreationAllowedAgentIds:
+          maxItems: 100
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of agents for whom calls may be directly created by this telephony provider to facilitate incoming calls. May not be set if callCreationAllowAllAgents is true.
+        callCreationAllowAllAgents:
+          type: boolean
+          description: 'If true, calls may be directly created by this telephony provider for all agents. If false, only agents listed in callCreationAllowedAgentIds are allowed.'
+          default: false
+        requestContextMapping:
+          type: object
+          additionalProperties:
+            type: string
+          description: Maps (dot separated) request fields to (dot separated) context fields for incoming call creation.
+        accountSid:
+          type: string
+          description: Your Telnyx Account SID. See https://portal.telnyx.com/#/account/general
+        apiKey:
+          type: string
+          description: Your Telnyx API Key. See https://portal.telnyx.com/#/api-keys
+          writeOnly: true
+        apiKeyPrefix:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The prefix of your Telnyx API Key.
+          readOnly: true
+        publicKey:
+          type: string
+          description: Your Telnyx Public Key. See https://portal.telnyx.com/#/api-keys/public-key
+          writeOnly: true
+        publicKeyPrefix:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The prefix of your Telnyx Public Key.
+          readOnly: true
+        applicationSid:
+          maxLength: 40
+          type: string
+          description: Your Telnyx Application SID. This must be configured with an Outbound Voice Profile that allows calls to your destination. See https://portal.telnyx.com/#/call-control/texml
+    PatchedTwilioConfig:
+      type: object
+      properties:
+        callCreationAllowedAgentIds:
+          maxItems: 100
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of agents for whom calls may be directly created by this telephony provider to facilitate incoming calls. May not be set if callCreationAllowAllAgents is true.
+        callCreationAllowAllAgents:
+          type: boolean
+          description: 'If true, calls may be directly created by this telephony provider for all agents. If false, only agents listed in callCreationAllowedAgentIds are allowed.'
+          default: false
+        requestContextMapping:
+          type: object
+          additionalProperties:
+            type: string
+          description: Maps (dot separated) request fields to (dot separated) context fields for incoming call creation.
+        accountSid:
+          type: string
+          description: Your Twilio Account SID.
+        authToken:
+          type: string
+          description: Your Twilio Auth Token.
+          writeOnly: true
+        authTokenPrefix:
+          allOf:
+            - $ref: '#/components/schemas/KeyPrefix'
+          description: The prefix of your Twilio Auth Token.
+          readOnly: true
     PatchedVoice:
       type: object
       properties:
@@ -3914,6 +4725,11 @@ components:
           type: string
           description: BCP47 language code for the primary language supported by this voice.
           nullable: true
+        languageLabel:
+          type: string
+          description: 'Human-readable language label with flag emoji and English name (e.g., ''🇺🇸 English (United States)'').'
+          nullable: true
+          readOnly: true
         previewUrl:
           type: string
           format: uri
@@ -3981,27 +4797,37 @@ components:
       required:
         - authId
         - authToken
+        - authTokenPrefix
       type: object
       properties:
+        callCreationAllowedAgentIds:
+          maxItems: 100
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of agents for whom calls may be directly created by this telephony provider to facilitate incoming calls. May not be set if callCreationAllowAllAgents is true.
+        callCreationAllowAllAgents:
+          type: boolean
+          description: 'If true, calls may be directly created by this telephony provider for all agents. If false, only agents listed in callCreationAllowedAgentIds are allowed.'
+          default: false
+        requestContextMapping:
+          type: object
+          additionalProperties:
+            type: string
+          description: Maps (dot separated) request fields to (dot separated) context fields for incoming call creation.
         authId:
           type: string
           description: Your Plivo Auth ID.
         authToken:
           type: string
           description: Your Plivo Auth Token.
-    PlivoConfigOutput:
-      required:
-        - authId
-        - authTokenPrefix
-      type: object
-      properties:
-        authId:
-          type: string
-          description: Your Plivo Auth ID.
+          writeOnly: true
         authTokenPrefix:
           allOf:
             - $ref: '#/components/schemas/KeyPrefix'
           description: The prefix of your Plivo Auth Token.
+          readOnly: true
     ScheduledCall:
       required:
         - batchId
@@ -4033,6 +4859,7 @@ components:
           description: 'The call medium to use for the call. In particular, allows for specifying per-call recipients for outgoing media.'
           nullable: true
         metadata:
+          description: Optional metadata key-value pairs to associate with the call. All values must be strings.
           nullable: true
         templateContext:
           description: The context used to render the agent's template.
@@ -4107,6 +4934,15 @@ components:
         - EXPIRED
         - ERROR
       type: string
+    SendCallDataMessage:
+      required:
+        - type
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of the data message.
+      description: A data message to send to a call.
     SeverityEnum:
       enum:
         - debug
@@ -4114,48 +4950,132 @@ components:
         - warning
         - error
       type: string
+    SipConfig:
+      required:
+        - allowedAgents
+        - domain
+      type: object
+      properties:
+        allowedCidrRanges:
+          type: array
+          items:
+            type: string
+            format: ipv4-cidr
+          description: The list of IPv4 CIDR ranges from which incoming SIP calls will be accepted.
+        allowAllAgents:
+          type: boolean
+          description: 'If true, adds an implicit allowance for requests matching agent_<agent_id>@<anydomain> for any of your agents.'
+          default: false
+        allowedAgents:
+          maxItems: 20
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentAllowance'
+          description: Calls must match a pattern for one of these agents (or the global agent pattern if allowAllAgents is true) to be accepted.
+        domain:
+          type: string
+          description: The domain used for SIP invites for your account.
+          readOnly: true
+    SipRegistration:
+      required:
+        - created
+        - password
+        - proxy
+        - registrationId
+        - username
+      type: object
+      properties:
+        registrationId:
+          type: string
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        username:
+          maxLength: 60
+          type: string
+          description: The SIP username to register as.
+        password:
+          type: string
+          description: The SIP password for username.
+          writeOnly: true
+        proxy:
+          maxLength: 100
+          type: string
+          description: The SIP server to register with.
+        outboundProxy:
+          maxLength: 100
+          type: string
+          description: 'A proxy used to reach your SIP server for registration. Most often unset, but may be used if you need to register as `alice@trunk.com` using `proxy.trunk.com` for example.'
+          nullable: true
+        authUser:
+          maxLength: 60
+          type: string
+          description: 'The authentication username, if different from the SIP username. Most often unset.'
+          nullable: true
     TelnyxConfig:
       required:
         - accountSid
         - apiKey
+        - apiKeyPrefix
         - applicationSid
         - publicKey
+        - publicKeyPrefix
       type: object
       properties:
+        callCreationAllowedAgentIds:
+          maxItems: 100
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of agents for whom calls may be directly created by this telephony provider to facilitate incoming calls. May not be set if callCreationAllowAllAgents is true.
+        callCreationAllowAllAgents:
+          type: boolean
+          description: 'If true, calls may be directly created by this telephony provider for all agents. If false, only agents listed in callCreationAllowedAgentIds are allowed.'
+          default: false
+        requestContextMapping:
+          type: object
+          additionalProperties:
+            type: string
+          description: Maps (dot separated) request fields to (dot separated) context fields for incoming call creation.
         accountSid:
           type: string
           description: Your Telnyx Account SID. See https://portal.telnyx.com/#/account/general
         apiKey:
           type: string
           description: Your Telnyx API Key. See https://portal.telnyx.com/#/api-keys
-        publicKey:
-          type: string
-          description: Your Telnyx Public Key. See https://portal.telnyx.com/#/api-keys/public-key
-        applicationSid:
-          type: string
-          description: Your Telnyx Application SID. This must be configured with an Outbound Voice Profile that allows calls to your destination. See https://portal.telnyx.com/#/call-control/texml
-    TelnyxConfigOutput:
-      required:
-        - accountSid
-        - apiKeyPrefix
-        - applicationSid
-        - publicKeyPrefix
-      type: object
-      properties:
-        accountSid:
-          type: string
-          description: Your Telnyx Account SID.
+          writeOnly: true
         apiKeyPrefix:
           allOf:
             - $ref: '#/components/schemas/KeyPrefix'
           description: The prefix of your Telnyx API Key.
+          readOnly: true
+        publicKey:
+          type: string
+          description: Your Telnyx Public Key. See https://portal.telnyx.com/#/api-keys/public-key
+          writeOnly: true
         publicKeyPrefix:
           allOf:
             - $ref: '#/components/schemas/KeyPrefix'
           description: The prefix of your Telnyx Public Key.
+          readOnly: true
         applicationSid:
+          maxLength: 40
           type: string
-          description: Your Telnyx Application SID.
+          description: Your Telnyx Application SID. This must be configured with an Outbound Voice Profile that allows calls to your destination. See https://portal.telnyx.com/#/call-control/texml
+    TerminationReasonEnum:
+      enum:
+        - SIP_TERMINATION_NORMAL
+        - SIP_TERMINATION_INVALID_NUMBER
+        - SIP_TERMINATION_TIMEOUT
+        - SIP_TERMINATION_DESTINATION_UNAVAILABLE
+        - SIP_TERMINATION_BUSY
+        - SIP_TERMINATION_CANCELED
+        - SIP_TERMINATION_REJECTED
+        - SIP_TERMINATION_UNKNOWN
+      type: string
     Tool:
       required:
         - created
@@ -4199,31 +5119,42 @@ components:
       required:
         - accountSid
         - authToken
+        - authTokenPrefix
       type: object
       properties:
+        callCreationAllowedAgentIds:
+          maxItems: 100
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: List of agents for whom calls may be directly created by this telephony provider to facilitate incoming calls. May not be set if callCreationAllowAllAgents is true.
+        callCreationAllowAllAgents:
+          type: boolean
+          description: 'If true, calls may be directly created by this telephony provider for all agents. If false, only agents listed in callCreationAllowedAgentIds are allowed.'
+          default: false
+        requestContextMapping:
+          type: object
+          additionalProperties:
+            type: string
+          description: Maps (dot separated) request fields to (dot separated) context fields for incoming call creation.
         accountSid:
           type: string
           description: Your Twilio Account SID.
         authToken:
           type: string
           description: Your Twilio Auth Token.
-    TwilioConfigOutput:
-      required:
-        - accountSid
-        - authTokenPrefix
-      type: object
-      properties:
-        accountSid:
-          type: string
-          description: Your Twilio Account SID.
+          writeOnly: true
         authTokenPrefix:
           allOf:
             - $ref: '#/components/schemas/KeyPrefix'
           description: The prefix of your Twilio Auth Token.
+          readOnly: true
     UsageResponse:
       required:
         - dailyUsage
         - totalMinutes
+        - totalSipMinutes
       type: object
       properties:
         dailyUsage:
@@ -4235,10 +5166,16 @@ components:
           description: Total billed usage within the requested period in minutes.
           format: double
           readOnly: true
+        totalSipMinutes:
+          type: number
+          description: Total billed SIP usage within the requested period in minutes.
+          format: double
+          readOnly: true
     Voice:
       required:
         - billingStyle
         - definition
+        - languageLabel
         - name
         - ownership
         - previewUrl
@@ -4262,6 +5199,11 @@ components:
           type: string
           description: BCP47 language code for the primary language supported by this voice.
           nullable: true
+        languageLabel:
+          type: string
+          description: 'Human-readable language label with flag emoji and English name (e.g., ''🇺🇸 English (United States)'').'
+          nullable: true
+          readOnly: true
         previewUrl:
           type: string
           format: uri
@@ -4350,19 +5292,6 @@ components:
         - unhealthy
       type: string
       description: "* `normal` - NORMAL\n* `unhealthy` - UNHEALTHY"
-    _AgentUsageAgent:
-      required:
-        - agentId
-        - name
-      type: object
-      properties:
-        agentId:
-          type: string
-          format: uuid
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
     ultravox.v1.CallTemplate:
       type: object
       properties:
@@ -4417,7 +5346,7 @@ components:
           format: float
         model:
           type: string
-          description: "The model used for generations. Defaults to fixie-ai/ultravox.\n If multiple stages are defined for the call, this will be used only for stages without their own model."
+          description: "The model used for generations. Currently defaults to ultravox-v0.7.\n If multiple stages are defined for the call, this will be used only for stages without their own model."
         voice:
           type: string
           description: "The name or ID of the voice the agent should use for calls.\n If multiple stages are defined for the call, this will be used only for stages without their own voice (or external_voice)."
@@ -4425,6 +5354,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
           description: "A voice not known to Ultravox Realtime that can nonetheless be used for calls with this agent.\n Your account must have an API key set for the provider of the voice.\n Either this or `voice` may be set, but not both."
+        voiceOverrides:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+          description: "Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).\n Only non-price-affecting fields may be overridden (e.g., speed, style, stability).\n The provider in the override must match the selected voice's provider.\n If multiple stages are defined for the call, this will be used only for stages without their own voice_overrides."
         languageHint:
           type: string
           description: "A BCP47 language code that may be used to guide speech recognition and synthesis.\n If multiple stages are defined for the call, this will be used only for stages without their own languageHint."
@@ -4547,6 +5480,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.UploadSpec'
           description: Allows loading from a uploaded document.
+        advanced:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.AdvancedSpec'
+          description: "Allows loading from an advanced documents source.\n This is similar to an upload source, but requires setting example queries\n for each document. When a similar query is issued, the document will be\n returned in its entirety."
       description: "A source of documents for building a corpus. A source defines where documents\n are pulled from."
     ultravox.v1.Message:
       type: object
@@ -4594,10 +5531,38 @@ components:
         timespan:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.InCallTimespan'
-          description: "The timespan during the call when this message occurred.\n This is only set for messages that occurred during the call (stage)\n and not for messages in the call's (call stage's) initial messages."
+          description: "The timespan during the call when this message occurred, according\n to the input audio stream.\n This is only set for messages that occurred during the call (stage)\n and not for messages in the call's (call stage's) initial messages."
+        wallClockTimespan:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.InCallTimespan'
+          description: "The timespan during the call when this message occurred, according\n the wall clock, relative to the call's joined time.\n This is only set for messages that occurred during the call (stage)\n and not for messages in the call's (call stage's) initial messages."
+        metadata:
+          type: object
+          description: Arbitrary metadata associated with the message.
       description: A message exchanged during a call.
     google.protobuf.Value:
       description: 'Represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values.'
+    ultravox.v1.AdvancedSpec:
+      type: object
+      properties:
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.AdvancedSpec_DocumentDetails'
+          description: The list of documents to include in this source.
+      description: The specification of how to acquire documents for an advanced documents source.
+    ultravox.v1.AdvancedSpec_DocumentDetails:
+      type: object
+      properties:
+        documentId:
+          type: string
+          description: The unique ID of the document.
+        exampleQueries:
+          type: array
+          items:
+            type: string
+          description: "Example queries for this document. These queries will be embedded\n instead of the document content.\n Up to 10 queries may be provided for a document. Each query must be\n non-empty after stripping whitespace, and at most 400 characters."
+      description: "Details about a single document. The document will be treated as\n a single chunk and only the provided example queries will be embedded.\n On query, matching vectors return the full document content."
     ultravox.v1.AutomaticParameter:
       type: object
       properties:
@@ -4621,6 +5586,9 @@ components:
             - KNOWN_PARAM_CONVERSATION_HISTORY
             - KNOWN_PARAM_OUTPUT_SAMPLE_RATE
             - KNOWN_PARAM_CALL_STATE
+            - KNOWN_PARAM_CALL_STAGE_ID
+            - KNOWN_PARAM_THREAD_ID
+            - KNOWN_PARAM_THREAD_STATES
           type: string
           description: The value to set for the parameter.
           format: enum
@@ -4775,6 +5743,11 @@ components:
       description: Details for a Twilio call.
     ultravox.v1.CallMedium_WebRtcMedium:
       type: object
+      properties:
+        dataMessages:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.EnabledDataMessages'
+          description: Controls which data messages are enabled for the call.
       description: Details for a WebRTC call.
     ultravox.v1.CallMedium_WebSocketMedium:
       type: object
@@ -4791,6 +5764,10 @@ components:
           type: integer
           description: "The size of the client-side audio buffer in milliseconds. Smaller buffers allow for faster\n interruptions but may cause audio underflow if network latency fluctuates too greatly. For\n the best of both worlds, set this to some large value (e.g. 30000) and implement support for\n playback_clear_buffer messages. Defaults to 60."
           format: int32
+        dataMessages:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.EnabledDataMessages'
+          description: Controls which data messages are enabled for the call.
       description: Details for a WebSocket call.
     ultravox.v1.CallTool:
       type: object
@@ -4846,6 +5823,34 @@ components:
             - $ref: '#/components/schemas/ultravox.v1.StaticToolResponse'
           description: "Static response to a tool. When this is used, this response will be returned\n without waiting for the tool's response."
       description: A tool as used for a particular call (omitting auth details).
+    ultravox.v1.Callback:
+      type: object
+      properties:
+        url:
+          type: string
+          description: The URL to invoke.
+        secrets:
+          type: array
+          items:
+            type: string
+          description: Secrets to use to signing the callback request.
+      description: A lifecycle callback configuration.
+    ultravox.v1.Callbacks:
+      type: object
+      properties:
+        joined:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.Callback'
+          description: Callback invoked when the call is joined.
+        ended:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.Callback'
+          description: Callback invoked when the call has ended.
+        billed:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.Callback'
+          description: Callback invoked when the call is billed.
+      description: Configuration for call lifecycle callbacks.
     ultravox.v1.CartesiaVoice:
       type: object
       properties:
@@ -4857,17 +5862,39 @@ components:
           description: The Cartesia model to use.
         speed:
           type: number
-          description: "The speaking rate. Must be between -1 and 1. Defaults to 0.\n See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.speed"
+          description: (Deprecated) The speaking rate. Must be between -1 and 1. Defaults to 0.
           format: float
         emotion:
           type: string
-          description: See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
+          description: (Deprecated) Use generation_config.emotion instead.
         emotions:
           type: array
           items:
             type: string
-          description: See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
-      description: Specification for a voice served by Cartesia.
+          description: (Deprecated) Use generation_config.emotion instead.
+        generationConfig:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CartesiaVoice_CartesiaGenerationConfig'
+          description: Configure the various attributes of the generated speech.
+      description: Specification for a voice served by Cartesia. See https://docs.cartesia.ai/api-reference/tts/websocket
+    ultravox.v1.CartesiaVoice_CartesiaGenerationConfig:
+      type: object
+      properties:
+        volume:
+          type: number
+          description: 'Adjust the volume of the generated speech between 0.5x and 2.0x the original volume (default is 1.0x). Valid values are between [0.5, 2.0] inclusive.'
+          format: float
+        speed:
+          type: number
+          description: 'Adjust the speed of the generated speech between 0.6x and 2.0x the original speed (default is 1.0x). Valid values are between [0.6, 1.5] inclusive.'
+          format: float
+        emotion:
+          type: string
+          description: 'The primary emotions are neutral, calm, angry, content, sad, scared. For more options, see Prompting Sonic-3.'
+        pronunciationDictId:
+          type: string
+          description: "The ID of a pronunciation dictionary to use for the generation.\n Pronunciation dictionaries are supported by sonic-3 models and newer.\n See https://docs.cartesia.ai/build-with-cartesia/capability-guides/specify-custom-pronunciations"
+      description: Cartesia generation configuration for Sonic-3 and later models.
     ultravox.v1.ClientCallToolDetails:
       type: object
       description: Details for a CallTool implemented by the client.
@@ -4890,6 +5917,11 @@ components:
           type: string
           description: 'The timestamp that the document was published, if known.'
           format: date-time
+        exampleQueries:
+          type: array
+          items:
+            type: string
+          description: "Example queries for query-based embedding.\n When present, these queries are embedded instead of the document content."
       description: "Metadata about a document. This is typically not included in the document's\n chunks, but can be used for filtering or citations.\n Derived documents inherit metadata from their source documents in general."
     ultravox.v1.CorpusQueryResult_Citation:
       type: object
@@ -4991,6 +6023,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.DataConnectionAudioConfig'
           description: 'Audio configuration for the data connection. If not set, no audio will be sent.'
+        dataMessages:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.EnabledDataMessages'
+          description: Controls which data messages are enabled for the data connection.
       description: Data connection enables an auxiliary websocket for streaming data messages.
     ultravox.v1.DynamicParameter:
       type: object
@@ -5067,6 +6103,46 @@ components:
           type: string
           description: The dictionary's version.
       description: A reference to a pronunciation dictionary within ElevenLabs.
+    ultravox.v1.EnabledDataMessages:
+      type: object
+      properties:
+        pong:
+          type: boolean
+          description: 'Responds to a ping message. (Default: enabled)'
+        state:
+          type: boolean
+          description: 'Indicates that the agent state has changed. (Default: enabled)'
+        transcript:
+          type: boolean
+          description: 'Provides transcripts of the user and agent speech. (Default: enabled)'
+        clientToolInvocation:
+          type: boolean
+          description: 'Requests a client-implemented tool invocation. (Default: enabled)'
+        dataConnectionToolInvocation:
+          type: boolean
+          description: 'Requests a data-connection-implemented tool invocation. (Default: enabled for data connections, disabled otherwise)'
+        playbackClearBuffer:
+          type: boolean
+          description: 'Requests the client-side audio buffer to be cleared. (Default: enabled for websocket connections, disabled otherwise)'
+        callStarted:
+          type: boolean
+          description: 'Provides information about the call when it starts. (Default: enabled)'
+        debug:
+          type: boolean
+          description: 'Communicates debug information. (Default: disabled)'
+        callEvent:
+          type: boolean
+          description: 'Indicates that a call event has been recorded. (Default: disabled)'
+        toolUsed:
+          type: boolean
+          description: 'Indicates that a tool was used. (Default: disabled)'
+        userStartedSpeaking:
+          type: boolean
+          description: 'Indicates that the user has started speaking (according to simple VAD). (Default: disabled)'
+        userStoppedSpeaking:
+          type: boolean
+          description: 'Indicates that the user has stopped speaking (according to simple VAD). (Default: disabled)'
+      description: Whether certain data messages are enabled for a connection.
     ultravox.v1.ExternalVoice:
       type: object
       properties:
@@ -5086,6 +6162,14 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.GoogleVoice'
           description: "A voice served by Google, using bidirectional streaming.\n (For non-streaming or output-only streaming, use generic.)"
+        inworld:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.InworldVoice'
+          description: "A voice served by Inworld, using bidirectional streaming.\n (For non-streaming or output-only streaming, use generic.)"
+        respeecher:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.RespeecherVoice'
+          description: 'A voice served by Respeecher, using bidirectional streaming.'
         generic:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.GenericVoice'
@@ -5170,6 +6254,14 @@ components:
         jsonAudioFieldPath:
           type: string
           description: "For JSON responses, the path to the field containing base64-encoded audio data. The data must\n be PCM audio, optionally with a WAV header."
+        jsonByteEncoding:
+          enum:
+            - JSON_BYTE_ENCODING_UNSPECIFIED
+            - JSON_BYTE_ENCODING_BASE64
+            - JSON_BYTE_ENCODING_HEX
+          type: string
+          description: "For JSON responses, how audio bytes are encoded into the json_audio_field_path string.\n Defaults to base64. Also supports hex."
+          format: enum
       description: "Specification for a voice served by some generic REST-based TTS API. The API must\n accept an application/json POST request (as defined below) and return either WAV\n audio, raw PCM audio, or application/json with a base64 encoded audio data field\n that itself corresponds to WAV or raw PCM audio.\n Note that this simple API implies a lack of either input streaming or audio timing\n information, so more specific voice types are preferable when available."
     ultravox.v1.GoogleVoice:
       type: object
@@ -5233,6 +6325,27 @@ components:
           type: string
           description: The offset relative to the start of the call.
       description: A timespan during a call.
+    ultravox.v1.InworldVoice:
+      type: object
+      properties:
+        voiceId:
+          type: string
+          description: The ID of the voice in Inworld.
+        modelId:
+          type: string
+          description: "The ID of the model to use for generations, e.g. \"inworld-tts-1-max\".\n See https://docs.inworld.ai/docs/tts/tts-models"
+        speakingRate:
+          type: number
+          description: "The speaking rate. Must be between 0.5 and 1.5. Defaults to 1.\n See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-audio-config-speaking-rate"
+          format: float
+        temperature:
+          type: number
+          description: "How much randomness to use when sampling audio tokens. Must be between 0.0 and 2.0.\n See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-temperature"
+          format: float
+        applyTextNormalization:
+          type: boolean
+          description: "Whether or not to apply text normalization. This should typically only be disabled if the\n agent is instructed to normalize text directly.\n See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-apply-text-normalization."
+      description: Specification for a voice served by Inworld.
     ultravox.v1.LmntVoice:
       type: object
       properties:
@@ -5302,6 +6415,48 @@ components:
           description: The maximum number of results to return.
           format: int32
       description: A request to query a corpus.
+    ultravox.v1.RespeecherVoice:
+      type: object
+      properties:
+        voiceId:
+          type: string
+          description: The ID of the voice in Respeecher.
+        model:
+          type: string
+          description: "The model to use, e.g. \"/v1/public/tts/ua-rt\" or \"/v1/public/tts/en-rt\"\n Requests will be sent to wss://api.respeecher.com{model}/tts/websocket.\n If not set, defaults to \"/v1/public/tts/en-rt\" for calls with an English\n language hint and \"/v1/public/tts/ua-rt\" otherwise."
+        seed:
+          type: integer
+          description: Random seed for reproducible generation.
+          format: int32
+        temperature:
+          type: number
+          description: "Controls randomness of the output. Higher values produce more varied speech.\n If set, must be greater than or equal to 0.0."
+          format: float
+        topK:
+          type: integer
+          description: "Limits sampling to the top K most likely tokens.\n If set, must be exactly -1 or greater than 0."
+          format: int32
+        topP:
+          type: number
+          description: "Limits sampling to tokens with cumulative probability up to this value.\n If set, must be greater than 0 and less than or equal to 1.0."
+          format: float
+        minP:
+          type: number
+          description: "Minimum probability threshold for token sampling.\n If set, must be between 0.0 and 1.0, inclusive."
+          format: float
+        presencePenalty:
+          type: number
+          description: "Penalty for tokens already present in the context.\n If set, must be between 0 and 2, inclusive."
+          format: float
+        repetitionPenalty:
+          type: number
+          description: "Penalty for repeating tokens.\n If set, must be between 1 and 2, inclusive."
+          format: float
+        frequencyPenalty:
+          type: number
+          description: "Penalty based on token frequency.\n If set, must be between 0 and 2, inclusive."
+          format: float
+      description: "Specification for a voice served by Respeecher.\n See https://space.respeecher.com/docs/api/tts/sampling-params-guide\n for parameter guidance."
     ultravox.v1.SecurityOptions:
       type: object
       properties:
@@ -5463,6 +6618,17 @@ components:
         experimentalSettings:
           type: object
           description: Experimental settings for the call.
+        callbacks:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.Callbacks'
+          description: Callbacks for call lifecycle events.
+        voice:
+          type: string
+          description: "The name or ID of the voice the agent should be forced to use. Typically this is set\n in the agent's CallTemplate and omitted here. Setting here may be useful for scenarios\n where your agent uses different voices for different calls."
+        voiceOverrides:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+          description: "Overrides for the agent's forced voice. Only valid when `voice` is set explicitly\n in this request. Typically the agent's voice and any relevant overrides should be\n set on the agent's CallTemplate instead."
       description: A request to start a call with an existing agent.
     ultravox.v1.StartCallRequest:
       type: object
@@ -5476,7 +6642,7 @@ components:
           format: float
         model:
           type: string
-          description: The model used for generations. Defaults to fixie-ai/ultravox.
+          description: The model used for generations. Currently defaults to ultravox-v0.7.
         voice:
           type: string
           description: The ID (or name if unique) of the voice the agent should use for this call.
@@ -5562,6 +6728,14 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.DataConnectionConfig'
           description: Data connection configuration.
+        callbacks:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.Callbacks'
+          description: Callbacks for call lifecycle events.
+        voiceOverrides:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+          description: "Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).\n Only non-price-affecting fields may be overridden (e.g., speed, style, stability).\n The provider in the override must match the selected voice's provider."
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object

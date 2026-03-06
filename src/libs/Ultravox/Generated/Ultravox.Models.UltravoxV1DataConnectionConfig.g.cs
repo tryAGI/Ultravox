@@ -21,6 +21,12 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1DataConnectionAudioConfig? AudioConfig { get; set; }
 
         /// <summary>
+        /// Controls which data messages are enabled for the data connection.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("dataMessages")]
+        public global::Ultravox.UltravoxV1EnabledDataMessages? DataMessages { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,15 +41,20 @@ namespace Ultravox
         /// <param name="audioConfig">
         /// Audio configuration for the data connection. If not set, no audio will be sent.
         /// </param>
+        /// <param name="dataMessages">
+        /// Controls which data messages are enabled for the data connection.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UltravoxV1DataConnectionConfig(
             string? websocketUrl,
-            global::Ultravox.UltravoxV1DataConnectionAudioConfig? audioConfig)
+            global::Ultravox.UltravoxV1DataConnectionAudioConfig? audioConfig,
+            global::Ultravox.UltravoxV1EnabledDataMessages? dataMessages)
         {
             this.WebsocketUrl = websocketUrl;
             this.AudioConfig = audioConfig;
+            this.DataMessages = dataMessages;
         }
 
         /// <summary>
