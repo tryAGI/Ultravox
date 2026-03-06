@@ -64,6 +64,15 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1UploadSpec? Upload { get; set; }
 
         /// <summary>
+        /// Allows loading from an advanced documents source.<br/>
+        ///  This is similar to an upload source, but requires setting example queries<br/>
+        ///  for each document. When a similar query is issued, the document will be<br/>
+        ///  returned in its entirety.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("advanced")]
+        public global::Ultravox.UltravoxV1AdvancedSpec? Advanced { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -99,6 +108,12 @@ namespace Ultravox
         /// <param name="upload">
         /// Allows loading from a uploaded document.
         /// </param>
+        /// <param name="advanced">
+        /// Allows loading from an advanced documents source.<br/>
+        ///  This is similar to an upload source, but requires setting example queries<br/>
+        ///  for each document. When a similar query is issued, the document will be<br/>
+        ///  returned in its entirety.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -111,7 +126,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1SourceStats? stats,
             global::Ultravox.UltravoxV1CrawlSpec? loadSpec,
             global::Ultravox.UltravoxV1CrawlSpec? crawl,
-            global::Ultravox.UltravoxV1UploadSpec? upload)
+            global::Ultravox.UltravoxV1UploadSpec? upload,
+            global::Ultravox.UltravoxV1AdvancedSpec? advanced)
         {
             this.CorpusId = corpusId;
             this.SourceId = sourceId;
@@ -122,6 +138,7 @@ namespace Ultravox
             this.LoadSpec = loadSpec;
             this.Crawl = crawl;
             this.Upload = upload;
+            this.Advanced = advanced;
         }
 
         /// <summary>

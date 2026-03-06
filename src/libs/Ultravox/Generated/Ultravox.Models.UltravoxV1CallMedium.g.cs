@@ -16,7 +16,7 @@ namespace Ultravox
         ///  This is the default.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webRtc")]
-        public object? WebRtc { get; set; }
+        public global::Ultravox.UltravoxV1CallMediumWebRtcMedium? WebRtc { get; set; }
 
         /// <summary>
         /// The call will use Twilio's "Media Streams" protocol.<br/>
@@ -125,7 +125,7 @@ namespace Ultravox
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UltravoxV1CallMedium(
-            object? webRtc,
+            global::Ultravox.UltravoxV1CallMediumWebRtcMedium? webRtc,
             global::Ultravox.UltravoxV1CallMediumTwilioMedium? twilio,
             global::Ultravox.UltravoxV1CallMediumWebSocketMedium? serverWebSocket,
             global::Ultravox.UltravoxV1CallMediumTelnyxMedium? telnyx,

@@ -41,6 +41,13 @@ namespace Ultravox
         public global::System.DateTime? Published { get; set; }
 
         /// <summary>
+        /// Example queries for query-based embedding.<br/>
+        ///  When present, these queries are embedded instead of the document content.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("exampleQueries")]
+        public global::System.Collections.Generic.IList<string>? ExampleQueries { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -64,6 +71,10 @@ namespace Ultravox
         /// <param name="published">
         /// The timestamp that the document was published, if known.
         /// </param>
+        /// <param name="exampleQueries">
+        /// Example queries for query-based embedding.<br/>
+        ///  When present, these queries are embedded instead of the document content.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -72,13 +83,15 @@ namespace Ultravox
             string? language,
             string? title,
             string? description,
-            global::System.DateTime? published)
+            global::System.DateTime? published,
+            global::System.Collections.Generic.IList<string>? exampleQueries)
         {
             this.PublicUrl = publicUrl;
             this.Language = language;
             this.Title = title;
             this.Description = description;
             this.Published = published;
+            this.ExampleQueries = exampleQueries;
         }
 
         /// <summary>

@@ -23,6 +23,13 @@ namespace Ultravox
         public required global::System.Collections.Generic.IList<global::Ultravox.DailyCallStatistics> Daily { get; set; }
 
         /// <summary>
+        /// Call counts by date and hour
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("hourly")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::Ultravox.HourlyCallStatistics> Hourly { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,15 +44,20 @@ namespace Ultravox
         /// <param name="daily">
         /// Call usage per day
         /// </param>
+        /// <param name="hourly">
+        /// Call counts by date and hour
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CallUsage(
             global::Ultravox.CallStatistics allTime,
-            global::System.Collections.Generic.IList<global::Ultravox.DailyCallStatistics> daily)
+            global::System.Collections.Generic.IList<global::Ultravox.DailyCallStatistics> daily,
+            global::System.Collections.Generic.IList<global::Ultravox.HourlyCallStatistics> hourly)
         {
             this.AllTime = allTime ?? throw new global::System.ArgumentNullException(nameof(allTime));
             this.Daily = daily ?? throw new global::System.ArgumentNullException(nameof(daily));
+            this.Hourly = hourly ?? throw new global::System.ArgumentNullException(nameof(hourly));
         }
 
         /// <summary>

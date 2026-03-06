@@ -28,6 +28,7 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Agent> AgentsCreateAsync(
+
             global::Ultravox.Agent request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

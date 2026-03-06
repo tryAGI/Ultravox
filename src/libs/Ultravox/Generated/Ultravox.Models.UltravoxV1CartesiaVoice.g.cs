@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// Specification for a voice served by Cartesia.
+    /// Specification for a voice served by Cartesia. See https://docs.cartesia.ai/api-reference/tts/websocket
     /// </summary>
     public sealed partial class UltravoxV1CartesiaVoice
     {
@@ -21,23 +21,28 @@ namespace Ultravox
         public string? Model { get; set; }
 
         /// <summary>
-        /// The speaking rate. Must be between -1 and 1. Defaults to 0.<br/>
-        ///  See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.speed
+        /// (Deprecated) The speaking rate. Must be between -1 and 1. Defaults to 0.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speed")]
         public float? Speed { get; set; }
 
         /// <summary>
-        /// See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
+        /// (Deprecated) Use generation_config.emotion instead.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("emotion")]
         public string? Emotion { get; set; }
 
         /// <summary>
-        /// See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
+        /// (Deprecated) Use generation_config.emotion instead.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("emotions")]
         public global::System.Collections.Generic.IList<string>? Emotions { get; set; }
+
+        /// <summary>
+        /// Configure the various attributes of the generated speech.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("generationConfig")]
+        public global::Ultravox.UltravoxV1CartesiaVoiceCartesiaGenerationConfig? GenerationConfig { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -55,14 +60,16 @@ namespace Ultravox
         /// The Cartesia model to use.
         /// </param>
         /// <param name="speed">
-        /// The speaking rate. Must be between -1 and 1. Defaults to 0.<br/>
-        ///  See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.speed
+        /// (Deprecated) The speaking rate. Must be between -1 and 1. Defaults to 0.
         /// </param>
         /// <param name="emotion">
-        /// See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
+        /// (Deprecated) Use generation_config.emotion instead.
         /// </param>
         /// <param name="emotions">
-        /// See https://docs.cartesia.ai/api-reference/tts/tts#send.Generation%20Request.voice.Ttsrequest%20ID%20Specifier.__experimental_controls.emotion
+        /// (Deprecated) Use generation_config.emotion instead.
+        /// </param>
+        /// <param name="generationConfig">
+        /// Configure the various attributes of the generated speech.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -72,13 +79,15 @@ namespace Ultravox
             string? model,
             float? speed,
             string? emotion,
-            global::System.Collections.Generic.IList<string>? emotions)
+            global::System.Collections.Generic.IList<string>? emotions,
+            global::Ultravox.UltravoxV1CartesiaVoiceCartesiaGenerationConfig? generationConfig)
         {
             this.VoiceId = voiceId;
             this.Model = model;
             this.Speed = speed;
             this.Emotion = emotion;
             this.Emotions = emotions;
+            this.GenerationConfig = generationConfig;
         }
 
         /// <summary>

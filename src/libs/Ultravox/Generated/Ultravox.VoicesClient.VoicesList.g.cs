@@ -70,13 +70,13 @@ namespace Ultravox
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/voices",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("billingStyle", billingStyle?.ToValueString()) 
-                .AddOptionalParameter("cursor", cursor) 
-                .AddOptionalParameter("ownership", ownership?.ToValueString()) 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
-                .AddOptionalParameter("primaryLanguage", primaryLanguage) 
-                .AddOptionalParameter("provider", provider, selector: static x => x.ToValueString(), delimiter: ",", explode: true) 
+            __pathBuilder
+                .AddOptionalParameter("billingStyle", billingStyle?.ToValueString())
+                .AddOptionalParameter("cursor", cursor)
+                .AddOptionalParameter("ownership", ownership?.ToValueString())
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
+                .AddOptionalParameter("primaryLanguage", primaryLanguage)
+                .AddOptionalParameter("provider", provider, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
                 .AddOptionalParameter("search", search) 
                 ; 
             var __path = __pathBuilder.ToString();

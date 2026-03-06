@@ -4,22 +4,17 @@
 namespace Ultravox
 {
     /// <summary>
-    /// Statistics about the agent's usage<br/>
-    /// Included only in responses
+    /// 
     /// </summary>
     public sealed partial class AgentStatistics
     {
         /// <summary>
-        /// 
+        /// Default Value: 0<br/>
+        /// Included only in responses
         /// </summary>
+        /// <default>default!</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("calls")]
-        public int? Calls { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("totalBilledMinutes")]
-        public int? TotalBilledMinutes { get; set; }
+        public int Calls { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -30,17 +25,17 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="AgentStatistics" /> class.
         /// </summary>
-        /// <param name="calls"></param>
-        /// <param name="totalBilledMinutes"></param>
+        /// <param name="calls">
+        /// Default Value: 0<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentStatistics(
-            int? calls,
-            int? totalBilledMinutes)
+            int calls = default!)
         {
             this.Calls = calls;
-            this.TotalBilledMinutes = totalBilledMinutes;
         }
 
         /// <summary>

@@ -11,15 +11,15 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        ENDBEHAVIORUNSPECIFIED,
+        EndBehaviorUnspecified,
         /// <summary>
         /// 
         /// </summary>
-        ENDBEHAVIORHANGUPSOFT,
+        EndBehaviorHangUpSoft,
         /// <summary>
         /// 
         /// </summary>
-        ENDBEHAVIORHANGUPSTRICT,
+        EndBehaviorHangUpStrict,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1TimedMessageEndBehavior.ENDBEHAVIORUNSPECIFIED => "END_BEHAVIOR_UNSPECIFIED",
-                UltravoxV1TimedMessageEndBehavior.ENDBEHAVIORHANGUPSOFT => "END_BEHAVIOR_HANG_UP_SOFT",
-                UltravoxV1TimedMessageEndBehavior.ENDBEHAVIORHANGUPSTRICT => "END_BEHAVIOR_HANG_UP_STRICT",
+                UltravoxV1TimedMessageEndBehavior.EndBehaviorUnspecified => "END_BEHAVIOR_UNSPECIFIED",
+                UltravoxV1TimedMessageEndBehavior.EndBehaviorHangUpSoft => "END_BEHAVIOR_HANG_UP_SOFT",
+                UltravoxV1TimedMessageEndBehavior.EndBehaviorHangUpStrict => "END_BEHAVIOR_HANG_UP_STRICT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Ultravox
         {
             return value switch
             {
-                "END_BEHAVIOR_UNSPECIFIED" => UltravoxV1TimedMessageEndBehavior.ENDBEHAVIORUNSPECIFIED,
-                "END_BEHAVIOR_HANG_UP_SOFT" => UltravoxV1TimedMessageEndBehavior.ENDBEHAVIORHANGUPSOFT,
-                "END_BEHAVIOR_HANG_UP_STRICT" => UltravoxV1TimedMessageEndBehavior.ENDBEHAVIORHANGUPSTRICT,
+                "END_BEHAVIOR_UNSPECIFIED" => UltravoxV1TimedMessageEndBehavior.EndBehaviorUnspecified,
+                "END_BEHAVIOR_HANG_UP_SOFT" => UltravoxV1TimedMessageEndBehavior.EndBehaviorHangUpSoft,
+                "END_BEHAVIOR_HANG_UP_STRICT" => UltravoxV1TimedMessageEndBehavior.EndBehaviorHangUpStrict,
                 _ => null,
             };
         }

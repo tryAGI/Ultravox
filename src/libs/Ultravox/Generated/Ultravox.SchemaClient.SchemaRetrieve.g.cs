@@ -47,8 +47,8 @@ namespace Ultravox
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/schema/",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("format", format?.ToValueString()) 
+            __pathBuilder
+                .AddOptionalParameter("format", format?.ToValueString())
                 .AddOptionalParameter("lang", lang?.ToValueString()) 
                 ; 
             var __path = __pathBuilder.ToString();

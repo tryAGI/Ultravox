@@ -32,6 +32,7 @@ namespace Ultravox
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Webhook> WebhooksUpdateAsync(
             global::System.Guid webhookId,
+
             global::Ultravox.Webhook request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

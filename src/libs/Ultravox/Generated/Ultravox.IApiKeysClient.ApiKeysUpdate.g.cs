@@ -13,6 +13,7 @@ namespace Ultravox
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.APIKey> ApiKeysUpdateAsync(
             string apiKeyPrefix,
+
             global::Ultravox.APIKey request,
             global::System.Threading.CancellationToken cancellationToken = default);
 

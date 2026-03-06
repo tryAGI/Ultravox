@@ -80,6 +80,16 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        public SipClient Sip { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public TelephonyConfigsClient TelephonyConfigs { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ToolsClient Tools { get; }
 
         /// <summary>

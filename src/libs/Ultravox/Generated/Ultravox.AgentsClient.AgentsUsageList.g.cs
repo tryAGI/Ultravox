@@ -13,6 +13,8 @@ namespace Ultravox
             ref global::System.DateTime? fromDate,
             global::System.Collections.Generic.Dictionary<string, string>? metadata,
             ref string? search,
+            ref string? timeOfDayEnd,
+            ref string? timeOfDayStart,
             ref global::System.DateTime? toDate,
             ref global::System.Guid? voiceId);
         partial void PrepareAgentsUsageListRequest(
@@ -24,6 +26,8 @@ namespace Ultravox
             global::System.DateTime? fromDate,
             global::System.Collections.Generic.Dictionary<string, string>? metadata,
             string? search,
+            string? timeOfDayEnd,
+            string? timeOfDayStart,
             global::System.DateTime? toDate,
             global::System.Guid? voiceId);
         partial void ProcessAgentsUsageListResponse(
@@ -44,6 +48,12 @@ namespace Ultravox
         /// <param name="fromDate"></param>
         /// <param name="metadata"></param>
         /// <param name="search"></param>
+        /// <param name="timeOfDayEnd">
+        /// Default Value: 23:59:59.999999
+        /// </param>
+        /// <param name="timeOfDayStart">
+        /// Default Value: 00:00:00
+        /// </param>
         /// <param name="toDate"></param>
         /// <param name="voiceId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -55,6 +65,8 @@ namespace Ultravox
             global::System.DateTime? fromDate = default,
             global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
             string? search = default,
+            string? timeOfDayEnd = default,
+            string? timeOfDayStart = default,
             global::System.DateTime? toDate = default,
             global::System.Guid? voiceId = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -69,20 +81,24 @@ namespace Ultravox
                 fromDate: ref fromDate,
                 metadata: metadata,
                 search: ref search,
+                timeOfDayEnd: ref timeOfDayEnd,
+                timeOfDayStart: ref timeOfDayStart,
                 toDate: ref toDate,
                 voiceId: ref voiceId);
 
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/agents/usage",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString(), delimiter: ",", explode: true) 
-                .AddOptionalParameter("durationMax", durationMax) 
-                .AddOptionalParameter("durationMin", durationMin) 
-                .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-dd")) 
-                .AddOptionalParameter("metadata", metadata?.ToString()) 
-                .AddOptionalParameter("search", search) 
-                .AddOptionalParameter("toDate", toDate?.ToString("yyyy-MM-dd")) 
+            __pathBuilder
+                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString(), delimiter: ",", explode: true)
+                .AddOptionalParameter("durationMax", durationMax)
+                .AddOptionalParameter("durationMin", durationMin)
+                .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
+                .AddOptionalParameter("metadata", metadata?.ToString())
+                .AddOptionalParameter("search", search)
+                .AddOptionalParameter("timeOfDayEnd", timeOfDayEnd)
+                .AddOptionalParameter("timeOfDayStart", timeOfDayStart)
+                .AddOptionalParameter("toDate", toDate?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                 .AddOptionalParameter("voiceId", voiceId?.ToString()) 
                 ; 
             var __path = __pathBuilder.ToString();
@@ -122,6 +138,8 @@ namespace Ultravox
                 fromDate: fromDate,
                 metadata: metadata,
                 search: search,
+                timeOfDayEnd: timeOfDayEnd,
+                timeOfDayStart: timeOfDayStart,
                 toDate: toDate,
                 voiceId: voiceId);
 

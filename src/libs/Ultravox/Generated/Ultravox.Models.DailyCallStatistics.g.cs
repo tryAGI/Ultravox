@@ -16,6 +16,13 @@ namespace Ultravox
         public required int TotalCount { get; set; }
 
         /// <summary>
+        /// Number of calls that ended in error
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("errorCount")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required int ErrorCount { get; set; }
+
+        /// <summary>
         /// Total duration of all calls
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
@@ -55,6 +62,9 @@ namespace Ultravox
         /// <param name="totalCount">
         /// Total number of calls
         /// </param>
+        /// <param name="errorCount">
+        /// Number of calls that ended in error
+        /// </param>
         /// <param name="duration">
         /// Total duration of all calls
         /// </param>
@@ -72,12 +82,14 @@ namespace Ultravox
 #endif
         public DailyCallStatistics(
             int totalCount,
+            int errorCount,
             string duration,
             int joinedCount,
             double billedMinutes,
             global::System.DateTime date)
         {
             this.TotalCount = totalCount;
+            this.ErrorCount = errorCount;
             this.Duration = duration ?? throw new global::System.ArgumentNullException(nameof(duration));
             this.JoinedCount = joinedCount;
             this.BilledMinutes = billedMinutes;

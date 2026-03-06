@@ -11,15 +11,15 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        MESSAGEMEDIUMUNSPECIFIED,
+        MessageMediumUnspecified,
         /// <summary>
         /// 
         /// </summary>
-        MESSAGEMEDIUMVOICE,
+        MessageMediumVoice,
         /// <summary>
         /// 
         /// </summary>
-        MESSAGEMEDIUMTEXT,
+        MessageMediumText,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1StartAgentCallRequestInitialOutputMedium.MESSAGEMEDIUMUNSPECIFIED => "MESSAGE_MEDIUM_UNSPECIFIED",
-                UltravoxV1StartAgentCallRequestInitialOutputMedium.MESSAGEMEDIUMVOICE => "MESSAGE_MEDIUM_VOICE",
-                UltravoxV1StartAgentCallRequestInitialOutputMedium.MESSAGEMEDIUMTEXT => "MESSAGE_MEDIUM_TEXT",
+                UltravoxV1StartAgentCallRequestInitialOutputMedium.MessageMediumUnspecified => "MESSAGE_MEDIUM_UNSPECIFIED",
+                UltravoxV1StartAgentCallRequestInitialOutputMedium.MessageMediumVoice => "MESSAGE_MEDIUM_VOICE",
+                UltravoxV1StartAgentCallRequestInitialOutputMedium.MessageMediumText => "MESSAGE_MEDIUM_TEXT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Ultravox
         {
             return value switch
             {
-                "MESSAGE_MEDIUM_UNSPECIFIED" => UltravoxV1StartAgentCallRequestInitialOutputMedium.MESSAGEMEDIUMUNSPECIFIED,
-                "MESSAGE_MEDIUM_VOICE" => UltravoxV1StartAgentCallRequestInitialOutputMedium.MESSAGEMEDIUMVOICE,
-                "MESSAGE_MEDIUM_TEXT" => UltravoxV1StartAgentCallRequestInitialOutputMedium.MESSAGEMEDIUMTEXT,
+                "MESSAGE_MEDIUM_UNSPECIFIED" => UltravoxV1StartAgentCallRequestInitialOutputMedium.MessageMediumUnspecified,
+                "MESSAGE_MEDIUM_VOICE" => UltravoxV1StartAgentCallRequestInitialOutputMedium.MessageMediumVoice,
+                "MESSAGE_MEDIUM_TEXT" => UltravoxV1StartAgentCallRequestInitialOutputMedium.MessageMediumText,
                 _ => null,
             };
         }

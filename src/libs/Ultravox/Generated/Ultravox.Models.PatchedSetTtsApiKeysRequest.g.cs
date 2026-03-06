@@ -38,6 +38,20 @@ namespace Ultravox
         public string? Google { get; set; }
 
         /// <summary>
+        /// Your Inworld API key.<br/>
+        /// https://platform.inworld.ai/login
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("inworld")]
+        public string? Inworld { get; set; }
+
+        /// <summary>
+        /// Your Respeecher API key.<br/>
+        /// https://space.respeecher.com/api-keys
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("respeecher")]
+        public string? Respeecher { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -63,6 +77,14 @@ namespace Ultravox
         /// https://cloud.google.com/text-to-speech/docs/quickstart-client-libraries#before-you-begin<br/>
         /// https://cloud.google.com/iam/docs/keys-create-delete#creating
         /// </param>
+        /// <param name="inworld">
+        /// Your Inworld API key.<br/>
+        /// https://platform.inworld.ai/login
+        /// </param>
+        /// <param name="respeecher">
+        /// Your Respeecher API key.<br/>
+        /// https://space.respeecher.com/api-keys
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -70,12 +92,16 @@ namespace Ultravox
             string? elevenLabs,
             string? cartesia,
             string? lmnt,
-            string? google)
+            string? google,
+            string? inworld,
+            string? respeecher)
         {
             this.ElevenLabs = elevenLabs;
             this.Cartesia = cartesia;
             this.Lmnt = lmnt;
             this.Google = google;
+            this.Inworld = inworld;
+            this.Respeecher = respeecher;
         }
 
         /// <summary>

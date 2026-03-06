@@ -52,10 +52,17 @@ namespace Ultravox
         public required string Text { get; set; }
 
         /// <summary>
-        /// 
+        /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("extras")]
         public object? Extras { get; set; }
+
+        /// <summary>
+        /// The wall clock timestamp of the event, relative to call start.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("wallClockTimestamp")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string? WallClockTimestamp { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -82,7 +89,12 @@ namespace Ultravox
         /// The type of the event.
         /// </param>
         /// <param name="text"></param>
-        /// <param name="extras"></param>
+        /// <param name="extras">
+        /// Included only in responses
+        /// </param>
+        /// <param name="wallClockTimestamp">
+        /// The wall clock timestamp of the event, relative to call start.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -90,6 +102,7 @@ namespace Ultravox
             string callTimestamp,
             string type,
             string text,
+            string? wallClockTimestamp,
             object? extras,
             global::System.Guid callId = default!,
             global::System.Guid callStageId = default!,
@@ -98,6 +111,7 @@ namespace Ultravox
             this.CallTimestamp = callTimestamp ?? throw new global::System.ArgumentNullException(nameof(callTimestamp));
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
+            this.WallClockTimestamp = wallClockTimestamp ?? throw new global::System.ArgumentNullException(nameof(wallClockTimestamp));
             this.CallId = callId;
             this.CallStageId = callStageId;
             this.Severity = severity;

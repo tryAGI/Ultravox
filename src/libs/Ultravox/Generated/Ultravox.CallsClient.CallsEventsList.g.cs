@@ -62,10 +62,10 @@ namespace Ultravox
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/calls/{callId}/events",
                 baseUri: HttpClient.BaseAddress); 
-            __pathBuilder 
-                .AddOptionalParameter("cursor", cursor) 
-                .AddOptionalParameter("minimum_severity", minimumSeverity?.ToValueString()) 
-                .AddOptionalParameter("pageSize", pageSize?.ToString()) 
+            __pathBuilder
+                .AddOptionalParameter("cursor", cursor)
+                .AddOptionalParameter("minimum_severity", minimumSeverity?.ToValueString())
+                .AddOptionalParameter("pageSize", pageSize?.ToString())
                 .AddOptionalParameter("type", type) 
                 ; 
             var __path = __pathBuilder.ToString();

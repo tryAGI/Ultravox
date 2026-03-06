@@ -32,6 +32,7 @@ namespace Ultravox
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>> CorporaQueryAsync(
             global::System.Guid corpusId,
+
             global::Ultravox.UltravoxV1QueryCorpusRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

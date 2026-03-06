@@ -15,6 +15,12 @@ namespace Ultravox
         /// <param name="metadata"></param>
         /// <param name="pageSize"></param>
         /// <param name="search"></param>
+        /// <param name="timeOfDayEnd">
+        /// Default Value: 23:59:59.999999
+        /// </param>
+        /// <param name="timeOfDayStart">
+        /// Default Value: 00:00:00
+        /// </param>
         /// <param name="toDate"></param>
         /// <param name="voiceId"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -28,6 +34,8 @@ namespace Ultravox
             global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
             int? pageSize = default,
             string? search = default,
+            string? timeOfDayEnd = default,
+            string? timeOfDayStart = default,
             global::System.DateTime? toDate = default,
             global::System.Guid? voiceId = default,
             global::System.Threading.CancellationToken cancellationToken = default);

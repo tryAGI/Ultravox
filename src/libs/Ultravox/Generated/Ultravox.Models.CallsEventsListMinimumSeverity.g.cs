@@ -15,15 +15,15 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        Error,
-        /// <summary>
-        /// 
-        /// </summary>
         Info,
         /// <summary>
         /// 
         /// </summary>
         Warning,
+        /// <summary>
+        /// 
+        /// </summary>
+        Error,
     }
 
     /// <summary>
@@ -39,9 +39,9 @@ namespace Ultravox
             return value switch
             {
                 CallsEventsListMinimumSeverity.Debug => "debug",
-                CallsEventsListMinimumSeverity.Error => "error",
                 CallsEventsListMinimumSeverity.Info => "info",
                 CallsEventsListMinimumSeverity.Warning => "warning",
+                CallsEventsListMinimumSeverity.Error => "error",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -53,9 +53,9 @@ namespace Ultravox
             return value switch
             {
                 "debug" => CallsEventsListMinimumSeverity.Debug,
-                "error" => CallsEventsListMinimumSeverity.Error,
                 "info" => CallsEventsListMinimumSeverity.Info,
                 "warning" => CallsEventsListMinimumSeverity.Warning,
+                "error" => CallsEventsListMinimumSeverity.Error,
                 _ => null,
             };
         }

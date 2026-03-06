@@ -32,6 +32,7 @@ namespace Ultravox
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> AgentsCallsCreateAsync(
             global::System.Guid agentId,
+
             global::Ultravox.UltravoxV1StartAgentCallRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -212,6 +213,19 @@ namespace Ultravox
         /// <param name="experimentalSettings">
         /// Experimental settings for the call.
         /// </param>
+        /// <param name="callbacks">
+        /// Callbacks for call lifecycle events.
+        /// </param>
+        /// <param name="voice">
+        /// The name or ID of the voice the agent should be forced to use. Typically this is set<br/>
+        ///  in the agent's CallTemplate and omitted here. Setting here may be useful for scenarios<br/>
+        ///  where your agent uses different voices for different calls.
+        /// </param>
+        /// <param name="voiceOverrides">
+        /// Overrides for the agent's forced voice. Only valid when `voice` is set explicitly<br/>
+        ///  in this request. Typically the agent's voice and any relevant overrides should be<br/>
+        ///  set on the agent's CallTemplate instead.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> AgentsCallsCreateAsync(
@@ -227,6 +241,9 @@ namespace Ultravox
             global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings = default,
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection = default,
             object? experimentalSettings = default,
+            global::Ultravox.UltravoxV1Callbacks? callbacks = default,
+            string? voice = default,
+            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.UltravoxV1StartAgentCallRequest
@@ -242,6 +259,9 @@ namespace Ultravox
                 FirstSpeakerSettings = firstSpeakerSettings,
                 DataConnection = dataConnection,
                 ExperimentalSettings = experimentalSettings,
+                Callbacks = callbacks,
+                Voice = voice,
+                VoiceOverrides = voiceOverrides,
             };
 
             return await AgentsCallsCreateAsync(

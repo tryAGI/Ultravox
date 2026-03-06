@@ -13,7 +13,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Ultravox.AgentUsageAgent Agent { get; set; }
+        public required global::Ultravox.AgentBasic Agent { get; set; }
 
         /// <summary>
         /// 
@@ -37,7 +37,7 @@ namespace Ultravox
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentUsage(
-            global::Ultravox.AgentUsageAgent agent,
+            global::Ultravox.AgentBasic agent,
             global::System.Collections.Generic.IList<global::Ultravox.AgentDailyUsage> usage)
         {
             this.Agent = agent ?? throw new global::System.ArgumentNullException(nameof(agent));

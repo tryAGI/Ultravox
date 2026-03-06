@@ -86,7 +86,7 @@ namespace Ultravox
         public float? Temperature { get; set; }
 
         /// <summary>
-        /// The model used for generations. Defaults to fixie-ai/ultravox.<br/>
+        /// The model used for generations. Currently defaults to ultravox-v0.7.<br/>
         ///  If multiple stages are defined for the call, this will be used only for stages without their own model.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
@@ -106,6 +106,15 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("externalVoice")]
         public global::Ultravox.UltravoxV1ExternalVoice? ExternalVoice { get; set; }
+
+        /// <summary>
+        /// Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).<br/>
+        ///  Only non-price-affecting fields may be overridden (e.g., speed, style, stability).<br/>
+        ///  The provider in the override must match the selected voice's provider.<br/>
+        ///  If multiple stages are defined for the call, this will be used only for stages without their own voice_overrides.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voiceOverrides")]
+        public global::Ultravox.UltravoxV1ExternalVoice? VoiceOverrides { get; set; }
 
         /// <summary>
         /// A BCP47 language code that may be used to guide speech recognition and synthesis.<br/>
@@ -215,7 +224,7 @@ namespace Ultravox
         ///  If multiple stages are defined for the call, this will be used only for stages without their own temperature.
         /// </param>
         /// <param name="model">
-        /// The model used for generations. Defaults to fixie-ai/ultravox.<br/>
+        /// The model used for generations. Currently defaults to ultravox-v0.7.<br/>
         ///  If multiple stages are defined for the call, this will be used only for stages without their own model.
         /// </param>
         /// <param name="voice">
@@ -226,6 +235,12 @@ namespace Ultravox
         /// A voice not known to Ultravox Realtime that can nonetheless be used for calls with this agent.<br/>
         ///  Your account must have an API key set for the provider of the voice.<br/>
         ///  Either this or `voice` may be set, but not both.
+        /// </param>
+        /// <param name="voiceOverrides">
+        /// Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).<br/>
+        ///  Only non-price-affecting fields may be overridden (e.g., speed, style, stability).<br/>
+        ///  The provider in the override must match the selected voice's provider.<br/>
+        ///  If multiple stages are defined for the call, this will be used only for stages without their own voice_overrides.
         /// </param>
         /// <param name="languageHint">
         /// A BCP47 language code that may be used to guide speech recognition and synthesis.<br/>
@@ -286,6 +301,7 @@ namespace Ultravox
             string? model,
             string? voice,
             global::Ultravox.UltravoxV1ExternalVoice? externalVoice,
+            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides,
             string? languageHint,
             string? timeExceededMessage,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
@@ -308,6 +324,7 @@ namespace Ultravox
             this.Model = model;
             this.Voice = voice;
             this.ExternalVoice = externalVoice;
+            this.VoiceOverrides = voiceOverrides;
             this.LanguageHint = languageHint;
             this.TimeExceededMessage = timeExceededMessage;
             this.InactivityMessages = inactivityMessages;

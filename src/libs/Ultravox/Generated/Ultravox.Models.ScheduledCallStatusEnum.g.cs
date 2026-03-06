@@ -11,23 +11,23 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        FUTURE,
+        Future,
         /// <summary>
         /// 
         /// </summary>
-        PENDING,
+        Pending,
         /// <summary>
         /// 
         /// </summary>
-        SUCCESS,
+        Success,
         /// <summary>
         /// 
         /// </summary>
-        EXPIRED,
+        Expired,
         /// <summary>
         /// 
         /// </summary>
-        ERROR,
+        Error,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Ultravox
         {
             return value switch
             {
-                ScheduledCallStatusEnum.FUTURE => "FUTURE",
-                ScheduledCallStatusEnum.PENDING => "PENDING",
-                ScheduledCallStatusEnum.SUCCESS => "SUCCESS",
-                ScheduledCallStatusEnum.EXPIRED => "EXPIRED",
-                ScheduledCallStatusEnum.ERROR => "ERROR",
+                ScheduledCallStatusEnum.Future => "FUTURE",
+                ScheduledCallStatusEnum.Pending => "PENDING",
+                ScheduledCallStatusEnum.Success => "SUCCESS",
+                ScheduledCallStatusEnum.Expired => "EXPIRED",
+                ScheduledCallStatusEnum.Error => "ERROR",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Ultravox
         {
             return value switch
             {
-                "FUTURE" => ScheduledCallStatusEnum.FUTURE,
-                "PENDING" => ScheduledCallStatusEnum.PENDING,
-                "SUCCESS" => ScheduledCallStatusEnum.SUCCESS,
-                "EXPIRED" => ScheduledCallStatusEnum.EXPIRED,
-                "ERROR" => ScheduledCallStatusEnum.ERROR,
+                "FUTURE" => ScheduledCallStatusEnum.Future,
+                "PENDING" => ScheduledCallStatusEnum.Pending,
+                "SUCCESS" => ScheduledCallStatusEnum.Success,
+                "EXPIRED" => ScheduledCallStatusEnum.Expired,
+                "ERROR" => ScheduledCallStatusEnum.Error,
                 _ => null,
             };
         }

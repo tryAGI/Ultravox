@@ -11,6 +11,7 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesCreateAsync(
+
             global::Ultravox.VoicesCreateRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
@@ -31,6 +32,11 @@ namespace Ultravox
         /// Optional description for the voice. If not provided, a default description will be generated.<br/>
         /// Example: Voice recorded on Jan 1, 2024
         /// </param>
+        /// <param name="language">
+        /// BCP47 language code for the language used in the recording.<br/>
+        /// Default Value: en<br/>
+        /// Example: en-US
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesCreateAsync(
@@ -38,6 +44,7 @@ namespace Ultravox
             string filename,
             string name,
             string? description = default,
+            string? language = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

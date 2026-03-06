@@ -33,6 +33,18 @@ namespace Ultravox
         public global::Ultravox.KeyPrefix? Google { get; set; }
 
         /// <summary>
+        /// The Inworld API key.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("inworld")]
+        public global::Ultravox.KeyPrefix? Inworld { get; set; }
+
+        /// <summary>
+        /// The Respeecher API key.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("respeecher")]
+        public global::Ultravox.KeyPrefix? Respeecher { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -53,6 +65,12 @@ namespace Ultravox
         /// <param name="google">
         /// The Google service account key.
         /// </param>
+        /// <param name="inworld">
+        /// The Inworld API key.
+        /// </param>
+        /// <param name="respeecher">
+        /// The Respeecher API key.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -60,12 +78,16 @@ namespace Ultravox
             global::Ultravox.KeyPrefix? elevenLabs,
             global::Ultravox.KeyPrefix? cartesia,
             global::Ultravox.KeyPrefix? lmnt,
-            global::Ultravox.KeyPrefix? google)
+            global::Ultravox.KeyPrefix? google,
+            global::Ultravox.KeyPrefix? inworld,
+            global::Ultravox.KeyPrefix? respeecher)
         {
             this.ElevenLabs = elevenLabs;
             this.Cartesia = cartesia;
             this.Lmnt = lmnt;
             this.Google = google;
+            this.Inworld = inworld;
+            this.Respeecher = respeecher;
         }
 
         /// <summary>

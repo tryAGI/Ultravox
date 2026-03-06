@@ -28,6 +28,7 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesCreateAsync(
+
             global::Ultravox.VoicesCreateRequest request,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -67,18 +68,31 @@ namespace Ultravox
                 }
             }
             using var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
+            var __contentFile = new global::System.Net.Http.ByteArrayContent(request.File ?? global::System.Array.Empty<byte>());
             __httpRequestContent.Add(
-                content: new global::System.Net.Http.ByteArrayContent(request.File ?? global::System.Array.Empty<byte>()),
-                name: "file",
-                fileName: request.Filename ?? string.Empty);
+                content: __contentFile,
+                name: "\"file\"",
+                fileName: request.Filename != null ? $"\"{request.Filename}\"" : string.Empty);
+            if (__contentFile.Headers.ContentDisposition != null)
+            {
+                __contentFile.Headers.ContentDisposition.FileNameStar = null;
+            }
             __httpRequestContent.Add(
                 content: new global::System.Net.Http.StringContent($"{request.Name}"),
-                name: "name");
+                name: "\"name\"");
             if (request.Description != default)
             {
+
                 __httpRequestContent.Add(
                     content: new global::System.Net.Http.StringContent($"{request.Description}"),
-                    name: "description");
+                    name: "\"description\"");
+            } 
+            if (request.Language != default)
+            {
+
+                __httpRequestContent.Add(
+                    content: new global::System.Net.Http.StringContent($"{request.Language}"),
+                    name: "\"language\"");
             }
             __httpRequest.Content = __httpRequestContent;
 
@@ -191,6 +205,11 @@ namespace Ultravox
         /// Optional description for the voice. If not provided, a default description will be generated.<br/>
         /// Example: Voice recorded on Jan 1, 2024
         /// </param>
+        /// <param name="language">
+        /// BCP47 language code for the language used in the recording.<br/>
+        /// Default Value: en<br/>
+        /// Example: en-US
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesCreateAsync(
@@ -198,6 +217,7 @@ namespace Ultravox
             string filename,
             string name,
             string? description = default,
+            string? language = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.VoicesCreateRequest
@@ -206,6 +226,7 @@ namespace Ultravox
                 Filename = filename,
                 Name = name,
                 Description = description,
+                Language = language,
             };
 
             return await VoicesCreateAsync(

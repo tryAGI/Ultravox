@@ -15,6 +15,7 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
+
             global::Ultravox.UltravoxV1StartCallRequest request,
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
@@ -34,7 +35,7 @@ namespace Ultravox
         /// The model temperature, between 0 and 1. Defaults to 0.
         /// </param>
         /// <param name="model">
-        /// The model used for generations. Defaults to fixie-ai/ultravox.
+        /// The model used for generations. Currently defaults to ultravox-v0.7.
         /// </param>
         /// <param name="voice">
         /// The ID (or name if unique) of the voice the agent should use for this call.
@@ -106,6 +107,14 @@ namespace Ultravox
         /// <param name="dataConnection">
         /// Data connection configuration.
         /// </param>
+        /// <param name="callbacks">
+        /// Callbacks for call lifecycle events.
+        /// </param>
+        /// <param name="voiceOverrides">
+        /// Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).<br/>
+        ///  Only non-price-affecting fields may be overridden (e.g., speed, style, stability).<br/>
+        ///  The provider in the override must match the selected voice's provider.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
@@ -134,6 +143,8 @@ namespace Ultravox
             global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
             object? initialState = default,
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection = default,
+            global::Ultravox.UltravoxV1Callbacks? callbacks = default,
+            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

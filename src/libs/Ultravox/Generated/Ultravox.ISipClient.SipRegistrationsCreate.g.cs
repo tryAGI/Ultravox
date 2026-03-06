@@ -1,0 +1,47 @@
+#nullable enable
+
+namespace Ultravox
+{
+    public partial interface ISipClient
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Ultravox.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Ultravox.SipRegistration> SipRegistrationsCreateAsync(
+
+            global::Ultravox.SipRegistration request,
+            global::System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username">
+        /// The SIP username to register as.
+        /// </param>
+        /// <param name="password">
+        /// The SIP password for username.<br/>
+        /// Included only in requests
+        /// </param>
+        /// <param name="proxy">
+        /// The SIP server to register with.
+        /// </param>
+        /// <param name="outboundProxy">
+        /// A proxy used to reach your SIP server for registration. Most often unset, but may be used if you need to register as `alice@trunk.com` using `proxy.trunk.com` for example.
+        /// </param>
+        /// <param name="authUser">
+        /// The authentication username, if different from the SIP username. Most often unset.
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        global::System.Threading.Tasks.Task<global::Ultravox.SipRegistration> SipRegistrationsCreateAsync(
+            string username,
+            string password,
+            string proxy,
+            string? outboundProxy = default,
+            string? authUser = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}

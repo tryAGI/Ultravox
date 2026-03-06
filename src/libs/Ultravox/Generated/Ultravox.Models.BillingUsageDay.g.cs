@@ -23,6 +23,13 @@ namespace Ultravox
         public required double Minutes { get; set; }
 
         /// <summary>
+        /// Total SIP minutes billed on this date.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sipMinutes")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required double SipMinutes { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -37,15 +44,20 @@ namespace Ultravox
         /// <param name="minutes">
         /// Total minutes billed on this date.
         /// </param>
+        /// <param name="sipMinutes">
+        /// Total SIP minutes billed on this date.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public BillingUsageDay(
             global::System.DateTime date,
-            double minutes)
+            double minutes,
+            double sipMinutes)
         {
             this.Date = date;
             this.Minutes = minutes;
+            this.SipMinutes = sipMinutes;
         }
 
         /// <summary>

@@ -11,6 +11,7 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.AccountTtsKeys> AccountsMeTtsApiKeysPartialUpdateAsync(
+
             global::Ultravox.PatchedSetTtsApiKeysRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
 
@@ -34,6 +35,14 @@ namespace Ultravox
         /// https://cloud.google.com/text-to-speech/docs/quickstart-client-libraries#before-you-begin<br/>
         /// https://cloud.google.com/iam/docs/keys-create-delete#creating
         /// </param>
+        /// <param name="inworld">
+        /// Your Inworld API key.<br/>
+        /// https://platform.inworld.ai/login
+        /// </param>
+        /// <param name="respeecher">
+        /// Your Respeecher API key.<br/>
+        /// https://space.respeecher.com/api-keys
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.AccountTtsKeys> AccountsMeTtsApiKeysPartialUpdateAsync(
@@ -41,6 +50,8 @@ namespace Ultravox
             string? cartesia = default,
             string? lmnt = default,
             string? google = default,
+            string? inworld = default,
+            string? respeecher = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
