@@ -63,7 +63,7 @@ namespace Ultravox
         ///  for your Voicebot (either directly or more likely dynamically from your own server).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("exotel")]
-        public object? Exotel { get; set; }
+        public global::Ultravox.UltravoxV1CallMediumExotelMedium? Exotel { get; set; }
 
         /// <summary>
         /// The call will be connected using Session Initiation Protocol (SIP). Note that SIP incurs<br/>
@@ -130,7 +130,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1CallMediumWebSocketMedium? serverWebSocket,
             global::Ultravox.UltravoxV1CallMediumTelnyxMedium? telnyx,
             global::Ultravox.UltravoxV1CallMediumPlivoMedium? plivo,
-            object? exotel,
+            global::Ultravox.UltravoxV1CallMediumExotelMedium? exotel,
             global::Ultravox.UltravoxV1CallMediumSipMedium? sip)
         {
             this.WebRtc = webRtc;

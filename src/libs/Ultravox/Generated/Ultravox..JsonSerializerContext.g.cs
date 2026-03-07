@@ -13,6 +13,8 @@ namespace Ultravox
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[] 
         { 
+            typeof(global::Ultravox.JsonConverters.UltravoxV1CallMediumDtmfUserTextMessageUrgencyJsonConverter),
+            typeof(global::Ultravox.JsonConverters.UltravoxV1CallMediumDtmfUserTextMessageUrgencyNullableJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1CallTemplateInitialOutputMediumJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1CallTemplateInitialOutputMediumNullableJsonConverter),
             typeof(global::Ultravox.JsonConverters.UltravoxV1GenericVoiceJsonByteEncodingJsonConverter),

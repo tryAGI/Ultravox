@@ -5702,8 +5702,40 @@ components:
             - $ref: '#/components/schemas/ultravox.v1.CallMedium_SipMedium'
           description: "The call will be connected using Session Initiation Protocol (SIP). Note that SIP incurs\n additional charges and must be enabled for your account."
       description: "Details about a call's protocol. By default, calls occur over WebRTC using\n the Ultravox client SDK. Setting a different call medium will prepare the\n server for a call using a different protocol.\n At most one call medium may be set."
+    ultravox.v1.CallMedium_DtmfHandling:
+      type: object
+      properties:
+        ignore:
+          type: boolean
+          description: 'If true, DTMF digits are ignored entirely.'
+        userTextMessage:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallMedium_DtmfUserTextMessage'
+          description: Customizes how DTMF digits are sent as a user text message.
+      description: "Configuration for how incoming DTMF digits are handled during a call.\n When dtmf_handling is absent from the enclosing medium, DTMF digits are\n sent as a user text message containing just the digits with urgency\n URGENCY_IMMEDIATE (the default behavior).\n Note: consecutive DTMF digits are batched together with a short delay\n before being dispatched, so a rapid sequence of key presses will be\n delivered as a single message."
+    ultravox.v1.CallMedium_DtmfUserTextMessage:
+      type: object
+      properties:
+        text:
+          type: string
+          description: "Template for the message text. Use {digits} as a placeholder for the\n pressed digits. Defaults to \"{digits}\" if empty."
+        urgency:
+          enum:
+            - URGENCY_UNSPECIFIED
+            - URGENCY_IMMEDIATE
+            - URGENCY_SOON
+            - URGENCY_LATER
+          type: string
+          description: Urgency of the message. Defaults to URGENCY_IMMEDIATE.
+          format: enum
+      description: Configures DTMF digits to be sent as a user text message.
     ultravox.v1.CallMedium_ExotelMedium:
       type: object
+      properties:
+        dtmfHandling:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallMedium_DtmfHandling'
+          description: Controls how DTMF digits received during the call are handled.
       description: Details for a Exotel call.
     ultravox.v1.CallMedium_PlivoMedium:
       type: object
@@ -5712,6 +5744,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.PlivoMedium_OutgoingRequestParams'
           description: "If set, Ultravox will directly create a call with Plivo. Plivo must be configured\n for the requesting account."
+        dtmfHandling:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallMedium_DtmfHandling'
+          description: Controls how DTMF digits received during the call are handled.
       description: Details for a Plivo call.
     ultravox.v1.CallMedium_SipMedium:
       type: object
@@ -5732,6 +5768,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.TelnyxMedium_OutgoingRequestParams'
           description: "If set, Ultravox will directly create a call with Telnyx. Telnyx must be configured\n for the requesting account."
+        dtmfHandling:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallMedium_DtmfHandling'
+          description: Controls how DTMF digits received during the call are handled.
       description: Details for a Telnyx call.
     ultravox.v1.CallMedium_TwilioMedium:
       type: object
@@ -5740,6 +5780,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.TwilioMedium_OutgoingRequestParams'
           description: "If set, Ultravox will directly create a call with Twilio. Twilio must be configured\n for the requesting account."
+        dtmfHandling:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.CallMedium_DtmfHandling'
+          description: Controls how DTMF digits received during the call are handled.
       description: Details for a Twilio call.
     ultravox.v1.CallMedium_WebRtcMedium:
       type: object
