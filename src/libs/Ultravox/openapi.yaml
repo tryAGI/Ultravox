@@ -6186,6 +6186,9 @@ components:
         userStoppedSpeaking:
           type: boolean
           description: 'Indicates that the user has stopped speaking (according to simple VAD). (Default: disabled)'
+        invokingTool:
+          type: boolean
+          description: 'Indicates that a tool invocation has started. (Default: disabled)'
       description: Whether certain data messages are enabled for a connection.
     ultravox.v1.ExternalVoice:
       type: object

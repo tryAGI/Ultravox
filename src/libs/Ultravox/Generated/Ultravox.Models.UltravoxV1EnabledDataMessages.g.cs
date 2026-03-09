@@ -81,6 +81,12 @@ namespace Ultravox
         public bool? UserStoppedSpeaking { get; set; }
 
         /// <summary>
+        /// Indicates that a tool invocation has started. (Default: disabled)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("invokingTool")]
+        public bool? InvokingTool { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -125,6 +131,9 @@ namespace Ultravox
         /// <param name="userStoppedSpeaking">
         /// Indicates that the user has stopped speaking (according to simple VAD). (Default: disabled)
         /// </param>
+        /// <param name="invokingTool">
+        /// Indicates that a tool invocation has started. (Default: disabled)
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -140,7 +149,8 @@ namespace Ultravox
             bool? callEvent,
             bool? toolUsed,
             bool? userStartedSpeaking,
-            bool? userStoppedSpeaking)
+            bool? userStoppedSpeaking,
+            bool? invokingTool)
         {
             this.Pong = pong;
             this.State = state;
@@ -154,6 +164,7 @@ namespace Ultravox
             this.ToolUsed = toolUsed;
             this.UserStartedSpeaking = userStartedSpeaking;
             this.UserStoppedSpeaking = userStoppedSpeaking;
+            this.InvokingTool = invokingTool;
         }
 
         /// <summary>
