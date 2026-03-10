@@ -10,10 +10,10 @@ C# SDK for the [Ultravox](https://ultravox.ai/) voice AI platform, auto-generate
 
 ```bash
 # Build the solution
-dotnet build Ultravox.sln
+dotnet build Ultravox.slnx
 
 # Build for release (also produces NuGet package)
-dotnet build Ultravox.sln -c Release
+dotnet build Ultravox.slnx -c Release
 
 # Run integration tests (requires ULTRAVOX_API_KEY env var)
 dotnet test src/tests/IntegrationTests/Ultravox.IntegrationTests.csproj
