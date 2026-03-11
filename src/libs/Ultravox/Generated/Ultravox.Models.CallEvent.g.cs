@@ -61,8 +61,7 @@ namespace Ultravox
         /// The wall clock timestamp of the event, relative to call start.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("wallClockTimestamp")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string? WallClockTimestamp { get; set; }
+        public string? WallClockTimestamp { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -102,8 +101,8 @@ namespace Ultravox
             string callTimestamp,
             string type,
             string text,
-            string? wallClockTimestamp,
             object? extras,
+            string? wallClockTimestamp,
             global::System.Guid callId = default!,
             global::System.Guid callStageId = default!,
             global::Ultravox.SeverityEnum severity = default!)
@@ -111,11 +110,11 @@ namespace Ultravox
             this.CallTimestamp = callTimestamp ?? throw new global::System.ArgumentNullException(nameof(callTimestamp));
             this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
             this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
-            this.WallClockTimestamp = wallClockTimestamp ?? throw new global::System.ArgumentNullException(nameof(wallClockTimestamp));
             this.CallId = callId;
             this.CallStageId = callStageId;
             this.Severity = severity;
             this.Extras = extras;
+            this.WallClockTimestamp = wallClockTimestamp;
         }
 
         /// <summary>

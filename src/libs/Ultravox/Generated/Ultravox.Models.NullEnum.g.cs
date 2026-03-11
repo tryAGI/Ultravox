@@ -8,6 +8,10 @@ namespace Ultravox
     /// </summary>
     public enum NullEnum
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
     }
 
     /// <summary>
@@ -22,6 +26,7 @@ namespace Ultravox
         {
             return value switch
             {
+                NullEnum.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -32,6 +37,7 @@ namespace Ultravox
         {
             return value switch
             {
+                "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => NullEnum.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
                 _ => null,
             };
         }

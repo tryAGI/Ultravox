@@ -12,6 +12,13 @@ namespace Ultravox
         /// Included only in responses
         /// </summary>
         /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("accountId")]
+        public global::System.Guid AccountId { get; set; } = default!;
+
+        /// <summary>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string Name { get; set; } = default!;
 
@@ -118,6 +125,9 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="Account" /> class.
         /// </summary>
+        /// <param name="accountId">
+        /// Included only in responses
+        /// </param>
         /// <param name="name">
         /// Included only in responses
         /// </param>
@@ -184,6 +194,7 @@ namespace Ultravox
             int? allowedConcurrentCalls,
             int? allowedVoices,
             int? allowedCorpora,
+            global::System.Guid accountId = default!,
             string name = default!,
             string billingUrl = default!,
             string freeTimeUsed = default!,
@@ -191,6 +202,7 @@ namespace Ultravox
             int activeCalls = default!)
         {
             this.HasActiveSubscription = hasActiveSubscription;
+            this.AccountId = accountId;
             this.Name = name;
             this.BillingUrl = billingUrl;
             this.FreeTimeUsed = freeTimeUsed;

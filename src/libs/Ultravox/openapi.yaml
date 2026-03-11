@@ -1,4 +1,4 @@
-openapi: 3.0.4
+openapi: '3.2.0'
 info:
   title: Ultravox
   description: API for the Ultravox service.
@@ -2870,9 +2870,10 @@ paths:
           in: query
           description: Filter webhooks by agent ID.
           schema:
-            type: string
+            type:
+              - 'null'
+              - string
             format: uuid
-            nullable: true
         - name: cursor
           in: query
           description: The pagination cursor value.
@@ -3018,8 +3019,9 @@ components:
           format: date-time
           readOnly: true
         creator:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
           readOnly: true
         name:
           type: string
@@ -3027,10 +3029,11 @@ components:
           readOnly: true
         expiryDate:
           title: Expires
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'Once API key expires, clients cannot use it anymore.'
           format: date-time
-          nullable: true
           readOnly: true
         revoked:
           type: boolean
@@ -3053,8 +3056,9 @@ components:
           format: date-time
           readOnly: true
         creator:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
           readOnly: true
         secret:
           type: string
@@ -3070,12 +3074,14 @@ components:
           description: A free-form name for the API key. Need not be unique. 50 characters max.
         expiryDate:
           title: Expires
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'Once API key expires, clients cannot use it anymore.'
           format: date-time
-          nullable: true
     Account:
       required:
+        - accountId
         - activeCalls
         - allowedConcurrentCalls
         - allowedCorpora
@@ -3092,6 +3098,10 @@ components:
         - subscriptionTier
       type: object
       properties:
+        accountId:
+          type: string
+          format: uuid
+          readOnly: true
         name:
           type: string
           readOnly: true
@@ -3110,51 +3120,59 @@ components:
           type: boolean
           description: Whether the account has an active subscription.
         subscriptionTier:
-          type: string
+          type:
+            - 'null'
+            - string
           description: The current subscription tier for this account.
-          nullable: true
           readOnly: true
         subscriptionCadence:
-          type: string
+          type:
+            - 'null'
+            - string
           description: How often the subscription is billed for this account.
-          nullable: true
           readOnly: true
         subscriptionExpiration:
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'The expiration date of the current subscription for this account, if any. This is the point at which access will end unless credit remains.'
           format: date-time
-          nullable: true
           readOnly: true
         subscriptionScheduledUpdate:
-          type: string
+          type:
+            - 'null'
+            - string
           description: The point in the future where this account's subscription is scheduled to change.
           format: date-time
-          nullable: true
           readOnly: true
         subscriptionRenewal:
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'When this account''s subscription renews, if applicable.'
           format: date-time
-          nullable: true
           readOnly: true
         activeCalls:
           type: integer
           description: The number of active calls for this account.
           readOnly: true
         allowedConcurrentCalls:
-          type: integer
+          type:
+            - 'null'
+            - integer
           description: The maximum number of concurrent calls allowed for this account.
-          nullable: true
           readOnly: true
         allowedVoices:
-          type: integer
+          type:
+            - 'null'
+            - integer
           description: The maximum number of custom voices allowed for this account.
-          nullable: true
           readOnly: true
         allowedCorpora:
-          type: integer
+          type:
+            - 'null'
+            - integer
           description: The maximum number of corpora allowed for this account.
-          nullable: true
           readOnly: true
     AccountBillingInfo:
       required:
@@ -3163,34 +3181,36 @@ components:
       type: object
       properties:
         paymentMethod:
-          type: string
+          type:
+            - 'null'
+            - string
           description: Obfuscated current payment method.
-          nullable: true
           readOnly: true
         billingEmail:
-          type: string
+          type:
+            - 'null'
+            - string
           description: Email address for billing notifications.
           format: email
-          nullable: true
           readOnly: true
     AccountTelephonyConfig:
       type: object
       properties:
         twilio:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/TwilioConfig'
           description: Your Twilio configuration. See https://console.twilio.com/
-          nullable: true
         telnyx:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/TelnyxConfig'
           description: Your Telnyx configuration. See https://portal.telnyx.com/
-          nullable: true
         plivo:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/PlivoConfig'
           description: Your Plivo configuration. See https://console.plivo.com/dashboard/
-          nullable: true
     AccountTtsKeys:
       type: object
       properties:
@@ -3231,9 +3251,10 @@ components:
           format: uuid
           readOnly: true
         publishedRevisionId:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uuid
-          nullable: true
           readOnly: true
         name:
           maxLength: 64
@@ -3243,9 +3264,9 @@ components:
           format: date-time
           readOnly: true
         callTemplate:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallTemplate'
-          nullable: true
         statistics:
           allOf:
             - $ref: '#/components/schemas/AgentStatistics'
@@ -3390,42 +3411,48 @@ components:
           format: uuid
           readOnly: true
         clientVersion:
-          type: string
+          type:
+            - 'null'
+            - string
           description: The version of the client that joined this call.
-          nullable: true
           readOnly: true
         created:
           type: string
           format: date-time
           readOnly: true
         joined:
-          type: string
+          type:
+            - 'null'
+            - string
           format: date-time
-          nullable: true
           readOnly: true
         ended:
-          type: string
+          type:
+            - 'null'
+            - string
           format: date-time
-          nullable: true
           readOnly: true
         endReason:
+          type: 'null'
           oneOf:
             - $ref: '#/components/schemas/EndReasonEnum'
             - $ref: '#/components/schemas/NullEnum'
           description: "The reason the call ended.\n\n* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `agent_hangup` - Agent hung up\n* `timeout` - Call timed out\n* `connection_error` - Connection error\n* `system_error` - System error"
-          nullable: true
           readOnly: true
         billedDuration:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
           readOnly: true
         billedSideInputTokens:
-          type: integer
-          nullable: true
+          type:
+            - 'null'
+            - integer
           readOnly: true
         billedSideOutputTokens:
-          type: integer
-          nullable: true
+          type:
+            - 'null'
+            - integer
           readOnly: true
         billingStatus:
           allOf:
@@ -3455,21 +3482,23 @@ components:
           type: string
           default: 30s
         joinUrl:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
           readOnly: true
         languageHint:
           maxLength: 16
-          type: string
+          type:
+            - 'null'
+            - string
           description: BCP47 language code that may be used to guide speech recognition.
-          nullable: true
         maxDuration:
           type: string
           default: 3600s
         medium:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallMedium'
-          nullable: true
         model:
           type: string
           default: ultravox-v0.7
@@ -3477,20 +3506,23 @@ components:
           type: boolean
           default: false
         systemPrompt:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
         temperature:
           maximum: 1.0
           minimum: 0.0
           type: number
           format: double
-          default: 0
+          default: 0.0
         timeExceededMessage:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
         voice:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
         externalVoice:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
         voiceOverrides:
@@ -3503,19 +3535,21 @@ components:
           default: true
           deprecated: true
         vadSettings:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.VadSettings'
           description: VAD settings for the call.
-          nullable: true
         shortSummary:
-          type: string
+          type:
+            - 'null'
+            - string
           description: A short summary of the call.
-          nullable: true
           readOnly: true
         summary:
-          type: string
+          type:
+            - 'null'
+            - string
           description: A summary of the call.
-          nullable: true
           readOnly: true
         agent:
           allOf:
@@ -3523,9 +3557,10 @@ components:
           description: The agent used for this call.
           readOnly: true
         agentId:
-          type: string
+          type:
+            - 'null'
+            - string
           description: The ID of the agent used for this call.
-          nullable: true
           readOnly: true
         experimentalSettings:
           description: Experimental settings for the call.
@@ -3548,10 +3583,10 @@ components:
             - $ref: '#/components/schemas/ultravox.v1.Callbacks'
           description: Callbacks configuration for the call.
         sipDetails:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/CallSipDetails'
           description: 'SIP details for the call, if applicable.'
-          nullable: true
           readOnly: true
     CallEvent:
       required:
@@ -3587,14 +3622,16 @@ components:
         text:
           type: string
         extras:
-          type: object
+          type:
+            - 'null'
+            - object
           additionalProperties: { }
-          nullable: true
           readOnly: true
         wallClockTimestamp:
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'The wall clock timestamp of the event, relative to call start.'
-          nullable: true
     CallSipDetails:
       required:
         - billedDuration
@@ -3602,14 +3639,15 @@ components:
       type: object
       properties:
         billedDuration:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
           readOnly: true
         terminationReason:
+          type: 'null'
           oneOf:
             - $ref: '#/components/schemas/TerminationReasonEnum'
             - $ref: '#/components/schemas/NullEnum'
-          nullable: true
           readOnly: true
     CallStage:
       required:
@@ -3641,24 +3679,28 @@ components:
           description: 'Messages spoken by the agent when the user is inactive for the specified duration. Durations are cumulative, so a message m > 1 with duration 30s will be spoken 30 seconds after message m-1.'
         languageHint:
           maxLength: 16
-          type: string
+          type:
+            - 'null'
+            - string
           description: BCP47 language code that may be used to guide speech recognition.
-          nullable: true
         model:
           type: string
         systemPrompt:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
         temperature:
           type: number
           format: double
           readOnly: true
         timeExceededMessage:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
         voice:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
         externalVoice:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
         voiceOverrides:
@@ -3670,8 +3712,8 @@ components:
           description: The number of errors in this call stage.
           readOnly: true
         experimentalSettings:
+          type: 'null'
           description: Experimental settings for this call stage.
-          nullable: true
           readOnly: true
         initialState:
           type: object
@@ -3729,22 +3771,24 @@ components:
           format: date-time
           readOnly: true
         joined:
-          type: string
+          type:
+            - 'null'
+            - string
           format: date-time
-          nullable: true
         ended:
-          type: string
+          type:
+            - 'null'
+            - string
           format: date-time
-          nullable: true
         maxDuration:
           type: string
           default: 3600s
         endReason:
+          type: 'null'
           oneOf:
             - $ref: '#/components/schemas/EndReasonEnum'
             - $ref: '#/components/schemas/NullEnum'
           description: "The reason the call ended.\n\n* `unjoined` - Client never joined\n* `hangup` - Client hung up\n* `agent_hangup` - Agent hung up\n* `timeout` - Call timed out\n* `connection_error` - Connection error\n* `system_error` - System error"
-          nullable: true
           readOnly: true
         recordingEnabled:
           type: boolean
@@ -3765,9 +3809,10 @@ components:
           format: uuid
           readOnly: true
         toolId:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uuid
-          nullable: true
           readOnly: true
         name:
           type: string
@@ -3969,7 +4014,7 @@ components:
           readOnly: true
     NullEnum:
       enum:
-        - 
+        - null
     OwnershipEnum:
       enum:
         - public
@@ -3981,14 +4026,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4003,14 +4050,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4025,14 +4074,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4047,14 +4098,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4069,14 +4122,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4091,14 +4146,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4119,14 +4176,16 @@ components:
           items:
             $ref: '#/components/schemas/Invoice'
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           readOnly: true
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           readOnly: true
     PaginatedModelAliasList:
       required:
@@ -4134,14 +4193,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4156,14 +4217,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4178,14 +4241,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4200,14 +4265,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4222,14 +4289,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4244,14 +4313,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4266,14 +4337,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4288,14 +4361,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4310,14 +4385,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4332,14 +4409,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4354,14 +4433,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4376,14 +4457,16 @@ components:
       type: object
       properties:
         next:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
         previous:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uri
-          nullable: true
           example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         results:
           type: array
@@ -4403,8 +4486,9 @@ components:
           format: date-time
           readOnly: true
         creator:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
           readOnly: true
         name:
           type: string
@@ -4412,10 +4496,11 @@ components:
           readOnly: true
         expiryDate:
           title: Expires
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'Once API key expires, clients cannot use it anymore.'
           format: date-time
-          nullable: true
           readOnly: true
         revoked:
           type: boolean
@@ -4424,20 +4509,20 @@ components:
       type: object
       properties:
         twilio:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/TwilioConfig'
           description: Your Twilio configuration. See https://console.twilio.com/
-          nullable: true
         telnyx:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/TelnyxConfig'
           description: Your Telnyx configuration. See https://portal.telnyx.com/
-          nullable: true
         plivo:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/PlivoConfig'
           description: Your Plivo configuration. See https://console.plivo.com/dashboard/
-          nullable: true
     PatchedAgent:
       type: object
       properties:
@@ -4446,9 +4531,10 @@ components:
           format: uuid
           readOnly: true
         publishedRevisionId:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uuid
-          nullable: true
           readOnly: true
         name:
           maxLength: 64
@@ -4458,9 +4544,9 @@ components:
           format: date-time
           readOnly: true
         callTemplate:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallTemplate'
-          nullable: true
         statistics:
           allOf:
             - $ref: '#/components/schemas/AgentStatistics'
@@ -4508,26 +4594,30 @@ components:
           format: date-time
           readOnly: true
         windowStart:
-          type: string
+          type:
+            - 'null'
+            - string
           description: The start of the time window during which calls can be made.
           format: date-time
-          nullable: true
         windowEnd:
-          type: string
+          type:
+            - 'null'
+            - string
           description: The end of the time window during which calls can be made.
           format: date-time
-          nullable: true
         webhookUrl:
           maxLength: 200
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing medium. Required if any call has a non-outgoing medium and not allowed otherwise.'
           format: uri
-          nullable: true
         webhookSecret:
           maxLength: 120
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'The signing secret for requests made to the webhookUrl. This is used to verify that the request came from Ultravox. If unset, an appropriate secret will be chosen for you (but you''ll still need to make your endpoint aware of it to verify requests).'
-          nullable: true
         paused:
           type: boolean
         totalCount:
@@ -4539,9 +4629,10 @@ components:
           description: The number of calls in this batch that have been completed (created or error).
           readOnly: true
         endedAt:
-          type: string
+          type:
+            - 'null'
+            - string
           format: date-time
-          nullable: true
           readOnly: true
         calls:
           minItems: 1
@@ -4553,29 +4644,35 @@ components:
       type: object
       properties:
         elevenLabs:
-          type: string
+          type:
+            - 'null'
+            - string
           description: "Your ElevenLabs API key.\nhttps://elevenlabs.io/app/settings/api-keys"
-          nullable: true
         cartesia:
-          type: string
+          type:
+            - 'null'
+            - string
           description: "Your Cartesia API key.\nhttps://play.cartesia.ai/keys"
-          nullable: true
         lmnt:
-          type: string
+          type:
+            - 'null'
+            - string
           description: "Your LMNT API key.\nhttps://app.lmnt.com/account#api-keys"
-          nullable: true
         google:
-          type: string
+          type:
+            - 'null'
+            - string
           description: "A service account JSON key for your Google Cloud project with the Text-to-Speech API enabled.\nhttps://cloud.google.com/text-to-speech/docs/quickstart-client-libraries#before-you-begin\nhttps://cloud.google.com/iam/docs/keys-create-delete#creating"
-          nullable: true
         inworld:
-          type: string
+          type:
+            - 'null'
+            - string
           description: "Your Inworld API key.\nhttps://platform.inworld.ai/login"
-          nullable: true
         respeecher:
-          type: string
+          type:
+            - 'null'
+            - string
           description: "Your Respeecher API key.\nhttps://space.respeecher.com/api-keys"
-          nullable: true
     PatchedSipConfig:
       type: object
       properties:
@@ -4623,14 +4720,16 @@ components:
           description: The SIP server to register with.
         outboundProxy:
           maxLength: 100
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'A proxy used to reach your SIP server for registration. Most often unset, but may be used if you need to register as `alice@trunk.com` using `proxy.trunk.com` for example.'
-          nullable: true
         authUser:
           maxLength: 60
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'The authentication username, if different from the SIP username. Most often unset.'
-          nullable: true
     PatchedTelnyxConfig:
       type: object
       properties:
@@ -4718,17 +4817,20 @@ components:
           type: string
         description:
           maxLength: 240
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
         primaryLanguage:
           maxLength: 10
-          type: string
+          type:
+            - 'null'
+            - string
           description: BCP47 language code for the primary language supported by this voice.
-          nullable: true
         languageLabel:
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'Human-readable language label with flag emoji and English name (e.g., ''🇺🇸 English (United States)'').'
-          nullable: true
           readOnly: true
         previewUrl:
           type: string
@@ -4744,8 +4846,9 @@ components:
           description: "How billing works for this voice.\nVOICE_BILLING_STYLE_INCLUDED - The cost of this voice is included in the call cost. There are no additional charges for it.\nVOICE_BILLING_STYLE_EXTERNAL - This voice requires an API key for its provider, who will bill for usage separately."
           readOnly: true
         provider:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
           readOnly: true
         definition:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
@@ -4757,10 +4860,11 @@ components:
           format: uuid
           readOnly: true
         agentId:
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'If set, this webhook will be limited to calls with this agent.'
           format: uuid
-          nullable: true
         created:
           type: string
           format: date-time
@@ -4783,9 +4887,10 @@ components:
             - $ref: '#/components/schemas/WebhookStatusEnum'
           readOnly: true
         lastStatusChange:
-          type: string
+          type:
+            - 'null'
+            - string
           format: date-time
-          nullable: true
           readOnly: true
         recentFailures:
           type: array
@@ -4845,27 +4950,29 @@ components:
           format: uuid
           readOnly: true
         callId:
-          type: string
+          type:
+            - 'null'
+            - string
           format: uuid
-          nullable: true
           readOnly: true
         error:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
           readOnly: true
         medium:
+          type: 'null'
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.CallMedium'
           description: 'The call medium to use for the call. In particular, allows for specifying per-call recipients for outgoing media.'
-          nullable: true
         metadata:
+          type: 'null'
           description: Optional metadata key-value pairs to associate with the call. All values must be strings.
-          nullable: true
         templateContext:
+          type: 'null'
           description: The context used to render the agent's template.
-          nullable: true
         experimentalSettings:
-          nullable: true
+          type: 'null'
     ScheduledCallBatch:
       required:
         - batchId
@@ -4885,26 +4992,30 @@ components:
           format: date-time
           readOnly: true
         windowStart:
-          type: string
+          type:
+            - 'null'
+            - string
           description: The start of the time window during which calls can be made.
           format: date-time
-          nullable: true
         windowEnd:
-          type: string
+          type:
+            - 'null'
+            - string
           description: The end of the time window during which calls can be made.
           format: date-time
-          nullable: true
         webhookUrl:
           maxLength: 200
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing medium. Required if any call has a non-outgoing medium and not allowed otherwise.'
           format: uri
-          nullable: true
         webhookSecret:
           maxLength: 120
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'The signing secret for requests made to the webhookUrl. This is used to verify that the request came from Ultravox. If unset, an appropriate secret will be chosen for you (but you''ll still need to make your endpoint aware of it to verify requests).'
-          nullable: true
         paused:
           type: boolean
         totalCount:
@@ -4916,9 +5027,10 @@ components:
           description: The number of calls in this batch that have been completed (created or error).
           readOnly: true
         endedAt:
-          type: string
+          type:
+            - 'null'
+            - string
           format: date-time
-          nullable: true
           readOnly: true
         calls:
           minItems: 1
@@ -5006,14 +5118,16 @@ components:
           description: The SIP server to register with.
         outboundProxy:
           maxLength: 100
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'A proxy used to reach your SIP server for registration. Most often unset, but may be used if you need to register as `alice@trunk.com` using `proxy.trunk.com` for example.'
-          nullable: true
         authUser:
           maxLength: 60
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'The authentication username, if different from the SIP username. Most often unset.'
-          nullable: true
     TelnyxConfig:
       required:
         - accountSid
@@ -5192,17 +5306,20 @@ components:
           type: string
         description:
           maxLength: 240
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
         primaryLanguage:
           maxLength: 10
-          type: string
+          type:
+            - 'null'
+            - string
           description: BCP47 language code for the primary language supported by this voice.
-          nullable: true
         languageLabel:
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'Human-readable language label with flag emoji and English name (e.g., ''🇺🇸 English (United States)'').'
-          nullable: true
           readOnly: true
         previewUrl:
           type: string
@@ -5218,8 +5335,9 @@ components:
           description: "How billing works for this voice.\nVOICE_BILLING_STYLE_INCLUDED - The cost of this voice is included in the call cost. There are no additional charges for it.\nVOICE_BILLING_STYLE_EXTERNAL - This voice requires an API key for its provider, who will bill for usage separately."
           readOnly: true
         provider:
-          type: string
-          nullable: true
+          type:
+            - 'null'
+            - string
           readOnly: true
         definition:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
@@ -5239,10 +5357,11 @@ components:
           format: uuid
           readOnly: true
         agentId:
-          type: string
+          type:
+            - 'null'
+            - string
           description: 'If set, this webhook will be limited to calls with this agent.'
           format: uuid
-          nullable: true
         created:
           type: string
           format: date-time
@@ -5265,9 +5384,10 @@ components:
             - $ref: '#/components/schemas/WebhookStatusEnum'
           readOnly: true
         lastStatusChange:
-          type: string
+          type:
+            - 'null'
+            - string
           format: date-time
-          nullable: true
           readOnly: true
         recentFailures:
           type: array
@@ -6914,5 +7034,3 @@ components:
       description: API key
       name: X-API-Key
       in: header
-security:
-  - apiKeyAuth: [ ]

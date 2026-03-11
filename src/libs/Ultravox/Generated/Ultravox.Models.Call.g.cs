@@ -163,7 +163,7 @@ namespace Ultravox
         public string? SystemPrompt { get; set; }
 
         /// <summary>
-        /// Default Value: 0
+        /// Default Value: 0.0
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
         public double? Temperature { get; set; }
@@ -363,7 +363,7 @@ namespace Ultravox
         /// </param>
         /// <param name="systemPrompt"></param>
         /// <param name="temperature">
-        /// Default Value: 0
+        /// Default Value: 0.0
         /// </param>
         /// <param name="timeExceededMessage"></param>
         /// <param name="voice"></param>

@@ -11,4 +11,6 @@ autosdk generate openapi.yaml \
   --clientClassName UltravoxClient \
   --targetFramework net8.0 \
   --output Generated \
-  --exclude-deprecated-operations
+  --exclude-deprecated-operations \
+  --base-url https://api.ultravox.ai \
+  --security-scheme ApiKey:Header:X-API-Key

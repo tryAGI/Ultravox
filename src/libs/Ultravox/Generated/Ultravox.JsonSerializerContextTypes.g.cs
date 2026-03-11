@@ -52,27 +52,27 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public int? Type6 { get; set; }
+        public global::System.Guid? Type6 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.AccountBillingInfo? Type7 { get; set; }
+        public int? Type7 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.AccountTelephonyConfig? Type8 { get; set; }
+        public global::Ultravox.AccountBillingInfo? Type8 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Ultravox.TwilioConfig? Type9 { get; set; }
+        public global::Ultravox.AccountTelephonyConfig? Type9 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Guid>? Type10 { get; set; }
+        public global::Ultravox.TwilioConfig? Type10 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Guid? Type11 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Guid>? Type11 { get; set; }
         /// <summary>
         /// 
         /// </summary>
