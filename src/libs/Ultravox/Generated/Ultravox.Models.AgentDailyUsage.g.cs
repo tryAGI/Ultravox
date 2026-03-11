@@ -13,21 +13,21 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("date")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.DateTime Date { get; set; } = default!;
+        public required global::System.DateTime Date { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("billedMinutes")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public double BilledMinutes { get; set; } = default!;
+        public required double BilledMinutes { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("calls")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int Calls { get; set; } = default!;
+        public required int Calls { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

@@ -13,7 +13,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mimeType")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string MimeType { get; set; } = default!;
+        public required string MimeType { get; set; }
 
         /// <summary>
         /// The name of the file to be uploaded.

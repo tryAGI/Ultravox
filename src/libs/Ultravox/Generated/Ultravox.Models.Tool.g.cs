@@ -20,7 +20,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Name { get; set; } = default!;
+        public required string Name { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -35,7 +35,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("definition")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Ultravox.UltravoxV1BaseToolDefinition Definition { get; set; } = default!;
+        public required global::Ultravox.UltravoxV1BaseToolDefinition Definition { get; set; }
 
         /// <summary>
         /// Included only in responses

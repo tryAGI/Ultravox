@@ -13,14 +13,14 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::Ultravox.AgentBasic Agent { get; set; } = default!;
+        public required global::Ultravox.AgentBasic Agent { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("usage")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Ultravox.AgentDailyUsage> Usage { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Ultravox.AgentDailyUsage> Usage { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

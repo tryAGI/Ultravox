@@ -26,7 +26,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("allowedAgents")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Ultravox.AgentAllowance> AllowedAgents { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Ultravox.AgentAllowance> AllowedAgents { get; set; }
 
         /// <summary>
         /// The domain used for SIP invites for your account.<br/>

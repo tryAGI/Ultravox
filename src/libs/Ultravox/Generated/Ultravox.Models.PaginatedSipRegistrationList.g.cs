@@ -27,7 +27,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Ultravox.SipRegistration> Results { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Ultravox.SipRegistration> Results { get; set; }
 
         /// <summary>
         /// Example: 123

@@ -51,7 +51,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("invoiceUrl")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string InvoiceUrl { get; set; } = default!;
+        public required string InvoiceUrl { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

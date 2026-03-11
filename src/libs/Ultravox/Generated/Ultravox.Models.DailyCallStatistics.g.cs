@@ -13,42 +13,42 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int TotalCount { get; set; } = default!;
+        public required int TotalCount { get; set; }
 
         /// <summary>
         /// Number of calls that ended in error
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("errorCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int ErrorCount { get; set; } = default!;
+        public required int ErrorCount { get; set; }
 
         /// <summary>
         /// Total duration of all calls
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Duration { get; set; } = default!;
+        public required string Duration { get; set; }
 
         /// <summary>
         /// Number of calls that were joined
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("joinedCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public int JoinedCount { get; set; } = default!;
+        public required int JoinedCount { get; set; }
 
         /// <summary>
         /// Total billed minutes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("billedMinutes")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public double BilledMinutes { get; set; } = default!;
+        public required double BilledMinutes { get; set; }
 
         /// <summary>
         /// Date of usage
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("date")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.DateTime Date { get; set; } = default!;
+        public required global::System.DateTime Date { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

@@ -13,7 +13,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prefix")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Prefix { get; set; } = default!;
+        public required string Prefix { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

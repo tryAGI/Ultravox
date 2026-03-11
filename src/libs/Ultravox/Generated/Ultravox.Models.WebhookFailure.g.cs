@@ -13,14 +13,14 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timestamp")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.DateTime Timestamp { get; set; } = default!;
+        public required global::System.DateTime Timestamp { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("failure")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Failure { get; set; } = default!;
+        public required string Failure { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

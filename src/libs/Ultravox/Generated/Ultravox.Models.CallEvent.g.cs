@@ -27,7 +27,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("callTimestamp")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string CallTimestamp { get; set; } = default!;
+        public required string CallTimestamp { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -42,14 +42,14 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Type { get; set; } = default!;
+        public required string Type { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("text")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string Text { get; set; } = default!;
+        public required string Text { get; set; }
 
         /// <summary>
         /// Included only in responses
