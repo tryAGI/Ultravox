@@ -27,7 +27,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("username")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Username { get; set; }
+        public string Username { get; set; } = default!;
 
         /// <summary>
         /// The SIP password for username.<br/>
@@ -41,7 +41,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("proxy")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Proxy { get; set; }
+        public string Proxy { get; set; } = default!;
 
         /// <summary>
         /// A proxy used to reach your SIP server for registration. Most often unset, but may be used if you need to register as `alice@trunk.com` using `proxy.trunk.com` for example.

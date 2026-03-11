@@ -32,7 +32,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("accountSid")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string AccountSid { get; set; }
+        public string AccountSid { get; set; } = default!;
 
         /// <summary>
         /// Your Telnyx API Key. See https://portal.telnyx.com/#/api-keys<br/>
@@ -69,7 +69,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("applicationSid")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ApplicationSid { get; set; }
+        public string ApplicationSid { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

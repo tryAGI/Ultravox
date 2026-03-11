@@ -32,7 +32,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("accountSid")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string AccountSid { get; set; }
+        public string AccountSid { get; set; } = default!;
 
         /// <summary>
         /// Your Twilio Auth Token.<br/>

@@ -27,7 +27,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusSource> Results { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusSource> Results { get; set; } = default!;
 
         /// <summary>
         /// Example: 123

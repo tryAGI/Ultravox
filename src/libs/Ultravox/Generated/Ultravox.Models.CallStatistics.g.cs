@@ -13,35 +13,35 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int TotalCount { get; set; }
+        public int TotalCount { get; set; } = default!;
 
         /// <summary>
         /// Number of calls that ended in error
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("errorCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int ErrorCount { get; set; }
+        public int ErrorCount { get; set; } = default!;
 
         /// <summary>
         /// Total duration of all calls
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Duration { get; set; }
+        public string Duration { get; set; } = default!;
 
         /// <summary>
         /// Number of calls that were joined
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("joinedCount")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required int JoinedCount { get; set; }
+        public int JoinedCount { get; set; } = default!;
 
         /// <summary>
         /// Total billed minutes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("billedMinutes")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double BilledMinutes { get; set; }
+        public double BilledMinutes { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

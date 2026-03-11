@@ -13,7 +13,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agentId")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Guid AgentId { get; set; }
+        public global::System.Guid AgentId { get; set; } = default!;
 
         /// <summary>
         /// A pattern to apply to the to user part of the URI of any incoming sip INVITE that determines how this agent can be reached. Defaults to ^agent_&lt;agent_id&gt;$ if not specified.

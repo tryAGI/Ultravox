@@ -13,14 +13,14 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("file")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required byte[] File { get; set; }
+        public byte[] File { get; set; } = default!;
 
         /// <summary>
         /// An audio file containing a sample of the voice to clone.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filename")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Filename { get; set; }
+        public string Filename { get; set; } = default!;
 
         /// <summary>
         /// Name for the cloned voice. Must be unique within your account.<br/>
@@ -29,7 +29,7 @@ namespace Ultravox
         /// <example>My Custom Voice</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         /// <summary>
         /// Optional description for the voice. If not provided, a default description will be generated.<br/>

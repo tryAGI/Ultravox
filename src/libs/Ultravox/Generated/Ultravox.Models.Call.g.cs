@@ -97,7 +97,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("firstSpeakerSettings")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Ultravox.UltravoxV1FirstSpeakerSettings FirstSpeakerSettings { get; set; }
+        public global::Ultravox.UltravoxV1FirstSpeakerSettings FirstSpeakerSettings { get; set; } = default!;
 
         /// <summary>
         /// Messages spoken by the agent when the user is inactive for the specified duration. Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.
@@ -243,28 +243,28 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("experimentalSettings")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required object ExperimentalSettings { get; set; }
+        public object ExperimentalSettings { get; set; } = default!;
 
         /// <summary>
         /// Optional metadata key-value pairs to associate with the call. All values must be strings.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.Dictionary<string, string> Metadata { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string> Metadata { get; set; } = default!;
 
         /// <summary>
         /// The initial state of the call which is readable/writable by tools.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("initialState")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required object InitialState { get; set; }
+        public object InitialState { get; set; } = default!;
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requestContext")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required object RequestContext { get; set; }
+        public object RequestContext { get; set; } = default!;
 
         /// <summary>
         /// Settings for exchanging data messages with an additional participant.

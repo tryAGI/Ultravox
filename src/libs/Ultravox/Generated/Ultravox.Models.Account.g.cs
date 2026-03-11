@@ -50,7 +50,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hasActiveSubscription")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool HasActiveSubscription { get; set; }
+        public bool HasActiveSubscription { get; set; } = default!;
 
         /// <summary>
         /// The current subscription tier for this account.<br/>

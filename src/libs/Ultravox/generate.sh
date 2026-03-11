@@ -9,7 +9,7 @@ fi
 autosdk generate openapi.yaml \
   --namespace Ultravox \
   --clientClassName UltravoxClient \
-  --targetFramework net8.0 \
+  --targetFramework net10.0 \
   --output Generated \
   --exclude-deprecated-operations \
   --base-url https://api.ultravox.ai \

@@ -34,7 +34,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("definition")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Ultravox.UltravoxV1CallTool Definition { get; set; }
+        public global::Ultravox.UltravoxV1CallTool Definition { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

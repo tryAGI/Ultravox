@@ -13,21 +13,21 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("allTime")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Ultravox.CallStatistics AllTime { get; set; }
+        public global::Ultravox.CallStatistics AllTime { get; set; } = default!;
 
         /// <summary>
         /// Call usage per day
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("daily")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Ultravox.DailyCallStatistics> Daily { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.DailyCallStatistics> Daily { get; set; } = default!;
 
         /// <summary>
         /// Call counts by date and hour
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hourly")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Ultravox.HourlyCallStatistics> Hourly { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.HourlyCallStatistics> Hourly { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

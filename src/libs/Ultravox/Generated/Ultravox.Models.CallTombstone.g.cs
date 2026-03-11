@@ -29,7 +29,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.DateTime Created { get; set; }
+        public global::System.DateTime Created { get; set; } = default!;
 
         /// <summary>
         /// Included only in responses

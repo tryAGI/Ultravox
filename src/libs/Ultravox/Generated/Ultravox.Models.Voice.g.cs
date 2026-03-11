@@ -20,7 +20,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         /// <summary>
         /// 
@@ -81,7 +81,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("definition")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::Ultravox.UltravoxV1ExternalVoice Definition { get; set; }
+        public global::Ultravox.UltravoxV1ExternalVoice Definition { get; set; } = default!;
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

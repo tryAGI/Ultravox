@@ -33,7 +33,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Url { get; set; }
+        public string Url { get; set; } = default!;
 
         /// <summary>
         /// 
@@ -46,7 +46,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("events")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Ultravox.EventsEnum> Events { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.EventsEnum> Events { get; set; } = default!;
 
         /// <summary>
         /// Included only in responses
