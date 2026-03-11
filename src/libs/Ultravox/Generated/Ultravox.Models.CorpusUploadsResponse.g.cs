@@ -13,14 +13,14 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("documentId")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string DocumentId { get; set; } = default!;
+        public required string DocumentId { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("presignedUrl")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string PresignedUrl { get; set; } = default!;
+        public required string PresignedUrl { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

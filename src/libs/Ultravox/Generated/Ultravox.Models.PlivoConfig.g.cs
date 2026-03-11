@@ -32,7 +32,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("authId")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public string AuthId { get; set; } = default!;
+        public required string AuthId { get; set; }
 
         /// <summary>
         /// Your Plivo Auth Token.<br/>

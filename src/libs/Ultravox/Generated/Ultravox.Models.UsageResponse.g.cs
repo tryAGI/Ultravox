@@ -13,7 +13,7 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dailyUsage")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public global::System.Collections.Generic.IList<global::Ultravox.BillingUsageDay> DailyUsage { get; set; } = default!;
+        public required global::System.Collections.Generic.IList<global::Ultravox.BillingUsageDay> DailyUsage { get; set; }
 
         /// <summary>
         /// Total billed usage within the requested period in minutes.<br/>
