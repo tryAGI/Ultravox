@@ -3657,6 +3657,8 @@ components:
         - errorCount
         - experimentalSettings
         - initialState
+        - initialTokenCount
+        - latestTokenCount
         - temperature
       type: object
       properties:
@@ -3677,12 +3679,24 @@ components:
           items:
             $ref: '#/components/schemas/ultravox.v1.TimedMessage'
           description: 'Messages spoken by the agent when the user is inactive for the specified duration. Durations are cumulative, so a message m > 1 with duration 30s will be spoken 30 seconds after message m-1.'
+        initialTokenCount:
+          type:
+            - 'null'
+            - integer
+          description: The initial length of the prompt in tokens.
+          readOnly: true
         languageHint:
           maxLength: 16
           type:
             - 'null'
             - string
           description: BCP47 language code that may be used to guide speech recognition.
+        latestTokenCount:
+          type:
+            - 'null'
+            - integer
+          description: The latest length of the prompt in tokens. Updated as the call stage progresses.
+          readOnly: true
         model:
           type: string
         systemPrompt:

@@ -36,10 +36,24 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? InactivityMessages { get; set; }
 
         /// <summary>
+        /// The initial length of the prompt in tokens.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("initialTokenCount")]
+        public int? InitialTokenCount { get; set; }
+
+        /// <summary>
         /// BCP47 language code that may be used to guide speech recognition.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageHint")]
         public string? LanguageHint { get; set; }
+
+        /// <summary>
+        /// The latest length of the prompt in tokens. Updated as the call stage progresses.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("latestTokenCount")]
+        public int? LatestTokenCount { get; set; }
 
         /// <summary>
         /// 
@@ -130,8 +144,16 @@ namespace Ultravox
         /// <param name="inactivityMessages">
         /// Messages spoken by the agent when the user is inactive for the specified duration. Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.
         /// </param>
+        /// <param name="initialTokenCount">
+        /// The initial length of the prompt in tokens.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="languageHint">
         /// BCP47 language code that may be used to guide speech recognition.
+        /// </param>
+        /// <param name="latestTokenCount">
+        /// The latest length of the prompt in tokens. Updated as the call stage progresses.<br/>
+        /// Included only in responses
         /// </param>
         /// <param name="model"></param>
         /// <param name="systemPrompt"></param>
@@ -166,7 +188,9 @@ namespace Ultravox
         public CallStage(
             object initialState,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
+            int? initialTokenCount,
             string? languageHint,
+            int? latestTokenCount,
             string? model,
             string? systemPrompt,
             string? timeExceededMessage,
@@ -185,7 +209,9 @@ namespace Ultravox
             this.CallStageId = callStageId;
             this.Created = created;
             this.InactivityMessages = inactivityMessages;
+            this.InitialTokenCount = initialTokenCount;
             this.LanguageHint = languageHint;
+            this.LatestTokenCount = latestTokenCount;
             this.Model = model;
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
