@@ -71,6 +71,11 @@ namespace Ultravox
         ///  in this request. Typically the agent's voice and any relevant overrides should be<br/>
         ///  set on the agent's CallTemplate instead.
         /// </param>
+        /// <param name="toolOverrides">
+        /// Overrides for the agent's tool set. Allows adding or removing tools,<br/>
+        ///  optionally replacing the entire tool list. Removals are applied before<br/>
+        ///  additions.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Call> AgentsCallsCreateAsync(
@@ -89,6 +94,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1Callbacks? callbacks = default,
             string? voice = default,
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides = default,
+            global::Ultravox.UltravoxV1ToolOverrides? toolOverrides = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

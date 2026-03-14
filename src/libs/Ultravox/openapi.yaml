@@ -6810,6 +6810,10 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
           description: "Overrides for the agent's forced voice. Only valid when `voice` is set explicitly\n in this request. Typically the agent's voice and any relevant overrides should be\n set on the agent's CallTemplate instead."
+        toolOverrides:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.ToolOverrides'
+          description: "Overrides for the agent's tool set. Allows adding or removing tools,\n optionally replacing the entire tool list. Removals are applied before\n additions."
       description: A request to start a call with an existing agent.
     ultravox.v1.StartCallRequest:
       type: object
@@ -6978,6 +6982,23 @@ components:
           description: The behavior to exhibit when the message is finished being spoken.
           format: enum
       description: "A message the agent should say after some duration. The duration's meaning\n varies depending on the context."
+    ultravox.v1.ToolOverrides:
+      type: object
+      properties:
+        remove:
+          type: array
+          items:
+            type: string
+          description: "Tools to remove from the set, identified by their unique model-facing name\n (i.e. nameOverride if set, otherwise modelToolName). May not be set\n together with removeAll."
+        removeAll:
+          type: boolean
+          description: "If true, all existing tools are removed. May not be set together with\n remove."
+        add:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.SelectedTool'
+          description: Tools to add.
+      description: "Overrides for a set of selected tools. Items in remove are applied before\n items in add. Use remove + add for replacements."
     ultravox.v1.ToolRequirements:
       type: object
       properties:
