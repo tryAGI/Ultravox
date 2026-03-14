@@ -102,6 +102,14 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1ExternalVoice? VoiceOverrides { get; set; }
 
         /// <summary>
+        /// Overrides for the agent's tool set. Allows adding or removing tools,<br/>
+        ///  optionally replacing the entire tool list. Removals are applied before<br/>
+        ///  additions.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("toolOverrides")]
+        public global::Ultravox.UltravoxV1ToolOverrides? ToolOverrides { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -160,6 +168,11 @@ namespace Ultravox
         ///  in this request. Typically the agent's voice and any relevant overrides should be<br/>
         ///  set on the agent's CallTemplate instead.
         /// </param>
+        /// <param name="toolOverrides">
+        /// Overrides for the agent's tool set. Allows adding or removing tools,<br/>
+        ///  optionally replacing the entire tool list. Removals are applied before<br/>
+        ///  additions.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -177,7 +190,8 @@ namespace Ultravox
             object? experimentalSettings,
             global::Ultravox.UltravoxV1Callbacks? callbacks,
             string? voice,
-            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides)
+            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides,
+            global::Ultravox.UltravoxV1ToolOverrides? toolOverrides)
         {
             this.TemplateContext = templateContext;
             this.InitialMessages = initialMessages;
@@ -193,6 +207,7 @@ namespace Ultravox
             this.Callbacks = callbacks;
             this.Voice = voice;
             this.VoiceOverrides = voiceOverrides;
+            this.ToolOverrides = toolOverrides;
         }
 
         /// <summary>
