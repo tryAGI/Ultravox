@@ -1,7 +1,10 @@
 site_name: Ultravox .NET Documentation
 nav:
 - Overview: index.md
-# EXAMPLES #
+# EXAMPLES:START
+- Examples:
+  - VoicesList: samples/VoicesList.md
+# EXAMPLES:END
         
 theme:
   name: material
