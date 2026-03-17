@@ -173,6 +173,14 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1ExternalVoice? VoiceOverrides { get; set; }
 
         /// <summary>
+        /// The retention policy for the call's data after it ends.<br/>
+        ///  This feature must be enabled for your account.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retentionPolicy")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestRetentionPolicyJsonConverter))]
+        public global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? RetentionPolicy { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -268,6 +276,10 @@ namespace Ultravox
         ///  Only non-price-affecting fields may be overridden (e.g., speed, style, stability).<br/>
         ///  The provider in the override must match the selected voice's provider.
         /// </param>
+        /// <param name="retentionPolicy">
+        /// The retention policy for the call's data after it ends.<br/>
+        ///  This feature must be enabled for your account.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -296,7 +308,8 @@ namespace Ultravox
             object? initialState,
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection,
             global::Ultravox.UltravoxV1Callbacks? callbacks,
-            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides)
+            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides,
+            global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? retentionPolicy)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -323,6 +336,7 @@ namespace Ultravox
             this.DataConnection = dataConnection;
             this.Callbacks = callbacks;
             this.VoiceOverrides = voiceOverrides;
+            this.RetentionPolicy = retentionPolicy;
         }
 
         /// <summary>

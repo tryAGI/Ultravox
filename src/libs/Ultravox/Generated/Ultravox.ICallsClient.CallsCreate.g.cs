@@ -115,6 +115,10 @@ namespace Ultravox
         ///  Only non-price-affecting fields may be overridden (e.g., speed, style, stability).<br/>
         ///  The provider in the override must match the selected voice's provider.
         /// </param>
+        /// <param name="retentionPolicy">
+        /// The retention policy for the call's data after it ends.<br/>
+        ///  This feature must be enabled for your account.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
@@ -145,6 +149,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection = default,
             global::Ultravox.UltravoxV1Callbacks? callbacks = default,
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides = default,
+            global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? retentionPolicy = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

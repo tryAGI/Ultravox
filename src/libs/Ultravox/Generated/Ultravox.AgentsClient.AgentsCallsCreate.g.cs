@@ -231,6 +231,9 @@ namespace Ultravox
         ///  optionally replacing the entire tool list. Removals are applied before<br/>
         ///  additions.
         /// </param>
+        /// <param name="retentionPolicy">
+        /// The (overridden) retention policy for the call's data after it ends.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> AgentsCallsCreateAsync(
@@ -250,6 +253,7 @@ namespace Ultravox
             string? voice = default,
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides = default,
             global::Ultravox.UltravoxV1ToolOverrides? toolOverrides = default,
+            global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy? retentionPolicy = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.UltravoxV1StartAgentCallRequest
@@ -269,6 +273,7 @@ namespace Ultravox
                 Voice = voice,
                 VoiceOverrides = voiceOverrides,
                 ToolOverrides = toolOverrides,
+                RetentionPolicy = retentionPolicy,
             };
 
             return await AgentsCallsCreateAsync(
