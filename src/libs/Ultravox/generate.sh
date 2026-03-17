@@ -1,6 +1,7 @@
+set -e
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-curl -o openapi.yaml https://api.ultravox.ai/api/schema/
+curl --fail --silent --show-error -o openapi.yaml https://api.ultravox.ai/api/schema/
 autosdk generate openapi.yaml \
   --namespace Ultravox \
   --clientClassName UltravoxClient \
