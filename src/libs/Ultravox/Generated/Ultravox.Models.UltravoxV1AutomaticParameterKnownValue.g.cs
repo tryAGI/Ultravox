@@ -40,6 +40,10 @@ namespace Ultravox
         /// 
         /// </summary>
         KnownParamThreadStates,
+        /// <summary>
+        /// 
+        /// </summary>
+        KnownParamCallMetadata,
     }
 
     /// <summary>
@@ -62,6 +66,7 @@ namespace Ultravox
                 UltravoxV1AutomaticParameterKnownValue.KnownParamCallStageId => "KNOWN_PARAM_CALL_STAGE_ID",
                 UltravoxV1AutomaticParameterKnownValue.KnownParamThreadId => "KNOWN_PARAM_THREAD_ID",
                 UltravoxV1AutomaticParameterKnownValue.KnownParamThreadStates => "KNOWN_PARAM_THREAD_STATES",
+                UltravoxV1AutomaticParameterKnownValue.KnownParamCallMetadata => "KNOWN_PARAM_CALL_METADATA",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -80,6 +85,7 @@ namespace Ultravox
                 "KNOWN_PARAM_CALL_STAGE_ID" => UltravoxV1AutomaticParameterKnownValue.KnownParamCallStageId,
                 "KNOWN_PARAM_THREAD_ID" => UltravoxV1AutomaticParameterKnownValue.KnownParamThreadId,
                 "KNOWN_PARAM_THREAD_STATES" => UltravoxV1AutomaticParameterKnownValue.KnownParamThreadStates,
+                "KNOWN_PARAM_CALL_METADATA" => UltravoxV1AutomaticParameterKnownValue.KnownParamCallMetadata,
                 _ => null,
             };
         }

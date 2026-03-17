@@ -6004,6 +6004,7 @@ components:
           - KNOWN_PARAM_CALL_STAGE_ID
           - KNOWN_PARAM_THREAD_ID
           - KNOWN_PARAM_THREAD_STATES
+          - KNOWN_PARAM_CALL_METADATA
           type: string
           description: The value to set for the parameter.
           format: enum
