@@ -175,6 +175,13 @@ namespace Ultravox
         public object? ContextSchema { get; set; }
 
         /// <summary>
+        /// The default retention policy for calls created with this agent.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retentionPolicy")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1CallTemplateRetentionPolicyJsonConverter))]
+        public global::Ultravox.UltravoxV1CallTemplateRetentionPolicy? RetentionPolicy { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -282,6 +289,9 @@ namespace Ultravox
         ///    * selected_tools.http.auth_query_params.value<br/>
         ///  If multiple stages are defined for the call, each must define its own context schema (or use the generated one).
         /// </param>
+        /// <param name="retentionPolicy">
+        /// The default retention policy for calls created with this agent.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -307,7 +317,8 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>? selectedTools,
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection,
-            object? contextSchema)
+            object? contextSchema,
+            global::Ultravox.UltravoxV1CallTemplateRetentionPolicy? retentionPolicy)
         {
             this.Name = name;
             this.Created = created;
@@ -331,6 +342,7 @@ namespace Ultravox
             this.SelectedTools = selectedTools;
             this.DataConnection = dataConnection;
             this.ContextSchema = contextSchema;
+            this.RetentionPolicy = retentionPolicy;
         }
 
         /// <summary>

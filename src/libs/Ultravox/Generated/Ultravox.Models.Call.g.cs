@@ -157,6 +157,15 @@ namespace Ultravox
         public bool? RecordingEnabled { get; set; }
 
         /// <summary>
+        /// The retention policy for the call's data after it ends.<br/>
+        /// * `retain` - Retain indefinitely<br/>
+        /// * `auto_delete` - Auto-delete after billing
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retentionPolicy")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.OneOfJsonConverter<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>))]
+        public global::Ultravox.OneOf<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>? RetentionPolicy { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("systemPrompt")]
@@ -361,6 +370,11 @@ namespace Ultravox
         /// <param name="recordingEnabled">
         /// Default Value: false
         /// </param>
+        /// <param name="retentionPolicy">
+        /// The retention policy for the call's data after it ends.<br/>
+        /// * `retain` - Retain indefinitely<br/>
+        /// * `auto_delete` - Auto-delete after billing
+        /// </param>
         /// <param name="systemPrompt"></param>
         /// <param name="temperature">
         /// Default Value: 0.0
@@ -439,6 +453,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1CallMedium? medium,
             string? model,
             bool? recordingEnabled,
+            global::Ultravox.OneOf<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>? retentionPolicy,
             string? systemPrompt,
             double? temperature,
             string? timeExceededMessage,
@@ -482,6 +497,7 @@ namespace Ultravox
             this.Medium = medium;
             this.Model = model;
             this.RecordingEnabled = recordingEnabled;
+            this.RetentionPolicy = retentionPolicy;
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
             this.TimeExceededMessage = timeExceededMessage;

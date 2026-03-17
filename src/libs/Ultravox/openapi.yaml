@@ -3633,6 +3633,16 @@ components:
         recordingEnabled:
           type: boolean
           default: false
+        retentionPolicy:
+          nullable: true
+          description: |-
+            The retention policy for the call's data after it ends.
+
+            * `retain` - Retain indefinitely
+            * `auto_delete` - Auto-delete after billing
+          oneOf:
+          - $ref: '#/components/schemas/RetentionPolicyEnum'
+          - $ref: '#/components/schemas/NullEnum'
         systemPrompt:
           type: string
           nullable: true
@@ -5100,6 +5110,14 @@ components:
       - authId
       - authToken
       - authTokenPrefix
+    RetentionPolicyEnum:
+      enum:
+      - retain
+      - auto_delete
+      type: string
+      description: |-
+        * `retain` - Retain indefinitely
+        * `auto_delete` - Auto-delete after billing
     ScheduledCall:
       type: object
       properties:
@@ -5731,6 +5749,14 @@ components:
                * selected_tools.http.auth_headers.value
                * selected_tools.http.auth_query_params.value
              If multiple stages are defined for the call, each must define its own context schema (or use the generated one).
+        retentionPolicy:
+          enum:
+          - CALL_RETENTION_POLICY_UNSPECIFIED
+          - CALL_RETENTION_POLICY_RETAIN
+          - CALL_RETENTION_POLICY_AUTO_DELETE
+          type: string
+          description: The default retention policy for calls created with this agent.
+          format: enum
       description: A CallTemplate that can be used to create Ultravox calls with shared
         properties.
     ultravox.v1.Corpus:
@@ -7357,6 +7383,15 @@ components:
             Overrides for the agent's tool set. Allows adding or removing tools,
              optionally replacing the entire tool list. Removals are applied before
              additions.
+        retentionPolicy:
+          enum:
+          - CALL_RETENTION_POLICY_UNSPECIFIED
+          - CALL_RETENTION_POLICY_RETAIN
+          - CALL_RETENTION_POLICY_AUTO_DELETE
+          type: string
+          description: The (overridden) retention policy for the call's data after
+            it ends.
+          format: enum
       description: A request to start a call with an existing agent.
     ultravox.v1.StartCallRequest:
       type: object
@@ -7488,6 +7523,16 @@ components:
             Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).
              Only non-price-affecting fields may be overridden (e.g., speed, style, stability).
              The provider in the override must match the selected voice's provider.
+        retentionPolicy:
+          enum:
+          - CALL_RETENTION_POLICY_UNSPECIFIED
+          - CALL_RETENTION_POLICY_RETAIN
+          - CALL_RETENTION_POLICY_AUTO_DELETE
+          type: string
+          description: |-
+            The retention policy for the call's data after it ends.
+             This feature must be enabled for your account.
+          format: enum
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object

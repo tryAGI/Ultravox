@@ -110,6 +110,13 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1ToolOverrides? ToolOverrides { get; set; }
 
         /// <summary>
+        /// The (overridden) retention policy for the call's data after it ends.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("retentionPolicy")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1StartAgentCallRequestRetentionPolicyJsonConverter))]
+        public global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy? RetentionPolicy { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -173,6 +180,9 @@ namespace Ultravox
         ///  optionally replacing the entire tool list. Removals are applied before<br/>
         ///  additions.
         /// </param>
+        /// <param name="retentionPolicy">
+        /// The (overridden) retention policy for the call's data after it ends.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -191,7 +201,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1Callbacks? callbacks,
             string? voice,
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides,
-            global::Ultravox.UltravoxV1ToolOverrides? toolOverrides)
+            global::Ultravox.UltravoxV1ToolOverrides? toolOverrides,
+            global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy? retentionPolicy)
         {
             this.TemplateContext = templateContext;
             this.InitialMessages = initialMessages;
@@ -208,6 +219,7 @@ namespace Ultravox
             this.Voice = voice;
             this.VoiceOverrides = voiceOverrides;
             this.ToolOverrides = toolOverrides;
+            this.RetentionPolicy = retentionPolicy;
         }
 
         /// <summary>
