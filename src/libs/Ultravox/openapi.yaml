@@ -4892,6 +4892,12 @@ components:
           description: The authentication username, if different from the SIP username.
             Most often unset.
           maxLength: 60
+        successful:
+          type: boolean
+          nullable: true
+          readOnly: true
+          description: Whether the registration was successfully created and is now
+            active. May be null if status is not available yet.
     PatchedTelnyxConfig:
       type: object
       properties:
@@ -5312,11 +5318,18 @@ components:
           description: The authentication username, if different from the SIP username.
             Most often unset.
           maxLength: 60
+        successful:
+          type: boolean
+          nullable: true
+          readOnly: true
+          description: Whether the registration was successfully created and is now
+            active. May be null if status is not available yet.
       required:
       - created
       - password
       - proxy
       - registrationId
+      - successful
       - username
     TelnyxConfig:
       type: object
