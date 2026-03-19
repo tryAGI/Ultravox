@@ -52,6 +52,13 @@ namespace Ultravox
         public string? AuthUser { get; set; }
 
         /// <summary>
+        /// Whether the registration was successfully created and is now active. May be null if status is not available yet.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("successful")]
+        public bool? Successful { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -82,6 +89,10 @@ namespace Ultravox
         /// <param name="authUser">
         /// The authentication username, if different from the SIP username. Most often unset.
         /// </param>
+        /// <param name="successful">
+        /// Whether the registration was successfully created and is now active. May be null if status is not available yet.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -92,7 +103,8 @@ namespace Ultravox
             string? password,
             string? proxy,
             string? outboundProxy,
-            string? authUser)
+            string? authUser,
+            bool? successful)
         {
             this.RegistrationId = registrationId;
             this.Created = created;
@@ -101,6 +113,7 @@ namespace Ultravox
             this.Proxy = proxy;
             this.OutboundProxy = outboundProxy;
             this.AuthUser = authUser;
+            this.Successful = successful;
         }
 
         /// <summary>
