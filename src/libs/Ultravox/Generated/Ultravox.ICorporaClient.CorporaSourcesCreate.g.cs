@@ -4,12 +4,10 @@ namespace Ultravox
 {
     public partial interface ICorporaClient
     {
-
         /// <summary>
         /// 
         /// </summary>
         /// <param name="corpusId"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
@@ -18,7 +16,6 @@ namespace Ultravox
 
             global::Ultravox.UltravoxV1CorpusSource request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// 
         /// </summary>

@@ -21,7 +21,6 @@ namespace Ultravox
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref byte[] content);
 
-
         /// <summary>
         /// Returns or redirects to a recording of the call.
         /// </summary>

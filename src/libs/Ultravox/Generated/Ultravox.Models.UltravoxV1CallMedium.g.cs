@@ -29,10 +29,15 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CallMediumTwilioMedium? Twilio { get; set; }
 
         /// <summary>
-        /// The call will use a plain websocket connection. This is unlikely to yield an acceptable user<br/>
-        ///  experience if used from a browser or mobile client, but may be suitable for a<br/>
-        ///  server-to-server connection. This option provides a simple way to connect your own server to<br/>
-        ///  an Ultravox inference instance.
+        /// The call will use a plain websocket connection. This option provides a simple way to<br/>
+        ///  connect your own server to an Ultravox inference instance. It is not recommended for<br/>
+        ///  direct use in browsers or mobile clients.<br/>
+        ///  WebSocket connections are expected to send continuous audio. In other words, Ultravox<br/>
+        ///  expects to receive one second of audio each second. Typically this should be sent as<br/>
+        ///  frequent small chunks (e.g. 20ms), though larger chunks are also acceptable.<br/>
+        ///  Sending too much (overflow) or too little (underflow) audio will result in warning-level<br/>
+        ///  call events. Excessive overflow will eventually be dropped while underflow may cause<br/>
+        ///  de-synchronized recordings.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("serverWebSocket")]
         public global::Ultravox.UltravoxV1CallMediumWebSocketMedium? ServerWebSocket { get; set; }
@@ -93,10 +98,15 @@ namespace Ultravox
         ///  This works for both inbound and outbound calls.
         /// </param>
         /// <param name="serverWebSocket">
-        /// The call will use a plain websocket connection. This is unlikely to yield an acceptable user<br/>
-        ///  experience if used from a browser or mobile client, but may be suitable for a<br/>
-        ///  server-to-server connection. This option provides a simple way to connect your own server to<br/>
-        ///  an Ultravox inference instance.
+        /// The call will use a plain websocket connection. This option provides a simple way to<br/>
+        ///  connect your own server to an Ultravox inference instance. It is not recommended for<br/>
+        ///  direct use in browsers or mobile clients.<br/>
+        ///  WebSocket connections are expected to send continuous audio. In other words, Ultravox<br/>
+        ///  expects to receive one second of audio each second. Typically this should be sent as<br/>
+        ///  frequent small chunks (e.g. 20ms), though larger chunks are also acceptable.<br/>
+        ///  Sending too much (overflow) or too little (underflow) audio will result in warning-level<br/>
+        ///  call events. Excessive overflow will eventually be dropped while underflow may cause<br/>
+        ///  de-synchronized recordings.
         /// </param>
         /// <param name="telnyx">
         /// The call will use Telnyx's media streaming protocol.<br/>

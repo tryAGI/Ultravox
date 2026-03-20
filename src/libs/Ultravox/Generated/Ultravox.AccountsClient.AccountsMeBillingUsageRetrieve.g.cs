@@ -23,7 +23,6 @@ namespace Ultravox
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Gets usage information for the current account in the given period.
         /// </summary>

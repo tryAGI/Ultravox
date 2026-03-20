@@ -4,7 +4,6 @@ namespace Ultravox
 {
     public partial interface IAccountsClient
     {
-
         /// <summary>
         /// Lists invoices for the current account.
         /// </summary>

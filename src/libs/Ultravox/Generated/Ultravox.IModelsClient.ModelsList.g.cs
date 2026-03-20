@@ -4,7 +4,6 @@ namespace Ultravox
 {
     public partial interface IModelsClient
     {
-
         /// <summary>
         /// 
         /// </summary>

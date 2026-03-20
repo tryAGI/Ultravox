@@ -4,7 +4,6 @@ namespace Ultravox
 {
     public partial interface IAccountsClient
     {
-
         /// <summary>
         /// Gets high-level billing information for the current account.
         /// </summary>

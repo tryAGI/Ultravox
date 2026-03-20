@@ -21,7 +21,6 @@ namespace Ultravox
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref byte[] content);
 
-
         /// <summary>
         /// Provides an audio sample for a voice, or the error caused by using it.
         /// </summary>

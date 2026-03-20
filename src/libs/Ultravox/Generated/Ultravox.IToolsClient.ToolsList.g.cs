@@ -4,7 +4,6 @@ namespace Ultravox
 {
     public partial interface IToolsClient
     {
-
         /// <summary>
         /// List tools available to your account.
         /// </summary>

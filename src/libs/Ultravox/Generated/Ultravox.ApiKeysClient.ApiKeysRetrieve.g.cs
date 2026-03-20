@@ -21,7 +21,6 @@ namespace Ultravox
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Gets an API key.
         /// </summary>

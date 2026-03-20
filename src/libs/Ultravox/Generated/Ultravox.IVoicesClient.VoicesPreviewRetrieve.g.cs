@@ -4,7 +4,6 @@ namespace Ultravox
 {
     public partial interface IVoicesClient
     {
-
         /// <summary>
         /// Provides an audio sample for a voice, or the error caused by using it.
         /// </summary>

@@ -19,7 +19,6 @@ namespace Ultravox
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Gets high-level billing information for the current account.
         /// </summary>

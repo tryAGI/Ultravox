@@ -4,11 +4,9 @@ namespace Ultravox
 {
     public partial interface IAccountsClient
     {
-
         /// <summary>
         /// 
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
@@ -16,7 +14,6 @@ namespace Ultravox
 
             global::Ultravox.PatchedSetTtsApiKeysRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// 
         /// </summary>
