@@ -4,6 +4,7 @@ namespace Ultravox
 {
     public partial interface IApiKeysClient
     {
+
         /// <summary>
         /// Deletes an API key.
         /// </summary>

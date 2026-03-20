@@ -4,6 +4,7 @@ namespace Ultravox
 {
     public partial interface IAccountsClient
     {
+
         /// <summary>
         /// Gets aggregated call usage.
         /// </summary>

@@ -4,9 +4,11 @@ namespace Ultravox
 {
     public partial interface IVoicesClient
     {
+
         /// <summary>
         /// Performs a test generation of a voice, returning the resulting audio or error.
         /// </summary>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>

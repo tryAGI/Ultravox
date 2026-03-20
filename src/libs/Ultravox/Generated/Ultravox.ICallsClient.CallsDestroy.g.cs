@@ -4,6 +4,7 @@ namespace Ultravox
 {
     public partial interface ICallsClient
     {
+
         /// <summary>
         /// 
         /// </summary>

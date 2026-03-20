@@ -4,6 +4,7 @@ namespace Ultravox
 {
     public partial interface IAgentsClient
     {
+
         /// <summary>
         /// List scheduled calls within a batch.
         /// </summary>

@@ -4,6 +4,7 @@ namespace Ultravox
 {
     public partial interface IApiKeysClient
     {
+
         /// <summary>
         /// Gets the current user's API keys.
         /// </summary>
