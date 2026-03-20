@@ -1,0 +1,515 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "Ultravox Voice Call WebSocket API",
+    "version": "1.0.0",
+    "description": "Ultravox real-time voice call WebSocket API. Connect using the joinUrl from the REST API call creation endpoint."
+  },
+  "servers": {
+    "production": {
+      "host": "calls.ultravox.ai",
+      "protocol": "wss",
+      "description": "Ultravox WebSocket call endpoint (use joinUrl from REST API)"
+    }
+  },
+  "channels": {
+    "call": {
+      "address": "/",
+      "messages": {
+        "ping": {
+          "$ref": "#/components/messages/Ping"
+        },
+        "userTextMessage": {
+          "$ref": "#/components/messages/UserTextMessage"
+        },
+        "setOutputMedium": {
+          "$ref": "#/components/messages/SetOutputMedium"
+        },
+        "clientToolResult": {
+          "$ref": "#/components/messages/ClientToolResult"
+        },
+        "forcedAgentMessage": {
+          "$ref": "#/components/messages/ForcedAgentMessage"
+        },
+        "hangUp": {
+          "$ref": "#/components/messages/HangUp"
+        },
+        "pong": {
+          "$ref": "#/components/messages/Pong"
+        },
+        "state": {
+          "$ref": "#/components/messages/State"
+        },
+        "transcript": {
+          "$ref": "#/components/messages/Transcript"
+        },
+        "clientToolInvocation": {
+          "$ref": "#/components/messages/ClientToolInvocation"
+        },
+        "playbackClearBuffer": {
+          "$ref": "#/components/messages/PlaybackClearBuffer"
+        },
+        "callStarted": {
+          "$ref": "#/components/messages/CallStarted"
+        },
+        "debug": {
+          "$ref": "#/components/messages/Debug"
+        }
+      }
+    }
+  },
+  "operations": {
+    "sendPing": {
+      "action": "send",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Send a ping to measure round-trip latency.",
+      "messages": [{ "$ref": "#/channels/call/messages/ping" }]
+    },
+    "sendUserTextMessage": {
+      "action": "send",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Send a text message from the user.",
+      "messages": [{ "$ref": "#/channels/call/messages/userTextMessage" }]
+    },
+    "sendSetOutputMedium": {
+      "action": "send",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Configure the server output format (voice or text).",
+      "messages": [{ "$ref": "#/channels/call/messages/setOutputMedium" }]
+    },
+    "sendClientToolResult": {
+      "action": "send",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Send a client tool execution result.",
+      "messages": [{ "$ref": "#/channels/call/messages/clientToolResult" }]
+    },
+    "sendForcedAgentMessage": {
+      "action": "send",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Force the agent to say specific text or invoke tools.",
+      "messages": [{ "$ref": "#/channels/call/messages/forcedAgentMessage" }]
+    },
+    "sendHangUp": {
+      "action": "send",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Instruct the agent to end the call.",
+      "messages": [{ "$ref": "#/channels/call/messages/hangUp" }]
+    },
+    "receivePong": {
+      "action": "receive",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Receive pong response to a ping.",
+      "messages": [{ "$ref": "#/channels/call/messages/pong" }]
+    },
+    "receiveState": {
+      "action": "receive",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Receive agent state change notification.",
+      "messages": [{ "$ref": "#/channels/call/messages/state" }]
+    },
+    "receiveTranscript": {
+      "action": "receive",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Receive speech transcript.",
+      "messages": [{ "$ref": "#/channels/call/messages/transcript" }]
+    },
+    "receiveClientToolInvocation": {
+      "action": "receive",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Receive request to execute a client tool.",
+      "messages": [{ "$ref": "#/channels/call/messages/clientToolInvocation" }]
+    },
+    "receivePlaybackClearBuffer": {
+      "action": "receive",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Receive request to clear the audio playback buffer.",
+      "messages": [{ "$ref": "#/channels/call/messages/playbackClearBuffer" }]
+    },
+    "receiveCallStarted": {
+      "action": "receive",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Receive call started notification with call ID.",
+      "messages": [{ "$ref": "#/channels/call/messages/callStarted" }]
+    },
+    "receiveDebug": {
+      "action": "receive",
+      "channel": { "$ref": "#/channels/call" },
+      "summary": "Receive debug information.",
+      "messages": [{ "$ref": "#/channels/call/messages/debug" }]
+    }
+  },
+  "components": {
+    "schemas": {
+      "PingPayload": {
+        "type": "object",
+        "description": "Ping message to measure round-trip latency.",
+        "required": ["type", "timestamp"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["ping"]
+          },
+          "timestamp": {
+            "type": "number",
+            "description": "Unix timestamp with millisecond precision."
+          }
+        }
+      },
+      "UserTextMessagePayload": {
+        "type": "object",
+        "description": "Text input from the user.",
+        "required": ["type", "text"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["user_text_message"]
+          },
+          "text": {
+            "type": "string",
+            "description": "The text message."
+          },
+          "urgency": {
+            "type": "string",
+            "description": "How urgently the agent should respond.",
+            "enum": ["immediate", "soon", "later"]
+          }
+        }
+      },
+      "SetOutputMediumPayload": {
+        "type": "object",
+        "description": "Configure server output format.",
+        "required": ["type", "medium"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["set_output_medium"]
+          },
+          "medium": {
+            "type": "string",
+            "description": "Output medium: voice or text.",
+            "enum": ["voice", "text"]
+          }
+        }
+      },
+      "ClientToolResultPayload": {
+        "type": "object",
+        "description": "Result of a client tool execution.",
+        "required": ["type", "invocationId"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["client_tool_result"]
+          },
+          "invocationId": {
+            "type": "string",
+            "description": "ID matching the tool invocation request."
+          },
+          "result": {
+            "type": "string",
+            "description": "Tool execution result."
+          },
+          "responseType": {
+            "type": "string",
+            "description": "Response type.",
+            "enum": ["tool-response", "hang-up"]
+          },
+          "agentReaction": {
+            "type": "string",
+            "description": "How the agent should react.",
+            "enum": ["speaks", "listens", "speaks-once"]
+          },
+          "errorType": {
+            "type": "string",
+            "description": "Error type if the tool failed.",
+            "enum": ["undefined", "implementation-error"],
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message if the tool failed.",
+            "nullable": true
+          }
+        }
+      },
+      "ToolCall": {
+        "type": "object",
+        "description": "A tool call to be executed.",
+        "required": ["id", "name"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique ID for this tool call."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the tool to invoke."
+          },
+          "arguments": {
+            "type": "object",
+            "description": "Arguments to pass to the tool.",
+            "additionalProperties": true
+          }
+        }
+      },
+      "ForcedAgentMessagePayload": {
+        "type": "object",
+        "description": "Force the agent to say specific text or invoke tools.",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["forced_agent_message"]
+          },
+          "content": {
+            "type": "string",
+            "description": "Text for the agent to speak."
+          },
+          "toolCalls": {
+            "type": "array",
+            "description": "Tool calls for the agent to execute.",
+            "items": {
+              "$ref": "#/components/schemas/ToolCall"
+            }
+          },
+          "uninterruptible": {
+            "type": "boolean",
+            "description": "Whether the message cannot be interrupted."
+          },
+          "urgency": {
+            "type": "string",
+            "description": "How urgently the agent should respond.",
+            "enum": ["immediate", "soon"]
+          }
+        }
+      },
+      "HangUpPayload": {
+        "type": "object",
+        "description": "Instruct the agent to end the call.",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["hang_up"]
+          },
+          "message": {
+            "type": "string",
+            "description": "Optional goodbye message."
+          }
+        }
+      },
+      "PongPayload": {
+        "type": "object",
+        "description": "Pong response to a ping.",
+        "required": ["type", "timestamp"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["pong"]
+          },
+          "timestamp": {
+            "type": "number",
+            "description": "Echoed timestamp from the ping."
+          }
+        }
+      },
+      "StatePayload": {
+        "type": "object",
+        "description": "Agent state change notification.",
+        "required": ["type", "state"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["state"]
+          },
+          "state": {
+            "type": "string",
+            "description": "Current agent state.",
+            "enum": ["idle", "listening", "thinking", "speaking"]
+          }
+        }
+      },
+      "TranscriptPayload": {
+        "type": "object",
+        "description": "Speech transcript event.",
+        "required": ["type", "role", "final", "ordinal"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["transcript"]
+          },
+          "role": {
+            "type": "string",
+            "description": "Speaker role.",
+            "enum": ["user", "agent"]
+          },
+          "medium": {
+            "type": "string",
+            "description": "Medium of the transcript.",
+            "enum": ["text", "voice"]
+          },
+          "text": {
+            "type": "string",
+            "description": "Full transcript text (mutually exclusive with delta)."
+          },
+          "delta": {
+            "type": "string",
+            "description": "Incremental transcript text (mutually exclusive with text)."
+          },
+          "final": {
+            "type": "boolean",
+            "description": "Whether more updates are expected for this utterance."
+          },
+          "ordinal": {
+            "type": "integer",
+            "description": "Message ordering index."
+          }
+        }
+      },
+      "ClientToolInvocationPayload": {
+        "type": "object",
+        "description": "Server request to execute a client-side tool.",
+        "required": ["type", "toolName", "invocationId", "parameters"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["client_tool_invocation"]
+          },
+          "toolName": {
+            "type": "string",
+            "description": "Name of the tool to execute."
+          },
+          "invocationId": {
+            "type": "string",
+            "description": "Unique invocation ID to match with the result."
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Tool parameters.",
+            "additionalProperties": true
+          }
+        }
+      },
+      "PlaybackClearBufferPayload": {
+        "type": "object",
+        "description": "Request to clear the audio playback buffer.",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["playback_clear_buffer"]
+          }
+        }
+      },
+      "CallStartedPayload": {
+        "type": "object",
+        "description": "Call started notification.",
+        "required": ["type", "callId"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["call_started"]
+          },
+          "callId": {
+            "type": "string",
+            "description": "Unique call identifier."
+          }
+        }
+      },
+      "DebugPayload": {
+        "type": "object",
+        "description": "Debug information from the server.",
+        "required": ["type", "message"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["debug"]
+          },
+          "message": {
+            "type": "string",
+            "description": "Debug message content."
+          }
+        }
+      }
+    },
+    "messages": {
+      "Ping": {
+        "name": "Ping",
+        "summary": "Ping for latency measurement.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/PingPayload" }
+      },
+      "UserTextMessage": {
+        "name": "UserTextMessage",
+        "summary": "Text input from user.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/UserTextMessagePayload" }
+      },
+      "SetOutputMedium": {
+        "name": "SetOutputMedium",
+        "summary": "Set output medium.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/SetOutputMediumPayload" }
+      },
+      "ClientToolResult": {
+        "name": "ClientToolResult",
+        "summary": "Client tool result.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/ClientToolResultPayload" }
+      },
+      "ForcedAgentMessage": {
+        "name": "ForcedAgentMessage",
+        "summary": "Force agent to speak or invoke tools.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/ForcedAgentMessagePayload" }
+      },
+      "HangUp": {
+        "name": "HangUp",
+        "summary": "End the call.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/HangUpPayload" }
+      },
+      "Pong": {
+        "name": "Pong",
+        "summary": "Pong response.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/PongPayload" }
+      },
+      "State": {
+        "name": "State",
+        "summary": "Agent state change.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/StatePayload" }
+      },
+      "Transcript": {
+        "name": "Transcript",
+        "summary": "Speech transcript.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/TranscriptPayload" }
+      },
+      "ClientToolInvocation": {
+        "name": "ClientToolInvocation",
+        "summary": "Tool invocation request.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/ClientToolInvocationPayload" }
+      },
+      "PlaybackClearBuffer": {
+        "name": "PlaybackClearBuffer",
+        "summary": "Clear audio buffer.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/PlaybackClearBufferPayload" }
+      },
+      "CallStarted": {
+        "name": "CallStarted",
+        "summary": "Call started notification.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/CallStartedPayload" }
+      },
+      "Debug": {
+        "name": "Debug",
+        "summary": "Debug information.",
+        "contentType": "application/json",
+        "payload": { "$ref": "#/components/schemas/DebugPayload" }
+      }
+    }
+  }
+}

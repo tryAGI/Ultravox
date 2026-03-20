@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-C# SDK for the [Ultravox](https://ultravox.ai/) voice AI platform, auto-generated from the Ultravox OpenAPI specification using [AutoSDK](https://github.com/HavenDV/AutoSDK). Published as a NuGet package under the `tryAGI` organization.
+C# SDK for the [Ultravox](https://ultravox.ai/) voice AI platform, auto-generated from the Ultravox OpenAPI + AsyncAPI specifications using [AutoSDK](https://github.com/HavenDV/AutoSDK). Published as a NuGet package under the `tryAGI` organization.
 
 ## Build Commands
 
@@ -29,14 +29,15 @@ cd src/libs/Ultravox && ./generate.sh
 The SDK code is **entirely auto-generated** -- do not manually edit files in `src/libs/Ultravox/Generated/`.
 
 1. `src/libs/Ultravox/openapi.yaml` -- the Ultravox OpenAPI spec (fetched from `https://api.ultravox.ai/api/schema/`)
-3. `src/libs/Ultravox/generate.sh` -- orchestrates: download spec, fix spec, run AutoSDK CLI, output to `Generated/`
+2. `src/libs/Ultravox/asyncapi.json` -- AsyncAPI 3.0.0 spec for real-time voice call WebSocket API
+3. `src/libs/Ultravox/generate.sh` -- orchestrates: download spec, fix spec, run AutoSDK CLI for OpenAPI + AsyncAPI, output to `Generated/`
 4. CI auto-updates the spec and creates PRs if changes are detected
 
 ### Project Layout
 
 | Project | Purpose |
 |---------|---------|
-| `src/libs/Ultravox/` | Main SDK library (`UltravoxClient`) |
+| `src/libs/Ultravox/` | Main SDK library (`UltravoxClient` + `UltravoxRealtimeClient`) |
 | `src/tests/IntegrationTests/` | Integration tests against real Ultravox API |
 
 ### Documentation Generation
@@ -46,6 +47,13 @@ Tests in `src/tests/IntegrationTests/Examples` are the single source of truth fo
 - Comments prefixed with `////` become prose paragraphs in generated docs
 - CI workflow (`.github/workflows/mkdocs.yml`) auto-generates `docs/examples/` and populates `EXAMPLES:START/END` markers in README.md, docs/index.md, and mkdocs.yml
 - Config: `autosdk.docs.json` points to `src/tests/IntegrationTests/Examples`
+
+### Real-Time Voice Call WebSocket API
+
+The `UltravoxRealtimeClient` (in namespace `Ultravox.Realtime`) is auto-generated from `asyncapi.json` and provides:
+- Typed send methods: `SendPingAsync()`, `SendUserTextMessageAsync()`, `SendSetOutputMediumAsync()`, `SendClientToolResultAsync()`, `SendForcedAgentMessageAsync()`, `SendHangUpAsync()`
+- `ReceiveUpdateAsync()` returning a discriminated `ServerEvent` union (`IsPong`, `IsState`, `IsTranscript`, `IsClientToolInvocation`, `IsPlaybackClearBuffer`, `IsCallStarted`, `IsDebug`)
+- Note: The WebSocket URL is dynamic — obtained from the REST API's `joinUrl` field when creating a call via `UltravoxClient`
 
 ### Build Configuration
 
