@@ -21,7 +21,7 @@ public partial class Tests
 
         foreach (var model in models.Results)
         {
-            Console.WriteLine($"Model: {model.ModelId}");
+            Console.WriteLine($"Model: {model.Name}");
         }
     }
 }
