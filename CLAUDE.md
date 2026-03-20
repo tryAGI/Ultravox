@@ -52,7 +52,7 @@ Tests in `src/tests/IntegrationTests/Examples` are the single source of truth fo
 
 The `UltravoxRealtimeClient` (in namespace `Ultravox.Realtime`) is auto-generated from `asyncapi.json` and provides:
 - Typed send methods: `SendPingAsync()`, `SendUserTextMessageAsync()`, `SendSetOutputMediumAsync()`, `SendClientToolResultAsync()`, `SendForcedAgentMessageAsync()`, `SendHangUpAsync()`
-- `ReceiveUpdateAsync()` returning a discriminated `ServerEvent` union (`IsPong`, `IsState`, `IsTranscript`, `IsClientToolInvocation`, `IsPlaybackClearBuffer`, `IsCallStarted`, `IsDebug`)
+- `ReceiveUpdatesAsync()` returning a discriminated `ServerEvent` union (`IsPong`, `IsState`, `IsTranscript`, `IsClientToolInvocation`, `IsPlaybackClearBuffer`, `IsCallStarted`, `IsDebug`)
 - Note: The WebSocket URL is dynamic — obtained from the REST API's `joinUrl` field when creating a call via `UltravoxClient`
 
 ### Build Configuration
