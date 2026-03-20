@@ -4,10 +4,12 @@ namespace Ultravox
 {
     public partial interface IWebhooksClient
     {
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="webhookId"></param>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>

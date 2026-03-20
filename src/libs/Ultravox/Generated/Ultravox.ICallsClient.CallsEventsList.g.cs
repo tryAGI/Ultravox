@@ -4,6 +4,7 @@ namespace Ultravox
 {
     public partial interface ICallsClient
     {
+
         /// <summary>
         /// Fetch the (paginated) event log for a call, possibly filtered by severity.
         /// </summary>

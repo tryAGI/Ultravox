@@ -4,10 +4,12 @@ namespace Ultravox
 {
     public partial interface IApiKeysClient
     {
+
         /// <summary>
         /// Updates an API key.
         /// </summary>
         /// <param name="apiKeyPrefix"></param>
+
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>

@@ -4,6 +4,7 @@ namespace Ultravox
 {
     public partial interface ICallsClient
     {
+
         /// <summary>
         /// Redirects to sip logs for the call, if available.
         /// </summary>

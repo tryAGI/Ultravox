@@ -4,6 +4,7 @@ namespace Ultravox
 {
     public partial interface IVoicesClient
     {
+
         /// <summary>
         /// 
         /// </summary>

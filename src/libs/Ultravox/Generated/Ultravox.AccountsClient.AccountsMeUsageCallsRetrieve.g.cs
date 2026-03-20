@@ -39,6 +39,7 @@ namespace Ultravox
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Gets aggregated call usage.
         /// </summary>

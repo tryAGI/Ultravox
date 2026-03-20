@@ -23,6 +23,7 @@ namespace Ultravox
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Lists invoices for the current account.
         /// </summary>

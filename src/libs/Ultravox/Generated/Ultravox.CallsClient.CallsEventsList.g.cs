@@ -29,6 +29,7 @@ namespace Ultravox
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
+
         /// <summary>
         /// Fetch the (paginated) event log for a call, possibly filtered by severity.
         /// </summary>
