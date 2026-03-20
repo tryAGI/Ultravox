@@ -3,7 +3,10 @@ nav:
 - Overview: index.md
 # EXAMPLES:START
 - Examples:
-  - VoicesList: samples/VoicesList.md
+  - Voices List: examples/voices-list.md
+  - Account Info: examples/account-info.md
+  - List Calls: examples/list-calls.md
+  - List Models: examples/list-models.md
 # EXAMPLES:END
         
 theme:
