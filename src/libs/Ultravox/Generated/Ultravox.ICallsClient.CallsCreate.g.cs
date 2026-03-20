@@ -4,7 +4,6 @@ namespace Ultravox
 {
     public partial interface ICallsClient
     {
-
         /// <summary>
         /// 
         /// </summary>
@@ -12,7 +11,6 @@ namespace Ultravox
         /// Default Value: true
         /// </param>
         /// <param name="priorCallId"></param>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
@@ -22,7 +20,6 @@ namespace Ultravox
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// 
         /// </summary>

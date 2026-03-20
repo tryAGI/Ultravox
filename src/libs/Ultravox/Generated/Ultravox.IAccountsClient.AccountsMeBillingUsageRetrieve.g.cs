@@ -4,7 +4,6 @@ namespace Ultravox
 {
     public partial interface IAccountsClient
     {
-
         /// <summary>
         /// Gets usage information for the current account in the given period.
         /// </summary>

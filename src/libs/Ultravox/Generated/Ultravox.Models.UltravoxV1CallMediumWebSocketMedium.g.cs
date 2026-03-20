@@ -36,6 +36,17 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1EnabledDataMessages? DataMessages { get; set; }
 
         /// <summary>
+        /// Depending on your implementation, severe underflow from something further downstream from<br/>
+        ///  your server may result in audio no longer being delivered to Ultravox at all (despite<br/>
+        ///  heartbeats continuing). If media_idle_timeout is set and Ultravox stops receiving audio for<br/>
+        ///  longer than this duration, the call will be ended with a "Connection error" end reason.<br/>
+        ///  Values in the 30s to 60s range are recommended (and may become the default in the future).<br/>
+        ///  Values below 10s will be treated as 10s.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mediaIdleTimeout")]
+        public string? MediaIdleTimeout { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -59,6 +70,14 @@ namespace Ultravox
         /// <param name="dataMessages">
         /// Controls which data messages are enabled for the call.
         /// </param>
+        /// <param name="mediaIdleTimeout">
+        /// Depending on your implementation, severe underflow from something further downstream from<br/>
+        ///  your server may result in audio no longer being delivered to Ultravox at all (despite<br/>
+        ///  heartbeats continuing). If media_idle_timeout is set and Ultravox stops receiving audio for<br/>
+        ///  longer than this duration, the call will be ended with a "Connection error" end reason.<br/>
+        ///  Values in the 30s to 60s range are recommended (and may become the default in the future).<br/>
+        ///  Values below 10s will be treated as 10s.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -66,12 +85,14 @@ namespace Ultravox
             int? inputSampleRate,
             int? outputSampleRate,
             int? clientBufferSizeMs,
-            global::Ultravox.UltravoxV1EnabledDataMessages? dataMessages)
+            global::Ultravox.UltravoxV1EnabledDataMessages? dataMessages,
+            string? mediaIdleTimeout)
         {
             this.InputSampleRate = inputSampleRate;
             this.OutputSampleRate = outputSampleRate;
             this.ClientBufferSizeMs = clientBufferSizeMs;
             this.DataMessages = dataMessages;
+            this.MediaIdleTimeout = mediaIdleTimeout;
         }
 
         /// <summary>

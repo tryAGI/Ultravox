@@ -6145,10 +6145,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.CallMedium_WebSocketMedium'
           description: |-
-            The call will use a plain websocket connection. This is unlikely to yield an acceptable user
-             experience if used from a browser or mobile client, but may be suitable for a
-             server-to-server connection. This option provides a simple way to connect your own server to
-             an Ultravox inference instance.
+            The call will use a plain websocket connection. This option provides a simple way to
+             connect your own server to an Ultravox inference instance. It is not recommended for
+             direct use in browsers or mobile clients.
+             WebSocket connections are expected to send continuous audio. In other words, Ultravox
+             expects to receive one second of audio each second. Typically this should be sent as
+             frequent small chunks (e.g. 20ms), though larger chunks are also acceptable.
+             Sending too much (overflow) or too little (underflow) audio will result in warning-level
+             call events. Excessive overflow will eventually be dropped while underflow may cause
+             de-synchronized recordings.
         telnyx:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.CallMedium_TelnyxMedium'
@@ -6317,6 +6322,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.EnabledDataMessages'
           description: Controls which data messages are enabled for the call.
+        mediaIdleTimeout:
+          pattern: ^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$
+          type: string
+          description: |-
+            Depending on your implementation, severe underflow from something further downstream from
+             your server may result in audio no longer being delivered to Ultravox at all (despite
+             heartbeats continuing). If media_idle_timeout is set and Ultravox stops receiving audio for
+             longer than this duration, the call will be ended with a "Connection error" end reason.
+             Values in the 30s to 60s range are recommended (and may become the default in the future).
+             Values below 10s will be treated as 10s.
       description: Details for a WebSocket call.
     ultravox.v1.CallTool:
       type: object

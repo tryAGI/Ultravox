@@ -21,15 +21,12 @@ namespace Ultravox
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
-
         /// <summary>
         /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.ultravox.ai/api/voices \<br/>
@@ -211,7 +208,6 @@ namespace Ultravox
                 }
             }
         }
-
         /// <summary>
         /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>

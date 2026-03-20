@@ -4,15 +4,12 @@ namespace Ultravox
 {
     public partial interface IVoicesClient
     {
-
         /// <summary>
         /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>
-
         /// <param name="request"></param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.ultravox.ai/api/voices \<br/>
@@ -24,7 +21,6 @@ namespace Ultravox
 
             global::Ultravox.VoicesCreateRequest request,
             global::System.Threading.CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>

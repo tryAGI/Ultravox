@@ -4,7 +4,6 @@ namespace Ultravox
 {
     public partial interface ISipClient
     {
-
         /// <summary>
         /// 
         /// </summary>

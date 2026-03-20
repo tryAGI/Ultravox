@@ -4,7 +4,6 @@ namespace Ultravox
 {
     public partial interface ISchemaClient
     {
-
         /// <summary>
         /// OpenApi3 schema for this API. Format can be selected via content negotiation.<br/>
         /// - YAML: application/vnd.oai.openapi<br/>
