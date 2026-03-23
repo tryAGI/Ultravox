@@ -11,11 +11,11 @@ namespace Ultravox.Realtime
         /// <summary>
         /// 
         /// </summary>
-        Undefined,
+        ImplementationError,
         /// <summary>
         /// 
         /// </summary>
-        ImplementationError,
+        Undefined,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
-                ClientToolResultPayloadErrorType.Undefined => "undefined",
                 ClientToolResultPayloadErrorType.ImplementationError => "implementation-error",
+                ClientToolResultPayloadErrorType.Undefined => "undefined",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
-                "undefined" => ClientToolResultPayloadErrorType.Undefined,
                 "implementation-error" => ClientToolResultPayloadErrorType.ImplementationError,
+                "undefined" => ClientToolResultPayloadErrorType.Undefined,
                 _ => null,
             };
         }

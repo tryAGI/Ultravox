@@ -11,6 +11,14 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        Error,
+        /// <summary>
+        /// 
+        /// </summary>
+        Expired,
+        /// <summary>
+        /// 
+        /// </summary>
         Future,
         /// <summary>
         /// 
@@ -20,14 +28,6 @@ namespace Ultravox
         /// 
         /// </summary>
         Success,
-        /// <summary>
-        /// 
-        /// </summary>
-        Expired,
-        /// <summary>
-        /// 
-        /// </summary>
-        Error,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Ultravox
         {
             return value switch
             {
+                AgentsScheduledBatchesScheduledCallsListStatus.Error => "ERROR",
+                AgentsScheduledBatchesScheduledCallsListStatus.Expired => "EXPIRED",
                 AgentsScheduledBatchesScheduledCallsListStatus.Future => "FUTURE",
                 AgentsScheduledBatchesScheduledCallsListStatus.Pending => "PENDING",
                 AgentsScheduledBatchesScheduledCallsListStatus.Success => "SUCCESS",
-                AgentsScheduledBatchesScheduledCallsListStatus.Expired => "EXPIRED",
-                AgentsScheduledBatchesScheduledCallsListStatus.Error => "ERROR",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Ultravox
         {
             return value switch
             {
+                "ERROR" => AgentsScheduledBatchesScheduledCallsListStatus.Error,
+                "EXPIRED" => AgentsScheduledBatchesScheduledCallsListStatus.Expired,
                 "FUTURE" => AgentsScheduledBatchesScheduledCallsListStatus.Future,
                 "PENDING" => AgentsScheduledBatchesScheduledCallsListStatus.Pending,
                 "SUCCESS" => AgentsScheduledBatchesScheduledCallsListStatus.Success,
-                "EXPIRED" => AgentsScheduledBatchesScheduledCallsListStatus.Expired,
-                "ERROR" => AgentsScheduledBatchesScheduledCallsListStatus.Error,
                 _ => null,
             };
         }

@@ -11,6 +11,22 @@ namespace Ultravox.Realtime
         /// <summary>
         /// 
         /// </summary>
+        CallStarted,
+        /// <summary>
+        /// 
+        /// </summary>
+        ClientToolInvocation,
+        /// <summary>
+        /// 
+        /// </summary>
+        Debug,
+        /// <summary>
+        /// 
+        /// </summary>
+        PlaybackClearBuffer,
+        /// <summary>
+        /// 
+        /// </summary>
         Pong,
         /// <summary>
         /// 
@@ -20,22 +36,6 @@ namespace Ultravox.Realtime
         /// 
         /// </summary>
         Transcript,
-        /// <summary>
-        /// 
-        /// </summary>
-        ClientToolInvocation,
-        /// <summary>
-        /// 
-        /// </summary>
-        PlaybackClearBuffer,
-        /// <summary>
-        /// 
-        /// </summary>
-        CallStarted,
-        /// <summary>
-        /// 
-        /// </summary>
-        Debug,
     }
 
     /// <summary>
@@ -50,13 +50,13 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
+                ServerEventDiscriminatorType.CallStarted => "call_started",
+                ServerEventDiscriminatorType.ClientToolInvocation => "client_tool_invocation",
+                ServerEventDiscriminatorType.Debug => "debug",
+                ServerEventDiscriminatorType.PlaybackClearBuffer => "playback_clear_buffer",
                 ServerEventDiscriminatorType.Pong => "pong",
                 ServerEventDiscriminatorType.State => "state",
                 ServerEventDiscriminatorType.Transcript => "transcript",
-                ServerEventDiscriminatorType.ClientToolInvocation => "client_tool_invocation",
-                ServerEventDiscriminatorType.PlaybackClearBuffer => "playback_clear_buffer",
-                ServerEventDiscriminatorType.CallStarted => "call_started",
-                ServerEventDiscriminatorType.Debug => "debug",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -67,13 +67,13 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
+                "call_started" => ServerEventDiscriminatorType.CallStarted,
+                "client_tool_invocation" => ServerEventDiscriminatorType.ClientToolInvocation,
+                "debug" => ServerEventDiscriminatorType.Debug,
+                "playback_clear_buffer" => ServerEventDiscriminatorType.PlaybackClearBuffer,
                 "pong" => ServerEventDiscriminatorType.Pong,
                 "state" => ServerEventDiscriminatorType.State,
                 "transcript" => ServerEventDiscriminatorType.Transcript,
-                "client_tool_invocation" => ServerEventDiscriminatorType.ClientToolInvocation,
-                "playback_clear_buffer" => ServerEventDiscriminatorType.PlaybackClearBuffer,
-                "call_started" => ServerEventDiscriminatorType.CallStarted,
-                "debug" => ServerEventDiscriminatorType.Debug,
                 _ => null,
             };
         }

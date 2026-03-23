@@ -15,15 +15,15 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        Error,
+        /// <summary>
+        /// 
+        /// </summary>
         Info,
         /// <summary>
         /// 
         /// </summary>
         Warning,
-        /// <summary>
-        /// 
-        /// </summary>
-        Error,
     }
 
     /// <summary>
@@ -39,9 +39,9 @@ namespace Ultravox
             return value switch
             {
                 SeverityEnum.Debug => "debug",
+                SeverityEnum.Error => "error",
                 SeverityEnum.Info => "info",
                 SeverityEnum.Warning => "warning",
-                SeverityEnum.Error => "error",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -53,9 +53,9 @@ namespace Ultravox
             return value switch
             {
                 "debug" => SeverityEnum.Debug,
+                "error" => SeverityEnum.Error,
                 "info" => SeverityEnum.Info,
                 "warning" => SeverityEnum.Warning,
-                "error" => SeverityEnum.Error,
                 _ => null,
             };
         }

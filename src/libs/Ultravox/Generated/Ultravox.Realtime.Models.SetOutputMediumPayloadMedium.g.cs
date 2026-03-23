@@ -11,11 +11,11 @@ namespace Ultravox.Realtime
         /// <summary>
         /// voice or text.
         /// </summary>
-        Voice,
+        Text,
         /// <summary>
         /// voice or text.
         /// </summary>
-        Text,
+        Voice,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
-                SetOutputMediumPayloadMedium.Voice => "voice",
                 SetOutputMediumPayloadMedium.Text => "text",
+                SetOutputMediumPayloadMedium.Voice => "voice",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
-                "voice" => SetOutputMediumPayloadMedium.Voice,
                 "text" => SetOutputMediumPayloadMedium.Text,
+                "voice" => SetOutputMediumPayloadMedium.Voice,
                 _ => null,
             };
         }

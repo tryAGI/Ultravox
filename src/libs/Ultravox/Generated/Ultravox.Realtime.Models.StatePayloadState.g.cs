@@ -19,11 +19,11 @@ namespace Ultravox.Realtime
         /// <summary>
         /// 
         /// </summary>
-        Thinking,
+        Speaking,
         /// <summary>
         /// 
         /// </summary>
-        Speaking,
+        Thinking,
     }
 
     /// <summary>
@@ -40,8 +40,8 @@ namespace Ultravox.Realtime
             {
                 StatePayloadState.Idle => "idle",
                 StatePayloadState.Listening => "listening",
-                StatePayloadState.Thinking => "thinking",
                 StatePayloadState.Speaking => "speaking",
+                StatePayloadState.Thinking => "thinking",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -54,8 +54,8 @@ namespace Ultravox.Realtime
             {
                 "idle" => StatePayloadState.Idle,
                 "listening" => StatePayloadState.Listening,
-                "thinking" => StatePayloadState.Thinking,
                 "speaking" => StatePayloadState.Speaking,
+                "thinking" => StatePayloadState.Thinking,
                 _ => null,
             };
         }

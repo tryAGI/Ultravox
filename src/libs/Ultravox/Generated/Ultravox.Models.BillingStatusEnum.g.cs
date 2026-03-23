@@ -17,9 +17,9 @@ namespace Ultravox
     public enum BillingStatusEnum
     {
         /// <summary>
-        /// Calls created before May 28, 2025 may have this status even if they were billed.)
+        /// 
         /// </summary>
-        BillingStatusPending,
+        BillingStatusBilled,
         /// <summary>
         /// //app.ultravox.ai.
         /// </summary>
@@ -27,15 +27,7 @@ namespace Ultravox
         /// <summary>
         /// There may still be a non-zero sip bill in this case.)
         /// </summary>
-        BillingStatusFreeZeroEffectiveDuration,
-        /// <summary>
-        /// There may still be a non-zero sip bill in this case.)
-        /// </summary>
         BillingStatusFreeMinutes,
-        /// <summary>
-        /// 
-        /// </summary>
-        BillingStatusFreeSystemError,
         /// <summary>
         /// 
         /// </summary>
@@ -43,7 +35,15 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        BillingStatusBilled,
+        BillingStatusFreeSystemError,
+        /// <summary>
+        /// There may still be a non-zero sip bill in this case.)
+        /// </summary>
+        BillingStatusFreeZeroEffectiveDuration,
+        /// <summary>
+        /// Calls created before May 28, 2025 may have this status even if they were billed.)
+        /// </summary>
+        BillingStatusPending,
         /// <summary>
         /// 
         /// </summary>
@@ -66,13 +66,13 @@ namespace Ultravox
         {
             return value switch
             {
-                BillingStatusEnum.BillingStatusPending => "BILLING_STATUS_PENDING",
-                BillingStatusEnum.BillingStatusFreeConsole => "BILLING_STATUS_FREE_CONSOLE",
-                BillingStatusEnum.BillingStatusFreeZeroEffectiveDuration => "BILLING_STATUS_FREE_ZERO_EFFECTIVE_DURATION",
-                BillingStatusEnum.BillingStatusFreeMinutes => "BILLING_STATUS_FREE_MINUTES",
-                BillingStatusEnum.BillingStatusFreeSystemError => "BILLING_STATUS_FREE_SYSTEM_ERROR",
-                BillingStatusEnum.BillingStatusFreeOther => "BILLING_STATUS_FREE_OTHER",
                 BillingStatusEnum.BillingStatusBilled => "BILLING_STATUS_BILLED",
+                BillingStatusEnum.BillingStatusFreeConsole => "BILLING_STATUS_FREE_CONSOLE",
+                BillingStatusEnum.BillingStatusFreeMinutes => "BILLING_STATUS_FREE_MINUTES",
+                BillingStatusEnum.BillingStatusFreeOther => "BILLING_STATUS_FREE_OTHER",
+                BillingStatusEnum.BillingStatusFreeSystemError => "BILLING_STATUS_FREE_SYSTEM_ERROR",
+                BillingStatusEnum.BillingStatusFreeZeroEffectiveDuration => "BILLING_STATUS_FREE_ZERO_EFFECTIVE_DURATION",
+                BillingStatusEnum.BillingStatusPending => "BILLING_STATUS_PENDING",
                 BillingStatusEnum.BillingStatusRefunded => "BILLING_STATUS_REFUNDED",
                 BillingStatusEnum.BillingStatusUnspecified => "BILLING_STATUS_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -85,13 +85,13 @@ namespace Ultravox
         {
             return value switch
             {
-                "BILLING_STATUS_PENDING" => BillingStatusEnum.BillingStatusPending,
-                "BILLING_STATUS_FREE_CONSOLE" => BillingStatusEnum.BillingStatusFreeConsole,
-                "BILLING_STATUS_FREE_ZERO_EFFECTIVE_DURATION" => BillingStatusEnum.BillingStatusFreeZeroEffectiveDuration,
-                "BILLING_STATUS_FREE_MINUTES" => BillingStatusEnum.BillingStatusFreeMinutes,
-                "BILLING_STATUS_FREE_SYSTEM_ERROR" => BillingStatusEnum.BillingStatusFreeSystemError,
-                "BILLING_STATUS_FREE_OTHER" => BillingStatusEnum.BillingStatusFreeOther,
                 "BILLING_STATUS_BILLED" => BillingStatusEnum.BillingStatusBilled,
+                "BILLING_STATUS_FREE_CONSOLE" => BillingStatusEnum.BillingStatusFreeConsole,
+                "BILLING_STATUS_FREE_MINUTES" => BillingStatusEnum.BillingStatusFreeMinutes,
+                "BILLING_STATUS_FREE_OTHER" => BillingStatusEnum.BillingStatusFreeOther,
+                "BILLING_STATUS_FREE_SYSTEM_ERROR" => BillingStatusEnum.BillingStatusFreeSystemError,
+                "BILLING_STATUS_FREE_ZERO_EFFECTIVE_DURATION" => BillingStatusEnum.BillingStatusFreeZeroEffectiveDuration,
+                "BILLING_STATUS_PENDING" => BillingStatusEnum.BillingStatusPending,
                 "BILLING_STATUS_REFUNDED" => BillingStatusEnum.BillingStatusRefunded,
                 "BILLING_STATUS_UNSPECIFIED" => BillingStatusEnum.BillingStatusUnspecified,
                 _ => null,

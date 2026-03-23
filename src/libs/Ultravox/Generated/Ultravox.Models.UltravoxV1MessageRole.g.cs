@@ -11,14 +11,6 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        MessageRoleUnspecified,
-        /// <summary>
-        /// 
-        /// </summary>
-        MessageRoleUser,
-        /// <summary>
-        /// 
-        /// </summary>
         MessageRoleAgent,
         /// <summary>
         /// 
@@ -28,6 +20,14 @@ namespace Ultravox
         /// 
         /// </summary>
         MessageRoleToolResult,
+        /// <summary>
+        /// 
+        /// </summary>
+        MessageRoleUnspecified,
+        /// <summary>
+        /// 
+        /// </summary>
+        MessageRoleUser,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1MessageRole.MessageRoleUnspecified => "MESSAGE_ROLE_UNSPECIFIED",
-                UltravoxV1MessageRole.MessageRoleUser => "MESSAGE_ROLE_USER",
                 UltravoxV1MessageRole.MessageRoleAgent => "MESSAGE_ROLE_AGENT",
                 UltravoxV1MessageRole.MessageRoleToolCall => "MESSAGE_ROLE_TOOL_CALL",
                 UltravoxV1MessageRole.MessageRoleToolResult => "MESSAGE_ROLE_TOOL_RESULT",
+                UltravoxV1MessageRole.MessageRoleUnspecified => "MESSAGE_ROLE_UNSPECIFIED",
+                UltravoxV1MessageRole.MessageRoleUser => "MESSAGE_ROLE_USER",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Ultravox
         {
             return value switch
             {
-                "MESSAGE_ROLE_UNSPECIFIED" => UltravoxV1MessageRole.MessageRoleUnspecified,
-                "MESSAGE_ROLE_USER" => UltravoxV1MessageRole.MessageRoleUser,
                 "MESSAGE_ROLE_AGENT" => UltravoxV1MessageRole.MessageRoleAgent,
                 "MESSAGE_ROLE_TOOL_CALL" => UltravoxV1MessageRole.MessageRoleToolCall,
                 "MESSAGE_ROLE_TOOL_RESULT" => UltravoxV1MessageRole.MessageRoleToolResult,
+                "MESSAGE_ROLE_UNSPECIFIED" => UltravoxV1MessageRole.MessageRoleUnspecified,
+                "MESSAGE_ROLE_USER" => UltravoxV1MessageRole.MessageRoleUser,
                 _ => null,
             };
         }

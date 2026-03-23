@@ -11,6 +11,14 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        Error,
+        /// <summary>
+        /// 
+        /// </summary>
+        Expired,
+        /// <summary>
+        /// 
+        /// </summary>
         Future,
         /// <summary>
         /// 
@@ -20,14 +28,6 @@ namespace Ultravox
         /// 
         /// </summary>
         Success,
-        /// <summary>
-        /// 
-        /// </summary>
-        Expired,
-        /// <summary>
-        /// 
-        /// </summary>
-        Error,
     }
 
     /// <summary>
@@ -42,11 +42,11 @@ namespace Ultravox
         {
             return value switch
             {
+                ScheduledCallStatusEnum.Error => "ERROR",
+                ScheduledCallStatusEnum.Expired => "EXPIRED",
                 ScheduledCallStatusEnum.Future => "FUTURE",
                 ScheduledCallStatusEnum.Pending => "PENDING",
                 ScheduledCallStatusEnum.Success => "SUCCESS",
-                ScheduledCallStatusEnum.Expired => "EXPIRED",
-                ScheduledCallStatusEnum.Error => "ERROR",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -57,11 +57,11 @@ namespace Ultravox
         {
             return value switch
             {
+                "ERROR" => ScheduledCallStatusEnum.Error,
+                "EXPIRED" => ScheduledCallStatusEnum.Expired,
                 "FUTURE" => ScheduledCallStatusEnum.Future,
                 "PENDING" => ScheduledCallStatusEnum.Pending,
                 "SUCCESS" => ScheduledCallStatusEnum.Success,
-                "EXPIRED" => ScheduledCallStatusEnum.Expired,
-                "ERROR" => ScheduledCallStatusEnum.Error,
                 _ => null,
             };
         }

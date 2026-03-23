@@ -15,11 +15,11 @@ namespace Ultravox.Realtime
         /// <summary>
         /// 
         /// </summary>
-        Soon,
+        Later,
         /// <summary>
         /// 
         /// </summary>
-        Later,
+        Soon,
     }
 
     /// <summary>
@@ -35,8 +35,8 @@ namespace Ultravox.Realtime
             return value switch
             {
                 UserTextMessagePayloadUrgency.Immediate => "immediate",
-                UserTextMessagePayloadUrgency.Soon => "soon",
                 UserTextMessagePayloadUrgency.Later => "later",
+                UserTextMessagePayloadUrgency.Soon => "soon",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -48,8 +48,8 @@ namespace Ultravox.Realtime
             return value switch
             {
                 "immediate" => UserTextMessagePayloadUrgency.Immediate,
-                "soon" => UserTextMessagePayloadUrgency.Soon,
                 "later" => UserTextMessagePayloadUrgency.Later,
+                "soon" => UserTextMessagePayloadUrgency.Soon,
                 _ => null,
             };
         }

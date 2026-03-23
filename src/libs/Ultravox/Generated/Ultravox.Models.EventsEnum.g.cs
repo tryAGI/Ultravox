@@ -14,11 +14,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        CallStarted,
-        /// <summary>
-        /// 
-        /// </summary>
-        CallJoined,
+        CallBilled,
         /// <summary>
         /// 
         /// </summary>
@@ -26,7 +22,11 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        CallBilled,
+        CallJoined,
+        /// <summary>
+        /// 
+        /// </summary>
+        CallStarted,
     }
 
     /// <summary>
@@ -41,10 +41,10 @@ namespace Ultravox
         {
             return value switch
             {
-                EventsEnum.CallStarted => "call.started",
-                EventsEnum.CallJoined => "call.joined",
-                EventsEnum.CallEnded => "call.ended",
                 EventsEnum.CallBilled => "call.billed",
+                EventsEnum.CallEnded => "call.ended",
+                EventsEnum.CallJoined => "call.joined",
+                EventsEnum.CallStarted => "call.started",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -55,10 +55,10 @@ namespace Ultravox
         {
             return value switch
             {
-                "call.started" => EventsEnum.CallStarted,
-                "call.joined" => EventsEnum.CallJoined,
-                "call.ended" => EventsEnum.CallEnded,
                 "call.billed" => EventsEnum.CallBilled,
+                "call.ended" => EventsEnum.CallEnded,
+                "call.joined" => EventsEnum.CallJoined,
+                "call.started" => EventsEnum.CallStarted,
                 _ => null,
             };
         }

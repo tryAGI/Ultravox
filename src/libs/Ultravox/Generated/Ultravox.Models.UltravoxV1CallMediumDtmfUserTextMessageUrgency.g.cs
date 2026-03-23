@@ -11,11 +11,11 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        UrgencyUnspecified,
+        UrgencyImmediate,
         /// <summary>
         /// 
         /// </summary>
-        UrgencyImmediate,
+        UrgencyLater,
         /// <summary>
         /// 
         /// </summary>
@@ -23,7 +23,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        UrgencyLater,
+        UrgencyUnspecified,
     }
 
     /// <summary>
@@ -38,10 +38,10 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencyUnspecified => "URGENCY_UNSPECIFIED",
                 UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencyImmediate => "URGENCY_IMMEDIATE",
-                UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencySoon => "URGENCY_SOON",
                 UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencyLater => "URGENCY_LATER",
+                UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencySoon => "URGENCY_SOON",
+                UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencyUnspecified => "URGENCY_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -52,10 +52,10 @@ namespace Ultravox
         {
             return value switch
             {
-                "URGENCY_UNSPECIFIED" => UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencyUnspecified,
                 "URGENCY_IMMEDIATE" => UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencyImmediate,
-                "URGENCY_SOON" => UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencySoon,
                 "URGENCY_LATER" => UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencyLater,
+                "URGENCY_SOON" => UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencySoon,
+                "URGENCY_UNSPECIFIED" => UltravoxV1CallMediumDtmfUserTextMessageUrgency.UrgencyUnspecified,
                 _ => null,
             };
         }

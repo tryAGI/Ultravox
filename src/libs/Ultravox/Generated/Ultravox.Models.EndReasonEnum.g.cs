@@ -16,19 +16,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        Unjoined,
-        /// <summary>
-        /// 
-        /// </summary>
-        Hangup,
-        /// <summary>
-        /// 
-        /// </summary>
         AgentHangup,
-        /// <summary>
-        /// 
-        /// </summary>
-        Timeout,
         /// <summary>
         /// 
         /// </summary>
@@ -36,7 +24,19 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        Hangup,
+        /// <summary>
+        /// 
+        /// </summary>
         SystemError,
+        /// <summary>
+        /// 
+        /// </summary>
+        Timeout,
+        /// <summary>
+        /// 
+        /// </summary>
+        Unjoined,
     }
 
     /// <summary>
@@ -51,12 +51,12 @@ namespace Ultravox
         {
             return value switch
             {
-                EndReasonEnum.Unjoined => "unjoined",
-                EndReasonEnum.Hangup => "hangup",
                 EndReasonEnum.AgentHangup => "agent_hangup",
-                EndReasonEnum.Timeout => "timeout",
                 EndReasonEnum.ConnectionError => "connection_error",
+                EndReasonEnum.Hangup => "hangup",
                 EndReasonEnum.SystemError => "system_error",
+                EndReasonEnum.Timeout => "timeout",
+                EndReasonEnum.Unjoined => "unjoined",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -67,12 +67,12 @@ namespace Ultravox
         {
             return value switch
             {
-                "unjoined" => EndReasonEnum.Unjoined,
-                "hangup" => EndReasonEnum.Hangup,
                 "agent_hangup" => EndReasonEnum.AgentHangup,
-                "timeout" => EndReasonEnum.Timeout,
                 "connection_error" => EndReasonEnum.ConnectionError,
+                "hangup" => EndReasonEnum.Hangup,
                 "system_error" => EndReasonEnum.SystemError,
+                "timeout" => EndReasonEnum.Timeout,
+                "unjoined" => EndReasonEnum.Unjoined,
                 _ => null,
             };
         }

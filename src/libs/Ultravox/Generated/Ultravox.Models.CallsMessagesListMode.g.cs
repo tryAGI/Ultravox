@@ -11,11 +11,11 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        LastStage,
+        InCall,
         /// <summary>
         /// 
         /// </summary>
-        InCall,
+        LastStage,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Ultravox
         {
             return value switch
             {
-                CallsMessagesListMode.LastStage => "last_stage",
                 CallsMessagesListMode.InCall => "in_call",
+                CallsMessagesListMode.LastStage => "last_stage",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Ultravox
         {
             return value switch
             {
-                "last_stage" => CallsMessagesListMode.LastStage,
                 "in_call" => CallsMessagesListMode.InCall,
+                "last_stage" => CallsMessagesListMode.LastStage,
                 _ => null,
             };
         }

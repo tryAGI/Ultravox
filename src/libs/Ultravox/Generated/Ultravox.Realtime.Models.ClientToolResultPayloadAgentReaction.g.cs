@@ -11,11 +11,11 @@ namespace Ultravox.Realtime
         /// <summary>
         /// 
         /// </summary>
-        Speaks,
+        Listens,
         /// <summary>
         /// 
         /// </summary>
-        Listens,
+        Speaks,
         /// <summary>
         /// 
         /// </summary>
@@ -34,8 +34,8 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
-                ClientToolResultPayloadAgentReaction.Speaks => "speaks",
                 ClientToolResultPayloadAgentReaction.Listens => "listens",
+                ClientToolResultPayloadAgentReaction.Speaks => "speaks",
                 ClientToolResultPayloadAgentReaction.SpeaksOnce => "speaks-once",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -47,8 +47,8 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
-                "speaks" => ClientToolResultPayloadAgentReaction.Speaks,
                 "listens" => ClientToolResultPayloadAgentReaction.Listens,
+                "speaks" => ClientToolResultPayloadAgentReaction.Speaks,
                 "speaks-once" => ClientToolResultPayloadAgentReaction.SpeaksOnce,
                 _ => null,
             };
