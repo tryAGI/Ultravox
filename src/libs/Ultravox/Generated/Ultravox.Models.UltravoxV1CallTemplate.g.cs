@@ -175,6 +175,17 @@ namespace Ultravox
         public object? ContextSchema { get; set; }
 
         /// <summary>
+        /// Shared secrets used to sign outbound requests (e.g. data connection websocket).<br/>
+        ///  When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and<br/>
+        ///  X-Ultravox-Signature headers will be included. If multiple secrets are provided,<br/>
+        ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
+        ///  Write-only: this field is never included in API responses.<br/>
+        ///  If multiple stages are defined for the call, this will be used only for stages without their own sharedSecrets.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sharedSecrets")]
+        public global::System.Collections.Generic.IList<string>? SharedSecrets { get; set; }
+
+        /// <summary>
         /// The default retention policy for calls created with this agent.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("retentionPolicy")]
@@ -289,6 +300,14 @@ namespace Ultravox
         ///    * selected_tools.http.auth_query_params.value<br/>
         ///  If multiple stages are defined for the call, each must define its own context schema (or use the generated one).
         /// </param>
+        /// <param name="sharedSecrets">
+        /// Shared secrets used to sign outbound requests (e.g. data connection websocket).<br/>
+        ///  When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and<br/>
+        ///  X-Ultravox-Signature headers will be included. If multiple secrets are provided,<br/>
+        ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
+        ///  Write-only: this field is never included in API responses.<br/>
+        ///  If multiple stages are defined for the call, this will be used only for stages without their own sharedSecrets.
+        /// </param>
         /// <param name="retentionPolicy">
         /// The default retention policy for calls created with this agent.
         /// </param>
@@ -318,6 +337,7 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>? selectedTools,
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection,
             object? contextSchema,
+            global::System.Collections.Generic.IList<string>? sharedSecrets,
             global::Ultravox.UltravoxV1CallTemplateRetentionPolicy? retentionPolicy)
         {
             this.Name = name;
@@ -342,6 +362,7 @@ namespace Ultravox
             this.SelectedTools = selectedTools;
             this.DataConnection = dataConnection;
             this.ContextSchema = contextSchema;
+            this.SharedSecrets = sharedSecrets;
             this.RetentionPolicy = retentionPolicy;
         }
 

@@ -5762,6 +5762,17 @@ components:
                * selected_tools.http.auth_headers.value
                * selected_tools.http.auth_query_params.value
              If multiple stages are defined for the call, each must define its own context schema (or use the generated one).
+        sharedSecrets:
+          type: array
+          items:
+            type: string
+          description: |-
+            Shared secrets used to sign outbound requests (e.g. data connection websocket).
+             When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and
+             X-Ultravox-Signature headers will be included. If multiple secrets are provided,
+             one signature per secret is produced (comma-separated in X-Ultravox-Signature).
+             Write-only: this field is never included in API responses.
+             If multiple stages are defined for the call, this will be used only for stages without their own sharedSecrets.
         retentionPolicy:
           enum:
           - CALL_RETENTION_POLICY_UNSPECIFIED
@@ -6644,6 +6655,12 @@ components:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.EnabledDataMessages'
           description: Controls which data messages are enabled for the data connection.
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional headers to include when connecting to the websocket
+            endpoint.
       description: Data connection enables an auxiliary websocket for streaming data
         messages.
     ultravox.v1.DynamicParameter:
@@ -7421,6 +7438,16 @@ components:
           description: The (overridden) retention policy for the call's data after
             it ends.
           format: enum
+        sharedSecrets:
+          type: array
+          items:
+            type: string
+          description: |-
+            Shared secrets used to sign outbound requests (e.g. data connection websocket).
+             When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and
+             X-Ultravox-Signature headers will be included. If multiple secrets are provided,
+             one signature per secret is produced (comma-separated in X-Ultravox-Signature).
+             Write-only: this field is never included in API responses.
       description: A request to start a call with an existing agent.
     ultravox.v1.StartCallRequest:
       type: object
@@ -7562,6 +7589,16 @@ components:
             The retention policy for the call's data after it ends.
              This feature must be enabled for your account.
           format: enum
+        sharedSecrets:
+          type: array
+          items:
+            type: string
+          description: |-
+            Shared secrets used to sign outbound requests (e.g. data connection websocket).
+             When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and
+             X-Ultravox-Signature headers will be included. If multiple secrets are provided,
+             one signature per secret is produced (comma-separated in X-Ultravox-Signature).
+             Write-only: this field is never included in API responses.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object
