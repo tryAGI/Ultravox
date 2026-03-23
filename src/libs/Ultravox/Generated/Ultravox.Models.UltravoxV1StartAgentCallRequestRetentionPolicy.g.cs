@@ -11,7 +11,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        CallRetentionPolicyUnspecified,
+        CallRetentionPolicyAutoDelete,
         /// <summary>
         /// 
         /// </summary>
@@ -19,7 +19,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        CallRetentionPolicyAutoDelete,
+        CallRetentionPolicyUnspecified,
     }
 
     /// <summary>
@@ -34,9 +34,9 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1StartAgentCallRequestRetentionPolicy.CallRetentionPolicyUnspecified => "CALL_RETENTION_POLICY_UNSPECIFIED",
-                UltravoxV1StartAgentCallRequestRetentionPolicy.CallRetentionPolicyRetain => "CALL_RETENTION_POLICY_RETAIN",
                 UltravoxV1StartAgentCallRequestRetentionPolicy.CallRetentionPolicyAutoDelete => "CALL_RETENTION_POLICY_AUTO_DELETE",
+                UltravoxV1StartAgentCallRequestRetentionPolicy.CallRetentionPolicyRetain => "CALL_RETENTION_POLICY_RETAIN",
+                UltravoxV1StartAgentCallRequestRetentionPolicy.CallRetentionPolicyUnspecified => "CALL_RETENTION_POLICY_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace Ultravox
         {
             return value switch
             {
-                "CALL_RETENTION_POLICY_UNSPECIFIED" => UltravoxV1StartAgentCallRequestRetentionPolicy.CallRetentionPolicyUnspecified,
-                "CALL_RETENTION_POLICY_RETAIN" => UltravoxV1StartAgentCallRequestRetentionPolicy.CallRetentionPolicyRetain,
                 "CALL_RETENTION_POLICY_AUTO_DELETE" => UltravoxV1StartAgentCallRequestRetentionPolicy.CallRetentionPolicyAutoDelete,
+                "CALL_RETENTION_POLICY_RETAIN" => UltravoxV1StartAgentCallRequestRetentionPolicy.CallRetentionPolicyRetain,
+                "CALL_RETENTION_POLICY_UNSPECIFIED" => UltravoxV1StartAgentCallRequestRetentionPolicy.CallRetentionPolicyUnspecified,
                 _ => null,
             };
         }

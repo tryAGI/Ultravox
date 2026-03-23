@@ -11,11 +11,11 @@ namespace Ultravox.Realtime
         /// <summary>
         /// 
         /// </summary>
-        User,
+        Agent,
         /// <summary>
         /// 
         /// </summary>
-        Agent,
+        User,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
-                TranscriptPayloadRole.User => "user",
                 TranscriptPayloadRole.Agent => "agent",
+                TranscriptPayloadRole.User => "user",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
-                "user" => TranscriptPayloadRole.User,
                 "agent" => TranscriptPayloadRole.Agent,
+                "user" => TranscriptPayloadRole.User,
                 _ => null,
             };
         }

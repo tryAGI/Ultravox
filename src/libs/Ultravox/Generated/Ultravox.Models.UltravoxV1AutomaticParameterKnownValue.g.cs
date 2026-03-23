@@ -11,11 +11,19 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        KnownParamUnspecified,
+        KnownParamCallId,
         /// <summary>
         /// 
         /// </summary>
-        KnownParamCallId,
+        KnownParamCallMetadata,
+        /// <summary>
+        /// 
+        /// </summary>
+        KnownParamCallStageId,
+        /// <summary>
+        /// 
+        /// </summary>
+        KnownParamCallState,
         /// <summary>
         /// 
         /// </summary>
@@ -27,14 +35,6 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        KnownParamCallState,
-        /// <summary>
-        /// 
-        /// </summary>
-        KnownParamCallStageId,
-        /// <summary>
-        /// 
-        /// </summary>
         KnownParamThreadId,
         /// <summary>
         /// 
@@ -43,7 +43,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        KnownParamCallMetadata,
+        KnownParamUnspecified,
     }
 
     /// <summary>
@@ -58,15 +58,15 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1AutomaticParameterKnownValue.KnownParamUnspecified => "KNOWN_PARAM_UNSPECIFIED",
                 UltravoxV1AutomaticParameterKnownValue.KnownParamCallId => "KNOWN_PARAM_CALL_ID",
+                UltravoxV1AutomaticParameterKnownValue.KnownParamCallMetadata => "KNOWN_PARAM_CALL_METADATA",
+                UltravoxV1AutomaticParameterKnownValue.KnownParamCallStageId => "KNOWN_PARAM_CALL_STAGE_ID",
+                UltravoxV1AutomaticParameterKnownValue.KnownParamCallState => "KNOWN_PARAM_CALL_STATE",
                 UltravoxV1AutomaticParameterKnownValue.KnownParamConversationHistory => "KNOWN_PARAM_CONVERSATION_HISTORY",
                 UltravoxV1AutomaticParameterKnownValue.KnownParamOutputSampleRate => "KNOWN_PARAM_OUTPUT_SAMPLE_RATE",
-                UltravoxV1AutomaticParameterKnownValue.KnownParamCallState => "KNOWN_PARAM_CALL_STATE",
-                UltravoxV1AutomaticParameterKnownValue.KnownParamCallStageId => "KNOWN_PARAM_CALL_STAGE_ID",
                 UltravoxV1AutomaticParameterKnownValue.KnownParamThreadId => "KNOWN_PARAM_THREAD_ID",
                 UltravoxV1AutomaticParameterKnownValue.KnownParamThreadStates => "KNOWN_PARAM_THREAD_STATES",
-                UltravoxV1AutomaticParameterKnownValue.KnownParamCallMetadata => "KNOWN_PARAM_CALL_METADATA",
+                UltravoxV1AutomaticParameterKnownValue.KnownParamUnspecified => "KNOWN_PARAM_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -77,15 +77,15 @@ namespace Ultravox
         {
             return value switch
             {
-                "KNOWN_PARAM_UNSPECIFIED" => UltravoxV1AutomaticParameterKnownValue.KnownParamUnspecified,
                 "KNOWN_PARAM_CALL_ID" => UltravoxV1AutomaticParameterKnownValue.KnownParamCallId,
+                "KNOWN_PARAM_CALL_METADATA" => UltravoxV1AutomaticParameterKnownValue.KnownParamCallMetadata,
+                "KNOWN_PARAM_CALL_STAGE_ID" => UltravoxV1AutomaticParameterKnownValue.KnownParamCallStageId,
+                "KNOWN_PARAM_CALL_STATE" => UltravoxV1AutomaticParameterKnownValue.KnownParamCallState,
                 "KNOWN_PARAM_CONVERSATION_HISTORY" => UltravoxV1AutomaticParameterKnownValue.KnownParamConversationHistory,
                 "KNOWN_PARAM_OUTPUT_SAMPLE_RATE" => UltravoxV1AutomaticParameterKnownValue.KnownParamOutputSampleRate,
-                "KNOWN_PARAM_CALL_STATE" => UltravoxV1AutomaticParameterKnownValue.KnownParamCallState,
-                "KNOWN_PARAM_CALL_STAGE_ID" => UltravoxV1AutomaticParameterKnownValue.KnownParamCallStageId,
                 "KNOWN_PARAM_THREAD_ID" => UltravoxV1AutomaticParameterKnownValue.KnownParamThreadId,
                 "KNOWN_PARAM_THREAD_STATES" => UltravoxV1AutomaticParameterKnownValue.KnownParamThreadStates,
-                "KNOWN_PARAM_CALL_METADATA" => UltravoxV1AutomaticParameterKnownValue.KnownParamCallMetadata,
+                "KNOWN_PARAM_UNSPECIFIED" => UltravoxV1AutomaticParameterKnownValue.KnownParamUnspecified,
                 _ => null,
             };
         }

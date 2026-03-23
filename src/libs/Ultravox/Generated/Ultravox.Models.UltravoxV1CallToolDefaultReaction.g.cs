@@ -13,7 +13,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        AgentReactionUnspecified,
+        AgentReactionListens,
         /// <summary>
         /// 
         /// </summary>
@@ -21,11 +21,11 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        AgentReactionListens,
+        AgentReactionSpeaksOnce,
         /// <summary>
         /// 
         /// </summary>
-        AgentReactionSpeaksOnce,
+        AgentReactionUnspecified,
     }
 
     /// <summary>
@@ -40,10 +40,10 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1CallToolDefaultReaction.AgentReactionUnspecified => "AGENT_REACTION_UNSPECIFIED",
-                UltravoxV1CallToolDefaultReaction.AgentReactionSpeaks => "AGENT_REACTION_SPEAKS",
                 UltravoxV1CallToolDefaultReaction.AgentReactionListens => "AGENT_REACTION_LISTENS",
+                UltravoxV1CallToolDefaultReaction.AgentReactionSpeaks => "AGENT_REACTION_SPEAKS",
                 UltravoxV1CallToolDefaultReaction.AgentReactionSpeaksOnce => "AGENT_REACTION_SPEAKS_ONCE",
+                UltravoxV1CallToolDefaultReaction.AgentReactionUnspecified => "AGENT_REACTION_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -54,10 +54,10 @@ namespace Ultravox
         {
             return value switch
             {
-                "AGENT_REACTION_UNSPECIFIED" => UltravoxV1CallToolDefaultReaction.AgentReactionUnspecified,
-                "AGENT_REACTION_SPEAKS" => UltravoxV1CallToolDefaultReaction.AgentReactionSpeaks,
                 "AGENT_REACTION_LISTENS" => UltravoxV1CallToolDefaultReaction.AgentReactionListens,
+                "AGENT_REACTION_SPEAKS" => UltravoxV1CallToolDefaultReaction.AgentReactionSpeaks,
                 "AGENT_REACTION_SPEAKS_ONCE" => UltravoxV1CallToolDefaultReaction.AgentReactionSpeaksOnce,
+                "AGENT_REACTION_UNSPECIFIED" => UltravoxV1CallToolDefaultReaction.AgentReactionUnspecified,
                 _ => null,
             };
         }

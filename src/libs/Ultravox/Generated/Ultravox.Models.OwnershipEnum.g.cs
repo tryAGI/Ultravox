@@ -11,11 +11,11 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        Public,
+        Private,
         /// <summary>
         /// 
         /// </summary>
-        Private,
+        Public,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Ultravox
         {
             return value switch
             {
-                OwnershipEnum.Public => "public",
                 OwnershipEnum.Private => "private",
+                OwnershipEnum.Public => "public",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Ultravox
         {
             return value switch
             {
-                "public" => OwnershipEnum.Public,
                 "private" => OwnershipEnum.Private,
+                "public" => OwnershipEnum.Public,
                 _ => null,
             };
         }

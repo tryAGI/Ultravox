@@ -11,15 +11,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        Display,
-        /// <summary>
-        /// 
-        /// </summary>
         Alphabetic,
-        /// <summary>
-        /// 
-        /// </summary>
-        ReverseAlphabetic,
         /// <summary>
         /// 
         /// </summary>
@@ -27,11 +19,19 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        ReverseChronologic,
+        Default,
         /// <summary>
         /// 
         /// </summary>
-        Default,
+        Display,
+        /// <summary>
+        /// 
+        /// </summary>
+        ReverseAlphabetic,
+        /// <summary>
+        /// 
+        /// </summary>
+        ReverseChronologic,
     }
 
     /// <summary>
@@ -46,12 +46,12 @@ namespace Ultravox
         {
             return value switch
             {
-                ToolsListSortOrder.Display => "display",
                 ToolsListSortOrder.Alphabetic => "alphabetic",
-                ToolsListSortOrder.ReverseAlphabetic => "reverseAlphabetic",
                 ToolsListSortOrder.Chronologic => "chronologic",
-                ToolsListSortOrder.ReverseChronologic => "reverseChronologic",
                 ToolsListSortOrder.Default => "default",
+                ToolsListSortOrder.Display => "display",
+                ToolsListSortOrder.ReverseAlphabetic => "reverseAlphabetic",
+                ToolsListSortOrder.ReverseChronologic => "reverseChronologic",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +62,12 @@ namespace Ultravox
         {
             return value switch
             {
-                "display" => ToolsListSortOrder.Display,
                 "alphabetic" => ToolsListSortOrder.Alphabetic,
-                "reverseAlphabetic" => ToolsListSortOrder.ReverseAlphabetic,
                 "chronologic" => ToolsListSortOrder.Chronologic,
-                "reverseChronologic" => ToolsListSortOrder.ReverseChronologic,
                 "default" => ToolsListSortOrder.Default,
+                "display" => ToolsListSortOrder.Display,
+                "reverseAlphabetic" => ToolsListSortOrder.ReverseAlphabetic,
+                "reverseChronologic" => ToolsListSortOrder.ReverseChronologic,
                 _ => null,
             };
         }

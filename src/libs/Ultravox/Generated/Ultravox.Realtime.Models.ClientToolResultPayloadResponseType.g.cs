@@ -11,11 +11,11 @@ namespace Ultravox.Realtime
         /// <summary>
         /// 
         /// </summary>
-        ToolResponse,
+        HangUp,
         /// <summary>
         /// 
         /// </summary>
-        HangUp,
+        ToolResponse,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
-                ClientToolResultPayloadResponseType.ToolResponse => "tool-response",
                 ClientToolResultPayloadResponseType.HangUp => "hang-up",
+                ClientToolResultPayloadResponseType.ToolResponse => "tool-response",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Ultravox.Realtime
         {
             return value switch
             {
-                "tool-response" => ClientToolResultPayloadResponseType.ToolResponse,
                 "hang-up" => ClientToolResultPayloadResponseType.HangUp,
+                "tool-response" => ClientToolResultPayloadResponseType.ToolResponse,
                 _ => null,
             };
         }

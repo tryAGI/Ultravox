@@ -12,15 +12,15 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        JsonByteEncodingUnspecified,
-        /// <summary>
-        /// 
-        /// </summary>
         JsonByteEncodingBase64,
         /// <summary>
         /// 
         /// </summary>
         JsonByteEncodingHex,
+        /// <summary>
+        /// 
+        /// </summary>
+        JsonByteEncodingUnspecified,
     }
 
     /// <summary>
@@ -35,9 +35,9 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1GenericVoiceJsonByteEncoding.JsonByteEncodingUnspecified => "JSON_BYTE_ENCODING_UNSPECIFIED",
                 UltravoxV1GenericVoiceJsonByteEncoding.JsonByteEncodingBase64 => "JSON_BYTE_ENCODING_BASE64",
                 UltravoxV1GenericVoiceJsonByteEncoding.JsonByteEncodingHex => "JSON_BYTE_ENCODING_HEX",
+                UltravoxV1GenericVoiceJsonByteEncoding.JsonByteEncodingUnspecified => "JSON_BYTE_ENCODING_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -48,9 +48,9 @@ namespace Ultravox
         {
             return value switch
             {
-                "JSON_BYTE_ENCODING_UNSPECIFIED" => UltravoxV1GenericVoiceJsonByteEncoding.JsonByteEncodingUnspecified,
                 "JSON_BYTE_ENCODING_BASE64" => UltravoxV1GenericVoiceJsonByteEncoding.JsonByteEncodingBase64,
                 "JSON_BYTE_ENCODING_HEX" => UltravoxV1GenericVoiceJsonByteEncoding.JsonByteEncodingHex,
+                "JSON_BYTE_ENCODING_UNSPECIFIED" => UltravoxV1GenericVoiceJsonByteEncoding.JsonByteEncodingUnspecified,
                 _ => null,
             };
         }

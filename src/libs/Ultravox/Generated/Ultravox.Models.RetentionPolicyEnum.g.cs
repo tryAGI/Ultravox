@@ -12,11 +12,11 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        Retain,
+        AutoDelete,
         /// <summary>
         /// 
         /// </summary>
-        AutoDelete,
+        Retain,
     }
 
     /// <summary>
@@ -31,8 +31,8 @@ namespace Ultravox
         {
             return value switch
             {
-                RetentionPolicyEnum.Retain => "retain",
                 RetentionPolicyEnum.AutoDelete => "auto_delete",
+                RetentionPolicyEnum.Retain => "retain",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -43,8 +43,8 @@ namespace Ultravox
         {
             return value switch
             {
-                "retain" => RetentionPolicyEnum.Retain,
                 "auto_delete" => RetentionPolicyEnum.AutoDelete,
+                "retain" => RetentionPolicyEnum.Retain,
                 _ => null,
             };
         }

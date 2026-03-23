@@ -11,11 +11,11 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        VoiceBillingStyleIncluded,
+        VoiceBillingStyleExternal,
         /// <summary>
         /// 
         /// </summary>
-        VoiceBillingStyleExternal,
+        VoiceBillingStyleIncluded,
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ namespace Ultravox
         {
             return value switch
             {
-                VoicesListBillingStyle.VoiceBillingStyleIncluded => "VOICE_BILLING_STYLE_INCLUDED",
                 VoicesListBillingStyle.VoiceBillingStyleExternal => "VOICE_BILLING_STYLE_EXTERNAL",
+                VoicesListBillingStyle.VoiceBillingStyleIncluded => "VOICE_BILLING_STYLE_INCLUDED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -42,8 +42,8 @@ namespace Ultravox
         {
             return value switch
             {
-                "VOICE_BILLING_STYLE_INCLUDED" => VoicesListBillingStyle.VoiceBillingStyleIncluded,
                 "VOICE_BILLING_STYLE_EXTERNAL" => VoicesListBillingStyle.VoiceBillingStyleExternal,
+                "VOICE_BILLING_STYLE_INCLUDED" => VoicesListBillingStyle.VoiceBillingStyleIncluded,
                 _ => null,
             };
         }

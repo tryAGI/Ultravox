@@ -16,19 +16,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        Lmnt,
-        /// <summary>
-        /// 
-        /// </summary>
         Cartesia,
-        /// <summary>
-        /// 
-        /// </summary>
-        Google,
-        /// <summary>
-        /// 
-        /// </summary>
-        Respeecher,
         /// <summary>
         /// 
         /// </summary>
@@ -36,7 +24,19 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        Google,
+        /// <summary>
+        /// 
+        /// </summary>
         Inworld,
+        /// <summary>
+        /// 
+        /// </summary>
+        Lmnt,
+        /// <summary>
+        /// 
+        /// </summary>
+        Respeecher,
     }
 
     /// <summary>
@@ -51,12 +51,12 @@ namespace Ultravox
         {
             return value switch
             {
-                VoicesListProviderItem.Lmnt => "lmnt",
                 VoicesListProviderItem.Cartesia => "cartesia",
-                VoicesListProviderItem.Google => "google",
-                VoicesListProviderItem.Respeecher => "respeecher",
                 VoicesListProviderItem.ElevenLabs => "eleven_labs",
+                VoicesListProviderItem.Google => "google",
                 VoicesListProviderItem.Inworld => "inworld",
+                VoicesListProviderItem.Lmnt => "lmnt",
+                VoicesListProviderItem.Respeecher => "respeecher",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -67,12 +67,12 @@ namespace Ultravox
         {
             return value switch
             {
-                "lmnt" => VoicesListProviderItem.Lmnt,
                 "cartesia" => VoicesListProviderItem.Cartesia,
-                "google" => VoicesListProviderItem.Google,
-                "respeecher" => VoicesListProviderItem.Respeecher,
                 "eleven_labs" => VoicesListProviderItem.ElevenLabs,
+                "google" => VoicesListProviderItem.Google,
                 "inworld" => VoicesListProviderItem.Inworld,
+                "lmnt" => VoicesListProviderItem.Lmnt,
+                "respeecher" => VoicesListProviderItem.Respeecher,
                 _ => null,
             };
         }

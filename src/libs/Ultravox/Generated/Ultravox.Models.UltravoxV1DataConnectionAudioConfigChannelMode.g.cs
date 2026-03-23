@@ -13,15 +13,15 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        ChannelModeUnspecified,
-        /// <summary>
-        /// 
-        /// </summary>
         ChannelModeMixed,
         /// <summary>
         /// 
         /// </summary>
         ChannelModeSeparated,
+        /// <summary>
+        /// 
+        /// </summary>
+        ChannelModeUnspecified,
     }
 
     /// <summary>
@@ -36,9 +36,9 @@ namespace Ultravox
         {
             return value switch
             {
-                UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeUnspecified => "CHANNEL_MODE_UNSPECIFIED",
                 UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeMixed => "CHANNEL_MODE_MIXED",
                 UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeSeparated => "CHANNEL_MODE_SEPARATED",
+                UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeUnspecified => "CHANNEL_MODE_UNSPECIFIED",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -49,9 +49,9 @@ namespace Ultravox
         {
             return value switch
             {
-                "CHANNEL_MODE_UNSPECIFIED" => UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeUnspecified,
                 "CHANNEL_MODE_MIXED" => UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeMixed,
                 "CHANNEL_MODE_SEPARATED" => UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeSeparated,
+                "CHANNEL_MODE_UNSPECIFIED" => UltravoxV1DataConnectionAudioConfigChannelMode.ChannelModeUnspecified,
                 _ => null,
             };
         }
