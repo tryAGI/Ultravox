@@ -118,6 +118,13 @@ namespace Ultravox
         /// The retention policy for the call's data after it ends.<br/>
         ///  This feature must be enabled for your account.
         /// </param>
+        /// <param name="sharedSecrets">
+        /// Shared secrets used to sign outbound requests (e.g. data connection websocket).<br/>
+        ///  When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and<br/>
+        ///  X-Ultravox-Signature headers will be included. If multiple secrets are provided,<br/>
+        ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
+        ///  Write-only: this field is never included in API responses.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
@@ -149,6 +156,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1Callbacks? callbacks = default,
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides = default,
             global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? retentionPolicy = default,
+            global::System.Collections.Generic.IList<string>? sharedSecrets = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

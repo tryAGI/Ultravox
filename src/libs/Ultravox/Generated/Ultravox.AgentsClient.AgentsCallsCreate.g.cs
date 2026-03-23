@@ -247,6 +247,13 @@ namespace Ultravox
         /// <param name="retentionPolicy">
         /// The (overridden) retention policy for the call's data after it ends.
         /// </param>
+        /// <param name="sharedSecrets">
+        /// Shared secrets used to sign outbound requests (e.g. data connection websocket).<br/>
+        ///  When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and<br/>
+        ///  X-Ultravox-Signature headers will be included. If multiple secrets are provided,<br/>
+        ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
+        ///  Write-only: this field is never included in API responses.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> AgentsCallsCreateAsync(
@@ -267,6 +274,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides = default,
             global::Ultravox.UltravoxV1ToolOverrides? toolOverrides = default,
             global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy? retentionPolicy = default,
+            global::System.Collections.Generic.IList<string>? sharedSecrets = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Ultravox.UltravoxV1StartAgentCallRequest
@@ -287,6 +295,7 @@ namespace Ultravox
                 VoiceOverrides = voiceOverrides,
                 ToolOverrides = toolOverrides,
                 RetentionPolicy = retentionPolicy,
+                SharedSecrets = sharedSecrets,
             };
 
             return await AgentsCallsCreateAsync(

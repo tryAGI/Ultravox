@@ -181,6 +181,16 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? RetentionPolicy { get; set; }
 
         /// <summary>
+        /// Shared secrets used to sign outbound requests (e.g. data connection websocket).<br/>
+        ///  When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and<br/>
+        ///  X-Ultravox-Signature headers will be included. If multiple secrets are provided,<br/>
+        ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
+        ///  Write-only: this field is never included in API responses.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sharedSecrets")]
+        public global::System.Collections.Generic.IList<string>? SharedSecrets { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -280,6 +290,13 @@ namespace Ultravox
         /// The retention policy for the call's data after it ends.<br/>
         ///  This feature must be enabled for your account.
         /// </param>
+        /// <param name="sharedSecrets">
+        /// Shared secrets used to sign outbound requests (e.g. data connection websocket).<br/>
+        ///  When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and<br/>
+        ///  X-Ultravox-Signature headers will be included. If multiple secrets are provided,<br/>
+        ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
+        ///  Write-only: this field is never included in API responses.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -309,7 +326,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection,
             global::Ultravox.UltravoxV1Callbacks? callbacks,
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides,
-            global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? retentionPolicy)
+            global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? retentionPolicy,
+            global::System.Collections.Generic.IList<string>? sharedSecrets)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -337,6 +355,7 @@ namespace Ultravox
             this.Callbacks = callbacks;
             this.VoiceOverrides = voiceOverrides;
             this.RetentionPolicy = retentionPolicy;
+            this.SharedSecrets = sharedSecrets;
         }
 
         /// <summary>
