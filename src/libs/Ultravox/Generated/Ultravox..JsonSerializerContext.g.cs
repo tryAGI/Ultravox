@@ -157,6 +157,10 @@ namespace Ultravox
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1TimedMessageEndBehaviorNullableJsonConverter),
 
+            typeof(global::Ultravox.JsonConverters.AccountsMeUsageConcurrencyRetrieveBucketJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.AccountsMeUsageConcurrencyRetrieveBucketNullableJsonConverter),
+
             typeof(global::Ultravox.JsonConverters.AgentsScheduledBatchesScheduledCallsListStatusJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.AgentsScheduledBatchesScheduledCallsListStatusNullableJsonConverter),
@@ -269,6 +273,9 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.DailyCallStatistics))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.HourlyCallStatistics>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.HourlyCallStatistics))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ConcurrencyBucket))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ConcurrencyResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.ConcurrencyBucket>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CorpusUploadsRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CorpusUploadsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.EventsEnum))]
@@ -442,6 +449,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ToolsCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesCreateRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AccountsMeUsageConcurrencyRetrieveBucket))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AgentsScheduledBatchesScheduledCallsListStatus))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallsEventsListMinimumSeverity))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallsMessagesListMode))]
@@ -461,6 +469,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1TimedMessage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.DailyCallStatistics>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.HourlyCallStatistics>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.ConcurrencyBucket>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.APIKey>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.Agent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.CallEvent>))]
