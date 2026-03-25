@@ -262,6 +262,53 @@ paths:
               schema:
                 $ref: '#/components/schemas/CallUsage'
           description: ''
+  /api/accounts/me/usage/concurrency:
+    get:
+      operationId: accounts_me_usage_concurrency_retrieve
+      description: Gets historical call concurrency for the account.
+      parameters:
+      - in: query
+        name: bucket
+        schema:
+          enum:
+          - minute
+          - 5min
+          - hour
+          - day
+          type: string
+          default: minute
+          minLength: 1
+        description: |-
+          Bucket size for the time series.
+
+          * `minute` - minute
+          * `5min` - 5min
+          * `hour` - hour
+          * `day` - day
+      - in: query
+        name: end
+        schema:
+          type: string
+          format: date-time
+        description: End datetime for the time range. Defaults to now.
+      - in: query
+        name: start
+        schema:
+          type: string
+          format: date-time
+        description: Start datetime for the time range. Defaults to 24 hours before
+          end.
+      tags:
+      - accounts
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConcurrencyResponse'
+          description: ''
   /api/agents:
     get:
       operationId: agents_list
@@ -4013,6 +4060,43 @@ components:
       - allTime
       - daily
       - hourly
+    ConcurrencyBucket:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: Start of the time bucket
+        maxTotalCalls:
+          type: integer
+          description: Peak total active calls in this bucket
+        maxJoinedCalls:
+          type: integer
+          description: Peak joined calls in this bucket
+        avgTotalCalls:
+          type: number
+          format: double
+          description: Average total active calls in this bucket
+        avgJoinedCalls:
+          type: number
+          format: double
+          description: Average joined calls in this bucket
+      required:
+      - avgJoinedCalls
+      - avgTotalCalls
+      - maxJoinedCalls
+      - maxTotalCalls
+      - timestamp
+    ConcurrencyResponse:
+      type: object
+      properties:
+        timeSeries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConcurrencyBucket'
+          description: Concurrency over time
+      required:
+      - timeSeries
     CorpusUploadsRequest:
       type: object
       properties:
