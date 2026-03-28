@@ -12,7 +12,7 @@ namespace Ultravox
         /// Details for an incoming SIP call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("incoming")]
-        public object? Incoming { get; set; }
+        public global::Ultravox.UltravoxV1SipMediumSipIncoming? Incoming { get; set; }
 
         /// <summary>
         /// Details for an outgoing SIP call. Ultravox will initiate this call (and there will be no joinUrl).
@@ -39,7 +39,7 @@ namespace Ultravox
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UltravoxV1CallMediumSipMedium(
-            object? incoming,
+            global::Ultravox.UltravoxV1SipMediumSipIncoming? incoming,
             global::Ultravox.UltravoxV1SipMediumSipOutgoing? outgoing)
         {
             this.Incoming = incoming;
