@@ -95,13 +95,13 @@ namespace Ultravox
                     if (ReadResponseAsString)
                     {
                         __content_default = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                        __value_default = global::System.Text.Json.JsonSerializer.Deserialize(__content_default, typeof(string), JsonSerializerContext) as string;
+                        __value_default = (string?)global::System.Text.Json.JsonSerializer.Deserialize(__content_default, typeof(string), JsonSerializerContext);
                     }
                     else
                     {
                         __content_default = await __response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        __value_default = global::System.Text.Json.JsonSerializer.Deserialize(__content_default, typeof(string), JsonSerializerContext) as string;
+                        __value_default = (string?)global::System.Text.Json.JsonSerializer.Deserialize(__content_default, typeof(string), JsonSerializerContext);
                     }
                 }
                 catch (global::System.Exception __ex)

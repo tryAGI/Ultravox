@@ -177,7 +177,7 @@ namespace Ultravox
                     __response.EnsureSuccessStatusCode();
 
                     return
-                        global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>), JsonSerializerContext) as global::System.Collections.Generic.IList<global::Ultravox.AgentUsage> ??
+                        (global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>?)global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>), JsonSerializerContext) ??
                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                 }
                 catch (global::System.Exception __ex)
@@ -208,7 +208,7 @@ namespace Ultravox
                     ).ConfigureAwait(false);
 
                     return
-                        await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>), JsonSerializerContext).ConfigureAwait(false) as global::System.Collections.Generic.IList<global::Ultravox.AgentUsage> ??
+                        (global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>?)await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>), JsonSerializerContext).ConfigureAwait(false) ??
                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                 }
                 catch (global::System.Exception __ex)
