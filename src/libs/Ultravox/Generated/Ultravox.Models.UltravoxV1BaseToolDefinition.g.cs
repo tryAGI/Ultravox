@@ -73,14 +73,14 @@ namespace Ultravox
         ///  for client tools.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("client")]
-        public object? Client { get; set; }
+        public global::Ultravox.UltravoxV1BaseClientToolDetails? Client { get; set; }
 
         /// <summary>
         /// Details for a tool implemented via a data connection websocket. Only body<br/>
         ///  parameters are allowed for data connection tools.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dataConnection")]
-        public object? DataConnection { get; set; }
+        public global::Ultravox.UltravoxV1BaseDataConnectionToolDetails? DataConnection { get; set; }
 
         /// <summary>
         /// Indicates the default for how the agent should proceed after the tool is invoked.<br/>
@@ -169,8 +169,8 @@ namespace Ultravox
             string? timeout,
             bool? precomputable,
             global::Ultravox.UltravoxV1BaseHttpToolDetails? http,
-            object? client,
-            object? dataConnection,
+            global::Ultravox.UltravoxV1BaseClientToolDetails? client,
+            global::Ultravox.UltravoxV1BaseDataConnectionToolDetails? dataConnection,
             global::Ultravox.UltravoxV1BaseToolDefinitionDefaultReaction? defaultReaction,
             global::Ultravox.UltravoxV1StaticToolResponse? staticResponse)
         {
