@@ -13,9 +13,11 @@ namespace Ultravox
         /// <remarks>
         /// curl --request POST \<br/>
         /// --url https://api.ultravox.ai/api/voices \<br/>
-        /// --header 'Content-Type: application/json' \<br/>
+        /// --header 'Content-Type: multipart/form-data' \<br/>
         /// --header 'X-API-Key: &lt;your-api-key&gt;' \<br/>
-        /// -d '{"name": "My Custom Voice", "description": "Example ElevenLabs voice", "definition": {"elevenLabs": {"voiceId": "21m00Tcm4TlvDq8ikWAM", "model": "eleven_turbo_v2_5"}} }'
+        /// --form 'file=@/path/to/voice.mp3' \<br/>
+        /// --form 'name=My Custom Voice' \<br/>
+        /// --form 'description=Voice recorded on Jan 1, 2024'
         /// </remarks>
         global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesCreateAsync(
 
