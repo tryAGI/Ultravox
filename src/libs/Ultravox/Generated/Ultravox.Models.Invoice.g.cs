@@ -62,6 +62,7 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="Invoice" /> class.
         /// </summary>
+        /// <param name="invoiceUrl"></param>
         /// <param name="invoiceDate">
         /// When the invoice became effective.<br/>
         /// Included only in responses
@@ -78,7 +79,6 @@ namespace Ultravox
         /// <param name="invoiceStatus">
         /// Included only in responses
         /// </param>
-        /// <param name="invoiceUrl"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -90,12 +90,12 @@ namespace Ultravox
             string invoiceNumber = default!,
             global::Ultravox.InvoiceStatusEnum invoiceStatus = default!)
         {
-            this.InvoiceUrl = invoiceUrl ?? throw new global::System.ArgumentNullException(nameof(invoiceUrl));
             this.InvoiceDate = invoiceDate;
             this.Amount = amount;
             this.BillingReason = billingReason;
             this.InvoiceNumber = invoiceNumber;
             this.InvoiceStatus = invoiceStatus;
+            this.InvoiceUrl = invoiceUrl ?? throw new global::System.ArgumentNullException(nameof(invoiceUrl));
         }
 
         /// <summary>

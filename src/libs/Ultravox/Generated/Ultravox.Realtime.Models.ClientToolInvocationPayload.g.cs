@@ -45,7 +45,6 @@ namespace Ultravox.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="ClientToolInvocationPayload" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="toolName">
         /// Name of the tool to execute.
         /// </param>
@@ -55,6 +54,7 @@ namespace Ultravox.Realtime
         /// <param name="parameters">
         /// Tool parameters.
         /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -64,10 +64,10 @@ namespace Ultravox.Realtime
             object parameters,
             global::Ultravox.Realtime.ClientToolInvocationPayloadType type)
         {
+            this.Type = type;
             this.ToolName = toolName ?? throw new global::System.ArgumentNullException(nameof(toolName));
             this.InvocationId = invocationId ?? throw new global::System.ArgumentNullException(nameof(invocationId));
             this.Parameters = parameters ?? throw new global::System.ArgumentNullException(nameof(parameters));
-            this.Type = type;
         }
 
         /// <summary>

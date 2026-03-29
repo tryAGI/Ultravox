@@ -45,15 +45,15 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="SipConfig" /> class.
         /// </summary>
+        /// <param name="allowedAgents">
+        /// Calls must match a pattern for one of these agents (or the global agent pattern if allowAllAgents is true) to be accepted.
+        /// </param>
         /// <param name="allowedCidrRanges">
         /// The list of IPv4 CIDR ranges from which incoming SIP calls will be accepted.
         /// </param>
         /// <param name="allowAllAgents">
         /// If true, adds an implicit allowance for requests matching agent_&lt;agent_id&gt;@&lt;anydomain&gt; for any of your agents.<br/>
         /// Default Value: false
-        /// </param>
-        /// <param name="allowedAgents">
-        /// Calls must match a pattern for one of these agents (or the global agent pattern if allowAllAgents is true) to be accepted.
         /// </param>
         /// <param name="domain">
         /// The domain used for SIP invites for your account.<br/>
@@ -68,9 +68,9 @@ namespace Ultravox
             bool? allowAllAgents,
             string domain = default!)
         {
-            this.AllowedAgents = allowedAgents ?? throw new global::System.ArgumentNullException(nameof(allowedAgents));
             this.AllowedCidrRanges = allowedCidrRanges;
             this.AllowAllAgents = allowAllAgents;
+            this.AllowedAgents = allowedAgents ?? throw new global::System.ArgumentNullException(nameof(allowedAgents));
             this.Domain = domain;
         }
 

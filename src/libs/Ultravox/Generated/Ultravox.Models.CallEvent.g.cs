@@ -72,17 +72,8 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="CallEvent" /> class.
         /// </summary>
-        /// <param name="callId">
-        /// Included only in responses
-        /// </param>
-        /// <param name="callStageId">
-        /// Included only in responses
-        /// </param>
         /// <param name="callTimestamp">
         /// The timestamp of the event, relative to call start.
-        /// </param>
-        /// <param name="severity">
-        /// Included only in responses
         /// </param>
         /// <param name="type">
         /// The type of the event.
@@ -93,6 +84,15 @@ namespace Ultravox
         /// </param>
         /// <param name="wallClockTimestamp">
         /// The wall clock timestamp of the event, relative to call start.
+        /// </param>
+        /// <param name="callId">
+        /// Included only in responses
+        /// </param>
+        /// <param name="callStageId">
+        /// Included only in responses
+        /// </param>
+        /// <param name="severity">
+        /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -107,12 +107,12 @@ namespace Ultravox
             global::System.Guid callStageId = default!,
             global::Ultravox.SeverityEnum severity = default!)
         {
-            this.CallTimestamp = callTimestamp ?? throw new global::System.ArgumentNullException(nameof(callTimestamp));
-            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.CallId = callId;
             this.CallStageId = callStageId;
+            this.CallTimestamp = callTimestamp ?? throw new global::System.ArgumentNullException(nameof(callTimestamp));
             this.Severity = severity;
+            this.Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Extras = extras;
             this.WallClockTimestamp = wallClockTimestamp;
         }

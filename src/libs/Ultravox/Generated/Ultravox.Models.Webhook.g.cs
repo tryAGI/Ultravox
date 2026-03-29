@@ -79,22 +79,22 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="Webhook" /> class.
         /// </summary>
-        /// <param name="webhookId">
-        /// Included only in responses
-        /// </param>
+        /// <param name="url"></param>
+        /// <param name="events"></param>
         /// <param name="agentId">
         /// If set, this webhook will be limited to calls with this agent.
+        /// </param>
+        /// <param name="secrets"></param>
+        /// <param name="lastStatusChange">
+        /// Included only in responses
+        /// </param>
+        /// <param name="webhookId">
+        /// Included only in responses
         /// </param>
         /// <param name="created">
         /// Included only in responses
         /// </param>
-        /// <param name="url"></param>
-        /// <param name="secrets"></param>
-        /// <param name="events"></param>
         /// <param name="status">
-        /// Included only in responses
-        /// </param>
-        /// <param name="lastStatusChange">
         /// Included only in responses
         /// </param>
         /// <param name="recentFailures">
@@ -115,12 +115,12 @@ namespace Ultravox
             global::Ultravox.WebhookStatusEnum status = default!,
             global::System.Collections.Generic.IList<global::Ultravox.WebhookFailure> recentFailures = default!)
         {
-            this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
-            this.Events = events ?? throw new global::System.ArgumentNullException(nameof(events));
             this.WebhookId = webhookId;
             this.AgentId = agentId;
             this.Created = created;
+            this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
             this.Secrets = secrets;
+            this.Events = events ?? throw new global::System.ArgumentNullException(nameof(events));
             this.Status = status;
             this.LastStatusChange = lastStatusChange;
             this.RecentFailures = recentFailures;

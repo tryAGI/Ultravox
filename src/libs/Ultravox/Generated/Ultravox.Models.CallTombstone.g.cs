@@ -91,16 +91,7 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="CallTombstone" /> class.
         /// </summary>
-        /// <param name="callId">
-        /// Included only in responses
-        /// </param>
-        /// <param name="accountId">
-        /// Included only in responses
-        /// </param>
         /// <param name="created"></param>
-        /// <param name="deletionTime">
-        /// Included only in responses
-        /// </param>
         /// <param name="joined"></param>
         /// <param name="ended"></param>
         /// <param name="maxDuration">
@@ -114,6 +105,15 @@ namespace Ultravox
         /// * `timeout` - Call timed out<br/>
         /// * `connection_error` - Connection error<br/>
         /// * `system_error` - System error<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="callId">
+        /// Included only in responses
+        /// </param>
+        /// <param name="accountId">
+        /// Included only in responses
+        /// </param>
+        /// <param name="deletionTime">
         /// Included only in responses
         /// </param>
         /// <param name="recordingEnabled">
@@ -137,9 +137,9 @@ namespace Ultravox
             bool recordingEnabled = default!,
             bool hadSummary = default!)
         {
-            this.Created = created;
             this.CallId = callId;
             this.AccountId = accountId;
+            this.Created = created;
             this.DeletionTime = deletionTime;
             this.Joined = joined;
             this.Ended = ended;

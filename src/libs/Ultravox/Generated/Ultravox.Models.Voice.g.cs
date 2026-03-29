@@ -92,16 +92,25 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="Voice" /> class.
         /// </summary>
-        /// <param name="voiceId">
-        /// Included only in responses
-        /// </param>
         /// <param name="name"></param>
+        /// <param name="definition">
+        /// A voice not known to Ultravox Realtime that can nonetheless be used for a call.<br/>
+        ///  Such voices are significantly less validated than normal voices and you'll be<br/>
+        ///  responsible for your own TTS-related errors.<br/>
+        ///  Exactly one field must be set.
+        /// </param>
         /// <param name="description"></param>
         /// <param name="primaryLanguage">
         /// BCP47 language code for the primary language supported by this voice.
         /// </param>
         /// <param name="languageLabel">
         /// Human-readable language label with flag emoji and English name (e.g., '🇺🇸 English (United States)').<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="provider">
+        /// Included only in responses
+        /// </param>
+        /// <param name="voiceId">
         /// Included only in responses
         /// </param>
         /// <param name="previewUrl">
@@ -115,15 +124,6 @@ namespace Ultravox
         /// VOICE_BILLING_STYLE_INCLUDED - The cost of this voice is included in the call cost. There are no additional charges for it.<br/>
         /// VOICE_BILLING_STYLE_EXTERNAL - This voice requires an API key for its provider, who will bill for usage separately.<br/>
         /// Included only in responses
-        /// </param>
-        /// <param name="provider">
-        /// Included only in responses
-        /// </param>
-        /// <param name="definition">
-        /// A voice not known to Ultravox Realtime that can nonetheless be used for a call.<br/>
-        ///  Such voices are significantly less validated than normal voices and you'll be<br/>
-        ///  responsible for your own TTS-related errors.<br/>
-        ///  Exactly one field must be set.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -140,9 +140,8 @@ namespace Ultravox
             global::Ultravox.OwnershipEnum ownership = default!,
             global::Ultravox.BillingStyleEnum billingStyle = default!)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Definition = definition ?? throw new global::System.ArgumentNullException(nameof(definition));
             this.VoiceId = voiceId;
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
             this.PrimaryLanguage = primaryLanguage;
             this.LanguageLabel = languageLabel;
@@ -150,6 +149,7 @@ namespace Ultravox
             this.Ownership = ownership;
             this.BillingStyle = billingStyle;
             this.Provider = provider;
+            this.Definition = definition ?? throw new global::System.ArgumentNullException(nameof(definition));
         }
 
         /// <summary>

@@ -38,10 +38,10 @@ namespace Ultravox.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="UserTextMessagePayload" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="text">
         /// The text message.
         /// </param>
+        /// <param name="type"></param>
         /// <param name="urgency">
         /// How urgently the agent should respond.
         /// </param>
@@ -53,8 +53,8 @@ namespace Ultravox.Realtime
             global::Ultravox.Realtime.UserTextMessagePayloadType type,
             global::Ultravox.Realtime.UserTextMessagePayloadUrgency? urgency)
         {
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Type = type;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Urgency = urgency;
         }
 

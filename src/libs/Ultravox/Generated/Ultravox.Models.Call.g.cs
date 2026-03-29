@@ -303,14 +303,21 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="Call" /> class.
         /// </summary>
-        /// <param name="callId">
-        /// Included only in responses
+        /// <param name="firstSpeakerSettings">
+        /// Settings for the initial message to get the call started.
         /// </param>
+        /// <param name="experimentalSettings">
+        /// Experimental settings for the call.
+        /// </param>
+        /// <param name="metadata">
+        /// Optional metadata key-value pairs to associate with the call. All values must be strings.
+        /// </param>
+        /// <param name="initialState">
+        /// The initial state of the call which is readable/writable by tools.
+        /// </param>
+        /// <param name="requestContext"></param>
         /// <param name="clientVersion">
         /// The version of the client that joined this call.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="created">
         /// Included only in responses
         /// </param>
         /// <param name="joined">
@@ -338,18 +345,8 @@ namespace Ultravox
         /// <param name="billedSideOutputTokens">
         /// Included only in responses
         /// </param>
-        /// <param name="billingStatus">
-        /// Included only in responses
-        /// </param>
-        /// <param name="firstSpeakerSettings">
-        /// Settings for the initial message to get the call started.
-        /// </param>
         /// <param name="inactivityMessages">
         /// Messages spoken by the agent when the user is inactive for the specified duration. Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.
-        /// </param>
-        /// <param name="initialOutputMedium">
-        /// The medium used initially by the agent. May later be changed by the client.<br/>
-        /// Included only in responses
         /// </param>
         /// <param name="joinTimeout">
         /// Default Value: 30s
@@ -401,24 +398,10 @@ namespace Ultravox
         /// A summary of the call.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="agent">
-        /// The agent used for this call.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="agentId">
         /// The ID of the agent used for this call.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="experimentalSettings">
-        /// Experimental settings for the call.
-        /// </param>
-        /// <param name="metadata">
-        /// Optional metadata key-value pairs to associate with the call. All values must be strings.
-        /// </param>
-        /// <param name="initialState">
-        /// The initial state of the call which is readable/writable by tools.
-        /// </param>
-        /// <param name="requestContext"></param>
         /// <param name="dataConnectionConfig">
         /// Settings for exchanging data messages with an additional participant.
         /// </param>
@@ -427,6 +410,23 @@ namespace Ultravox
         /// </param>
         /// <param name="sipDetails">
         /// SIP details for the call, if applicable.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="callId">
+        /// Included only in responses
+        /// </param>
+        /// <param name="created">
+        /// Included only in responses
+        /// </param>
+        /// <param name="billingStatus">
+        /// Included only in responses
+        /// </param>
+        /// <param name="initialOutputMedium">
+        /// The medium used initially by the agent. May later be changed by the client.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="agent">
+        /// The agent used for this call.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -473,11 +473,6 @@ namespace Ultravox
             global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!,
             global::Ultravox.AgentBasic agent = default!)
         {
-            this.FirstSpeakerSettings = firstSpeakerSettings ?? throw new global::System.ArgumentNullException(nameof(firstSpeakerSettings));
-            this.ExperimentalSettings = experimentalSettings ?? throw new global::System.ArgumentNullException(nameof(experimentalSettings));
-            this.Metadata = metadata ?? throw new global::System.ArgumentNullException(nameof(metadata));
-            this.InitialState = initialState ?? throw new global::System.ArgumentNullException(nameof(initialState));
-            this.RequestContext = requestContext ?? throw new global::System.ArgumentNullException(nameof(requestContext));
             this.CallId = callId;
             this.ClientVersion = clientVersion;
             this.Created = created;
@@ -488,6 +483,7 @@ namespace Ultravox
             this.BilledSideInputTokens = billedSideInputTokens;
             this.BilledSideOutputTokens = billedSideOutputTokens;
             this.BillingStatus = billingStatus;
+            this.FirstSpeakerSettings = firstSpeakerSettings ?? throw new global::System.ArgumentNullException(nameof(firstSpeakerSettings));
             this.InactivityMessages = inactivityMessages;
             this.InitialOutputMedium = initialOutputMedium;
             this.JoinTimeout = joinTimeout;
@@ -509,6 +505,10 @@ namespace Ultravox
             this.Summary = summary;
             this.Agent = agent;
             this.AgentId = agentId;
+            this.ExperimentalSettings = experimentalSettings ?? throw new global::System.ArgumentNullException(nameof(experimentalSettings));
+            this.Metadata = metadata ?? throw new global::System.ArgumentNullException(nameof(metadata));
+            this.InitialState = initialState ?? throw new global::System.ArgumentNullException(nameof(initialState));
+            this.RequestContext = requestContext ?? throw new global::System.ArgumentNullException(nameof(requestContext));
             this.DataConnectionConfig = dataConnectionConfig;
             this.Callbacks = callbacks;
             this.SipDetails = sipDetails;

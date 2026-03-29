@@ -32,10 +32,10 @@ namespace Ultravox.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="SetOutputMediumPayload" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="medium">
         /// Output medium: voice or text.
         /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -43,8 +43,8 @@ namespace Ultravox.Realtime
             global::Ultravox.Realtime.SetOutputMediumPayloadMedium medium,
             global::Ultravox.Realtime.SetOutputMediumPayloadType type)
         {
-            this.Medium = medium;
             this.Type = type;
+            this.Medium = medium;
         }
 
         /// <summary>
