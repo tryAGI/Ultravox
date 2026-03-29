@@ -125,23 +125,6 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="Account" /> class.
         /// </summary>
-        /// <param name="accountId">
-        /// Included only in responses
-        /// </param>
-        /// <param name="name">
-        /// Included only in responses
-        /// </param>
-        /// <param name="billingUrl">
-        /// Included only in responses
-        /// </param>
-        /// <param name="freeTimeUsed">
-        /// How much free time has been used by previous (or ongoing) calls.<br/>
-        /// Included only in responses
-        /// </param>
-        /// <param name="freeTimeRemaining">
-        /// How much free call time this account has remaining. (This could increase if an existing call ends without using its maximum duration or an unjoined call times out.)<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="hasActiveSubscription">
         /// Whether the account has an active subscription.
         /// </param>
@@ -165,10 +148,6 @@ namespace Ultravox
         /// When this account's subscription renews, if applicable.<br/>
         /// Included only in responses
         /// </param>
-        /// <param name="activeCalls">
-        /// The number of active calls for this account.<br/>
-        /// Included only in responses
-        /// </param>
         /// <param name="allowedConcurrentCalls">
         /// The maximum number of concurrent calls allowed for this account.<br/>
         /// Included only in responses
@@ -179,6 +158,27 @@ namespace Ultravox
         /// </param>
         /// <param name="allowedCorpora">
         /// The maximum number of corpora allowed for this account.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="accountId">
+        /// Included only in responses
+        /// </param>
+        /// <param name="name">
+        /// Included only in responses
+        /// </param>
+        /// <param name="billingUrl">
+        /// Included only in responses
+        /// </param>
+        /// <param name="freeTimeUsed">
+        /// How much free time has been used by previous (or ongoing) calls.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="freeTimeRemaining">
+        /// How much free call time this account has remaining. (This could increase if an existing call ends without using its maximum duration or an unjoined call times out.)<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="activeCalls">
+        /// The number of active calls for this account.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -201,12 +201,12 @@ namespace Ultravox
             string freeTimeRemaining = default!,
             int activeCalls = default!)
         {
-            this.HasActiveSubscription = hasActiveSubscription;
             this.AccountId = accountId;
             this.Name = name;
             this.BillingUrl = billingUrl;
             this.FreeTimeUsed = freeTimeUsed;
             this.FreeTimeRemaining = freeTimeRemaining;
+            this.HasActiveSubscription = hasActiveSubscription;
             this.SubscriptionTier = subscriptionTier;
             this.SubscriptionCadence = subscriptionCadence;
             this.SubscriptionExpiration = subscriptionExpiration;

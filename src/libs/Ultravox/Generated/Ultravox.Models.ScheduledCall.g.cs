@@ -68,12 +68,6 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="ScheduledCall" /> class.
         /// </summary>
-        /// <param name="status">
-        /// Included only in responses
-        /// </param>
-        /// <param name="batchId">
-        /// Included only in responses
-        /// </param>
         /// <param name="callId">
         /// Included only in responses
         /// </param>
@@ -90,6 +84,12 @@ namespace Ultravox
         /// The context used to render the agent's template.
         /// </param>
         /// <param name="experimentalSettings"></param>
+        /// <param name="status">
+        /// Included only in responses
+        /// </param>
+        /// <param name="batchId">
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

@@ -31,10 +31,10 @@ namespace Ultravox.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="CallStartedPayload" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="callId">
         /// Unique call identifier.
         /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -42,8 +42,8 @@ namespace Ultravox.Realtime
             string callId,
             global::Ultravox.Realtime.CallStartedPayloadType type)
         {
-            this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
             this.Type = type;
+            this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
         }
 
         /// <summary>

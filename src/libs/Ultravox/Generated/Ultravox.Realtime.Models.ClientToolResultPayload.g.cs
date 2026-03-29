@@ -64,10 +64,10 @@ namespace Ultravox.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="ClientToolResultPayload" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="invocationId">
         /// ID matching the tool invocation request.
         /// </param>
+        /// <param name="type"></param>
         /// <param name="result">
         /// Tool execution result.
         /// </param>
@@ -95,8 +95,8 @@ namespace Ultravox.Realtime
             global::Ultravox.Realtime.ClientToolResultPayloadErrorType? errorType,
             string? errorMessage)
         {
-            this.InvocationId = invocationId ?? throw new global::System.ArgumentNullException(nameof(invocationId));
             this.Type = type;
+            this.InvocationId = invocationId ?? throw new global::System.ArgumentNullException(nameof(invocationId));
             this.Result = result;
             this.ResponseType = responseType;
             this.AgentReaction = agentReaction;

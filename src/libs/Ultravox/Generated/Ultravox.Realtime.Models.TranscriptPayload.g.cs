@@ -65,10 +65,16 @@ namespace Ultravox.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="TranscriptPayload" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="role">
         /// Speaker role.
         /// </param>
+        /// <param name="final">
+        /// Whether more updates are expected for this utterance.
+        /// </param>
+        /// <param name="ordinal">
+        /// Message ordering index.
+        /// </param>
+        /// <param name="type"></param>
         /// <param name="medium">
         /// Medium of the transcript.
         /// </param>
@@ -77,12 +83,6 @@ namespace Ultravox.Realtime
         /// </param>
         /// <param name="delta">
         /// Incremental transcript text (mutually exclusive with text).
-        /// </param>
-        /// <param name="final">
-        /// Whether more updates are expected for this utterance.
-        /// </param>
-        /// <param name="ordinal">
-        /// Message ordering index.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -96,13 +96,13 @@ namespace Ultravox.Realtime
             string? text,
             string? delta)
         {
-            this.Role = role;
-            this.Final = final;
-            this.Ordinal = ordinal;
             this.Type = type;
+            this.Role = role;
             this.Medium = medium;
             this.Text = text;
             this.Delta = delta;
+            this.Final = final;
+            this.Ordinal = ordinal;
         }
 
         /// <summary>

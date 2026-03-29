@@ -31,10 +31,10 @@ namespace Ultravox.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="PongPayload" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="timestamp">
         /// Echoed timestamp from the ping.
         /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -42,8 +42,8 @@ namespace Ultravox.Realtime
             double timestamp,
             global::Ultravox.Realtime.PongPayloadType type)
         {
-            this.Timestamp = timestamp;
             this.Type = type;
+            this.Timestamp = timestamp;
         }
 
         /// <summary>

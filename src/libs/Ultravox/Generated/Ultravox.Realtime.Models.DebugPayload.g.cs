@@ -31,10 +31,10 @@ namespace Ultravox.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="DebugPayload" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="message">
         /// Debug message content.
         /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -42,8 +42,8 @@ namespace Ultravox.Realtime
             string message,
             global::Ultravox.Realtime.DebugPayloadType type)
         {
-            this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
             this.Type = type;
+            this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
         }
 
         /// <summary>

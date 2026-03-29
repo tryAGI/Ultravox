@@ -32,10 +32,10 @@ namespace Ultravox.Realtime
         /// <summary>
         /// Initializes a new instance of the <see cref="StatePayload" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="state">
         /// Current agent state.
         /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -43,8 +43,8 @@ namespace Ultravox.Realtime
             global::Ultravox.Realtime.StatePayloadState state,
             global::Ultravox.Realtime.StatePayloadType type)
         {
-            this.State = state;
             this.Type = type;
+            this.State = state;
         }
 
         /// <summary>

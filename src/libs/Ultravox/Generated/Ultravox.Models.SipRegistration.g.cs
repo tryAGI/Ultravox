@@ -71,21 +71,15 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="SipRegistration" /> class.
         /// </summary>
-        /// <param name="registrationId">
-        /// Included only in responses
-        /// </param>
-        /// <param name="created">
-        /// Included only in responses
-        /// </param>
         /// <param name="username">
         /// The SIP username to register as.
+        /// </param>
+        /// <param name="proxy">
+        /// The SIP server to register with.
         /// </param>
         /// <param name="password">
         /// The SIP password for username.<br/>
         /// Included only in requests
-        /// </param>
-        /// <param name="proxy">
-        /// The SIP server to register with.
         /// </param>
         /// <param name="outboundProxy">
         /// A proxy used to reach your SIP server for registration. Most often unset, but may be used if you need to register as `alice@trunk.com` using `proxy.trunk.com` for example.
@@ -95,6 +89,12 @@ namespace Ultravox
         /// </param>
         /// <param name="successful">
         /// Whether the registration was successfully created and is now active. May be null if status is not available yet.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="registrationId">
+        /// Included only in responses
+        /// </param>
+        /// <param name="created">
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER
@@ -110,11 +110,11 @@ namespace Ultravox
             string registrationId = default!,
             global::System.DateTime created = default!)
         {
-            this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
-            this.Proxy = proxy ?? throw new global::System.ArgumentNullException(nameof(proxy));
             this.RegistrationId = registrationId;
             this.Created = created;
+            this.Username = username ?? throw new global::System.ArgumentNullException(nameof(username));
             this.Password = password;
+            this.Proxy = proxy ?? throw new global::System.ArgumentNullException(nameof(proxy));
             this.OutboundProxy = outboundProxy;
             this.AuthUser = authUser;
             this.Successful = successful;

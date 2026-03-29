@@ -89,12 +89,6 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="ScheduledCallBatch" /> class.
         /// </summary>
-        /// <param name="batchId">
-        /// Included only in responses
-        /// </param>
-        /// <param name="created">
-        /// Included only in responses
-        /// </param>
         /// <param name="windowStart">
         /// The start of the time window during which calls can be made.
         /// </param>
@@ -108,6 +102,18 @@ namespace Ultravox
         /// The signing secret for requests made to the webhookUrl. This is used to verify that the request came from Ultravox. If unset, an appropriate secret will be chosen for you (but you'll still need to make your endpoint aware of it to verify requests).
         /// </param>
         /// <param name="paused"></param>
+        /// <param name="endedAt">
+        /// Included only in responses
+        /// </param>
+        /// <param name="calls">
+        /// Included only in requests
+        /// </param>
+        /// <param name="batchId">
+        /// Included only in responses
+        /// </param>
+        /// <param name="created">
+        /// Included only in responses
+        /// </param>
         /// <param name="totalCount">
         /// The total number of calls in this batch.<br/>
         /// Included only in responses
@@ -115,12 +121,6 @@ namespace Ultravox
         /// <param name="completedCount">
         /// The number of calls in this batch that have been completed (created or error).<br/>
         /// Included only in responses
-        /// </param>
-        /// <param name="endedAt">
-        /// Included only in responses
-        /// </param>
-        /// <param name="calls">
-        /// Included only in requests
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

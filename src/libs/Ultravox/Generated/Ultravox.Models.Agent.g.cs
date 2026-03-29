@@ -56,17 +56,17 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="Agent" /> class.
         /// </summary>
-        /// <param name="agentId">
-        /// Included only in responses
-        /// </param>
         /// <param name="publishedRevisionId">
         /// Included only in responses
         /// </param>
         /// <param name="name"></param>
+        /// <param name="callTemplate"></param>
+        /// <param name="agentId">
+        /// Included only in responses
+        /// </param>
         /// <param name="created">
         /// Included only in responses
         /// </param>
-        /// <param name="callTemplate"></param>
         /// <param name="statistics">
         /// Included only in responses
         /// </param>

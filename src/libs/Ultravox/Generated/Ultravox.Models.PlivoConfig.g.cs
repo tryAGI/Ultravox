@@ -58,6 +58,9 @@ namespace Ultravox
         /// <summary>
         /// Initializes a new instance of the <see cref="PlivoConfig" /> class.
         /// </summary>
+        /// <param name="authId">
+        /// Your Plivo Auth ID.
+        /// </param>
         /// <param name="callCreationAllowedAgentIds">
         /// List of agents for whom calls may be directly created by this telephony provider to facilitate incoming calls. May not be set if callCreationAllowAllAgents is true.
         /// </param>
@@ -67,9 +70,6 @@ namespace Ultravox
         /// </param>
         /// <param name="requestContextMapping">
         /// Maps (dot separated) request fields to (dot separated) context fields for incoming call creation.
-        /// </param>
-        /// <param name="authId">
-        /// Your Plivo Auth ID.
         /// </param>
         /// <param name="authToken">
         /// Your Plivo Auth Token.<br/>
@@ -90,10 +90,10 @@ namespace Ultravox
             string? authToken,
             global::Ultravox.KeyPrefix authTokenPrefix = default!)
         {
-            this.AuthId = authId ?? throw new global::System.ArgumentNullException(nameof(authId));
             this.CallCreationAllowedAgentIds = callCreationAllowedAgentIds;
             this.CallCreationAllowAllAgents = callCreationAllowAllAgents;
             this.RequestContextMapping = requestContextMapping;
+            this.AuthId = authId ?? throw new global::System.ArgumentNullException(nameof(authId));
             this.AuthToken = authToken;
             this.AuthTokenPrefix = authTokenPrefix;
         }
