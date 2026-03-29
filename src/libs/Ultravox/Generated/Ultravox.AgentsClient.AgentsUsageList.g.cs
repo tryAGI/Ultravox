@@ -90,7 +90,7 @@ namespace Ultravox
                 path: "/api/agents/usage",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
-                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString(), delimiter: ",", explode: true)
+                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString()!, delimiter: ",", explode: true)
                 .AddOptionalParameter("durationMax", durationMax)
                 .AddOptionalParameter("durationMin", durationMin)
                 .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-ddTHH:mm:ssZ"))

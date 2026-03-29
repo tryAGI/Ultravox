@@ -105,7 +105,7 @@ namespace Ultravox
                 path: "/api/calls",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
-                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString(), delimiter: ",", explode: true)
+                .AddOptionalParameter("agentIds", agentIds, selector: static x => x.ToString()!, delimiter: ",", explode: true)
                 .AddOptionalParameter("cursor", cursor)
                 .AddOptionalParameter("durationMax", durationMax)
                 .AddOptionalParameter("durationMin", durationMin)
