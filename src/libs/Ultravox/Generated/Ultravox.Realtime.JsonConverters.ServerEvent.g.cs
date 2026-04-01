@@ -104,43 +104,43 @@ namespace Ultravox.Realtime.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Ultravox.Realtime.PongPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Ultravox.Realtime.PongPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Ultravox.Realtime.PongPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Pong, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Pong!, typeInfo);
             }
             else if (value.IsState)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Ultravox.Realtime.StatePayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Ultravox.Realtime.StatePayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Ultravox.Realtime.StatePayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.State, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.State!, typeInfo);
             }
             else if (value.IsTranscript)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Ultravox.Realtime.TranscriptPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Ultravox.Realtime.TranscriptPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Ultravox.Realtime.TranscriptPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Transcript, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Transcript!, typeInfo);
             }
             else if (value.IsClientToolInvocation)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Ultravox.Realtime.ClientToolInvocationPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Ultravox.Realtime.ClientToolInvocationPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Ultravox.Realtime.ClientToolInvocationPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ClientToolInvocation, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ClientToolInvocation!, typeInfo);
             }
             else if (value.IsPlaybackClearBuffer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Ultravox.Realtime.PlaybackClearBufferPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Ultravox.Realtime.PlaybackClearBufferPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Ultravox.Realtime.PlaybackClearBufferPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PlaybackClearBuffer, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PlaybackClearBuffer!, typeInfo);
             }
             else if (value.IsCallStarted)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Ultravox.Realtime.CallStartedPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Ultravox.Realtime.CallStartedPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Ultravox.Realtime.CallStartedPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CallStarted, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CallStarted!, typeInfo);
             }
             else if (value.IsDebug)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Ultravox.Realtime.DebugPayload), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Ultravox.Realtime.DebugPayload?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Ultravox.Realtime.DebugPayload).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Debug, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Debug!, typeInfo);
             }
         }
     }
