@@ -5,6 +5,25 @@ namespace Ultravox
 {
     public partial class CallsClient
     {
+
+
+        private static readonly global::Ultravox.EndPointSecurityRequirement s_CallsEventsListSecurityRequirement0 =
+            new global::Ultravox.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Ultravox.EndPointAuthorizationRequirement[]
+                {                    new global::Ultravox.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "X-API-Key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_CallsEventsListSecurityRequirements =
+            new global::Ultravox.EndPointSecurityRequirement[]
+            {                s_CallsEventsListSecurityRequirement0,
+            };
         partial void PrepareCallsEventsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid callId,
@@ -59,6 +78,12 @@ namespace Ultravox
                 pageSize: ref pageSize,
                 type: ref type);
 
+
+            var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CallsEventsListSecurityRequirements,
+                operationName: "CallsEventsListAsync");
+
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/calls/{callId}/events",
                 baseUri: HttpClient.BaseAddress); 
@@ -67,7 +92,7 @@ namespace Ultravox
                 .AddOptionalParameter("minimum_severity", minimumSeverity?.ToValueString())
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                 .AddOptionalParameter("type", type) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -77,7 +102,7 @@ namespace Ultravox
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

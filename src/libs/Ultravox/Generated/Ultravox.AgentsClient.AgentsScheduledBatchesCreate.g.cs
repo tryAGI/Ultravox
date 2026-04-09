@@ -5,6 +5,25 @@ namespace Ultravox
 {
     public partial class AgentsClient
     {
+
+
+        private static readonly global::Ultravox.EndPointSecurityRequirement s_AgentsScheduledBatchesCreateSecurityRequirement0 =
+            new global::Ultravox.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Ultravox.EndPointAuthorizationRequirement[]
+                {                    new global::Ultravox.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "X-API-Key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_AgentsScheduledBatchesCreateSecurityRequirements =
+            new global::Ultravox.EndPointSecurityRequirement[]
+            {                s_AgentsScheduledBatchesCreateSecurityRequirement0,
+            };
         partial void PrepareAgentsScheduledBatchesCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid agentId,
@@ -45,9 +64,15 @@ namespace Ultravox
                 agentId: ref agentId,
                 request: request);
 
+
+            var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_AgentsScheduledBatchesCreateSecurityRequirements,
+                operationName: "AgentsScheduledBatchesCreateAsync");
+
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/agents/{agentId}/scheduled_batches",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -57,7 +82,7 @@ namespace Ultravox
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

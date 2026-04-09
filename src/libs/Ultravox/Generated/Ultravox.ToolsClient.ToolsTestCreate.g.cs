@@ -5,6 +5,25 @@ namespace Ultravox
 {
     public partial class ToolsClient
     {
+
+
+        private static readonly global::Ultravox.EndPointSecurityRequirement s_ToolsTestCreateSecurityRequirement0 =
+            new global::Ultravox.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Ultravox.EndPointAuthorizationRequirement[]
+                {                    new global::Ultravox.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "X-API-Key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_ToolsTestCreateSecurityRequirements =
+            new global::Ultravox.EndPointSecurityRequirement[]
+            {                s_ToolsTestCreateSecurityRequirement0,
+            };
         partial void PrepareToolsTestCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid toolId);
@@ -37,9 +56,15 @@ namespace Ultravox
                 httpClient: HttpClient,
                 toolId: ref toolId);
 
+
+            var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ToolsTestCreateSecurityRequirements,
+                operationName: "ToolsTestCreateAsync");
+
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: $"/api/tools/{toolId}/test",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -49,7 +74,7 @@ namespace Ultravox
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

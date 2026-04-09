@@ -5,6 +5,25 @@ namespace Ultravox
 {
     public partial class ToolsClient
     {
+
+
+        private static readonly global::Ultravox.EndPointSecurityRequirement s_ToolsListSecurityRequirement0 =
+            new global::Ultravox.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Ultravox.EndPointAuthorizationRequirement[]
+                {                    new global::Ultravox.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "X-API-Key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_ToolsListSecurityRequirements =
+            new global::Ultravox.EndPointSecurityRequirement[]
+            {                s_ToolsListSecurityRequirement0,
+            };
         partial void PrepareToolsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
@@ -59,6 +78,12 @@ namespace Ultravox
                 search: ref search,
                 sortOrder: ref sortOrder);
 
+
+            var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ToolsListSecurityRequirements,
+                operationName: "ToolsListAsync");
+
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/tools",
                 baseUri: HttpClient.BaseAddress); 
@@ -68,7 +93,7 @@ namespace Ultravox
                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                 .AddOptionalParameter("search", search)
                 .AddOptionalParameter("sortOrder", sortOrder?.ToValueString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -78,7 +103,7 @@ namespace Ultravox
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
