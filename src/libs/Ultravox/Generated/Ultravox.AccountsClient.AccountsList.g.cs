@@ -5,6 +5,25 @@ namespace Ultravox
 {
     public partial class AccountsClient
     {
+
+
+        private static readonly global::Ultravox.EndPointSecurityRequirement s_AccountsListSecurityRequirement0 =
+            new global::Ultravox.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Ultravox.EndPointAuthorizationRequirement[]
+                {                    new global::Ultravox.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "X-API-Key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_AccountsListSecurityRequirements =
+            new global::Ultravox.EndPointSecurityRequirement[]
+            {                s_AccountsListSecurityRequirement0,
+            };
         partial void PrepareAccountsListArguments(
             global::System.Net.Http.HttpClient httpClient);
         partial void PrepareAccountsListRequest(
@@ -32,9 +51,15 @@ namespace Ultravox
             PrepareAccountsListArguments(
                 httpClient: HttpClient);
 
+
+            var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_AccountsListSecurityRequirements,
+                operationName: "AccountsListAsync");
+
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/accounts",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -44,7 +69,7 @@ namespace Ultravox
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

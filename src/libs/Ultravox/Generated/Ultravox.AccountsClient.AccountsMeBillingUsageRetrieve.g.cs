@@ -5,6 +5,25 @@ namespace Ultravox
 {
     public partial class AccountsClient
     {
+
+
+        private static readonly global::Ultravox.EndPointSecurityRequirement s_AccountsMeBillingUsageRetrieveSecurityRequirement0 =
+            new global::Ultravox.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Ultravox.EndPointAuthorizationRequirement[]
+                {                    new global::Ultravox.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "X-API-Key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_AccountsMeBillingUsageRetrieveSecurityRequirements =
+            new global::Ultravox.EndPointSecurityRequirement[]
+            {                s_AccountsMeBillingUsageRetrieveSecurityRequirement0,
+            };
         partial void PrepareAccountsMeBillingUsageRetrieveArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.DateTime? fromDate,
@@ -42,13 +61,19 @@ namespace Ultravox
                 fromDate: ref fromDate,
                 toDate: ref toDate);
 
+
+            var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_AccountsMeBillingUsageRetrieveSecurityRequirements,
+                operationName: "AccountsMeBillingUsageRetrieveAsync");
+
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/accounts/me/billing/usage",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("fromDate", fromDate?.ToString("yyyy-MM-dd"))
                 .AddOptionalParameter("toDate", toDate?.ToString("yyyy-MM-dd")) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -58,7 +83,7 @@ namespace Ultravox
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

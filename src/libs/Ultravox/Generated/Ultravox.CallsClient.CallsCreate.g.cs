@@ -5,6 +5,25 @@ namespace Ultravox
 {
     public partial class CallsClient
     {
+
+
+        private static readonly global::Ultravox.EndPointSecurityRequirement s_CallsCreateSecurityRequirement0 =
+            new global::Ultravox.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Ultravox.EndPointAuthorizationRequirement[]
+                {                    new global::Ultravox.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "X-API-Key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_CallsCreateSecurityRequirements =
+            new global::Ultravox.EndPointSecurityRequirement[]
+            {                s_CallsCreateSecurityRequirement0,
+            };
         partial void PrepareCallsCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref bool? enableGreetingPrompt,
@@ -52,13 +71,19 @@ namespace Ultravox
                 priorCallId: ref priorCallId,
                 request: request);
 
+
+            var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_CallsCreateSecurityRequirements,
+                operationName: "CallsCreateAsync");
+
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/calls",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("enableGreetingPrompt", enableGreetingPrompt?.ToString().ToLowerInvariant())
                 .AddOptionalParameter("priorCallId", priorCallId?.ToString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -68,7 +93,7 @@ namespace Ultravox
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

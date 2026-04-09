@@ -5,6 +5,25 @@ namespace Ultravox
 {
     public partial class TelephonyConfigsClient
     {
+
+
+        private static readonly global::Ultravox.EndPointSecurityRequirement s_TelephonyConfigsPlivoDestroySecurityRequirement0 =
+            new global::Ultravox.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Ultravox.EndPointAuthorizationRequirement[]
+                {                    new global::Ultravox.EndPointAuthorizationRequirement
+                    {
+                        Type = "ApiKey",
+                        Location = "Header",
+                        Name = "X-API-Key",
+                        FriendlyName = "ApiKeyInHeader",
+                    },
+                },
+            };
+        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_TelephonyConfigsPlivoDestroySecurityRequirements =
+            new global::Ultravox.EndPointSecurityRequirement[]
+            {                s_TelephonyConfigsPlivoDestroySecurityRequirement0,
+            };
         partial void PrepareTelephonyConfigsPlivoDestroyArguments(
             global::System.Net.Http.HttpClient httpClient);
         partial void PrepareTelephonyConfigsPlivoDestroyRequest(
@@ -27,9 +46,15 @@ namespace Ultravox
             PrepareTelephonyConfigsPlivoDestroyArguments(
                 httpClient: HttpClient);
 
+
+            var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_TelephonyConfigsPlivoDestroySecurityRequirements,
+                operationName: "TelephonyConfigsPlivoDestroyAsync");
+
             var __pathBuilder = new global::Ultravox.PathBuilder(
                 path: "/api/telephony_configs/plivo",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Delete,
@@ -39,7 +64,7 @@ namespace Ultravox
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

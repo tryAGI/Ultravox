@@ -6,6 +6,7 @@ namespace Ultravox
     public sealed partial class UltravoxClient
     {
         /// <inheritdoc cref="UltravoxClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Ultravox.EndPointAuthorization}?, bool)"/>
+
         public UltravoxClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,
