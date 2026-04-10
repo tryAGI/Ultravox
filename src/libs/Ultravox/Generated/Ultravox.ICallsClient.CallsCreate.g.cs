@@ -12,6 +12,7 @@ namespace Ultravox
         /// </param>
         /// <param name="priorCallId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
@@ -19,6 +20,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequest request,
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
@@ -125,6 +127,7 @@ namespace Ultravox
         ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
         ///  Write-only: this field is never included in API responses.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
@@ -157,6 +160,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides = default,
             global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? retentionPolicy = default,
             global::System.Collections.Generic.IList<string>? sharedSecrets = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

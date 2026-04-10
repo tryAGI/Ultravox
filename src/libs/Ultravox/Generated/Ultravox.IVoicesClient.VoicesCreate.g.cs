@@ -8,6 +8,7 @@ namespace Ultravox
         /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         /// <remarks>
@@ -22,6 +23,7 @@ namespace Ultravox
         global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesCreateAsync(
 
             global::Ultravox.VoicesCreateRequest request,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a new cloned voice from an audio sample. The created voice will be private to your account.
@@ -45,6 +47,7 @@ namespace Ultravox
         /// Default Value: en<br/>
         /// Example: en-US
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Voice> VoicesCreateAsync(
@@ -53,6 +56,7 @@ namespace Ultravox
             string name,
             string? description = default,
             string? language = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

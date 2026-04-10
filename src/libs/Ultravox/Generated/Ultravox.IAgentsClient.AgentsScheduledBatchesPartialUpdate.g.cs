@@ -10,6 +10,7 @@ namespace Ultravox
         /// <param name="agentId"></param>
         /// <param name="batchId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.ScheduledCallBatch> AgentsScheduledBatchesPartialUpdateAsync(
@@ -17,6 +18,7 @@ namespace Ultravox
             global::System.Guid batchId,
 
             global::Ultravox.PatchedScheduledCallBatch request,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
@@ -39,6 +41,7 @@ namespace Ultravox
         /// <param name="calls">
         /// Included only in requests
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.ScheduledCallBatch> AgentsScheduledBatchesPartialUpdateAsync(
@@ -50,6 +53,7 @@ namespace Ultravox
             string? webhookUrl = default,
             string? webhookSecret = default,
             bool? paused = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

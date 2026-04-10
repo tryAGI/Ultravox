@@ -8,11 +8,13 @@ namespace Ultravox
         /// 
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.SipConfig> SipPartialUpdateAsync(
 
             global::Ultravox.PatchedSipConfig request,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
@@ -27,12 +29,14 @@ namespace Ultravox
         /// <param name="allowedAgents">
         /// Calls must match a pattern for one of these agents (or the global agent pattern if allowAllAgents is true) to be accepted.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.SipConfig> SipPartialUpdateAsync(
             global::System.Collections.Generic.IList<string>? allowedCidrRanges = default,
             bool? allowAllAgents = default,
             global::System.Collections.Generic.IList<global::Ultravox.AgentAllowance>? allowedAgents = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

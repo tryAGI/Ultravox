@@ -8,11 +8,13 @@ namespace Ultravox
         /// 
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.TwilioConfig> TelephonyConfigsTwilioPartialUpdateAsync(
 
             global::Ultravox.PatchedTwilioConfig request,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
@@ -34,6 +36,7 @@ namespace Ultravox
         /// Your Twilio Auth Token.<br/>
         /// Included only in requests
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.TwilioConfig> TelephonyConfigsTwilioPartialUpdateAsync(
@@ -42,6 +45,7 @@ namespace Ultravox
             bool? callCreationAllowAllAgents = default,
             global::System.Collections.Generic.Dictionary<string, string>? requestContextMapping = default,
             string? accountSid = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
