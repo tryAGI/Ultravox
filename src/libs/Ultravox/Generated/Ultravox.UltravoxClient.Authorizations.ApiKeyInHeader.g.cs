@@ -26,6 +26,7 @@ namespace Ultravox
             Authorizations.Add(new global::Ultravox.EndPointAuthorization
             {
                 Type = "ApiKey",
+                SchemeId = "ApikeyXApiKey",
                 Location = "Header",
                 Name = "X-API-Key",
                 Value = apiKey,

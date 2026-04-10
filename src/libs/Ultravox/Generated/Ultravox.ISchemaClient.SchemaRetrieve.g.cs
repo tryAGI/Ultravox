@@ -11,11 +11,13 @@ namespace Ultravox
         /// </summary>
         /// <param name="format"></param>
         /// <param name="lang"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<string> SchemaRetrieveAsync(
             global::Ultravox.SchemaRetrieveFormat? format = default,
             global::Ultravox.SchemaRetrieveLang? lang = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

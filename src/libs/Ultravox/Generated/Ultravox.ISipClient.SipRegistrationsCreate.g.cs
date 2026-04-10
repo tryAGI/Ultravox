@@ -8,11 +8,13 @@ namespace Ultravox
         /// 
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.SipRegistration> SipRegistrationsCreateAsync(
 
             global::Ultravox.SipRegistration request,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
@@ -33,6 +35,7 @@ namespace Ultravox
         /// <param name="authUser">
         /// The authentication username, if different from the SIP username. Most often unset.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.SipRegistration> SipRegistrationsCreateAsync(
@@ -41,6 +44,7 @@ namespace Ultravox
             string proxy,
             string? outboundProxy = default,
             string? authUser = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -9,12 +9,14 @@ namespace Ultravox
         /// </summary>
         /// <param name="webhookId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Webhook> WebhooksUpdateAsync(
             global::System.Guid webhookId,
 
             global::Ultravox.Webhook request,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
@@ -26,6 +28,7 @@ namespace Ultravox
         /// <param name="url"></param>
         /// <param name="secrets"></param>
         /// <param name="events"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.Webhook> WebhooksUpdateAsync(
@@ -34,6 +37,7 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.EventsEnum> events,
             global::System.Guid? agentId = default,
             global::System.Collections.Generic.IList<string>? secrets = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

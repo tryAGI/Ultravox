@@ -10,6 +10,7 @@ namespace Ultravox
         /// <param name="corpusId"></param>
         /// <param name="sourceId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.UltravoxV1CorpusSource> CorporaSourcesPartialUpdateAsync(
@@ -17,6 +18,7 @@ namespace Ultravox
             global::System.Guid sourceId,
 
             global::Ultravox.UltravoxV1CorpusSource request,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// 
@@ -56,6 +58,7 @@ namespace Ultravox
         ///  for each document. When a similar query is issued, the document will be<br/>
         ///  returned in its entirety.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.UltravoxV1CorpusSource> CorporaSourcesPartialUpdateAsync(
@@ -71,6 +74,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1CrawlSpec? crawl = default,
             global::Ultravox.UltravoxV1UploadSpec? upload = default,
             global::Ultravox.UltravoxV1AdvancedSpec? advanced = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
