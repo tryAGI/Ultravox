@@ -137,5 +137,8 @@ namespace Ultravox.Realtime
             global::System.Net.WebSockets.ClientWebSocket client,
             global::System.Net.Http.HttpResponseMessage response,
             ref string content);
+        partial void OnReceiveException(
+            global::System.Exception exception,
+            ref bool rethrow);
     }
 }
