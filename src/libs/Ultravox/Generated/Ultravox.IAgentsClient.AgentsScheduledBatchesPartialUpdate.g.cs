@@ -31,6 +31,9 @@ namespace Ultravox
         /// <param name="windowEnd">
         /// The end of the time window during which calls can be made.
         /// </param>
+        /// <param name="throttle">
+        /// The name or ID of a call throttle. If specified, calls in this batch will be subject to the rate limits defined by the throttle.
+        /// </param>
         /// <param name="webhookUrl">
         /// The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing medium. Required if any call has a non-outgoing medium and not allowed otherwise.
         /// </param>
@@ -50,6 +53,7 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.ScheduledCall> calls,
             global::System.DateTime? windowStart = default,
             global::System.DateTime? windowEnd = default,
+            string? throttle = default,
             string? webhookUrl = default,
             string? webhookSecret = default,
             bool? paused = default,

@@ -33,6 +33,12 @@ namespace Ultravox
         public global::System.DateTime? WindowEnd { get; set; }
 
         /// <summary>
+        /// The name or ID of a call throttle. If specified, calls in this batch will be subject to the rate limits defined by the throttle.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("throttle")]
+        public string? Throttle { get; set; }
+
+        /// <summary>
         /// The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing medium. Required if any call has a non-outgoing medium and not allowed otherwise.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhookUrl")]
@@ -97,6 +103,9 @@ namespace Ultravox
         /// <param name="windowEnd">
         /// The end of the time window during which calls can be made.
         /// </param>
+        /// <param name="throttle">
+        /// The name or ID of a call throttle. If specified, calls in this batch will be subject to the rate limits defined by the throttle.
+        /// </param>
         /// <param name="webhookUrl">
         /// The URL to which a request will be made (synchronously) when a call in the batch is created, excluding those with an outgoing medium. Required if any call has a non-outgoing medium and not allowed otherwise.
         /// </param>
@@ -126,6 +135,7 @@ namespace Ultravox
             global::System.DateTime? created,
             global::System.DateTime? windowStart,
             global::System.DateTime? windowEnd,
+            string? throttle,
             string? webhookUrl,
             string? webhookSecret,
             bool? paused,
@@ -138,6 +148,7 @@ namespace Ultravox
             this.Created = created;
             this.WindowStart = windowStart;
             this.WindowEnd = windowEnd;
+            this.Throttle = throttle;
             this.WebhookUrl = webhookUrl;
             this.WebhookSecret = webhookSecret;
             this.Paused = paused;
