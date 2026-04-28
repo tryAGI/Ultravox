@@ -29,12 +29,14 @@ namespace Ultravox
             global::System.Net.Http.HttpClient httpClient,
             ref bool? enableGreetingPrompt,
             ref global::System.Guid? priorCallId,
+            ref string? throttle,
             global::Ultravox.UltravoxV1StartCallRequest request);
         partial void PrepareCallsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             bool? enableGreetingPrompt,
             global::System.Guid? priorCallId,
+            string? throttle,
             global::Ultravox.UltravoxV1StartCallRequest request);
         partial void ProcessCallsCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -52,6 +54,7 @@ namespace Ultravox
         /// Default Value: true
         /// </param>
         /// <param name="priorCallId"></param>
+        /// <param name="throttle"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -61,6 +64,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequest request,
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
+            string? throttle = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -72,6 +76,7 @@ namespace Ultravox
                 httpClient: HttpClient,
                 enableGreetingPrompt: ref enableGreetingPrompt,
                 priorCallId: ref priorCallId,
+                throttle: ref throttle,
                 request: request);
 
 
@@ -101,7 +106,8 @@ namespace Ultravox
                                 baseUri: HttpClient.BaseAddress); 
                             __pathBuilder
                                 .AddOptionalParameter("enableGreetingPrompt", enableGreetingPrompt?.ToString().ToLowerInvariant())
-                                .AddOptionalParameter("priorCallId", priorCallId?.ToString()) 
+                                .AddOptionalParameter("priorCallId", priorCallId?.ToString())
+                                .AddOptionalParameter("throttle", throttle) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Ultravox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -151,6 +157,7 @@ namespace Ultravox
                     httpRequestMessage: __httpRequest,
                     enableGreetingPrompt: enableGreetingPrompt,
                     priorCallId: priorCallId,
+                    throttle: throttle,
                     request: request);
 
                 return __httpRequest;
@@ -411,6 +418,7 @@ namespace Ultravox
         /// Default Value: true
         /// </param>
         /// <param name="priorCallId"></param>
+        /// <param name="throttle"></param>
         /// <param name="systemPrompt">
         /// The system prompt provided to the model during generations.
         /// </param>
@@ -515,6 +523,7 @@ namespace Ultravox
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
+            string? throttle = default,
             string? systemPrompt = default,
             float? temperature = default,
             string? model = default,
@@ -579,6 +588,7 @@ namespace Ultravox
             return await CallsCreateAsync(
                 enableGreetingPrompt: enableGreetingPrompt,
                 priorCallId: priorCallId,
+                throttle: throttle,
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

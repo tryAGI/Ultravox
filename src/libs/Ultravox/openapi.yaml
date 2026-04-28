@@ -470,6 +470,14 @@ paths:
           type: string
           format: uuid
         required: true
+      - in: query
+        name: throttle
+        schema:
+          type: string
+          minLength: 1
+        description: The name or ID of a call throttle to apply to this call. If the
+          throttle's rate limits have been exceeded, the call will be rejected with
+          a 429 status.
       tags:
       - agents
       requestBody:
@@ -959,6 +967,146 @@ paths:
       responses:
         '204':
           description: No response body
+  /api/call_throttles:
+    get:
+      operationId: call_throttles_list
+      description: Lists call throttles for the current account.
+      parameters:
+      - name: cursor
+        required: false
+        in: query
+        description: The pagination cursor value.
+        schema:
+          type: string
+      - name: pageSize
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - call_throttles
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCallThrottleList'
+          description: ''
+    post:
+      operationId: call_throttles_create
+      description: Creates a new call throttle.
+      tags:
+      - call_throttles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CallThrottle'
+        required: true
+      security:
+      - apiKeyAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallThrottle'
+          description: ''
+  /api/call_throttles/{throttle_id}:
+    get:
+      operationId: call_throttles_retrieve
+      description: Gets a call throttle.
+      parameters:
+      - in: path
+        name: throttle_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - call_throttles
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallThrottle'
+          description: ''
+    put:
+      operationId: call_throttles_update
+      description: Updates a call throttle (full replacement).
+      parameters:
+      - in: path
+        name: throttle_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - call_throttles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CallThrottle'
+        required: true
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallThrottle'
+          description: ''
+    patch:
+      operationId: call_throttles_partial_update
+      description: Partially updates a call throttle.
+      parameters:
+      - in: path
+        name: throttle_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - call_throttles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCallThrottle'
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallThrottle'
+          description: ''
+    delete:
+      operationId: call_throttles_destroy
+      description: Deletes a call throttle.
+      parameters:
+      - in: path
+        name: throttle_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - call_throttles
+      security:
+      - apiKeyAuth: []
+      responses:
+        '204':
+          description: No response body
   /api/calls:
     get:
       operationId: calls_list
@@ -1081,6 +1229,14 @@ paths:
           body. The new call will also use the prior call's message history as its
           own initial_messages. (It's illegal to also set initial_messages in the
           body.)
+      - in: query
+        name: throttle
+        schema:
+          type: string
+          minLength: 1
+        description: The name or ID of a call throttle to apply to this call. If the
+          throttle's rate limits have been exceeded, the call will be rejected with
+          a 429 status.
       tags:
       - calls
       requestBody:
@@ -3958,6 +4114,45 @@ components:
       - errorCount
       - joinedCount
       - totalCount
+    CallThrottle:
+      type: object
+      properties:
+        throttleId:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 64
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallThrottleRule'
+      required:
+      - created
+      - name
+      - rules
+      - throttleId
+    CallThrottleRule:
+      type: object
+      properties:
+        maxCalls:
+          type: integer
+          maximum: 100
+          minimum: 1
+          description: Maximum number of calls allowed in the time window (max 100).
+        windowSeconds:
+          type: integer
+          maximum: 86400
+          minimum: 1
+          description: Duration of the sliding time window in seconds (max 86,400).
+      required:
+      - maxCalls
+      - windowSeconds
     CallTombstone:
       type: object
       properties:
@@ -4398,6 +4593,28 @@ components:
         total:
           type: integer
           example: 123
+    PaginatedCallThrottleList:
+      type: object
+      required:
+      - results
+      properties:
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallThrottle'
+        total:
+          type: integer
+          example: 123
     PaginatedCallTombstoneList:
       type: object
       required:
@@ -4780,6 +4997,24 @@ components:
           allOf:
           - $ref: '#/components/schemas/AgentStatistics'
           readOnly: true
+    PatchedCallThrottle:
+      type: object
+      properties:
+        throttleId:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 64
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallThrottleRule'
     PatchedPlivoConfig:
       type: object
       properties:
@@ -4837,6 +5072,11 @@ components:
           format: date-time
           nullable: true
           description: The end of the time window during which calls can be made.
+        throttle:
+          type: string
+          nullable: true
+          description: The name or ID of a call throttle. If specified, calls in this
+            batch will be subject to the rate limits defined by the throttle.
         webhookUrl:
           type: string
           format: uri
@@ -5269,6 +5509,11 @@ components:
           format: date-time
           nullable: true
           description: The end of the time window during which calls can be made.
+        throttle:
+          type: string
+          nullable: true
+          description: The name or ID of a call throttle. If specified, calls in this
+            batch will be subject to the rate limits defined by the throttle.
         webhookUrl:
           type: string
           format: uri

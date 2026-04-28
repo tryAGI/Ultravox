@@ -3,11 +3,11 @@
 
 namespace Ultravox
 {
-    public partial class AgentsClient
+    public partial class CallThrottlesClient
     {
 
 
-        private static readonly global::Ultravox.EndPointSecurityRequirement s_AgentsCallsCreateSecurityRequirement0 =
+        private static readonly global::Ultravox.EndPointSecurityRequirement s_CallThrottlesCreateSecurityRequirement0 =
             new global::Ultravox.EndPointSecurityRequirement
             {
                 Authorizations = new global::Ultravox.EndPointAuthorizationRequirement[]
@@ -21,44 +21,36 @@ namespace Ultravox
                     },
                 },
             };
-        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_AgentsCallsCreateSecurityRequirements =
+        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_CallThrottlesCreateSecurityRequirements =
             new global::Ultravox.EndPointSecurityRequirement[]
-            {                s_AgentsCallsCreateSecurityRequirement0,
+            {                s_CallThrottlesCreateSecurityRequirement0,
             };
-        partial void PrepareAgentsCallsCreateArguments(
+        partial void PrepareCallThrottlesCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref global::System.Guid agentId,
-            ref string? throttle,
-            global::Ultravox.UltravoxV1StartAgentCallRequest request);
-        partial void PrepareAgentsCallsCreateRequest(
+            global::Ultravox.CallThrottle request);
+        partial void PrepareCallThrottlesCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::System.Guid agentId,
-            string? throttle,
-            global::Ultravox.UltravoxV1StartAgentCallRequest request);
-        partial void ProcessAgentsCallsCreateResponse(
+            global::Ultravox.CallThrottle request);
+        partial void ProcessCallThrottlesCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAgentsCallsCreateResponseContent(
+        partial void ProcessCallThrottlesCreateResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// 
+        /// Creates a new call throttle.
         /// </summary>
-        /// <param name="agentId"></param>
-        /// <param name="throttle"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.Call> AgentsCallsCreateAsync(
-            global::System.Guid agentId,
+        public async global::System.Threading.Tasks.Task<global::Ultravox.CallThrottle> CallThrottlesCreateAsync(
 
-            global::Ultravox.UltravoxV1StartAgentCallRequest request,
-            string? throttle = default,
+            global::Ultravox.CallThrottle request,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -66,17 +58,15 @@ namespace Ultravox
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareAgentsCallsCreateArguments(
+            PrepareCallThrottlesCreateArguments(
                 httpClient: HttpClient,
-                agentId: ref agentId,
-                throttle: ref throttle,
                 request: request);
 
 
             var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_AgentsCallsCreateSecurityRequirements,
-                operationName: "AgentsCallsCreateAsync");
+                securityRequirements: s_CallThrottlesCreateSecurityRequirements,
+                operationName: "CallThrottlesCreateAsync");
 
             using var __timeoutCancellationTokenSource = global::Ultravox.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -95,11 +85,8 @@ namespace Ultravox
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Ultravox.PathBuilder(
-                                path: $"/api/agents/{agentId}/calls",
-                                baseUri: HttpClient.BaseAddress); 
-                            __pathBuilder
-                                .AddOptionalParameter("throttle", throttle) 
-                                ;
+                                path: "/api/call_throttles",
+                                baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Ultravox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -143,11 +130,9 @@ namespace Ultravox
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareAgentsCallsCreateRequest(
+                PrepareCallThrottlesCreateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    agentId: agentId,
-                    throttle: throttle,
                     request: request);
 
                 return __httpRequest;
@@ -165,9 +150,9 @@ namespace Ultravox
                     await global::Ultravox.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Ultravox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "AgentsCallsCreate",
-                                methodName: "AgentsCallsCreateAsync",
-                                pathTemplate: "$\"/api/agents/{agentId}/calls\"",
+                                operationId: "CallThrottlesCreate",
+                                methodName: "CallThrottlesCreateAsync",
+                                pathTemplate: "\"/api/call_throttles\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -192,9 +177,9 @@ namespace Ultravox
                         await global::Ultravox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Ultravox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "AgentsCallsCreate",
-                                methodName: "AgentsCallsCreateAsync",
-                                pathTemplate: "$\"/api/agents/{agentId}/calls\"",
+                                operationId: "CallThrottlesCreate",
+                                methodName: "CallThrottlesCreateAsync",
+                                pathTemplate: "\"/api/call_throttles\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -227,9 +212,9 @@ namespace Ultravox
                         await global::Ultravox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Ultravox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "AgentsCallsCreate",
-                                methodName: "AgentsCallsCreateAsync",
-                                pathTemplate: "$\"/api/agents/{agentId}/calls\"",
+                                operationId: "CallThrottlesCreate",
+                                methodName: "CallThrottlesCreateAsync",
+                                pathTemplate: "\"/api/call_throttles\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -266,7 +251,7 @@ namespace Ultravox
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessAgentsCallsCreateResponse(
+                ProcessCallThrottlesCreateResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -274,9 +259,9 @@ namespace Ultravox
                     await global::Ultravox.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Ultravox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "AgentsCallsCreate",
-                                methodName: "AgentsCallsCreateAsync",
-                                pathTemplate: "$\"/api/agents/{agentId}/calls\"",
+                                operationId: "CallThrottlesCreate",
+                                methodName: "CallThrottlesCreateAsync",
+                                pathTemplate: "\"/api/call_throttles\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -294,9 +279,9 @@ namespace Ultravox
                     await global::Ultravox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Ultravox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "AgentsCallsCreate",
-                                methodName: "AgentsCallsCreateAsync",
-                                pathTemplate: "$\"/api/agents/{agentId}/calls\"",
+                                operationId: "CallThrottlesCreate",
+                                methodName: "CallThrottlesCreateAsync",
+                                pathTemplate: "\"/api/call_throttles\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -322,7 +307,7 @@ namespace Ultravox
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessAgentsCallsCreateResponseContent(
+                                ProcessCallThrottlesCreateResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -332,7 +317,7 @@ namespace Ultravox
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Ultravox.Call.FromJson(__content, JsonSerializerContext) ??
+                                        global::Ultravox.CallThrottle.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -362,7 +347,7 @@ namespace Ultravox
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Ultravox.Call.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        await global::Ultravox.CallThrottle.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
@@ -402,125 +387,26 @@ namespace Ultravox
             }
         }
         /// <summary>
-        /// 
+        /// Creates a new call throttle.
         /// </summary>
-        /// <param name="agentId"></param>
-        /// <param name="throttle"></param>
-        /// <param name="templateContext">
-        /// Context for filling any mustache templates for the call.
-        /// </param>
-        /// <param name="initialMessages">
-        /// The conversation history to start from for this call.
-        /// </param>
-        /// <param name="metadata">
-        /// Optional metadata key-value pairs to associate with the call. All values must be strings.<br/>
-        ///  Keys may not start with "ultravox.", which is reserved for system-provided metadata.
-        /// </param>
-        /// <param name="medium">
-        /// The (overridden) medium used for this call.
-        /// </param>
-        /// <param name="joinTimeout">
-        /// The (overridden) timeout for joining this call.
-        /// </param>
-        /// <param name="maxDuration">
-        /// The (overridden) maximum duration of this call.
-        /// </param>
-        /// <param name="recordingEnabled">
-        /// The (overridden) setting for whether the call should be recorded.
-        /// </param>
-        /// <param name="initialOutputMedium">
-        /// The (overridden) medium initially used by the agent. May be altered by the client later.
-        /// </param>
-        /// <param name="firstSpeakerSettings">
-        /// The (overridden) settings for the initial message to get a conversation started.<br/>
-        ///  Defaults to `agent: {}` which means the agent will start the conversation with an<br/>
-        ///  (interruptible) greeting generated based on the system prompt and any initial messages.<br/>
-        ///  (If first_speaker is set and this is not, first_speaker will be used instead.)
-        /// </param>
-        /// <param name="dataConnection">
-        /// The (overridden) data connection configuration.
-        /// </param>
-        /// <param name="experimentalSettings">
-        /// Experimental settings for the call.
-        /// </param>
-        /// <param name="callbacks">
-        /// Callbacks for call lifecycle events.
-        /// </param>
-        /// <param name="voice">
-        /// The name or ID of the voice the agent should be forced to use. Typically this is set<br/>
-        ///  in the agent's CallTemplate and omitted here. Setting here may be useful for scenarios<br/>
-        ///  where your agent uses different voices for different calls.
-        /// </param>
-        /// <param name="voiceOverrides">
-        /// Overrides for the agent's forced voice. Only valid when `voice` is set explicitly<br/>
-        ///  in this request. Typically the agent's voice and any relevant overrides should be<br/>
-        ///  set on the agent's CallTemplate instead.
-        /// </param>
-        /// <param name="toolOverrides">
-        /// Overrides for the agent's tool set. Allows adding or removing tools,<br/>
-        ///  optionally replacing the entire tool list. Removals are applied before<br/>
-        ///  additions.
-        /// </param>
-        /// <param name="retentionPolicy">
-        /// The (overridden) retention policy for the call's data after it ends.
-        /// </param>
-        /// <param name="sharedSecrets">
-        /// Shared secrets used to sign outbound requests (e.g. data connection websocket).<br/>
-        ///  When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and<br/>
-        ///  X-Ultravox-Signature headers will be included. If multiple secrets are provided,<br/>
-        ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
-        ///  Write-only: this field is never included in API responses.
-        /// </param>
+        /// <param name="name"></param>
+        /// <param name="rules"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.Call> AgentsCallsCreateAsync(
-            global::System.Guid agentId,
-            string? throttle = default,
-            object? templateContext = default,
-            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1Message>? initialMessages = default,
-            global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
-            global::Ultravox.UltravoxV1CallMedium? medium = default,
-            string? joinTimeout = default,
-            string? maxDuration = default,
-            bool? recordingEnabled = default,
-            global::Ultravox.UltravoxV1StartAgentCallRequestInitialOutputMedium? initialOutputMedium = default,
-            global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings = default,
-            global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection = default,
-            object? experimentalSettings = default,
-            global::Ultravox.UltravoxV1Callbacks? callbacks = default,
-            string? voice = default,
-            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides = default,
-            global::Ultravox.UltravoxV1ToolOverrides? toolOverrides = default,
-            global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy? retentionPolicy = default,
-            global::System.Collections.Generic.IList<string>? sharedSecrets = default,
+        public async global::System.Threading.Tasks.Task<global::Ultravox.CallThrottle> CallThrottlesCreateAsync(
+            string name,
+            global::System.Collections.Generic.IList<global::Ultravox.CallThrottleRule> rules,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Ultravox.UltravoxV1StartAgentCallRequest
+            var __request = new global::Ultravox.CallThrottle
             {
-                TemplateContext = templateContext,
-                InitialMessages = initialMessages,
-                Metadata = metadata,
-                Medium = medium,
-                JoinTimeout = joinTimeout,
-                MaxDuration = maxDuration,
-                RecordingEnabled = recordingEnabled,
-                InitialOutputMedium = initialOutputMedium,
-                FirstSpeakerSettings = firstSpeakerSettings,
-                DataConnection = dataConnection,
-                ExperimentalSettings = experimentalSettings,
-                Callbacks = callbacks,
-                Voice = voice,
-                VoiceOverrides = voiceOverrides,
-                ToolOverrides = toolOverrides,
-                RetentionPolicy = retentionPolicy,
-                SharedSecrets = sharedSecrets,
+                Name = name,
+                Rules = rules,
             };
 
-            return await AgentsCallsCreateAsync(
-                agentId: agentId,
-                throttle: throttle,
+            return await CallThrottlesCreateAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);
