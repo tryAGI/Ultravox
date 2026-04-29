@@ -138,7 +138,7 @@ namespace Ultravox
                 PrepareApiKeysPartialUpdateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    apiKeyPrefix: apiKeyPrefix,
+                    apiKeyPrefix: apiKeyPrefix!,
                     request: request);
 
                 return __httpRequest;

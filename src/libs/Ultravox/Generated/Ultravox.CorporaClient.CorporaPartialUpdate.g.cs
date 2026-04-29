@@ -138,7 +138,7 @@ namespace Ultravox
                 PrepareCorporaPartialUpdateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    corpusId: corpusId,
+                    corpusId: corpusId!,
                     request: request);
 
                 return __httpRequest;

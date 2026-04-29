@@ -119,7 +119,7 @@ namespace Ultravox
                 PrepareSipRegistrationsDestroyRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    registrationId: registrationId);
+                    registrationId: registrationId!);
 
                 return __httpRequest;
             }

@@ -124,7 +124,7 @@ namespace Ultravox
                 PrepareApiKeysRetrieveRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    apiKeyPrefix: apiKeyPrefix);
+                    apiKeyPrefix: apiKeyPrefix!);
 
                 return __httpRequest;
             }

@@ -152,7 +152,7 @@ namespace Ultravox
                 PrepareCallsEventsListRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    callId: callId,
+                    callId: callId!,
                     cursor: cursor,
                     minimumSeverity: minimumSeverity,
                     pageSize: pageSize,

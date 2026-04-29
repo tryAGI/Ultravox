@@ -146,7 +146,7 @@ namespace Ultravox
                 PrepareAgentsCallsCreateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    agentId: agentId,
+                    agentId: agentId!,
                     throttle: throttle,
                     request: request);
 

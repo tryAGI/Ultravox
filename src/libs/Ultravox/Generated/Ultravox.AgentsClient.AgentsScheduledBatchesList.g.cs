@@ -138,7 +138,7 @@ namespace Ultravox
                 PrepareAgentsScheduledBatchesListRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    agentId: agentId,
+                    agentId: agentId!,
                     cursor: cursor,
                     pageSize: pageSize);
 

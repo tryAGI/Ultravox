@@ -119,7 +119,7 @@ namespace Ultravox
                 PrepareToolsDestroyRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    toolId: toolId);
+                    toolId: toolId!);
 
                 return __httpRequest;
             }

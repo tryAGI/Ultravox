@@ -146,7 +146,7 @@ namespace Ultravox
                 PrepareCallsMessagesListRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    callId: callId,
+                    callId: callId!,
                     cursor: cursor,
                     mode: mode,
                     pageSize: pageSize);

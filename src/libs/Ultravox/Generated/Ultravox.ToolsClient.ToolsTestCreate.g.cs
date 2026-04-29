@@ -124,7 +124,7 @@ namespace Ultravox
                 PrepareToolsTestCreateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    toolId: toolId);
+                    toolId: toolId!);
 
                 return __httpRequest;
             }

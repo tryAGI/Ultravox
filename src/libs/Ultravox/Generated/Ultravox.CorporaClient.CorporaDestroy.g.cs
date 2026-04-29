@@ -119,7 +119,7 @@ namespace Ultravox
                 PrepareCorporaDestroyRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    corpusId: corpusId);
+                    corpusId: corpusId!);
 
                 return __httpRequest;
             }

@@ -138,7 +138,7 @@ namespace Ultravox
                 PrepareCallThrottlesPartialUpdateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    throttleId: throttleId,
+                    throttleId: throttleId!,
                     request: request);
 
                 return __httpRequest;

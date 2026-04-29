@@ -138,7 +138,7 @@ namespace Ultravox
                 PrepareWebhooksUpdateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    webhookId: webhookId,
+                    webhookId: webhookId!,
                     request: request);
 
                 return __httpRequest;

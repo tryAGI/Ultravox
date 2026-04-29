@@ -129,9 +129,9 @@ namespace Ultravox
                 PrepareCallsStagesMessagesAudioRetrieveRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    callId: callId,
-                    callStageId: callStageId,
-                    callStageMessageIndex: callStageMessageIndex);
+                    callId: callId!,
+                    callStageId: callStageId!,
+                    callStageMessageIndex: callStageMessageIndex!);
 
                 return __httpRequest;
             }

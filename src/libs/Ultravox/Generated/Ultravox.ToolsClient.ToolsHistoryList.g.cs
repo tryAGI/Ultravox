@@ -140,7 +140,7 @@ namespace Ultravox
                     httpRequestMessage: __httpRequest,
                     cursor: cursor,
                     pageSize: pageSize,
-                    toolId: toolId);
+                    toolId: toolId!);
 
                 return __httpRequest;
             }

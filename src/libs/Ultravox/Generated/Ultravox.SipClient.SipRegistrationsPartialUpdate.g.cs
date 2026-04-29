@@ -138,7 +138,7 @@ namespace Ultravox
                 PrepareSipRegistrationsPartialUpdateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    registrationId: registrationId,
+                    registrationId: registrationId!,
                     request: request);
 
                 return __httpRequest;
