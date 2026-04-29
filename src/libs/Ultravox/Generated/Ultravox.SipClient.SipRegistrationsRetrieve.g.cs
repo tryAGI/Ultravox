@@ -124,7 +124,7 @@ namespace Ultravox
                 PrepareSipRegistrationsRetrieveRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    registrationId: registrationId);
+                    registrationId: registrationId!);
 
                 return __httpRequest;
             }

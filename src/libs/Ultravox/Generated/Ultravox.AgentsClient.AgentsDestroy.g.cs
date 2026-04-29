@@ -119,7 +119,7 @@ namespace Ultravox
                 PrepareAgentsDestroyRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    agentId: agentId);
+                    agentId: agentId!);
 
                 return __httpRequest;
             }

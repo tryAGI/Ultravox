@@ -124,7 +124,7 @@ namespace Ultravox
                 PrepareCallsRetrieveRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    callId: callId);
+                    callId: callId!);
 
                 return __httpRequest;
             }

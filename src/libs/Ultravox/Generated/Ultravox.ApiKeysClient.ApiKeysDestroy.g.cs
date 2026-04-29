@@ -119,7 +119,7 @@ namespace Ultravox
                 PrepareApiKeysDestroyRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    apiKeyPrefix: apiKeyPrefix);
+                    apiKeyPrefix: apiKeyPrefix!);
 
                 return __httpRequest;
             }

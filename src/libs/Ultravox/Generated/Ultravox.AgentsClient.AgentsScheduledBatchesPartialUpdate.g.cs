@@ -143,8 +143,8 @@ namespace Ultravox
                 PrepareAgentsScheduledBatchesPartialUpdateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    agentId: agentId,
-                    batchId: batchId,
+                    agentId: agentId!,
+                    batchId: batchId!,
                     request: request);
 
                 return __httpRequest;

@@ -138,7 +138,7 @@ namespace Ultravox
                 PrepareVoicesUpdateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    voiceId: voiceId,
+                    voiceId: voiceId!,
                     request: request);
 
                 return __httpRequest;

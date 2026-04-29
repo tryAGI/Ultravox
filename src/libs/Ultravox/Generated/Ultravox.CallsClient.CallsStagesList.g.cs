@@ -138,7 +138,7 @@ namespace Ultravox
                 PrepareCallsStagesListRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    callId: callId,
+                    callId: callId!,
                     cursor: cursor,
                     pageSize: pageSize);
 

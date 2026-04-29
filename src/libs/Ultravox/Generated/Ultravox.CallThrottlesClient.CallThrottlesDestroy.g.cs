@@ -119,7 +119,7 @@ namespace Ultravox
                 PrepareCallThrottlesDestroyRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    throttleId: throttleId);
+                    throttleId: throttleId!);
 
                 return __httpRequest;
             }

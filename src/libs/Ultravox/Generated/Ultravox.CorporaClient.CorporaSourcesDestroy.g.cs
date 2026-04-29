@@ -124,8 +124,8 @@ namespace Ultravox
                 PrepareCorporaSourcesDestroyRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    corpusId: corpusId,
-                    sourceId: sourceId);
+                    corpusId: corpusId!,
+                    sourceId: sourceId!);
 
                 return __httpRequest;
             }

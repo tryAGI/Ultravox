@@ -138,7 +138,7 @@ namespace Ultravox
                 PrepareCorporaSourcesListRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    corpusId: corpusId,
+                    corpusId: corpusId!,
                     cursor: cursor,
                     pageSize: pageSize);
 

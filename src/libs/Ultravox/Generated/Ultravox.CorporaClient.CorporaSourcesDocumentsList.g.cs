@@ -143,10 +143,10 @@ namespace Ultravox
                 PrepareCorporaSourcesDocumentsListRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    corpusId: corpusId,
+                    corpusId: corpusId!,
                     cursor: cursor,
                     pageSize: pageSize,
-                    sourceId: sourceId);
+                    sourceId: sourceId!);
 
                 return __httpRequest;
             }
