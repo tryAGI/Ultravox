@@ -19,6 +19,18 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Ultravox.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Ultravox.AutoSDKHttpResponse<global::Ultravox.SipConfig>> SipPartialUpdateAsResponseAsync(
+
+            global::Ultravox.PatchedSipConfig request,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="allowedCidrRanges">
         /// The list of IPv4 CIDR ranges from which incoming SIP calls will be accepted.
         /// </param>

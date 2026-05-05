@@ -43,7 +43,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public AccountsClient Accounts => new AccountsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public AccountsClient Accounts => new AccountsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -52,7 +52,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public AgentsClient Agents => new AgentsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public AgentsClient Agents => new AgentsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -61,7 +61,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public ApiKeysClient ApiKeys => new ApiKeysClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ApiKeysClient ApiKeys => new ApiKeysClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -70,7 +70,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public CallThrottlesClient CallThrottles => new CallThrottlesClient(HttpClient, authorizations: Authorizations, options: Options)
+        public CallThrottlesClient CallThrottles => new CallThrottlesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -79,7 +79,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public CallsClient Calls => new CallsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public CallsClient Calls => new CallsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -88,7 +88,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public CorporaClient Corpora => new CorporaClient(HttpClient, authorizations: Authorizations, options: Options)
+        public CorporaClient Corpora => new CorporaClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -97,7 +97,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public DeletedCallsClient DeletedCalls => new DeletedCallsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public DeletedCallsClient DeletedCalls => new DeletedCallsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -106,7 +106,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public ModelsClient Models => new ModelsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ModelsClient Models => new ModelsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -115,7 +115,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public SchemaClient Schema => new SchemaClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SchemaClient Schema => new SchemaClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -124,7 +124,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public SipClient Sip => new SipClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SipClient Sip => new SipClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -133,7 +133,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public TelephonyConfigsClient TelephonyConfigs => new TelephonyConfigsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public TelephonyConfigsClient TelephonyConfigs => new TelephonyConfigsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -142,7 +142,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public ToolsClient Tools => new ToolsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ToolsClient Tools => new ToolsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -151,7 +151,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public VoicesClient Voices => new VoicesClient(HttpClient, authorizations: Authorizations, options: Options)
+        public VoicesClient Voices => new VoicesClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -160,7 +160,7 @@ namespace Ultravox
         /// <summary>
         /// 
         /// </summary>
-        public WebhooksClient Webhooks => new WebhooksClient(HttpClient, authorizations: Authorizations, options: Options)
+        public WebhooksClient Webhooks => new WebhooksClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -199,10 +199,10 @@ namespace Ultravox
         /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
         public UltravoxClient(
-            global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null,
-            global::System.Collections.Generic.List<global::Ultravox.EndPointAuthorization>? authorizations = null,
-            global::Ultravox.AutoSDKClientOptions? options = null,
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Uri? baseUri,
+            global::System.Collections.Generic.List<global::Ultravox.EndPointAuthorization>? authorizations,
+            global::Ultravox.AutoSDKClientOptions? options,
             bool disposeHttpClient = true)
         {
 
