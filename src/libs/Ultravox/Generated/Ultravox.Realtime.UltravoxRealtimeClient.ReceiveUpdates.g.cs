@@ -41,8 +41,14 @@ namespace Ultravox.Realtime
                     }
                     catch (global::System.Net.WebSockets.WebSocketException exception)
                     {
+                        RaiseException(exception);
                         var rethrow = false;
                         OnReceiveException(exception, ref rethrow);
+                        if (await TryReconnectAsync(exception, cancellationToken).ConfigureAwait(false))
+                        {
+                            continue;
+                        }
+
                         if (rethrow)
                         {
                             throw;
@@ -52,6 +58,11 @@ namespace Ultravox.Realtime
                     }
                     catch (global::System.OperationCanceledException exception)
                     {
+                        if (!cancellationToken.IsCancellationRequested)
+                        {
+                            RaiseException(exception);
+                        }
+
                         var rethrow = false;
                         OnReceiveException(exception, ref rethrow);
                         if (rethrow)
@@ -64,6 +75,7 @@ namespace Ultravox.Realtime
 
                     if (result.MessageType == global::System.Net.WebSockets.WebSocketMessageType.Close)
                     {
+                        RaiseClosed(result.CloseStatus, result.CloseStatusDescription);
                         await _clientWebSocket.CloseAsync(
                             closeStatus: global::System.Net.WebSockets.WebSocketCloseStatus.NormalClosure,
                             statusDescription: "Closing",
@@ -93,9 +105,131 @@ namespace Ultravox.Realtime
                 }
 
                 string json = global::System.Text.Encoding.UTF8.GetString(__messageBuffer.ToArray());
-                    var @event = (global::Ultravox.Realtime.ServerEvent)global::System.Text.Json.JsonSerializer.Deserialize(json, typeof(global::Ultravox.Realtime.ServerEvent), JsonSerializerContext)!;
+                    global::Ultravox.Realtime.ServerEvent @event;
+                    try
+                    {
+                        @event = (global::Ultravox.Realtime.ServerEvent)global::System.Text.Json.JsonSerializer.Deserialize(json, typeof(global::Ultravox.Realtime.ServerEvent), JsonSerializerContext)!;
+                    }
+                    catch (global::System.Exception exception) when (
+                        exception is global::System.Text.Json.JsonException ||
+                        exception is global::System.NotSupportedException ||
+                        exception is global::System.InvalidOperationException)
+                    {
+                        var rethrow = false;
+                        OnReceiveException(exception, ref rethrow);
+                        DispatchUnknownMessage(json);
+                        if (rethrow)
+                        {
+                            throw;
+                        }
 
+                        continue;
+                    }
+
+                    DispatchReceivedMessage(@event, json);
                     yield return @event;
+            }
+        }
+
+
+        private static global::System.Text.Json.JsonElement? TryParseMessageJson(
+            string rawText)
+        {
+            try
+            {
+                using var document = global::System.Text.Json.JsonDocument.Parse(rawText);
+                return document.RootElement.Clone();
+            }
+            catch (global::System.Text.Json.JsonException)
+            {
+                return null;
+            }
+        }
+
+        private void DispatchUnknownMessage(
+            string rawText)
+        {
+            UnknownMessage?.Invoke(
+                this,
+                new AutoSDKWebSocketUnknownMessageEventArgs(
+                    rawText,
+                    TryParseMessageJson(rawText)));
+        }
+
+        private void DispatchReceivedMessage(
+            global::Ultravox.Realtime.ServerEvent @event,
+            string rawText)
+        {
+            var json = TryParseMessageJson(rawText);
+            MessageReceived?.Invoke(
+                this,
+                new AutoSDKWebSocketMessageEventArgs<global::Ultravox.Realtime.ServerEvent>(
+                    @event,
+                    rawText,
+                    json));
+
+            if (@event.Pong is { } __PongReceived)
+            {
+                PongReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::Ultravox.Realtime.PongPayload>(
+                        __PongReceived,
+                        rawText,
+                        json));
+            }
+            if (@event.State is { } __StateReceived)
+            {
+                StateReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::Ultravox.Realtime.StatePayload>(
+                        __StateReceived,
+                        rawText,
+                        json));
+            }
+            if (@event.Transcript is { } __TranscriptReceived)
+            {
+                TranscriptReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::Ultravox.Realtime.TranscriptPayload>(
+                        __TranscriptReceived,
+                        rawText,
+                        json));
+            }
+            if (@event.ClientToolInvocation is { } __ClientToolInvocationReceived)
+            {
+                ClientToolInvocationReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::Ultravox.Realtime.ClientToolInvocationPayload>(
+                        __ClientToolInvocationReceived,
+                        rawText,
+                        json));
+            }
+            if (@event.PlaybackClearBuffer is { } __PlaybackClearBufferReceived)
+            {
+                PlaybackClearBufferReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::Ultravox.Realtime.PlaybackClearBufferPayload>(
+                        __PlaybackClearBufferReceived,
+                        rawText,
+                        json));
+            }
+            if (@event.CallStarted is { } __CallStartedReceived)
+            {
+                CallStartedReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::Ultravox.Realtime.CallStartedPayload>(
+                        __CallStartedReceived,
+                        rawText,
+                        json));
+            }
+            if (@event.Debug is { } __DebugReceived)
+            {
+                DebugReceived?.Invoke(
+                    this,
+                    new AutoSDKWebSocketMessageEventArgs<global::Ultravox.Realtime.DebugPayload>(
+                        __DebugReceived,
+                        rawText,
+                        json));
             }
         }
     }
