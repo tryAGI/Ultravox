@@ -32,6 +32,19 @@ namespace Ultravox.Realtime
         public bool IsPong => Pong != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPong(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Ultravox.Realtime.PongPayload? value)
+        {
+            value = Pong;
+            return IsPong;
+        }
+
+        /// <summary>
         /// Agent state change notification.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -47,6 +60,19 @@ namespace Ultravox.Realtime
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(State))]
 #endif
         public bool IsState => State != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickState(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Ultravox.Realtime.StatePayload? value)
+        {
+            value = State;
+            return IsState;
+        }
 
         /// <summary>
         /// Speech transcript event.
@@ -66,6 +92,19 @@ namespace Ultravox.Realtime
         public bool IsTranscript => Transcript != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTranscript(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Ultravox.Realtime.TranscriptPayload? value)
+        {
+            value = Transcript;
+            return IsTranscript;
+        }
+
+        /// <summary>
         /// Server request to execute a client-side tool.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -81,6 +120,19 @@ namespace Ultravox.Realtime
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ClientToolInvocation))]
 #endif
         public bool IsClientToolInvocation => ClientToolInvocation != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickClientToolInvocation(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Ultravox.Realtime.ClientToolInvocationPayload? value)
+        {
+            value = ClientToolInvocation;
+            return IsClientToolInvocation;
+        }
 
         /// <summary>
         /// Request to clear the audio playback buffer.
@@ -100,6 +152,19 @@ namespace Ultravox.Realtime
         public bool IsPlaybackClearBuffer => PlaybackClearBuffer != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPlaybackClearBuffer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Ultravox.Realtime.PlaybackClearBufferPayload? value)
+        {
+            value = PlaybackClearBuffer;
+            return IsPlaybackClearBuffer;
+        }
+
+        /// <summary>
         /// Call started notification.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -117,6 +182,19 @@ namespace Ultravox.Realtime
         public bool IsCallStarted => CallStarted != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCallStarted(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Ultravox.Realtime.CallStartedPayload? value)
+        {
+            value = CallStarted;
+            return IsCallStarted;
+        }
+
+        /// <summary>
         /// Debug information from the server.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -132,6 +210,19 @@ namespace Ultravox.Realtime
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Debug))]
 #endif
         public bool IsDebug => Debug != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickDebug(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Ultravox.Realtime.DebugPayload? value)
+        {
+            value = Debug;
+            return IsDebug;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -321,13 +412,13 @@ namespace Ultravox.Realtime
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Ultravox.Realtime.PongPayload?, TResult>? pong = null,
-            global::System.Func<global::Ultravox.Realtime.StatePayload?, TResult>? state = null,
-            global::System.Func<global::Ultravox.Realtime.TranscriptPayload?, TResult>? transcript = null,
-            global::System.Func<global::Ultravox.Realtime.ClientToolInvocationPayload?, TResult>? clientToolInvocation = null,
-            global::System.Func<global::Ultravox.Realtime.PlaybackClearBufferPayload?, TResult>? playbackClearBuffer = null,
-            global::System.Func<global::Ultravox.Realtime.CallStartedPayload?, TResult>? callStarted = null,
-            global::System.Func<global::Ultravox.Realtime.DebugPayload?, TResult>? debug = null,
+            global::System.Func<global::Ultravox.Realtime.PongPayload, TResult>? pong = null,
+            global::System.Func<global::Ultravox.Realtime.StatePayload, TResult>? state = null,
+            global::System.Func<global::Ultravox.Realtime.TranscriptPayload, TResult>? transcript = null,
+            global::System.Func<global::Ultravox.Realtime.ClientToolInvocationPayload, TResult>? clientToolInvocation = null,
+            global::System.Func<global::Ultravox.Realtime.PlaybackClearBufferPayload, TResult>? playbackClearBuffer = null,
+            global::System.Func<global::Ultravox.Realtime.CallStartedPayload, TResult>? callStarted = null,
+            global::System.Func<global::Ultravox.Realtime.DebugPayload, TResult>? debug = null,
             bool validate = true)
         {
             if (validate)
@@ -371,13 +462,67 @@ namespace Ultravox.Realtime
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Ultravox.Realtime.PongPayload?>? pong = null,
-            global::System.Action<global::Ultravox.Realtime.StatePayload?>? state = null,
-            global::System.Action<global::Ultravox.Realtime.TranscriptPayload?>? transcript = null,
-            global::System.Action<global::Ultravox.Realtime.ClientToolInvocationPayload?>? clientToolInvocation = null,
-            global::System.Action<global::Ultravox.Realtime.PlaybackClearBufferPayload?>? playbackClearBuffer = null,
-            global::System.Action<global::Ultravox.Realtime.CallStartedPayload?>? callStarted = null,
-            global::System.Action<global::Ultravox.Realtime.DebugPayload?>? debug = null,
+            global::System.Action<global::Ultravox.Realtime.PongPayload>? pong = null,
+
+            global::System.Action<global::Ultravox.Realtime.StatePayload>? state = null,
+
+            global::System.Action<global::Ultravox.Realtime.TranscriptPayload>? transcript = null,
+
+            global::System.Action<global::Ultravox.Realtime.ClientToolInvocationPayload>? clientToolInvocation = null,
+
+            global::System.Action<global::Ultravox.Realtime.PlaybackClearBufferPayload>? playbackClearBuffer = null,
+
+            global::System.Action<global::Ultravox.Realtime.CallStartedPayload>? callStarted = null,
+
+            global::System.Action<global::Ultravox.Realtime.DebugPayload>? debug = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsPong)
+            {
+                pong?.Invoke(Pong!);
+            }
+            else if (IsState)
+            {
+                state?.Invoke(State!);
+            }
+            else if (IsTranscript)
+            {
+                transcript?.Invoke(Transcript!);
+            }
+            else if (IsClientToolInvocation)
+            {
+                clientToolInvocation?.Invoke(ClientToolInvocation!);
+            }
+            else if (IsPlaybackClearBuffer)
+            {
+                playbackClearBuffer?.Invoke(PlaybackClearBuffer!);
+            }
+            else if (IsCallStarted)
+            {
+                callStarted?.Invoke(CallStarted!);
+            }
+            else if (IsDebug)
+            {
+                debug?.Invoke(Debug!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Ultravox.Realtime.PongPayload>? pong = null,
+            global::System.Action<global::Ultravox.Realtime.StatePayload>? state = null,
+            global::System.Action<global::Ultravox.Realtime.TranscriptPayload>? transcript = null,
+            global::System.Action<global::Ultravox.Realtime.ClientToolInvocationPayload>? clientToolInvocation = null,
+            global::System.Action<global::Ultravox.Realtime.PlaybackClearBufferPayload>? playbackClearBuffer = null,
+            global::System.Action<global::Ultravox.Realtime.CallStartedPayload>? callStarted = null,
+            global::System.Action<global::Ultravox.Realtime.DebugPayload>? debug = null,
             bool validate = true)
         {
             if (validate)
