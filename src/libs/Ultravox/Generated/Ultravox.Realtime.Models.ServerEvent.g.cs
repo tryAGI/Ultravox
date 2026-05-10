@@ -45,6 +45,13 @@ namespace Ultravox.Realtime
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Ultravox.Realtime.PongPayload PickPong() => IsPong
+            ? Pong!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Pong' but the value was {ToString()}.");
+
+        /// <summary>
         /// Agent state change notification.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -73,6 +80,13 @@ namespace Ultravox.Realtime
             value = State;
             return IsState;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Ultravox.Realtime.StatePayload PickState() => IsState
+            ? State!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'State' but the value was {ToString()}.");
 
         /// <summary>
         /// Speech transcript event.
@@ -105,6 +119,13 @@ namespace Ultravox.Realtime
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Ultravox.Realtime.TranscriptPayload PickTranscript() => IsTranscript
+            ? Transcript!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Transcript' but the value was {ToString()}.");
+
+        /// <summary>
         /// Server request to execute a client-side tool.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -133,6 +154,13 @@ namespace Ultravox.Realtime
             value = ClientToolInvocation;
             return IsClientToolInvocation;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Ultravox.Realtime.ClientToolInvocationPayload PickClientToolInvocation() => IsClientToolInvocation
+            ? ClientToolInvocation!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ClientToolInvocation' but the value was {ToString()}.");
 
         /// <summary>
         /// Request to clear the audio playback buffer.
@@ -165,6 +193,13 @@ namespace Ultravox.Realtime
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Ultravox.Realtime.PlaybackClearBufferPayload PickPlaybackClearBuffer() => IsPlaybackClearBuffer
+            ? PlaybackClearBuffer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PlaybackClearBuffer' but the value was {ToString()}.");
+
+        /// <summary>
         /// Call started notification.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -195,6 +230,13 @@ namespace Ultravox.Realtime
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::Ultravox.Realtime.CallStartedPayload PickCallStarted() => IsCallStarted
+            ? CallStarted!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CallStarted' but the value was {ToString()}.");
+
+        /// <summary>
         /// Debug information from the server.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -223,6 +265,13 @@ namespace Ultravox.Realtime
             value = Debug;
             return IsDebug;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Ultravox.Realtime.DebugPayload PickDebug() => IsDebug
+            ? Debug!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Debug' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -240,6 +289,11 @@ namespace Ultravox.Realtime
         {
             Pong = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ServerEvent FromPong(global::Ultravox.Realtime.PongPayload? value) => new ServerEvent(value);
 
         /// <summary>
         /// 
@@ -262,6 +316,11 @@ namespace Ultravox.Realtime
         /// <summary>
         /// 
         /// </summary>
+        public static ServerEvent FromState(global::Ultravox.Realtime.StatePayload? value) => new ServerEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ServerEvent(global::Ultravox.Realtime.TranscriptPayload value) => new ServerEvent((global::Ultravox.Realtime.TranscriptPayload?)value);
 
         /// <summary>
@@ -276,6 +335,11 @@ namespace Ultravox.Realtime
         {
             Transcript = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ServerEvent FromTranscript(global::Ultravox.Realtime.TranscriptPayload? value) => new ServerEvent(value);
 
         /// <summary>
         /// 
@@ -298,6 +362,11 @@ namespace Ultravox.Realtime
         /// <summary>
         /// 
         /// </summary>
+        public static ServerEvent FromClientToolInvocation(global::Ultravox.Realtime.ClientToolInvocationPayload? value) => new ServerEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ServerEvent(global::Ultravox.Realtime.PlaybackClearBufferPayload value) => new ServerEvent((global::Ultravox.Realtime.PlaybackClearBufferPayload?)value);
 
         /// <summary>
@@ -312,6 +381,11 @@ namespace Ultravox.Realtime
         {
             PlaybackClearBuffer = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ServerEvent FromPlaybackClearBuffer(global::Ultravox.Realtime.PlaybackClearBufferPayload? value) => new ServerEvent(value);
 
         /// <summary>
         /// 
@@ -334,6 +408,11 @@ namespace Ultravox.Realtime
         /// <summary>
         /// 
         /// </summary>
+        public static ServerEvent FromCallStarted(global::Ultravox.Realtime.CallStartedPayload? value) => new ServerEvent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ServerEvent(global::Ultravox.Realtime.DebugPayload value) => new ServerEvent((global::Ultravox.Realtime.DebugPayload?)value);
 
         /// <summary>
@@ -348,6 +427,11 @@ namespace Ultravox.Realtime
         {
             Debug = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ServerEvent FromDebug(global::Ultravox.Realtime.DebugPayload? value) => new ServerEvent(value);
 
         /// <summary>
         /// 
