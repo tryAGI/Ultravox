@@ -78,5 +78,6 @@ namespace Ultravox
         public UltravoxV1CartesiaVoiceCartesiaGenerationConfig()
         {
         }
+
     }
 }

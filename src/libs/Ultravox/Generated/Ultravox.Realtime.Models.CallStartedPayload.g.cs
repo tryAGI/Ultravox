@@ -52,5 +52,6 @@ namespace Ultravox.Realtime
         public CallStartedPayload()
         {
         }
+
     }
 }

@@ -111,5 +111,6 @@ namespace Ultravox.Realtime
         public TranscriptPayload()
         {
         }
+
     }
 }

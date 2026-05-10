@@ -57,5 +57,6 @@ namespace Ultravox
         public UltravoxV1DataConnectionAudioConfig()
         {
         }
+
     }
 }

@@ -122,5 +122,6 @@ namespace Ultravox
         public PatchedSipRegistration()
         {
         }
+
     }
 }

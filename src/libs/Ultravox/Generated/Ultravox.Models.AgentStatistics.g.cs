@@ -44,5 +44,6 @@ namespace Ultravox
         public AgentStatistics()
         {
         }
+
     }
 }

@@ -60,5 +60,6 @@ namespace Ultravox
         public AgentDailyUsage()
         {
         }
+
     }
 }

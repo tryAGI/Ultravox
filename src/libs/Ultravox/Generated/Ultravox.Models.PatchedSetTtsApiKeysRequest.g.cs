@@ -110,5 +110,6 @@ namespace Ultravox
         public PatchedSetTtsApiKeysRequest()
         {
         }
+
     }
 }

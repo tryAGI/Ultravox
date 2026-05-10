@@ -66,5 +66,6 @@ namespace Ultravox
         public BillingUsageDay()
         {
         }
+
     }
 }

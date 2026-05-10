@@ -42,5 +42,6 @@ namespace Ultravox
         public UltravoxV1StaticToolResponse()
         {
         }
+
     }
 }

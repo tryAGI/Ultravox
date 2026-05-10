@@ -99,5 +99,6 @@ namespace Ultravox
         public UltravoxV1CrawlSpec()
         {
         }
+
     }
 }

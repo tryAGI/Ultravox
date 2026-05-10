@@ -372,5 +372,6 @@ namespace Ultravox
         public UltravoxV1CallTemplate()
         {
         }
+
     }
 }
