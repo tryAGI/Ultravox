@@ -76,5 +76,6 @@ namespace Ultravox.Realtime
         public ClientToolInvocationPayload()
         {
         }
+
     }
 }

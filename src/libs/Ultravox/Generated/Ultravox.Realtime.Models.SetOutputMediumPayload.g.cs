@@ -53,5 +53,6 @@ namespace Ultravox.Realtime
         public SetOutputMediumPayload()
         {
         }
+
     }
 }

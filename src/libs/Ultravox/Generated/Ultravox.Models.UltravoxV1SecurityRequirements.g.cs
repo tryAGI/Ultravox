@@ -64,5 +64,6 @@ namespace Ultravox
         public UltravoxV1SecurityRequirements()
         {
         }
+
     }
 }

@@ -68,5 +68,6 @@ namespace Ultravox
         public UsageResponse()
         {
         }
+
     }
 }

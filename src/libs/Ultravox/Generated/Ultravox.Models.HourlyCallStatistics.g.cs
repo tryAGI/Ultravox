@@ -114,5 +114,6 @@ namespace Ultravox
         public HourlyCallStatistics()
         {
         }
+
     }
 }

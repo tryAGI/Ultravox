@@ -64,5 +64,6 @@ namespace Ultravox.Realtime
         public UserTextMessagePayload()
         {
         }
+
     }
 }

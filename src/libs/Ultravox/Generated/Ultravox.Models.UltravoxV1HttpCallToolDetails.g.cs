@@ -87,5 +87,6 @@ namespace Ultravox
         public UltravoxV1HttpCallToolDetails()
         {
         }
+
     }
 }

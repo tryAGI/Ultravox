@@ -195,5 +195,6 @@ namespace Ultravox
         public UltravoxV1BaseToolDefinition()
         {
         }
+
     }
 }

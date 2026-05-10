@@ -52,5 +52,6 @@ namespace Ultravox
         public UltravoxV1QueryCorpusRequest()
         {
         }
+
     }
 }

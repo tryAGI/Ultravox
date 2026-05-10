@@ -65,5 +65,6 @@ namespace Ultravox
         public UltravoxV1StaticParameter()
         {
         }
+
     }
 }
