@@ -104,5 +104,18 @@ namespace Ultravox
         public TwilioConfig()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="TwilioConfig"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static TwilioConfig FromAccountSid(string accountSid)
+        {
+            return new TwilioConfig
+            {
+                AccountSid = accountSid,
+            };
+        }
+
     }
 }

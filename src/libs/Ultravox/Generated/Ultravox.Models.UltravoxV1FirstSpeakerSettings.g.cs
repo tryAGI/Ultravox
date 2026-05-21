@@ -55,5 +55,6 @@ namespace Ultravox
         public UltravoxV1FirstSpeakerSettings()
         {
         }
+
     }
 }

@@ -41,5 +41,6 @@ namespace Ultravox
         public UltravoxV1QueryApiKeyRequirement()
         {
         }
+
     }
 }

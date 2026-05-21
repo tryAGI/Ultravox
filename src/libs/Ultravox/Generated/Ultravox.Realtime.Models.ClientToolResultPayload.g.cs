@@ -110,5 +110,6 @@ namespace Ultravox.Realtime
         public ClientToolResultPayload()
         {
         }
+
     }
 }

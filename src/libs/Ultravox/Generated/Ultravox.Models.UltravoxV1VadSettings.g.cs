@@ -106,5 +106,6 @@ namespace Ultravox
         public UltravoxV1VadSettings()
         {
         }
+
     }
 }

@@ -100,5 +100,6 @@ namespace Ultravox
         public UltravoxV1CorpusDocumentMetadata()
         {
         }
+
     }
 }

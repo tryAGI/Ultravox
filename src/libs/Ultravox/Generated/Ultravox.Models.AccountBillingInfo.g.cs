@@ -56,5 +56,6 @@ namespace Ultravox
         public AccountBillingInfo()
         {
         }
+
     }
 }

@@ -27,5 +27,28 @@ namespace Ultravox
             string? search = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List all voices in your account.
+        /// </summary>
+        /// <param name="billingStyle"></param>
+        /// <param name="cursor"></param>
+        /// <param name="ownership"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="primaryLanguage"></param>
+        /// <param name="provider"></param>
+        /// <param name="search"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Ultravox.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Ultravox.AutoSDKHttpResponse<global::Ultravox.PaginatedVoiceList>> VoicesListAsResponseAsync(
+            global::Ultravox.VoicesListBillingStyle? billingStyle = default,
+            string? cursor = default,
+            global::Ultravox.VoicesListOwnership? ownership = default,
+            int? pageSize = default,
+            string? primaryLanguage = default,
+            global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>? provider = default,
+            string? search = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

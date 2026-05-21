@@ -51,5 +51,6 @@ namespace Ultravox.Realtime
         public HangUpPayload()
         {
         }
+
     }
 }

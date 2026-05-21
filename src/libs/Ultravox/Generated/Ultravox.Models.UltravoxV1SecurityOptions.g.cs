@@ -47,5 +47,6 @@ namespace Ultravox
         public UltravoxV1SecurityOptions()
         {
         }
+
     }
 }

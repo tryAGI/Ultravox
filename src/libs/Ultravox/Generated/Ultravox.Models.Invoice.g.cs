@@ -104,5 +104,18 @@ namespace Ultravox
         public Invoice()
         {
         }
+
+        /// <summary>
+        /// Creates a new <see cref="Invoice"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static Invoice FromInvoiceUrl(string invoiceUrl)
+        {
+            return new Invoice
+            {
+                InvoiceUrl = invoiceUrl,
+            };
+        }
+
     }
 }

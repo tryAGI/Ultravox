@@ -101,5 +101,6 @@ namespace Ultravox
         public UltravoxV1CallMediumWebSocketMedium()
         {
         }
+
     }
 }

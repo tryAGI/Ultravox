@@ -74,5 +74,6 @@ namespace Ultravox
         public UltravoxV1CorpusQueryResultCitation()
         {
         }
+
     }
 }

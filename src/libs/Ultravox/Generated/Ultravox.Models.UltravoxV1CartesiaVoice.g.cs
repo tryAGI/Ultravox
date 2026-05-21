@@ -96,5 +96,6 @@ namespace Ultravox
         public UltravoxV1CartesiaVoice()
         {
         }
+
     }
 }

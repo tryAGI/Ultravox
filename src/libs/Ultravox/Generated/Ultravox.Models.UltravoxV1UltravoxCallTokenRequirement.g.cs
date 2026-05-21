@@ -45,5 +45,6 @@ namespace Ultravox
         public UltravoxV1UltravoxCallTokenRequirement()
         {
         }
+
     }
 }

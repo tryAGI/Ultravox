@@ -40,5 +40,6 @@ namespace Ultravox.Realtime
         public ServerEventDiscriminator()
         {
         }
+
     }
 }

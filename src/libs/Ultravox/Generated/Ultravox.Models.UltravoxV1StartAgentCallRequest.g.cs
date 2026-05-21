@@ -247,5 +247,6 @@ namespace Ultravox
         public UltravoxV1StartAgentCallRequest()
         {
         }
+
     }
 }
