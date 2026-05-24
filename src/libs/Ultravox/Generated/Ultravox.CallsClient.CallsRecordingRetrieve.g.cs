@@ -345,17 +345,16 @@ namespace Ultravox
                                     __exception_302 = __ex;
                                 }
 
-                                throw new global::Ultravox.ApiException(
+
+                                throw global::Ultravox.ApiException.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_302 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_302,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_302,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_302,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
 
                             try
@@ -385,17 +384,15 @@ namespace Ultravox
                                 {
                                 }
 
-                                throw new global::Ultravox.ApiException(
+                                throw global::Ultravox.ApiException.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __ex,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
 
                 }
@@ -694,17 +691,16 @@ namespace Ultravox
                                     __exception_302 = __ex;
                                 }
 
-                                throw new global::Ultravox.ApiException(
+
+                                throw global::Ultravox.ApiException.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_302 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_302,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_302,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_302,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
 
                             if (__effectiveReadResponseAsString)
@@ -732,16 +728,15 @@ namespace Ultravox
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    throw new global::Ultravox.ApiException(
+                                    throw global::Ultravox.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: null,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
                             else
@@ -776,17 +771,15 @@ namespace Ultravox
                                     {
                                     }
 
-                                    throw new global::Ultravox.ApiException(
+                                    throw global::Ultravox.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
 
