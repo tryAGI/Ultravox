@@ -28,6 +28,12 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<global::Ultravox.AgentAllowance>? AllowedAgents { get; set; }
 
         /// <summary>
+        /// If set, this webhook is consulted for any incoming SIP call that does not match an agent allowance (including the allowAllAgents allowance if set). The endpoint must respond promptly with a 200 status and a JSON body with exactly one of startAgentCall, startCall, or reject. The first two use the request body for the associated call creation endpoints plus agentId in the former case, while reject may include `sipRejectCode` (default 603) to pass along to the caller.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("fallbackHandler")]
+        public global::Ultravox.FallbackHandler? FallbackHandler { get; set; }
+
+        /// <summary>
         /// The domain used for SIP invites for your account.<br/>
         /// Included only in responses
         /// </summary>
@@ -53,6 +59,9 @@ namespace Ultravox
         /// <param name="allowedAgents">
         /// Calls must match a pattern for one of these agents (or the global agent pattern if allowAllAgents is true) to be accepted.
         /// </param>
+        /// <param name="fallbackHandler">
+        /// If set, this webhook is consulted for any incoming SIP call that does not match an agent allowance (including the allowAllAgents allowance if set). The endpoint must respond promptly with a 200 status and a JSON body with exactly one of startAgentCall, startCall, or reject. The first two use the request body for the associated call creation endpoints plus agentId in the former case, while reject may include `sipRejectCode` (default 603) to pass along to the caller.
+        /// </param>
         /// <param name="domain">
         /// The domain used for SIP invites for your account.<br/>
         /// Included only in responses
@@ -64,11 +73,13 @@ namespace Ultravox
             global::System.Collections.Generic.IList<string>? allowedCidrRanges,
             bool? allowAllAgents,
             global::System.Collections.Generic.IList<global::Ultravox.AgentAllowance>? allowedAgents,
+            global::Ultravox.FallbackHandler? fallbackHandler,
             string? domain)
         {
             this.AllowedCidrRanges = allowedCidrRanges;
             this.AllowAllAgents = allowAllAgents;
             this.AllowedAgents = allowedAgents;
+            this.FallbackHandler = fallbackHandler;
             this.Domain = domain;
         }
 
