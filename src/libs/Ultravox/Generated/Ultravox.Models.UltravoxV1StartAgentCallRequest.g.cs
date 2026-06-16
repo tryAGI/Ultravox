@@ -127,6 +127,14 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<string>? SharedSecrets { get; set; }
 
         /// <summary>
+        /// The ID of the agent to use for this call. Ignored when an agent is already<br/>
+        ///  identified by request context (e.g. from the request URL); required when there<br/>
+        ///  is no other agent context, such as in a SipFallbackHandlerResponse.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agentId")]
+        public string? AgentId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -200,6 +208,11 @@ namespace Ultravox
         ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
         ///  Write-only: this field is never included in API responses.
         /// </param>
+        /// <param name="agentId">
+        /// The ID of the agent to use for this call. Ignored when an agent is already<br/>
+        ///  identified by request context (e.g. from the request URL); required when there<br/>
+        ///  is no other agent context, such as in a SipFallbackHandlerResponse.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -220,7 +233,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides,
             global::Ultravox.UltravoxV1ToolOverrides? toolOverrides,
             global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy? retentionPolicy,
-            global::System.Collections.Generic.IList<string>? sharedSecrets)
+            global::System.Collections.Generic.IList<string>? sharedSecrets,
+            string? agentId)
         {
             this.TemplateContext = templateContext;
             this.InitialMessages = initialMessages;
@@ -239,6 +253,7 @@ namespace Ultravox
             this.ToolOverrides = toolOverrides;
             this.RetentionPolicy = retentionPolicy;
             this.SharedSecrets = sharedSecrets;
+            this.AgentId = agentId;
         }
 
         /// <summary>

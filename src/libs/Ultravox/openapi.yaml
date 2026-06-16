@@ -4374,6 +4374,24 @@ components:
         * `call.joined` - Fired when a call is joined
         * `call.ended` - Fired when a call ends
         * `call.billed` - Fired when a call is billed
+    FallbackHandler:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          description: The URL to which POSTs will be sent.
+        secrets:
+          type: array
+          items:
+            type: string
+            maxLength: 120
+          description: Shared secrets used to sign requests. A strong secret is auto-generated
+            if omitted.
+          maxItems: 10
+          minItems: 1
+      required:
+      - url
     FirstSpeakerEnum:
       enum:
       - FIRST_SPEAKER_AGENT
@@ -5177,6 +5195,17 @@ components:
           description: Calls must match a pattern for one of these agents (or the
             global agent pattern if allowAllAgents is true) to be accepted.
           maxItems: 20
+        fallbackHandler:
+          allOf:
+          - $ref: '#/components/schemas/FallbackHandler'
+          nullable: true
+          description: If set, this webhook is consulted for any incoming SIP call
+            that does not match an agent allowance (including the allowAllAgents allowance
+            if set). The endpoint must respond promptly with a 200 status and a JSON
+            body with exactly one of startAgentCall, startCall, or reject. The first
+            two use the request body for the associated call creation endpoints plus
+            agentId in the former case, while reject may include `sipRejectCode` (default
+            603) to pass along to the caller.
         domain:
           type: string
           readOnly: true
@@ -5605,6 +5634,17 @@ components:
           description: Calls must match a pattern for one of these agents (or the
             global agent pattern if allowAllAgents is true) to be accepted.
           maxItems: 20
+        fallbackHandler:
+          allOf:
+          - $ref: '#/components/schemas/FallbackHandler'
+          nullable: true
+          description: If set, this webhook is consulted for any incoming SIP call
+            that does not match an agent allowance (including the allowAllAgents allowance
+            if set). The endpoint must respond promptly with a 200 status and a JSON
+            body with exactly one of startAgentCall, startCall, or reject. The first
+            two use the request body for the associated call creation endpoints plus
+            agentId in the former case, while reject may include `sipRejectCode` (default
+            603) to pass along to the caller.
         domain:
           type: string
           readOnly: true
@@ -7631,6 +7671,28 @@ components:
       description: |-
         A tool selected for a particular call. Exactly one of tool_id, tool_name, or
          temporary_tool should be set.
+    ultravox.v1.SipFallbackHandlerResponse:
+      type: object
+      properties:
+        startAgentCall:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.StartAgentCallRequest'
+          description: Create the call using an agent. The agentId subfield is required
+            in this case.
+        startCall:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.StartCallRequest'
+          description: Create the call with the supplied inline configuration (no
+            agent).
+        reject:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.SipRejection'
+          description: Reject the call with an appropriate error.
+      description: |-
+        The response a customer-hosted SIP fallback handler returns to Ultravox when
+         Ultravox receives an incoming SIP INVITE that does not match any configured
+         agent allowance. The handler decides how to dispatch the call by returning
+         one of the variants below.
     ultravox.v1.SipMedium_SipIncoming:
       type: object
       properties: {}
@@ -7652,6 +7714,19 @@ components:
           type: string
           description: The password for the specified username.
       description: Details for an outgoing SIP call.
+    ultravox.v1.SipRejection:
+      type: object
+      properties:
+        sipRejectCode:
+          type: integer
+          description: |-
+            The SIP response code to return to the caller. Must be a valid
+             SIP rejection code (between 400 and 699 inclusive). Defaults to 603 (Decline).
+          format: uint32
+        message:
+          type: string
+          description: An optional brief explanation of the rejection for logging.
+      description: Details for rejecting a SIP call.
     ultravox.v1.SourceStats:
       type: object
       properties:
@@ -7777,6 +7852,12 @@ components:
              X-Ultravox-Signature headers will be included. If multiple secrets are provided,
              one signature per secret is produced (comma-separated in X-Ultravox-Signature).
              Write-only: this field is never included in API responses.
+        agentId:
+          type: string
+          description: |-
+            The ID of the agent to use for this call. Ignored when an agent is already
+             identified by request context (e.g. from the request URL); required when there
+             is no other agent context, such as in a SipFallbackHandlerResponse.
       description: A request to start a call with an existing agent.
     ultravox.v1.StartCallRequest:
       type: object
