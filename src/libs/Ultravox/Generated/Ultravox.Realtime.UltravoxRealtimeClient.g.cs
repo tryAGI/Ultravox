@@ -11,7 +11,7 @@ namespace Ultravox.Realtime
         /// <summary>
         /// Default WebSocket base URL.
         /// </summary>
-        public const string DefaultBaseUrl = "wss://calls.ultravox.ai";
+        public const string DefaultBaseUrl = "wss://calls.ultravox.ai/";
 
         private global::System.Net.WebSockets.ClientWebSocket _clientWebSocket;
         private global::System.Uri? _lastConnectUri;
