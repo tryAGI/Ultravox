@@ -7103,6 +7103,9 @@ components:
             The maximum sample rate Ultravox will try to use. ElevenLabs limits your allowed sample rate
              based on your tier. See https://elevenlabs.io/pricing#pricing-table (and click "Show API details")
           format: int32
+        enableSsmlParsing:
+          type: boolean
+          description: See https://elevenlabs.io/docs/api-reference/text-to-speech/v-1-text-to-speech-voice-id-stream-input#request.query.enable_ssml_parsing
       description: Specification for a voice served by ElevenLabs.
     ultravox.v1.ElevenLabsVoice_PronunciationDictionaryReference:
       type: object
