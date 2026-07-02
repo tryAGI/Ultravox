@@ -71,6 +71,12 @@ namespace Ultravox
         public int? MaxSampleRate { get; set; }
 
         /// <summary>
+        /// See https://elevenlabs.io/docs/api-reference/text-to-speech/v-1-text-to-speech-voice-id-stream-input#request.query.enable_ssml_parsing
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enableSsmlParsing")]
+        public bool? EnableSsmlParsing { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -111,6 +117,9 @@ namespace Ultravox
         /// The maximum sample rate Ultravox will try to use. ElevenLabs limits your allowed sample rate<br/>
         ///  based on your tier. See https://elevenlabs.io/pricing#pricing-table (and click "Show API details")
         /// </param>
+        /// <param name="enableSsmlParsing">
+        /// See https://elevenlabs.io/docs/api-reference/text-to-speech/v-1-text-to-speech-voice-id-stream-input#request.query.enable_ssml_parsing
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -124,7 +133,8 @@ namespace Ultravox
             float? stability,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference>? pronunciationDictionaries,
             int? optimizeStreamingLatency,
-            int? maxSampleRate)
+            int? maxSampleRate,
+            bool? enableSsmlParsing)
         {
             this.VoiceId = voiceId;
             this.Model = model;
@@ -136,6 +146,7 @@ namespace Ultravox
             this.PronunciationDictionaries = pronunciationDictionaries;
             this.OptimizeStreamingLatency = optimizeStreamingLatency;
             this.MaxSampleRate = maxSampleRate;
+            this.EnableSsmlParsing = enableSsmlParsing;
         }
 
         /// <summary>
