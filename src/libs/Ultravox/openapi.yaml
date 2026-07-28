@@ -7427,6 +7427,18 @@ components:
             Whether or not to apply text normalization. This should typically only be disabled if the
              agent is instructed to normalize text directly.
              See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-apply-text-normalization.
+        deliveryMode:
+          enum:
+          - DELIVERY_MODE_UNSPECIFIED
+          - DELIVERY_MODE_STABLE
+          - DELIVERY_MODE_BALANCED
+          - DELIVERY_MODE_CREATIVE
+          type: string
+          description: |-
+            How to balance consistency and expressiveness in generated speech. Only used by
+             inworld-tts-2 models (ignored for other models).
+             See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-delivery-mode
+          format: enum
       description: Specification for a voice served by Inworld.
     ultravox.v1.LmntVoice:
       type: object

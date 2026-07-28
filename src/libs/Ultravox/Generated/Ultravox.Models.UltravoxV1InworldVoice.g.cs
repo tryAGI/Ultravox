@@ -44,6 +44,15 @@ namespace Ultravox
         public bool? ApplyTextNormalization { get; set; }
 
         /// <summary>
+        /// How to balance consistency and expressiveness in generated speech. Only used by<br/>
+        ///  inworld-tts-2 models (ignored for other models).<br/>
+        ///  See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-delivery-mode
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("deliveryMode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1InworldVoiceDeliveryModeJsonConverter))]
+        public global::Ultravox.UltravoxV1InworldVoiceDeliveryMode? DeliveryMode { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -72,6 +81,11 @@ namespace Ultravox
         ///  agent is instructed to normalize text directly.<br/>
         ///  See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-apply-text-normalization.
         /// </param>
+        /// <param name="deliveryMode">
+        /// How to balance consistency and expressiveness in generated speech. Only used by<br/>
+        ///  inworld-tts-2 models (ignored for other models).<br/>
+        ///  See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-delivery-mode
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -80,13 +94,15 @@ namespace Ultravox
             string? modelId,
             float? speakingRate,
             float? temperature,
-            bool? applyTextNormalization)
+            bool? applyTextNormalization,
+            global::Ultravox.UltravoxV1InworldVoiceDeliveryMode? deliveryMode)
         {
             this.VoiceId = voiceId;
             this.ModelId = modelId;
             this.SpeakingRate = speakingRate;
             this.Temperature = temperature;
             this.ApplyTextNormalization = applyTextNormalization;
+            this.DeliveryMode = deliveryMode;
         }
 
         /// <summary>
