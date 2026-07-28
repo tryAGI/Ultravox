@@ -2877,7 +2877,12 @@ paths:
   /api/tools/{tool_id}/test:
     post:
       operationId: tools_test_create
-      description: Test a tool by executing it with the provided parameters.
+      description: |-
+        Test a tool by executing it with the provided parameters.
+
+        Every property other than `authTokens` is treated as a value for one of the tool's dynamic parameters, matched by parameter name and sent in whichever location that parameter declares (query, path, header, or body). Properties that don't match a dynamic parameter are ignored. The tool's static and automatic parameters are filled in automatically, so they should not be supplied here.
+
+        Only HTTP tools can be tested. Tools requiring an Ultravox call token are rejected, since no call exists to issue one against.
       parameters:
       - in: path
         name: tool_id
@@ -2887,6 +2892,25 @@ paths:
         required: true
       tags:
       - tools
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                authTokens:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: 'Values satisfying the tool''s security requirements,
+                    keyed by requirement name. Applied the same way as for a real
+                    call: a headerApiKey requirement sends its value as the named
+                    header, a queryApiKey requirement as the named query parameter,
+                    and an httpAuth requirement as an Authorization header prefixed
+                    with the requirement''s scheme.'
+                  example:
+                    myServiceApiKey: my-secret-value
+              additionalProperties: true
       security:
       - apiKeyAuth: []
       responses:

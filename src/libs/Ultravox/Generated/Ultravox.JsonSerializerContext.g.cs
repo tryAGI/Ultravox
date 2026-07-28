@@ -468,6 +468,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TimedMessageEndBehavior), TypeInfoPropertyName = "UltravoxV1TimedMessageEndBehavior2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ToolsCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ToolsTestCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AccountsMeUsageConcurrencyRetrieveBucket), TypeInfoPropertyName = "AccountsMeUsageConcurrencyRetrieveBucket2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AgentsScheduledBatchesScheduledCallsListStatus), TypeInfoPropertyName = "AgentsScheduledBatchesScheduledCallsListStatus2")]
