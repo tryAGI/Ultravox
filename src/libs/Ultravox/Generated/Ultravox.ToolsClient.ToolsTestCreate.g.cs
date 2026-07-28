@@ -27,11 +27,13 @@ namespace Ultravox
             };
         partial void PrepareToolsTestCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref global::System.Guid toolId);
+            ref global::System.Guid toolId,
+            global::Ultravox.ToolsTestCreateRequest request);
         partial void PrepareToolsTestCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::System.Guid toolId);
+            global::System.Guid toolId,
+            global::Ultravox.ToolsTestCreateRequest request);
         partial void ProcessToolsTestCreateResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -42,19 +44,26 @@ namespace Ultravox
             ref string content);
 
         /// <summary>
-        /// Test a tool by executing it with the provided parameters.
+        /// Test a tool by executing it with the provided parameters.<br/>
+        /// Every property other than `authTokens` is treated as a value for one of the tool's dynamic parameters, matched by parameter name and sent in whichever location that parameter declares (query, path, header, or body). Properties that don't match a dynamic parameter are ignored. The tool's static and automatic parameters are filled in automatically, so they should not be supplied here.<br/>
+        /// Only HTTP tools can be tested. Tools requiring an Ultravox call token are rejected, since no call exists to issue one against.
         /// </summary>
         /// <param name="toolId"></param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<string> ToolsTestCreateAsync(
             global::System.Guid toolId,
+
+            global::Ultravox.ToolsTestCreateRequest request,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await ToolsTestCreateAsResponseAsync(
                 toolId: toolId,
+
+                request: request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -62,22 +71,30 @@ namespace Ultravox
             return __response.Body;
         }
         /// <summary>
-        /// Test a tool by executing it with the provided parameters.
+        /// Test a tool by executing it with the provided parameters.<br/>
+        /// Every property other than `authTokens` is treated as a value for one of the tool's dynamic parameters, matched by parameter name and sent in whichever location that parameter declares (query, path, header, or body). Properties that don't match a dynamic parameter are ignored. The tool's static and automatic parameters are filled in automatically, so they should not be supplied here.<br/>
+        /// Only HTTP tools can be tested. Tools requiring an Ultravox call token are rejected, since no call exists to issue one against.
         /// </summary>
         /// <param name="toolId"></param>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.AutoSDKHttpResponse<string>> ToolsTestCreateAsResponseAsync(
             global::System.Guid toolId,
+
+            global::Ultravox.ToolsTestCreateRequest request,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
             PrepareArguments(
                 client: HttpClient);
             PrepareToolsTestCreateArguments(
                 httpClient: HttpClient,
-                toolId: ref toolId);
+                toolId: ref toolId,
+                request: request);
 
 
             var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
@@ -134,6 +151,12 @@ namespace Ultravox
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
+                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+                            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                                content: __httpRequestContentBody,
+                                encoding: global::System.Text.Encoding.UTF8,
+                                mediaType: "application/json");
+                            __httpRequest.Content = __httpRequestContent;
                 global::Ultravox.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -145,7 +168,8 @@ namespace Ultravox
                 PrepareToolsTestCreateRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    toolId: toolId!);
+                    toolId: toolId!,
+                    request: request);
 
                 return __httpRequest;
             }
@@ -452,6 +476,36 @@ namespace Ultravox
             {
                 __httpRequest?.Dispose();
             }
+        }
+        /// <summary>
+        /// Test a tool by executing it with the provided parameters.<br/>
+        /// Every property other than `authTokens` is treated as a value for one of the tool's dynamic parameters, matched by parameter name and sent in whichever location that parameter declares (query, path, header, or body). Properties that don't match a dynamic parameter are ignored. The tool's static and automatic parameters are filled in automatically, so they should not be supplied here.<br/>
+        /// Only HTTP tools can be tested. Tools requiring an Ultravox call token are rejected, since no call exists to issue one against.
+        /// </summary>
+        /// <param name="toolId"></param>
+        /// <param name="authTokens">
+        /// Values satisfying the tool's security requirements, keyed by requirement name. Applied the same way as for a real call: a headerApiKey requirement sends its value as the named header, a queryApiKey requirement as the named query parameter, and an httpAuth requirement as an Authorization header prefixed with the requirement's scheme.<br/>
+        /// Example: {"myServiceApiKey":"my-secret-value"}
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<string> ToolsTestCreateAsync(
+            global::System.Guid toolId,
+            global::System.Collections.Generic.Dictionary<string, string>? authTokens = default,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Ultravox.ToolsTestCreateRequest
+            {
+                AuthTokens = authTokens,
+            };
+
+            return await ToolsTestCreateAsync(
+                toolId: toolId,
+                request: __request,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }
