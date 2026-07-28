@@ -125,6 +125,10 @@ namespace Ultravox
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1GenericVoiceJsonByteEncodingNullableJsonConverter),
 
+            typeof(global::Ultravox.JsonConverters.UltravoxV1InworldVoiceDeliveryModeJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.UltravoxV1InworldVoiceDeliveryModeNullableJsonConverter),
+
             typeof(global::Ultravox.JsonConverters.UltravoxV1SourceStatsStatusJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1SourceStatsStatusNullableJsonConverter),
@@ -439,6 +443,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1GenericVoiceJsonByteEncoding), TypeInfoPropertyName = "UltravoxV1GenericVoiceJsonByteEncoding2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1HeaderApiKeyRequirement))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1HttpAuthRequirement))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1InworldVoiceDeliveryMode), TypeInfoPropertyName = "UltravoxV1InworldVoiceDeliveryMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1MimeTypeSet))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1QueryApiKeyRequirement))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1QueryCorpusRequest))]
