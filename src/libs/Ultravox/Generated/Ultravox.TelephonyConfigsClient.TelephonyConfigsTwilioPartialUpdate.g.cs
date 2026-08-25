@@ -455,11 +455,11 @@ namespace Ultravox
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.TwilioConfig> TelephonyConfigsTwilioPartialUpdateAsync(
-            string authToken,
             global::System.Collections.Generic.IList<global::System.Guid>? callCreationAllowedAgentIds = default,
             bool? callCreationAllowAllAgents = default,
             global::System.Collections.Generic.Dictionary<string, string>? requestContextMapping = default,
             string? accountSid = default,
+            string? authToken = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

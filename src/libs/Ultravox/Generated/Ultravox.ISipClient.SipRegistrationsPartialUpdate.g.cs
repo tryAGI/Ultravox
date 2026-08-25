@@ -57,8 +57,8 @@ namespace Ultravox
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.SipRegistration> SipRegistrationsPartialUpdateAsync(
             string registrationId,
-            string password,
             string? username = default,
+            string? password = default,
             string? proxy = default,
             string? outboundProxy = default,
             string? authUser = default,

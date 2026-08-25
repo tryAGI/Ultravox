@@ -53,10 +53,10 @@ namespace Ultravox
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.PlivoConfig> TelephonyConfigsPlivoCreateAsync(
             string authId,
-            string authToken,
             global::System.Collections.Generic.IList<global::System.Guid>? callCreationAllowedAgentIds = default,
             bool? callCreationAllowAllAgents = default,
             global::System.Collections.Generic.Dictionary<string, string>? requestContextMapping = default,
+            string? authToken = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
