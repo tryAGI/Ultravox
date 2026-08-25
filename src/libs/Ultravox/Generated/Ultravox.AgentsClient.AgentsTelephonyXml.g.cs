@@ -147,12 +147,10 @@ namespace Ultravox
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = global::System.Text.Json.JsonSerializer.Serialize(request, request.GetType(), JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/x-www-form-urlencoded");
+                            var __formValues = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<string, string>>();
+                            var __httpRequestContent = new global::System.Net.Http.FormUrlEncodedContent(__formValues);
                             __httpRequest.Content = __httpRequestContent;
+
                 global::Ultravox.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
