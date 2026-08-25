@@ -52,8 +52,8 @@ namespace Ultravox
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.SipRegistration> SipRegistrationsCreateAsync(
             string username,
-            string password,
             string proxy,
+            string? password = default,
             string? outboundProxy = default,
             string? authUser = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,

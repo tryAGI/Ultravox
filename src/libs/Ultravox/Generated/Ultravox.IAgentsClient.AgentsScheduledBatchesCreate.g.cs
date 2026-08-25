@@ -60,13 +60,13 @@ namespace Ultravox
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Ultravox.ScheduledCallBatch> AgentsScheduledBatchesCreateAsync(
             global::System.Guid agentId,
-            global::System.Collections.Generic.IList<global::Ultravox.ScheduledCall> calls,
             global::System.DateTime? windowStart = default,
             global::System.DateTime? windowEnd = default,
             string? throttle = default,
             string? webhookUrl = default,
             string? webhookSecret = default,
             bool? paused = default,
+            global::System.Collections.Generic.IList<global::Ultravox.ScheduledCall>? calls = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

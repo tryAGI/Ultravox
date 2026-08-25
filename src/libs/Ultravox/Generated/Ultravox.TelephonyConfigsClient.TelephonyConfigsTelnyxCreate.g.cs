@@ -463,12 +463,12 @@ namespace Ultravox
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.TelnyxConfig> TelephonyConfigsTelnyxCreateAsync(
             string accountSid,
-            string apiKey,
-            string publicKey,
             string applicationSid,
             global::System.Collections.Generic.IList<global::System.Guid>? callCreationAllowedAgentIds = default,
             bool? callCreationAllowAllAgents = default,
             global::System.Collections.Generic.Dictionary<string, string>? requestContextMapping = default,
+            string? apiKey = default,
+            string? publicKey = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
