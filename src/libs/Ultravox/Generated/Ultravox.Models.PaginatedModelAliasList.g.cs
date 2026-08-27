@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class PaginatedModelAliasList
     {
@@ -23,7 +23,7 @@ namespace Ultravox
         public string? Previous { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         [global::System.Text.Json.Serialization.JsonRequired]

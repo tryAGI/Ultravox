@@ -10,11 +10,11 @@ namespace Ultravox
     public enum WebhookStatusEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Normal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unhealthy,
     }

@@ -5,7 +5,7 @@ namespace Ultravox
     public partial interface IAgentsClient
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="agentId"></param>
         /// <param name="batchId"></param>
@@ -22,7 +22,7 @@ namespace Ultravox
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="agentId"></param>
         /// <param name="batchId"></param>

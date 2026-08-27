@@ -10,11 +10,11 @@ namespace Ultravox
     public enum RetentionPolicyEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AutoDelete,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Retain,
     }

@@ -40,78 +40,78 @@ namespace Ultravox
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AccountsClient Accounts { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AgentsClient Agents { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ApiKeysClient ApiKeys { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CallThrottlesClient CallThrottles { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CallsClient Calls { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CorporaClient Corpora { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DeletedCallsClient DeletedCalls { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ModelsClient Models { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SchemaClient Schema { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SipClient Sip { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TelephonyConfigsClient TelephonyConfigs { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ToolsClient Tools { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicesClient Voices { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public WebhooksClient Webhooks { get; }
 

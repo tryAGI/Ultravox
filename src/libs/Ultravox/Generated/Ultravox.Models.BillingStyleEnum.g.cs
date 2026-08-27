@@ -4,16 +4,16 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum BillingStyleEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VoiceBillingStyleExternal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VoiceBillingStyleIncluded,
     }

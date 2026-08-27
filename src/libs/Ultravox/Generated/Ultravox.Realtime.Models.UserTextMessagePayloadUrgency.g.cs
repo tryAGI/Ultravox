@@ -9,15 +9,15 @@ namespace Ultravox.Realtime
     public enum UserTextMessagePayloadUrgency
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Immediate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Later,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Soon,
     }

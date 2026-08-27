@@ -20,7 +20,7 @@ namespace Ultravox.JsonConverters
                     {
                         return global::Ultravox.UltravoxV1StartCallRequestFirstSpeakerExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

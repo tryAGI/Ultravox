@@ -11,15 +11,15 @@ namespace Ultravox
     public enum UltravoxV1StartCallRequestFirstSpeaker
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FirstSpeakerAgent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FirstSpeakerUnspecified,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FirstSpeakerUser,
     }

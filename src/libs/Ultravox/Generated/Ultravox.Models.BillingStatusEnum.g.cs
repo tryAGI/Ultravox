@@ -17,7 +17,7 @@ namespace Ultravox
     public enum BillingStatusEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BillingStatusBilled,
         /// <summary>
@@ -29,11 +29,11 @@ namespace Ultravox
         /// </summary>
         BillingStatusFreeMinutes,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BillingStatusFreeOther,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BillingStatusFreeSystemError,
         /// <summary>
@@ -45,11 +45,11 @@ namespace Ultravox
         /// </summary>
         BillingStatusPending,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BillingStatusRefunded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BillingStatusUnspecified,
     }

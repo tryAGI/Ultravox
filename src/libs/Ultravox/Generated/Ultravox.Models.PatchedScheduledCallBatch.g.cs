@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class PatchedScheduledCallBatch
     {
@@ -51,7 +51,7 @@ namespace Ultravox
         public string? WebhookSecret { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("paused")]
         public bool? Paused { get; set; }

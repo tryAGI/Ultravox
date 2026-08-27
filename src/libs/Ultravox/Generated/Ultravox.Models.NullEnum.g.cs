@@ -4,12 +4,12 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum NullEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
     }

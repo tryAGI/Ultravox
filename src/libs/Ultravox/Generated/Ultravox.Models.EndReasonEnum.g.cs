@@ -14,27 +14,27 @@ namespace Ultravox
     public enum EndReasonEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentHangup,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConnectionError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hangup,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SystemError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Timeout,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unjoined,
     }

@@ -9,23 +9,23 @@ namespace Ultravox
     public enum UltravoxV1StaticParameterLocation
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ParameterLocationBody,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ParameterLocationHeader,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ParameterLocationPath,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ParameterLocationQuery,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ParameterLocationUnspecified,
     }

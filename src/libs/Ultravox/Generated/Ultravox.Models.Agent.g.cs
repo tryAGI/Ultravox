@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Agent
     {
@@ -22,7 +22,7 @@ namespace Ultravox
         public global::System.Guid? PublishedRevisionId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
@@ -35,7 +35,7 @@ namespace Ultravox
         public global::System.DateTime Created { get; set; } = default!;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("callTemplate")]
         public global::Ultravox.UltravoxV1CallTemplate? CallTemplate { get; set; }

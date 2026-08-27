@@ -39,7 +39,7 @@ namespace Ultravox
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="callId"></param>
         /// <param name="request"></param>
@@ -62,7 +62,7 @@ namespace Ultravox
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="callId"></param>
         /// <param name="request"></param>
@@ -138,7 +138,7 @@ namespace Ultravox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                             var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
                             var __httpRequestContent = new global::System.Net.Http.StringContent(
@@ -418,7 +418,7 @@ namespace Ultravox
             }
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="callId"></param>
         /// <param name="type">

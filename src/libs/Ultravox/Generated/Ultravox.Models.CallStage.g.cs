@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CallStage
     {
@@ -56,13 +56,13 @@ namespace Ultravox
         public int? LatestTokenCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         public string? Model { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("systemPrompt")]
         public string? SystemPrompt { get; set; }
@@ -75,13 +75,13 @@ namespace Ultravox
         public double Temperature { get; set; } = default!;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timeExceededMessage")]
         public string? TimeExceededMessage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
         public string? Voice { get; set; }

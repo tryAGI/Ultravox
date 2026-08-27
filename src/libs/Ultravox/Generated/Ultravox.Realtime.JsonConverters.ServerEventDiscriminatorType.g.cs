@@ -20,7 +20,7 @@ namespace Ultravox.Realtime.JsonConverters
                     {
                         return global::Ultravox.Realtime.ServerEventDiscriminatorTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown discriminator value '{stringValue}' for global::Ultravox.Realtime.ServerEventDiscriminatorType.");
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

@@ -9,19 +9,19 @@ namespace Ultravox
     public enum AccountsMeUsageConcurrencyRetrieveBucket
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x5min,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Day,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hour,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Minute,
     }

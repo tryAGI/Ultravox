@@ -66,7 +66,7 @@ namespace Ultravox
             ref string content);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="agentIds"></param>
         /// <param name="cursor"></param>
@@ -126,7 +126,7 @@ namespace Ultravox
             return __response.Body;
         }
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="agentIds"></param>
         /// <param name="cursor"></param>
@@ -251,7 +251,7 @@ namespace Ultravox
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Ultravox.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

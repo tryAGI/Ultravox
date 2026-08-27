@@ -11,19 +11,19 @@ namespace Ultravox
     public enum UltravoxV1InworldVoiceDeliveryMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DeliveryModeBalanced,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DeliveryModeCreative,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DeliveryModeStable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DeliveryModeUnspecified,
     }

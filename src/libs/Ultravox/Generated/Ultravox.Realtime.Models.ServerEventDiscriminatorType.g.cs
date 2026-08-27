@@ -4,36 +4,36 @@
 namespace Ultravox.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ServerEventDiscriminatorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallStarted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ClientToolInvocation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Debug,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PlaybackClearBuffer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pong,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         State,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Transcript,
     }

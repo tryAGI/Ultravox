@@ -10,15 +10,15 @@ namespace Ultravox
     public enum UltravoxV1StartCallRequestInitialOutputMedium
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageMediumText,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageMediumUnspecified,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageMediumVoice,
     }

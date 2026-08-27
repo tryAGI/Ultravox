@@ -20,7 +20,7 @@ namespace Ultravox.Realtime.JsonConverters
                     {
                         return global::Ultravox.Realtime.StatePayloadTypeExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

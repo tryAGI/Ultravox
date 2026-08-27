@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ScheduledCall
     {
@@ -54,7 +54,7 @@ namespace Ultravox
         public object? TemplateContext { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("experimentalSettings")]
         public object? ExperimentalSettings { get; set; }

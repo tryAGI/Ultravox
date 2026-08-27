@@ -10,15 +10,15 @@ namespace Ultravox
     public enum UltravoxV1GenericVoiceJsonByteEncoding
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JsonByteEncodingBase64,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JsonByteEncodingHex,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JsonByteEncodingUnspecified,
     }

@@ -9,15 +9,15 @@ namespace Ultravox
     public enum UltravoxV1TimedMessageEndBehavior
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EndBehaviorHangUpSoft,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EndBehaviorHangUpStrict,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EndBehaviorUnspecified,
     }

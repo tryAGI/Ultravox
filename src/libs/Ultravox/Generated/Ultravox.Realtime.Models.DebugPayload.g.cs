@@ -9,7 +9,7 @@ namespace Ultravox.Realtime
     public sealed partial class DebugPayload
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.Realtime.JsonConverters.DebugPayloadTypeJsonConverter))]

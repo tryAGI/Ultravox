@@ -5,7 +5,7 @@ namespace Ultravox
     public partial interface ICallsClient
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="callId"></param>
         /// <param name="callStageId"></param>
@@ -18,7 +18,7 @@ namespace Ultravox
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="callId"></param>
         /// <param name="callStageId"></param>

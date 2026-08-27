@@ -4,12 +4,12 @@
 namespace Ultravox.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum PongPayloadType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pong,
     }

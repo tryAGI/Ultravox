@@ -11,19 +11,19 @@ namespace Ultravox
     public enum UltravoxV1BaseToolDefinitionDefaultReaction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentReactionListens,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentReactionSpeaks,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentReactionSpeaksOnce,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentReactionUnspecified,
     }

@@ -9,23 +9,23 @@ namespace Ultravox
     public enum UltravoxV1CorpusStatsStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CorpusStatusEmpty,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CorpusStatusInitializing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CorpusStatusReady,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CorpusStatusUnspecified,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CorpusStatusUpdating,
     }

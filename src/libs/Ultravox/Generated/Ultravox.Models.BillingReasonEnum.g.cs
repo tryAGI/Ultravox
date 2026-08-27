@@ -13,23 +13,23 @@ namespace Ultravox
     public enum BillingReasonEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Manual,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionCreate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionCycle,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionThreshold,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SubscriptionUpdate,
     }

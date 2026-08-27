@@ -4,12 +4,12 @@
 namespace Ultravox.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum PlaybackClearBufferPayloadType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PlaybackClearBuffer,
     }

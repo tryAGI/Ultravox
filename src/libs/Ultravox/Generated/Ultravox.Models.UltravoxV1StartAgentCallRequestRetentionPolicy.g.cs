@@ -9,15 +9,15 @@ namespace Ultravox
     public enum UltravoxV1StartAgentCallRequestRetentionPolicy
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallRetentionPolicyAutoDelete,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallRetentionPolicyRetain,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallRetentionPolicyUnspecified,
     }

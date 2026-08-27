@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Invoice
     {
@@ -47,7 +47,7 @@ namespace Ultravox
         public global::Ultravox.InvoiceStatusEnum InvoiceStatus { get; set; } = default!;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("invoiceUrl")]
         [global::System.Text.Json.Serialization.JsonRequired]

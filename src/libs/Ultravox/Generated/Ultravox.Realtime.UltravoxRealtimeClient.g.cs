@@ -294,7 +294,7 @@ namespace Ultravox.Realtime
         public event global::System.EventHandler<AutoSDKWebSocketMessageEventArgs<global::Ultravox.Realtime.DebugPayload>>? DebugReceived;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; } = global::Ultravox.Realtime.RealtimeSourceGenerationContext.Default;
