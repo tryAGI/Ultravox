@@ -9,19 +9,19 @@ namespace Ultravox
     public enum UltravoxV1CallMediumDtmfUserTextMessageUrgency
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UrgencyImmediate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UrgencyLater,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UrgencySoon,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UrgencyUnspecified,
     }

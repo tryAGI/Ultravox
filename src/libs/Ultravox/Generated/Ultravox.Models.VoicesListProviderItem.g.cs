@@ -14,27 +14,27 @@ namespace Ultravox
     public enum VoicesListProviderItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cartesia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenLabs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Google,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inworld,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Lmnt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Respeecher,
     }

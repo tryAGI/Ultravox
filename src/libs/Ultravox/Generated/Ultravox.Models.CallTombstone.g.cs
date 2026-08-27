@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CallTombstone
     {
@@ -23,7 +23,7 @@ namespace Ultravox
         public global::System.Guid AccountId { get; set; } = default!;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -37,13 +37,13 @@ namespace Ultravox
         public global::System.DateTime DeletionTime { get; set; } = default!;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("joined")]
         public global::System.DateTime? Joined { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ended")]
         public global::System.DateTime? Ended { get; set; }

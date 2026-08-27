@@ -6,7 +6,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Call
     {
@@ -139,7 +139,7 @@ namespace Ultravox
         public string? MaxDuration { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("medium")]
         public global::Ultravox.UltravoxV1CallMedium? Medium { get; set; }
@@ -166,7 +166,7 @@ namespace Ultravox
         public global::Ultravox.OneOf<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>? RetentionPolicy { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("systemPrompt")]
         public string? SystemPrompt { get; set; }
@@ -178,13 +178,13 @@ namespace Ultravox
         public double? Temperature { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timeExceededMessage")]
         public string? TimeExceededMessage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
         public string? Voice { get; set; }
@@ -269,7 +269,7 @@ namespace Ultravox
         public required object InitialState { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("requestContext")]
         [global::System.Text.Json.Serialization.JsonRequired]

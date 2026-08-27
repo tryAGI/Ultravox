@@ -9,39 +9,39 @@ namespace Ultravox
     public enum UltravoxV1AutomaticParameterKnownValue
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnownParamCallId,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnownParamCallMetadata,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnownParamCallStageId,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnownParamCallState,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnownParamConversationHistory,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnownParamOutputSampleRate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnownParamThreadId,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnownParamThreadStates,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnownParamUnspecified,
     }

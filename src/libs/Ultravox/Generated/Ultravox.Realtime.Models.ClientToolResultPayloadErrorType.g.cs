@@ -9,11 +9,11 @@ namespace Ultravox.Realtime
     public enum ClientToolResultPayloadErrorType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ImplementationError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Undefined,
     }

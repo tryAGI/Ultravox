@@ -9,11 +9,11 @@ namespace Ultravox.Realtime
     public enum TranscriptPayloadMedium
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Voice,
     }

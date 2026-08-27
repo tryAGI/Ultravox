@@ -9,11 +9,11 @@ namespace Ultravox
     public enum CallsMessagesListMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InCall,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LastStage,
     }

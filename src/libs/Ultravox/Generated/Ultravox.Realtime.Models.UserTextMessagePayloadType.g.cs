@@ -4,12 +4,12 @@
 namespace Ultravox.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum UserTextMessagePayloadType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserTextMessage,
     }

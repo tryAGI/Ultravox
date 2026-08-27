@@ -9,11 +9,11 @@ namespace Ultravox.Realtime
     public enum ForcedAgentMessagePayloadUrgency
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Immediate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Soon,
     }

@@ -9,11 +9,11 @@ namespace Ultravox.Realtime
     public enum TranscriptPayloadRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Agent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

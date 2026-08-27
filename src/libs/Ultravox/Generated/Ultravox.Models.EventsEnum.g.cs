@@ -12,19 +12,19 @@ namespace Ultravox
     public enum EventsEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallBilled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallEnded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallJoined,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallStarted,
     }

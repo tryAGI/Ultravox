@@ -9,27 +9,27 @@ namespace Ultravox
     public enum ToolsListSortOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Alphabetic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chronologic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Default,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Display,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ReverseAlphabetic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ReverseChronologic,
     }

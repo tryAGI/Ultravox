@@ -4,16 +4,16 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum InitialOutputMediumEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageMediumText,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageMediumVoice,
     }

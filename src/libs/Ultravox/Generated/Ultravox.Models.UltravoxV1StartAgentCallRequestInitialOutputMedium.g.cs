@@ -9,15 +9,15 @@ namespace Ultravox
     public enum UltravoxV1StartAgentCallRequestInitialOutputMedium
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageMediumText,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageMediumUnspecified,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageMediumVoice,
     }

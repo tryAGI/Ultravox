@@ -4,40 +4,40 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TerminationReasonEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipTerminationBusy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipTerminationCanceled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipTerminationDestinationUnavailable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipTerminationInvalidNumber,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipTerminationNormal,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipTerminationRejected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipTerminationTimeout,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipTerminationUnknown,
     }

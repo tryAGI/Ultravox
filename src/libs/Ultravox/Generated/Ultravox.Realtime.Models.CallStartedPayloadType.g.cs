@@ -4,12 +4,12 @@
 namespace Ultravox.Realtime
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CallStartedPayloadType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallStarted,
     }

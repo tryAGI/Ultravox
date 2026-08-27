@@ -10,11 +10,11 @@ namespace Ultravox
     public enum InvoiceStatusEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Paid,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unpaid,
     }

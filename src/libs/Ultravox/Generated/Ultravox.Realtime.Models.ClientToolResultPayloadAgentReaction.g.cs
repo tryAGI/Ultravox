@@ -9,15 +9,15 @@ namespace Ultravox.Realtime
     public enum ClientToolResultPayloadAgentReaction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Listens,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Speaks,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SpeaksOnce,
     }

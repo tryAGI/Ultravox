@@ -4,16 +4,16 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum FirstSpeakerEnum
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FirstSpeakerAgent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FirstSpeakerUser,
     }

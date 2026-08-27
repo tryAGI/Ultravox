@@ -9,19 +9,19 @@ namespace Ultravox.Realtime
     public enum StatePayloadState
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Idle,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Listening,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Speaking,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Thinking,
     }

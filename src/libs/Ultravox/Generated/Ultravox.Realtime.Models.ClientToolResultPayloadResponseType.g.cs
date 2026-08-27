@@ -9,11 +9,11 @@ namespace Ultravox.Realtime
     public enum ClientToolResultPayloadResponseType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         HangUp,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ToolResponse,
     }

@@ -5,7 +5,7 @@ namespace Ultravox
     public partial interface ICallsClient
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="agentIds"></param>
         /// <param name="cursor"></param>
@@ -44,7 +44,7 @@ namespace Ultravox
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="agentIds"></param>
         /// <param name="cursor"></param>

@@ -9,19 +9,19 @@ namespace Ultravox
     public enum UltravoxV1SourceStatsStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SourceStatusInitializing,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SourceStatusReady,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SourceStatusUnspecified,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SourceStatusUpdating,
     }

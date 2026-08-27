@@ -5,7 +5,7 @@ namespace Ultravox
     public partial interface IWebhooksClient
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="agentId"></param>
         /// <param name="cursor"></param>
@@ -20,7 +20,7 @@ namespace Ultravox
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="agentId"></param>
         /// <param name="cursor"></param>

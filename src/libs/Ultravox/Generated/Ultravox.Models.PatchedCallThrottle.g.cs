@@ -4,7 +4,7 @@
 namespace Ultravox
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class PatchedCallThrottle
     {
@@ -15,7 +15,7 @@ namespace Ultravox
         public global::System.Guid? ThrottleId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         public string? Name { get; set; }
@@ -27,7 +27,7 @@ namespace Ultravox
         public global::System.DateTime? Created { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rules")]
         public global::System.Collections.Generic.IList<global::Ultravox.CallThrottleRule>? Rules { get; set; }

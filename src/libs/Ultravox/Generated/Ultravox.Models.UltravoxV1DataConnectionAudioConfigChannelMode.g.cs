@@ -11,15 +11,15 @@ namespace Ultravox
     public enum UltravoxV1DataConnectionAudioConfigChannelMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChannelModeMixed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChannelModeSeparated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChannelModeUnspecified,
     }

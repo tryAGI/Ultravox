@@ -9,23 +9,23 @@ namespace Ultravox
     public enum UltravoxV1MessageRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageRoleAgent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageRoleToolCall,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageRoleToolResult,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageRoleUnspecified,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MessageRoleUser,
     }
