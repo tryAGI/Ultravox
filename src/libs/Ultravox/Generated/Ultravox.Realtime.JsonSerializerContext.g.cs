@@ -108,6 +108,7 @@ namespace Ultravox.Realtime
             typeof(global::Ultravox.Realtime.JsonConverters.ServerEventJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.Realtime.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.Realtime.PingPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.Realtime.PingPayloadType), TypeInfoPropertyName = "PingPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
