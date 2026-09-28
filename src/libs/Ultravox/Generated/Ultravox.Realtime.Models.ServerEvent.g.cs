@@ -47,8 +47,8 @@ namespace Ultravox.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Ultravox.Realtime.PongPayload PickPong() => IsPong
-            ? Pong!
+        public global::Ultravox.Realtime.PongPayload PickPong() => Pong is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Pong' but the value was {ToString()}.");
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Ultravox.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Ultravox.Realtime.StatePayload PickState() => IsState
-            ? State!
+        public global::Ultravox.Realtime.StatePayload PickState() => State is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'State' but the value was {ToString()}.");
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Ultravox.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Ultravox.Realtime.TranscriptPayload PickTranscript() => IsTranscript
-            ? Transcript!
+        public global::Ultravox.Realtime.TranscriptPayload PickTranscript() => Transcript is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Transcript' but the value was {ToString()}.");
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Ultravox.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Ultravox.Realtime.ClientToolInvocationPayload PickClientToolInvocation() => IsClientToolInvocation
-            ? ClientToolInvocation!
+        public global::Ultravox.Realtime.ClientToolInvocationPayload PickClientToolInvocation() => ClientToolInvocation is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ClientToolInvocation' but the value was {ToString()}.");
 
         /// <summary>
@@ -195,8 +195,8 @@ namespace Ultravox.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Ultravox.Realtime.PlaybackClearBufferPayload PickPlaybackClearBuffer() => IsPlaybackClearBuffer
-            ? PlaybackClearBuffer!
+        public global::Ultravox.Realtime.PlaybackClearBufferPayload PickPlaybackClearBuffer() => PlaybackClearBuffer is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PlaybackClearBuffer' but the value was {ToString()}.");
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace Ultravox.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Ultravox.Realtime.CallStartedPayload PickCallStarted() => IsCallStarted
-            ? CallStarted!
+        public global::Ultravox.Realtime.CallStartedPayload PickCallStarted() => CallStarted is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CallStarted' but the value was {ToString()}.");
 
         /// <summary>
@@ -269,8 +269,8 @@ namespace Ultravox.Realtime
         /// <summary>
         ///
         /// </summary>
-        public global::Ultravox.Realtime.DebugPayload PickDebug() => IsDebug
-            ? Debug!
+        public global::Ultravox.Realtime.DebugPayload PickDebug() => Debug is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Debug' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -510,33 +510,33 @@ namespace Ultravox.Realtime
                 Validate();
             }
 
-            if (IsPong && pong != null)
+            if (Pong is { } __value0 && pong != null)
             {
-                return pong(Pong!);
+                return pong(__value0);
             }
-            else if (IsState && state != null)
+            else if (State is { } __value1 && state != null)
             {
-                return state(State!);
+                return state(__value1);
             }
-            else if (IsTranscript && transcript != null)
+            else if (Transcript is { } __value2 && transcript != null)
             {
-                return transcript(Transcript!);
+                return transcript(__value2);
             }
-            else if (IsClientToolInvocation && clientToolInvocation != null)
+            else if (ClientToolInvocation is { } __value3 && clientToolInvocation != null)
             {
-                return clientToolInvocation(ClientToolInvocation!);
+                return clientToolInvocation(__value3);
             }
-            else if (IsPlaybackClearBuffer && playbackClearBuffer != null)
+            else if (PlaybackClearBuffer is { } __value4 && playbackClearBuffer != null)
             {
-                return playbackClearBuffer(PlaybackClearBuffer!);
+                return playbackClearBuffer(__value4);
             }
-            else if (IsCallStarted && callStarted != null)
+            else if (CallStarted is { } __value5 && callStarted != null)
             {
-                return callStarted(CallStarted!);
+                return callStarted(__value5);
             }
-            else if (IsDebug && debug != null)
+            else if (Debug is { } __value6 && debug != null)
             {
-                return debug(Debug!);
+                return debug(__value6);
             }
 
             return default(TResult);
@@ -566,33 +566,33 @@ namespace Ultravox.Realtime
                 Validate();
             }
 
-            if (IsPong)
+            if (Pong is { } __value0)
             {
-                pong?.Invoke(Pong!);
+                pong?.Invoke(__value0);
             }
-            else if (IsState)
+            else if (State is { } __value1)
             {
-                state?.Invoke(State!);
+                state?.Invoke(__value1);
             }
-            else if (IsTranscript)
+            else if (Transcript is { } __value2)
             {
-                transcript?.Invoke(Transcript!);
+                transcript?.Invoke(__value2);
             }
-            else if (IsClientToolInvocation)
+            else if (ClientToolInvocation is { } __value3)
             {
-                clientToolInvocation?.Invoke(ClientToolInvocation!);
+                clientToolInvocation?.Invoke(__value3);
             }
-            else if (IsPlaybackClearBuffer)
+            else if (PlaybackClearBuffer is { } __value4)
             {
-                playbackClearBuffer?.Invoke(PlaybackClearBuffer!);
+                playbackClearBuffer?.Invoke(__value4);
             }
-            else if (IsCallStarted)
+            else if (CallStarted is { } __value5)
             {
-                callStarted?.Invoke(CallStarted!);
+                callStarted?.Invoke(__value5);
             }
-            else if (IsDebug)
+            else if (Debug is { } __value6)
             {
-                debug?.Invoke(Debug!);
+                debug?.Invoke(__value6);
             }
         }
 
@@ -614,33 +614,33 @@ namespace Ultravox.Realtime
                 Validate();
             }
 
-            if (IsPong)
+            if (Pong is { } __value0)
             {
-                pong?.Invoke(Pong!);
+                pong?.Invoke(__value0);
             }
-            else if (IsState)
+            else if (State is { } __value1)
             {
-                state?.Invoke(State!);
+                state?.Invoke(__value1);
             }
-            else if (IsTranscript)
+            else if (Transcript is { } __value2)
             {
-                transcript?.Invoke(Transcript!);
+                transcript?.Invoke(__value2);
             }
-            else if (IsClientToolInvocation)
+            else if (ClientToolInvocation is { } __value3)
             {
-                clientToolInvocation?.Invoke(ClientToolInvocation!);
+                clientToolInvocation?.Invoke(__value3);
             }
-            else if (IsPlaybackClearBuffer)
+            else if (PlaybackClearBuffer is { } __value4)
             {
-                playbackClearBuffer?.Invoke(PlaybackClearBuffer!);
+                playbackClearBuffer?.Invoke(__value4);
             }
-            else if (IsCallStarted)
+            else if (CallStarted is { } __value5)
             {
-                callStarted?.Invoke(CallStarted!);
+                callStarted?.Invoke(__value5);
             }
-            else if (IsDebug)
+            else if (Debug is { } __value6)
             {
-                debug?.Invoke(Debug!);
+                debug?.Invoke(__value6);
             }
         }
 

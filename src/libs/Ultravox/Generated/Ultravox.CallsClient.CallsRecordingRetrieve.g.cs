@@ -145,7 +145,7 @@ namespace Ultravox
                 PrepareCallsRecordingRetrieveRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    callId: callId!);
+                    callId: callId);
 
                 return __httpRequest;
             }
@@ -167,7 +167,7 @@ namespace Ultravox
                                 pathTemplate: "$\"/api/calls/{callId}/recording\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -201,7 +201,7 @@ namespace Ultravox
                                 pathTemplate: "$\"/api/calls/{callId}/recording\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -242,7 +242,7 @@ namespace Ultravox
                                 pathTemplate: "$\"/api/calls/{callId}/recording\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -290,7 +290,7 @@ namespace Ultravox
                                 pathTemplate: "$\"/api/calls/{callId}/recording\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -312,7 +312,7 @@ namespace Ultravox
                                 pathTemplate: "$\"/api/calls/{callId}/recording\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -491,7 +491,7 @@ namespace Ultravox
                 PrepareCallsRecordingRetrieveRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    callId: callId!);
+                    callId: callId);
 
                 return __httpRequest;
             }
@@ -513,7 +513,7 @@ namespace Ultravox
                                 pathTemplate: "$\"/api/calls/{callId}/recording\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -547,7 +547,7 @@ namespace Ultravox
                                 pathTemplate: "$\"/api/calls/{callId}/recording\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -588,7 +588,7 @@ namespace Ultravox
                                 pathTemplate: "$\"/api/calls/{callId}/recording\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -636,7 +636,7 @@ namespace Ultravox
                                 pathTemplate: "$\"/api/calls/{callId}/recording\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -658,7 +658,7 @@ namespace Ultravox
                                 pathTemplate: "$\"/api/calls/{callId}/recording\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
