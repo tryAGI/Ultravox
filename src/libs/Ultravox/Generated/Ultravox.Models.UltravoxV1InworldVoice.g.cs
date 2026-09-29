@@ -53,6 +53,17 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1InworldVoiceDeliveryMode? DeliveryMode { get; set; }
 
         /// <summary>
+        /// Full resource names of up to three unique Inworld pronunciation dictionaries,<br/>
+        ///  in priority order (first match wins):<br/>
+        ///  workspaces/{workspace}/pronunciationDictionaries/{dictionary}.<br/>
+        ///  Must be accessible with the voice's Inworld API key. Omit to use no dictionary.<br/>
+        ///  Requires an inworld-tts-2 model and a concrete language on the call; otherwise<br/>
+        ///  entries are ignored or the request is rejected.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pronunciationDictionaryIds")]
+        public global::System.Collections.Generic.IList<string>? PronunciationDictionaryIds { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -86,6 +97,14 @@ namespace Ultravox
         ///  inworld-tts-2 models (ignored for other models).<br/>
         ///  See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-delivery-mode
         /// </param>
+        /// <param name="pronunciationDictionaryIds">
+        /// Full resource names of up to three unique Inworld pronunciation dictionaries,<br/>
+        ///  in priority order (first match wins):<br/>
+        ///  workspaces/{workspace}/pronunciationDictionaries/{dictionary}.<br/>
+        ///  Must be accessible with the voice's Inworld API key. Omit to use no dictionary.<br/>
+        ///  Requires an inworld-tts-2 model and a concrete language on the call; otherwise<br/>
+        ///  entries are ignored or the request is rejected.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -95,7 +114,8 @@ namespace Ultravox
             float? speakingRate,
             float? temperature,
             bool? applyTextNormalization,
-            global::Ultravox.UltravoxV1InworldVoiceDeliveryMode? deliveryMode)
+            global::Ultravox.UltravoxV1InworldVoiceDeliveryMode? deliveryMode,
+            global::System.Collections.Generic.IList<string>? pronunciationDictionaryIds)
         {
             this.VoiceId = voiceId;
             this.ModelId = modelId;
@@ -103,6 +123,7 @@ namespace Ultravox
             this.Temperature = temperature;
             this.ApplyTextNormalization = applyTextNormalization;
             this.DeliveryMode = deliveryMode;
+            this.PronunciationDictionaryIds = pronunciationDictionaryIds;
         }
 
         /// <summary>

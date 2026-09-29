@@ -7463,6 +7463,17 @@ components:
              inworld-tts-2 models (ignored for other models).
              See https://docs.inworld.ai/api-reference/ttsAPI/texttospeech/synthesize-speech-stream#body-delivery-mode
           format: enum
+        pronunciationDictionaryIds:
+          type: array
+          items:
+            type: string
+          description: |-
+            Full resource names of up to three unique Inworld pronunciation dictionaries,
+             in priority order (first match wins):
+             workspaces/{workspace}/pronunciationDictionaries/{dictionary}.
+             Must be accessible with the voice's Inworld API key. Omit to use no dictionary.
+             Requires an inworld-tts-2 model and a concrete language on the call; otherwise
+             entries are ignored or the request is rejected.
       description: Specification for a voice served by Inworld.
     ultravox.v1.LmntVoice:
       type: object
