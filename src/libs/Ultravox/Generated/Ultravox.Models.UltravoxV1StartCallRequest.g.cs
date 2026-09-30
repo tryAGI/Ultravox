@@ -191,6 +191,12 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<string>? SharedSecrets { get; set; }
 
         /// <summary>
+        /// Background audio played behind the agent's voice for the duration of the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("backgroundAudio")]
+        public global::Ultravox.UltravoxV1BackgroundAudio? BackgroundAudio { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -297,6 +303,9 @@ namespace Ultravox
         ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
         ///  Write-only: this field is never included in API responses.
         /// </param>
+        /// <param name="backgroundAudio">
+        /// Background audio played behind the agent's voice for the duration of the call.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -327,7 +336,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1Callbacks? callbacks,
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides,
             global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? retentionPolicy,
-            global::System.Collections.Generic.IList<string>? sharedSecrets)
+            global::System.Collections.Generic.IList<string>? sharedSecrets,
+            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -356,6 +366,7 @@ namespace Ultravox
             this.VoiceOverrides = voiceOverrides;
             this.RetentionPolicy = retentionPolicy;
             this.SharedSecrets = sharedSecrets;
+            this.BackgroundAudio = backgroundAudio;
         }
 
         /// <summary>

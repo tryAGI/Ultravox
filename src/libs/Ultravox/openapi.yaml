@@ -967,6 +967,178 @@ paths:
       responses:
         '204':
           description: No response body
+  /api/audio_clips:
+    get:
+      operationId: audio_clips_list
+      parameters:
+      - name: cursor
+        required: false
+        in: query
+        description: The pagination cursor value.
+        schema:
+          type: string
+      - name: pageSize
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - audio_clips
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAudioClipList'
+          description: ''
+    post:
+      operationId: audio_clips_create
+      description: Create a new audio clip from a WAV file. The created clip will
+        be private to your account.
+      tags:
+      - audio_clips
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: A mono 16-bit PCM WAV file with a sample rate between
+                    16kHz and 48kHz containing at most 60 seconds of audio.
+                name:
+                  type: string
+                  description: Name for the audio clip. Must be unique within your
+                    account.
+                  example: my_office
+                description:
+                  type: string
+                  description: Optional description for the audio clip.
+                  example: Background chatter recorded in our office
+              required:
+              - file
+              - name
+      security:
+      - apiKeyAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudioClip'
+          description: ''
+  /api/audio_clips/{audio_clip_id}:
+    get:
+      operationId: audio_clips_retrieve
+      parameters:
+      - in: path
+        name: audio_clip_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - audio_clips
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudioClip'
+          description: ''
+    put:
+      operationId: audio_clips_update
+      parameters:
+      - in: path
+        name: audio_clip_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - audio_clips
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AudioClip'
+        required: true
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudioClip'
+          description: ''
+    patch:
+      operationId: audio_clips_partial_update
+      parameters:
+      - in: path
+        name: audio_clip_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - audio_clips
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAudioClip'
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudioClip'
+          description: ''
+    delete:
+      operationId: audio_clips_destroy
+      parameters:
+      - in: path
+        name: audio_clip_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - audio_clips
+      security:
+      - apiKeyAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/audio_clips/{audio_clip_id}/audio:
+    get:
+      operationId: audio_clips_audio_retrieve
+      description: Provides the audio clip's audio via a redirect to a short-lived
+        download URL.
+      parameters:
+      - in: path
+        name: audio_clip_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - audio_clips
+      security:
+      - apiKeyAuth: []
+      responses:
+        '302':
+          description: No response body
   /api/call_throttles:
     get:
       operationId: call_throttles_list
@@ -2851,6 +3023,14 @@ paths:
         description: The pagination cursor value.
         schema:
           type: string
+      - name: includeTotal
+        required: false
+        in: query
+        description: Whether to compute `total`. Pass false when only a page of results
+          is needed.
+        schema:
+          type: boolean
+          default: true
       - name: pageSize
         required: false
         in: query
@@ -3693,6 +3873,48 @@ components:
       required:
       - agent
       - usage
+    AudioClip:
+      type: object
+      properties:
+        audioClipId:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          nullable: true
+          maxLength: 240
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        duration:
+          type: string
+          readOnly: true
+          description: The duration of the audio.
+        sampleRate:
+          type: integer
+          readOnly: true
+          description: The sample rate of the audio in Hz.
+        sizeBytes:
+          type: integer
+          readOnly: true
+          description: The size of the audio file in bytes.
+        ownership:
+          allOf:
+          - $ref: '#/components/schemas/OwnershipEnum'
+          readOnly: true
+      required:
+      - audioClipId
+      - created
+      - duration
+      - name
+      - ownership
+      - sampleRate
+      - sizeBytes
     BillingReasonEnum:
       enum:
       - manual
@@ -3949,6 +4171,12 @@ components:
           readOnly: true
           nullable: true
           description: SIP details for the call, if applicable.
+        backgroundAudio:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.BackgroundAudio'
+          nullable: true
+          description: Background audio played behind the agent's voice during the
+            call.
       required:
       - agent
       - agentId
@@ -4569,6 +4797,28 @@ components:
         total:
           type: integer
           example: 123
+    PaginatedAudioClipList:
+      type: object
+      required:
+      - results
+      properties:
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AudioClip'
+        total:
+          type: integer
+          example: 123
     PaginatedCallEventList:
       type: object
       required:
@@ -4810,6 +5060,8 @@ components:
         total:
           type: integer
           example: 123
+          nullable: true
+          description: Null when `includeTotal` is false.
     PaginatedToolList:
       type: object
       required:
@@ -5038,6 +5290,40 @@ components:
         statistics:
           allOf:
           - $ref: '#/components/schemas/AgentStatistics'
+          readOnly: true
+    PatchedAudioClip:
+      type: object
+      properties:
+        audioClipId:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 64
+        description:
+          type: string
+          nullable: true
+          maxLength: 240
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        duration:
+          type: string
+          readOnly: true
+          description: The duration of the audio.
+        sampleRate:
+          type: integer
+          readOnly: true
+          description: The sample rate of the audio in Hz.
+        sizeBytes:
+          type: integer
+          readOnly: true
+          description: The size of the audio file in bytes.
+        ownership:
+          allOf:
+          - $ref: '#/components/schemas/OwnershipEnum'
           readOnly: true
     PatchedCallThrottle:
       type: object
@@ -6174,6 +6460,10 @@ components:
           type: string
           description: The default retention policy for calls created with this agent.
           format: enum
+        backgroundAudio:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.BackgroundAudio'
+          description: Background audio played behind the agent's voice during calls.
       description: A CallTemplate that can be used to create Ultravox calls with shared
         properties.
     ultravox.v1.Corpus:
@@ -6426,6 +6716,21 @@ components:
           description: The value to set for the parameter.
           format: enum
       description: A parameter that is automatically set by the system.
+    ultravox.v1.BackgroundAudio:
+      type: object
+      properties:
+        audioClip:
+          type: string
+          description: The name or ID of the audio clip to play.
+        volume:
+          type: number
+          description: |-
+            The volume of the background audio relative to the agent's voice, between
+             0 and 10. Defaults to 0.3.
+          format: float
+      description: |-
+        Background audio played behind the agent's voice for the duration of a call,
+         for example to make the agent sound like it's in a busy office.
     ultravox.v1.BaseClientToolDetails:
       type: object
       properties: {}
@@ -7908,6 +8213,12 @@ components:
             The ID of the agent to use for this call. Ignored when an agent is already
              identified by request context (e.g. from the request URL); required when there
              is no other agent context, such as in a SipFallbackHandlerResponse.
+        backgroundAudio:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.BackgroundAudio'
+          description: |-
+            The (overridden) background audio played behind the agent's voice for the
+             duration of the call.
       description: A request to start a call with an existing agent.
     ultravox.v1.StartCallRequest:
       type: object
@@ -8059,6 +8370,11 @@ components:
              X-Ultravox-Signature headers will be included. If multiple secrets are provided,
              one signature per secret is produced (comma-separated in X-Ultravox-Signature).
              Write-only: this field is never included in API responses.
+        backgroundAudio:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.BackgroundAudio'
+          description: Background audio played behind the agent's voice for the duration
+            of the call.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object

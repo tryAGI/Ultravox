@@ -28,12 +28,14 @@ namespace Ultravox
         partial void PrepareToolsHistoryListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string? cursor,
+            ref bool? includeTotal,
             ref int? pageSize,
             ref global::System.Guid toolId);
         partial void PrepareToolsHistoryListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string? cursor,
+            bool? includeTotal,
             int? pageSize,
             global::System.Guid toolId);
         partial void ProcessToolsHistoryListResponse(
@@ -49,6 +51,9 @@ namespace Ultravox
         ///
         /// </summary>
         /// <param name="cursor"></param>
+        /// <param name="includeTotal">
+        /// Default Value: true
+        /// </param>
         /// <param name="pageSize"></param>
         /// <param name="toolId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -57,6 +62,7 @@ namespace Ultravox
         public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedToolHistoryList> ToolsHistoryListAsync(
             global::System.Guid toolId,
             string? cursor = default,
+            bool? includeTotal = default,
             int? pageSize = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -64,6 +70,7 @@ namespace Ultravox
             var __response = await ToolsHistoryListAsResponseAsync(
                 toolId: toolId,
                 cursor: cursor,
+                includeTotal: includeTotal,
                 pageSize: pageSize,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -75,6 +82,9 @@ namespace Ultravox
         ///
         /// </summary>
         /// <param name="cursor"></param>
+        /// <param name="includeTotal">
+        /// Default Value: true
+        /// </param>
         /// <param name="pageSize"></param>
         /// <param name="toolId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -83,6 +93,7 @@ namespace Ultravox
         public async global::System.Threading.Tasks.Task<global::Ultravox.AutoSDKHttpResponse<global::Ultravox.PaginatedToolHistoryList>> ToolsHistoryListAsResponseAsync(
             global::System.Guid toolId,
             string? cursor = default,
+            bool? includeTotal = default,
             int? pageSize = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -92,6 +103,7 @@ namespace Ultravox
             PrepareToolsHistoryListArguments(
                 httpClient: HttpClient,
                 cursor: ref cursor,
+                includeTotal: ref includeTotal,
                 pageSize: ref pageSize,
                 toolId: ref toolId);
 
@@ -123,6 +135,7 @@ namespace Ultravox
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddOptionalParameter("cursor", cursor)
+                                .AddOptionalParameter("includeTotal", includeTotal?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -166,6 +179,7 @@ namespace Ultravox
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     cursor: cursor,
+                    includeTotal: includeTotal,
                     pageSize: pageSize,
                     toolId: toolId);
 

@@ -3,11 +3,11 @@
 
 namespace Ultravox
 {
-    public partial class CallsClient
+    public partial class AudioClipsClient
     {
 
 
-        private static readonly global::Ultravox.EndPointSecurityRequirement s_CallsCreateSecurityRequirement0 =
+        private static readonly global::Ultravox.EndPointSecurityRequirement s_AudioClipsAudioRetrieveSecurityRequirement0 =
             new global::Ultravox.EndPointSecurityRequirement
             {
                 Authorizations = new global::Ultravox.EndPointAuthorizationRequirement[]
@@ -21,102 +21,62 @@ namespace Ultravox
                     },
                 },
             };
-        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_CallsCreateSecurityRequirements =
+        private static readonly global::Ultravox.EndPointSecurityRequirement[] s_AudioClipsAudioRetrieveSecurityRequirements =
             new global::Ultravox.EndPointSecurityRequirement[]
-            {                s_CallsCreateSecurityRequirement0,
+            {                s_AudioClipsAudioRetrieveSecurityRequirement0,
             };
-        partial void PrepareCallsCreateArguments(
+        partial void PrepareAudioClipsAudioRetrieveArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref bool? enableGreetingPrompt,
-            ref global::System.Guid? priorCallId,
-            ref string? throttle,
-            global::Ultravox.UltravoxV1StartCallRequest request);
-        partial void PrepareCallsCreateRequest(
+            ref global::System.Guid audioClipId);
+        partial void PrepareAudioClipsAudioRetrieveRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            bool? enableGreetingPrompt,
-            global::System.Guid? priorCallId,
-            string? throttle,
-            global::Ultravox.UltravoxV1StartCallRequest request);
-        partial void ProcessCallsCreateResponse(
+            global::System.Guid audioClipId);
+        partial void ProcessAudioClipsAudioRetrieveResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessCallsCreateResponseContent(
-            global::System.Net.Http.HttpClient httpClient,
-            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
-            ref string content);
-
         /// <summary>
-        ///
+        /// Provides the audio clip's audio via a redirect to a short-lived download URL.
         /// </summary>
-        /// <param name="enableGreetingPrompt">
-        /// Default Value: true
-        /// </param>
-        /// <param name="priorCallId"></param>
-        /// <param name="throttle"></param>
-        /// <param name="request"></param>
+        /// <param name="audioClipId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
-
-            global::Ultravox.UltravoxV1StartCallRequest request,
-            bool? enableGreetingPrompt = default,
-            global::System.Guid? priorCallId = default,
-            string? throttle = default,
+        public async global::System.Threading.Tasks.Task AudioClipsAudioRetrieveAsync(
+            global::System.Guid audioClipId,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await CallsCreateAsResponseAsync(
-
-                request: request,
-                enableGreetingPrompt: enableGreetingPrompt,
-                priorCallId: priorCallId,
-                throttle: throttle,
+            await AudioClipsAudioRetrieveAsResponseAsync(
+                audioClipId: audioClipId,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
-
-            return __response.Body;
         }
         /// <summary>
-        ///
+        /// Provides the audio clip's audio via a redirect to a short-lived download URL.
         /// </summary>
-        /// <param name="enableGreetingPrompt">
-        /// Default Value: true
-        /// </param>
-        /// <param name="priorCallId"></param>
-        /// <param name="throttle"></param>
-        /// <param name="request"></param>
+        /// <param name="audioClipId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.AutoSDKHttpResponse<global::Ultravox.Call>> CallsCreateAsResponseAsync(
-
-            global::Ultravox.UltravoxV1StartCallRequest request,
-            bool? enableGreetingPrompt = default,
-            global::System.Guid? priorCallId = default,
-            string? throttle = default,
+        public async global::System.Threading.Tasks.Task<global::Ultravox.AutoSDKHttpResponse> AudioClipsAudioRetrieveAsResponseAsync(
+            global::System.Guid audioClipId,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareCallsCreateArguments(
+            PrepareAudioClipsAudioRetrieveArguments(
                 httpClient: HttpClient,
-                enableGreetingPrompt: ref enableGreetingPrompt,
-                priorCallId: ref priorCallId,
-                throttle: ref throttle,
-                request: request);
+                audioClipId: ref audioClipId);
 
 
             var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_CallsCreateSecurityRequirements,
-                operationName: "CallsCreateAsync");
+                securityRequirements: s_AudioClipsAudioRetrieveSecurityRequirements,
+                operationName: "AudioClipsAudioRetrieveAsync");
 
             using var __timeoutCancellationTokenSource = global::Ultravox.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -136,20 +96,15 @@ namespace Ultravox
             {
 
                             var __pathBuilder = new global::Ultravox.PathBuilder(
-                                path: "/api/calls",
+                                path: $"/api/audio_clips/{audioClipId}/audio",
                                 baseUri: HttpClient.BaseAddress);
-                            __pathBuilder
-                                .AddOptionalParameter("enableGreetingPrompt", enableGreetingPrompt?.ToString().ToLowerInvariant())
-                                .AddOptionalParameter("priorCallId", priorCallId?.ToString())
-                                .AddOptionalParameter("throttle", throttle)
-                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Ultravox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -172,12 +127,6 @@ namespace Ultravox
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Ultravox.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -186,13 +135,10 @@ namespace Ultravox
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareCallsCreateRequest(
+                PrepareAudioClipsAudioRetrieveRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    enableGreetingPrompt: enableGreetingPrompt,
-                    priorCallId: priorCallId,
-                    throttle: throttle,
-                    request: request);
+                    audioClipId: audioClipId);
 
                 return __httpRequest;
             }
@@ -209,10 +155,10 @@ namespace Ultravox
                     await global::Ultravox.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Ultravox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CallsCreate",
-                                methodName: "CallsCreateAsync",
-                                pathTemplate: "\"/api/calls\"",
-                                httpMethod: "POST",
+                                operationId: "AudioClipsAudioRetrieve",
+                                methodName: "AudioClipsAudioRetrieveAsync",
+                                pathTemplate: "$\"/api/audio_clips/{audioClipId}/audio\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
@@ -243,10 +189,10 @@ namespace Ultravox
                         await global::Ultravox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Ultravox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CallsCreate",
-                                methodName: "CallsCreateAsync",
-                                pathTemplate: "\"/api/calls\"",
-                                httpMethod: "POST",
+                                operationId: "AudioClipsAudioRetrieve",
+                                methodName: "AudioClipsAudioRetrieveAsync",
+                                pathTemplate: "$\"/api/audio_clips/{audioClipId}/audio\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
@@ -284,10 +230,10 @@ namespace Ultravox
                         await global::Ultravox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Ultravox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CallsCreate",
-                                methodName: "CallsCreateAsync",
-                                pathTemplate: "\"/api/calls\"",
-                                httpMethod: "POST",
+                                operationId: "AudioClipsAudioRetrieve",
+                                methodName: "AudioClipsAudioRetrieveAsync",
+                                pathTemplate: "$\"/api/audio_clips/{audioClipId}/audio\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
@@ -324,7 +270,7 @@ namespace Ultravox
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessCallsCreateResponse(
+                ProcessAudioClipsAudioRetrieveResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -332,10 +278,10 @@ namespace Ultravox
                     await global::Ultravox.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Ultravox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CallsCreate",
-                                methodName: "CallsCreateAsync",
-                                pathTemplate: "\"/api/calls\"",
-                                httpMethod: "POST",
+                                operationId: "AudioClipsAudioRetrieve",
+                                methodName: "AudioClipsAudioRetrieveAsync",
+                                pathTemplate: "$\"/api/audio_clips/{audioClipId}/audio\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
@@ -354,10 +300,10 @@ namespace Ultravox
                     await global::Ultravox.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Ultravox.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "CallsCreate",
-                                methodName: "CallsCreateAsync",
-                                pathTemplate: "\"/api/calls\"",
-                                httpMethod: "POST",
+                                operationId: "AudioClipsAudioRetrieve",
+                                methodName: "AudioClipsAudioRetrieveAsync",
+                                pathTemplate: "$\"/api/audio_clips/{audioClipId}/audio\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
@@ -371,6 +317,38 @@ namespace Ultravox
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
+                            //
+                            if ((int)__response.StatusCode == 302)
+                            {
+                                string? __content_302 = null;
+                                global::System.Exception? __exception_302 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_302 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                    else
+                                    {
+                                        __content_302 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_302 = __ex;
+                                }
+
+
+                                throw global::Ultravox.ApiException.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_302 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_302,
+                                    responseBody: __content_302,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
 
                             if (__effectiveReadResponseAsString)
                             {
@@ -384,22 +362,15 @@ namespace Ultravox
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessCallsCreateResponseContent(
-                                    httpClient: HttpClient,
-                                    httpResponseMessage: __response,
-                                    content: ref __content);
 
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Ultravox.Call.FromJson(__content, JsonSerializerContext) ??
-                                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Ultravox.AutoSDKHttpResponse<global::Ultravox.Call>(
+                return new global::Ultravox.AutoSDKHttpResponse(
                                         statusCode: __response.StatusCode,
                                         headers: global::Ultravox.AutoSDKHttpResponse.CreateHeaders(__response),
-                                        requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        requestUri: __response.RequestMessage?.RequestUri);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -419,19 +390,10 @@ namespace Ultravox
                                 try
                                 {
                                     __response.EnsureSuccessStatusCode();
-                                    using var __content = await __response.Content.ReadAsStreamAsync(
-                #if NET5_0_OR_GREATER
-                                        __effectiveCancellationToken
-                #endif
-                                    ).ConfigureAwait(false);
-
-                                    var __value = await global::Ultravox.Call.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
-                                        throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Ultravox.AutoSDKHttpResponse<global::Ultravox.Call>(
+                                    return new global::Ultravox.AutoSDKHttpResponse(
                                         statusCode: __response.StatusCode,
                                         headers: global::Ultravox.AutoSDKHttpResponse.CreateHeaders(__response),
-                                        requestUri: __response.RequestMessage?.RequestUri,
-                                        body: __value);
+                                        requestUri: __response.RequestMessage?.RequestUri);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -466,193 +428,6 @@ namespace Ultravox
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="enableGreetingPrompt">
-        /// Default Value: true
-        /// </param>
-        /// <param name="priorCallId"></param>
-        /// <param name="throttle"></param>
-        /// <param name="systemPrompt">
-        /// The system prompt provided to the model during generations.
-        /// </param>
-        /// <param name="temperature">
-        /// The model temperature, between 0 and 1. Defaults to 0.
-        /// </param>
-        /// <param name="model">
-        /// The model used for generations. Currently defaults to ultravox-v0.7.
-        /// </param>
-        /// <param name="voice">
-        /// The ID (or name if unique) of the voice the agent should use for this call.
-        /// </param>
-        /// <param name="externalVoice">
-        /// A voice not known to Ultravox Realtime that can nonetheless be used for this call.<br/>
-        ///  Your account must have an API key set for the provider of the voice.<br/>
-        ///  Either this or `voice` may be set, but not both.
-        /// </param>
-        /// <param name="languageHint">
-        /// A BCP47 language code that may be used to guide speech recognition and synthesis.
-        /// </param>
-        /// <param name="initialMessages">
-        /// The conversation history to start from for this call.
-        /// </param>
-        /// <param name="joinTimeout">
-        /// A timeout for joining the call. Defaults to 30 seconds.
-        /// </param>
-        /// <param name="maxDuration">
-        /// The maximum duration of the call. Defaults to 1 hour.
-        /// </param>
-        /// <param name="timeExceededMessage">
-        /// What the agent should say immediately before hanging up if the call's time limit is reached.
-        /// </param>
-        /// <param name="inactivityMessages">
-        /// Messages spoken by the agent when the user is inactive for the specified duration.<br/>
-        ///  Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.
-        /// </param>
-        /// <param name="selectedTools">
-        /// The tools available to the agent for (the first stage of) this call.
-        /// </param>
-        /// <param name="medium">
-        /// The medium used for this call.
-        /// </param>
-        /// <param name="recordingEnabled">
-        /// Whether the call should be recorded.
-        /// </param>
-        /// <param name="firstSpeaker">
-        /// Who should talk first when the call starts. Typically set to FIRST_SPEAKER_USER for outgoing<br/>
-        ///  calls and left as the default (FIRST_SPEAKER_AGENT) otherwise.<br/>
-        ///  Deprecated. Prefer `firstSpeakerSettings`. If both are set, they must match.
-        /// </param>
-        /// <param name="transcriptOptional">
-        /// Indicates whether a transcript is optional for the call.
-        /// </param>
-        /// <param name="initialOutputMedium">
-        /// The medium to use for the call initially. May be altered by the client later.<br/>
-        ///  Defaults to voice.
-        /// </param>
-        /// <param name="vadSettings">
-        /// VAD settings for the call.
-        /// </param>
-        /// <param name="firstSpeakerSettings">
-        /// The settings for the initial message to get a conversation started.<br/>
-        ///  Defaults to `agent: {}` which means the agent will start the conversation with an<br/>
-        ///  (interruptible) greeting generated based on the system prompt and any initial messages.<br/>
-        ///  (If first_speaker is set and this is not, first_speaker will be used instead.)
-        /// </param>
-        /// <param name="experimentalSettings">
-        /// Experimental settings for the call.
-        /// </param>
-        /// <param name="metadata">
-        /// Optional metadata key-value pairs to associate with the call. All values must be strings.<br/>
-        ///  Keys may not start with "ultravox.", which is reserved for system-provided metadata.
-        /// </param>
-        /// <param name="initialState">
-        /// The initial state of the call stage which is readable/writable by tools.
-        /// </param>
-        /// <param name="dataConnection">
-        /// Data connection configuration.
-        /// </param>
-        /// <param name="callbacks">
-        /// Callbacks for call lifecycle events.
-        /// </param>
-        /// <param name="voiceOverrides">
-        /// Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).<br/>
-        ///  Only non-price-affecting fields may be overridden (e.g., speed, style, stability).<br/>
-        ///  The provider in the override must match the selected voice's provider.
-        /// </param>
-        /// <param name="retentionPolicy">
-        /// The retention policy for the call's data after it ends.<br/>
-        ///  This feature must be enabled for your account.
-        /// </param>
-        /// <param name="sharedSecrets">
-        /// Shared secrets used to sign outbound requests (e.g. data connection websocket).<br/>
-        ///  When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and<br/>
-        ///  X-Ultravox-Signature headers will be included. If multiple secrets are provided,<br/>
-        ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
-        ///  Write-only: this field is never included in API responses.
-        /// </param>
-        /// <param name="backgroundAudio">
-        /// Background audio played behind the agent's voice for the duration of the call.
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
-            bool? enableGreetingPrompt = default,
-            global::System.Guid? priorCallId = default,
-            string? throttle = default,
-            string? systemPrompt = default,
-            float? temperature = default,
-            string? model = default,
-            string? voice = default,
-            global::Ultravox.UltravoxV1ExternalVoice? externalVoice = default,
-            string? languageHint = default,
-            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1Message>? initialMessages = default,
-            string? joinTimeout = default,
-            string? maxDuration = default,
-            string? timeExceededMessage = default,
-            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages = default,
-            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>? selectedTools = default,
-            global::Ultravox.UltravoxV1CallMedium? medium = default,
-            bool? recordingEnabled = default,
-            global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? firstSpeaker = default,
-            bool? transcriptOptional = default,
-            global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium? initialOutputMedium = default,
-            global::Ultravox.UltravoxV1VadSettings? vadSettings = default,
-            global::Ultravox.UltravoxV1FirstSpeakerSettings? firstSpeakerSettings = default,
-            object? experimentalSettings = default,
-            global::System.Collections.Generic.Dictionary<string, string>? metadata = default,
-            object? initialState = default,
-            global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection = default,
-            global::Ultravox.UltravoxV1Callbacks? callbacks = default,
-            global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides = default,
-            global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? retentionPolicy = default,
-            global::System.Collections.Generic.IList<string>? sharedSecrets = default,
-            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio = default,
-            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Ultravox.UltravoxV1StartCallRequest
-            {
-                SystemPrompt = systemPrompt,
-                Temperature = temperature,
-                Model = model,
-                Voice = voice,
-                ExternalVoice = externalVoice,
-                LanguageHint = languageHint,
-                InitialMessages = initialMessages,
-                JoinTimeout = joinTimeout,
-                MaxDuration = maxDuration,
-                TimeExceededMessage = timeExceededMessage,
-                InactivityMessages = inactivityMessages,
-                SelectedTools = selectedTools,
-                Medium = medium,
-                RecordingEnabled = recordingEnabled,
-                FirstSpeaker = firstSpeaker,
-                TranscriptOptional = transcriptOptional,
-                InitialOutputMedium = initialOutputMedium,
-                VadSettings = vadSettings,
-                FirstSpeakerSettings = firstSpeakerSettings,
-                ExperimentalSettings = experimentalSettings,
-                Metadata = metadata,
-                InitialState = initialState,
-                DataConnection = dataConnection,
-                Callbacks = callbacks,
-                VoiceOverrides = voiceOverrides,
-                RetentionPolicy = retentionPolicy,
-                SharedSecrets = sharedSecrets,
-                BackgroundAudio = backgroundAudio,
-            };
-
-            return await CallsCreateAsync(
-                enableGreetingPrompt: enableGreetingPrompt,
-                priorCallId: priorCallId,
-                throttle: throttle,
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -63,6 +63,11 @@ namespace Ultravox
         /// <summary>
         ///
         /// </summary>
+        public AudioClipsClient AudioClips { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public CallThrottlesClient CallThrottles { get; }
 
         /// <summary>

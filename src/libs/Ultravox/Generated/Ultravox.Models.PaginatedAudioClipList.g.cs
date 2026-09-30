@@ -6,7 +6,7 @@ namespace Ultravox
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class PaginatedToolHistoryList
+    public sealed partial class PaginatedAudioClipList
     {
         /// <summary>
         /// Example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
@@ -27,10 +27,9 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::Ultravox.ToolHistory> Results { get; set; }
+        public required global::System.Collections.Generic.IList<global::Ultravox.AudioClip> Results { get; set; }
 
         /// <summary>
-        /// Null when `includeTotal` is false.<br/>
         /// Example: 123
         /// </summary>
         /// <example>123</example>
@@ -44,7 +43,7 @@ namespace Ultravox
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PaginatedToolHistoryList" /> class.
+        /// Initializes a new instance of the <see cref="PaginatedAudioClipList" /> class.
         /// </summary>
         /// <param name="results"></param>
         /// <param name="next">
@@ -54,14 +53,13 @@ namespace Ultravox
         /// Example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         /// </param>
         /// <param name="total">
-        /// Null when `includeTotal` is false.<br/>
         /// Example: 123
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public PaginatedToolHistoryList(
-            global::System.Collections.Generic.IList<global::Ultravox.ToolHistory> results,
+        public PaginatedAudioClipList(
+            global::System.Collections.Generic.IList<global::Ultravox.AudioClip> results,
             string? next,
             string? previous,
             int? total)
@@ -73,9 +71,9 @@ namespace Ultravox
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PaginatedToolHistoryList" /> class.
+        /// Initializes a new instance of the <see cref="PaginatedAudioClipList" /> class.
         /// </summary>
-        public PaginatedToolHistoryList()
+        public PaginatedAudioClipList()
         {
         }
 
