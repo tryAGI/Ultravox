@@ -111,6 +111,10 @@ namespace Ultravox
         ///  identified by request context (e.g. from the request URL); required when there<br/>
         ///  is no other agent context, such as in a SipFallbackHandlerResponse.
         /// </param>
+        /// <param name="backgroundAudio">
+        /// The (overridden) background audio played behind the agent's voice for the<br/>
+        ///  duration of the call.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -135,6 +139,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy? retentionPolicy = default,
             global::System.Collections.Generic.IList<string>? sharedSecrets = default,
             string? requestAgentId = default,
+            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

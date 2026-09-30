@@ -295,6 +295,12 @@ namespace Ultravox
         public global::Ultravox.CallSipDetails? SipDetails { get; set; }
 
         /// <summary>
+        /// Background audio played behind the agent's voice during the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("backgroundAudio")]
+        public global::Ultravox.UltravoxV1BackgroundAudio? BackgroundAudio { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -412,6 +418,9 @@ namespace Ultravox
         /// SIP details for the call, if applicable.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="backgroundAudio">
+        /// Background audio played behind the agent's voice during the call.
+        /// </param>
         /// <param name="callId">
         /// Included only in responses
         /// </param>
@@ -467,6 +476,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnectionConfig,
             global::Ultravox.UltravoxV1Callbacks? callbacks,
             global::Ultravox.CallSipDetails? sipDetails,
+            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
             global::Ultravox.BillingStatusEnum billingStatus = default!,
@@ -512,6 +522,7 @@ namespace Ultravox
             this.DataConnectionConfig = dataConnectionConfig;
             this.Callbacks = callbacks;
             this.SipDetails = sipDetails;
+            this.BackgroundAudio = backgroundAudio;
         }
 
         /// <summary>

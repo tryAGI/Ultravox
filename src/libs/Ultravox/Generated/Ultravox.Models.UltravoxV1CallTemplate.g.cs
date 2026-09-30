@@ -193,6 +193,12 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CallTemplateRetentionPolicy? RetentionPolicy { get; set; }
 
         /// <summary>
+        /// Background audio played behind the agent's voice during calls.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("backgroundAudio")]
+        public global::Ultravox.UltravoxV1BackgroundAudio? BackgroundAudio { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -311,6 +317,9 @@ namespace Ultravox
         /// <param name="retentionPolicy">
         /// The default retention policy for calls created with this agent.
         /// </param>
+        /// <param name="backgroundAudio">
+        /// Background audio played behind the agent's voice during calls.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -338,7 +347,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1DataConnectionConfig? dataConnection,
             object? contextSchema,
             global::System.Collections.Generic.IList<string>? sharedSecrets,
-            global::Ultravox.UltravoxV1CallTemplateRetentionPolicy? retentionPolicy)
+            global::Ultravox.UltravoxV1CallTemplateRetentionPolicy? retentionPolicy,
+            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio)
         {
             this.Name = name;
             this.Created = created;
@@ -364,6 +374,7 @@ namespace Ultravox
             this.ContextSchema = contextSchema;
             this.SharedSecrets = sharedSecrets;
             this.RetentionPolicy = retentionPolicy;
+            this.BackgroundAudio = backgroundAudio;
         }
 
         /// <summary>

@@ -135,6 +135,13 @@ namespace Ultravox
         public string? AgentId { get; set; }
 
         /// <summary>
+        /// The (overridden) background audio played behind the agent's voice for the<br/>
+        ///  duration of the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("backgroundAudio")]
+        public global::Ultravox.UltravoxV1BackgroundAudio? BackgroundAudio { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -213,6 +220,10 @@ namespace Ultravox
         ///  identified by request context (e.g. from the request URL); required when there<br/>
         ///  is no other agent context, such as in a SipFallbackHandlerResponse.
         /// </param>
+        /// <param name="backgroundAudio">
+        /// The (overridden) background audio played behind the agent's voice for the<br/>
+        ///  duration of the call.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -234,7 +245,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1ToolOverrides? toolOverrides,
             global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy? retentionPolicy,
             global::System.Collections.Generic.IList<string>? sharedSecrets,
-            string? agentId)
+            string? agentId,
+            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio)
         {
             this.TemplateContext = templateContext;
             this.InitialMessages = initialMessages;
@@ -254,6 +266,7 @@ namespace Ultravox
             this.RetentionPolicy = retentionPolicy;
             this.SharedSecrets = sharedSecrets;
             this.AgentId = agentId;
+            this.BackgroundAudio = backgroundAudio;
         }
 
         /// <summary>
