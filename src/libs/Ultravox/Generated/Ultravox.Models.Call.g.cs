@@ -166,6 +166,16 @@ namespace Ultravox
         public global::Ultravox.OneOf<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>? RetentionPolicy { get; set; }
 
         /// <summary>
+        /// The admission preference requested for the call, if any.<br/>
+        /// * `priority` - Prioritize this call as much as possible<br/>
+        /// * `lowest_cost` - Run this call as inexpensively as possible<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("admissionPreference")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.OneOfJsonConverter<global::Ultravox.AdmissionPreferenceEnum?, global::Ultravox.NullEnum?>))]
+        public global::Ultravox.OneOf<global::Ultravox.AdmissionPreferenceEnum?, global::Ultravox.NullEnum?>? AdmissionPreference { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("systemPrompt")]
@@ -378,6 +388,12 @@ namespace Ultravox
         /// * `retain` - Retain indefinitely<br/>
         /// * `auto_delete` - Auto-delete after billing
         /// </param>
+        /// <param name="admissionPreference">
+        /// The admission preference requested for the call, if any.<br/>
+        /// * `priority` - Prioritize this call as much as possible<br/>
+        /// * `lowest_cost` - Run this call as inexpensively as possible<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="systemPrompt"></param>
         /// <param name="temperature">
         /// Default Value: 0.0
@@ -463,6 +479,7 @@ namespace Ultravox
             string? model,
             bool? recordingEnabled,
             global::Ultravox.OneOf<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>? retentionPolicy,
+            global::Ultravox.OneOf<global::Ultravox.AdmissionPreferenceEnum?, global::Ultravox.NullEnum?>? admissionPreference,
             string? systemPrompt,
             double? temperature,
             string? timeExceededMessage,
@@ -504,6 +521,7 @@ namespace Ultravox
             this.Model = model;
             this.RecordingEnabled = recordingEnabled;
             this.RetentionPolicy = retentionPolicy;
+            this.AdmissionPreference = admissionPreference;
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
             this.TimeExceededMessage = timeExceededMessage;

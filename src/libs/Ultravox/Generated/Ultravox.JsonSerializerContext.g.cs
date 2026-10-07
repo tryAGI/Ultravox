@@ -11,6 +11,10 @@ namespace Ultravox
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
+            typeof(global::Ultravox.JsonConverters.AdmissionPreferenceEnumJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.AdmissionPreferenceEnumNullableJsonConverter),
+
             typeof(global::Ultravox.JsonConverters.BillingReasonEnumJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.BillingReasonEnumNullableJsonConverter),
@@ -79,6 +83,10 @@ namespace Ultravox
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1CallTemplateRetentionPolicyNullableJsonConverter),
 
+            typeof(global::Ultravox.JsonConverters.UltravoxV1CallTemplateAdmissionPreferenceJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.UltravoxV1CallTemplateAdmissionPreferenceNullableJsonConverter),
+
             typeof(global::Ultravox.JsonConverters.UltravoxV1MessageRoleJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1MessageRoleNullableJsonConverter),
@@ -139,6 +147,10 @@ namespace Ultravox
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1StartAgentCallRequestRetentionPolicyNullableJsonConverter),
 
+            typeof(global::Ultravox.JsonConverters.UltravoxV1StartAgentCallRequestAdmissionPreferenceJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.UltravoxV1StartAgentCallRequestAdmissionPreferenceNullableJsonConverter),
+
             typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestFirstSpeakerJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestFirstSpeakerNullableJsonConverter),
@@ -150,6 +162,10 @@ namespace Ultravox
             typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestRetentionPolicyJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestRetentionPolicyNullableJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestAdmissionPreferenceJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestAdmissionPreferenceNullableJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1StaticParameterLocationJsonConverter),
 
@@ -207,6 +223,8 @@ namespace Ultravox
 
             typeof(global::Ultravox.JsonConverters.OneOfJsonConverter<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>),
 
+            typeof(global::Ultravox.JsonConverters.OneOfJsonConverter<global::Ultravox.AdmissionPreferenceEnum?, global::Ultravox.NullEnum?>),
+
             typeof(global::Ultravox.JsonConverters.OneOfJsonConverter<global::Ultravox.TerminationReasonEnum?, global::Ultravox.NullEnum?>),
 
             typeof(global::Ultravox.JsonConverters.OneOfJsonConverter<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>),
@@ -231,6 +249,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.PlivoConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AccountTtsKeys))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.KeyPrefix))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AdmissionPreferenceEnum), TypeInfoPropertyName = "AdmissionPreferenceEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.Agent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallTemplate))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AgentStatistics))]
@@ -259,6 +278,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallMedium))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.OneOf<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>), TypeInfoPropertyName = "OneOfRetentionPolicyEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.RetentionPolicyEnum), TypeInfoPropertyName = "RetentionPolicyEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.OneOf<global::Ultravox.AdmissionPreferenceEnum?, global::Ultravox.NullEnum?>), TypeInfoPropertyName = "OneOfAdmissionPreferenceEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1ExternalVoice))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1VadSettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
@@ -379,6 +399,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1SelectedTool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallTemplateRetentionPolicy), TypeInfoPropertyName = "UltravoxV1CallTemplateRetentionPolicy2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallTemplateAdmissionPreference), TypeInfoPropertyName = "UltravoxV1CallTemplateAdmissionPreference2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CorpusStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CorpusDocumentMetadata))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CorpusQueryResult))]
@@ -467,9 +488,11 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartAgentCallRequestInitialOutputMedium), TypeInfoPropertyName = "UltravoxV1StartAgentCallRequestInitialOutputMedium2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1ToolOverrides))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy), TypeInfoPropertyName = "UltravoxV1StartAgentCallRequestRetentionPolicy2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference), TypeInfoPropertyName = "UltravoxV1StartAgentCallRequestAdmissionPreference2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker), TypeInfoPropertyName = "UltravoxV1StartCallRequestFirstSpeaker2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium), TypeInfoPropertyName = "UltravoxV1StartCallRequestInitialOutputMedium2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy), TypeInfoPropertyName = "UltravoxV1StartCallRequestRetentionPolicy2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference), TypeInfoPropertyName = "UltravoxV1StartCallRequestAdmissionPreference2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StaticParameterLocation), TypeInfoPropertyName = "UltravoxV1StaticParameterLocation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TimedMessageEndBehavior), TypeInfoPropertyName = "UltravoxV1TimedMessageEndBehavior2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AudioClipsCreateRequest))]

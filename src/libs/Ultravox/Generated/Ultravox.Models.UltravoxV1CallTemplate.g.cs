@@ -199,6 +199,13 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1BackgroundAudio? BackgroundAudio { get; set; }
 
         /// <summary>
+        /// The default admission preference for calls created with this agent.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("admissionPreference")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1CallTemplateAdmissionPreferenceJsonConverter))]
+        public global::Ultravox.UltravoxV1CallTemplateAdmissionPreference? AdmissionPreference { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -320,6 +327,9 @@ namespace Ultravox
         /// <param name="backgroundAudio">
         /// Background audio played behind the agent's voice during calls.
         /// </param>
+        /// <param name="admissionPreference">
+        /// The default admission preference for calls created with this agent.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -348,7 +358,8 @@ namespace Ultravox
             object? contextSchema,
             global::System.Collections.Generic.IList<string>? sharedSecrets,
             global::Ultravox.UltravoxV1CallTemplateRetentionPolicy? retentionPolicy,
-            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio)
+            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
+            global::Ultravox.UltravoxV1CallTemplateAdmissionPreference? admissionPreference)
         {
             this.Name = name;
             this.Created = created;
@@ -375,6 +386,7 @@ namespace Ultravox
             this.SharedSecrets = sharedSecrets;
             this.RetentionPolicy = retentionPolicy;
             this.BackgroundAudio = backgroundAudio;
+            this.AdmissionPreference = admissionPreference;
         }
 
         /// <summary>

@@ -115,6 +115,9 @@ namespace Ultravox
         /// The (overridden) background audio played behind the agent's voice for the<br/>
         ///  duration of the call.
         /// </param>
+        /// <param name="admissionPreference">
+        /// The (overridden) admission preference for the call.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -140,6 +143,7 @@ namespace Ultravox
             global::System.Collections.Generic.IList<string>? sharedSecrets = default,
             string? requestAgentId = default,
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio = default,
+            global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference? admissionPreference = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
