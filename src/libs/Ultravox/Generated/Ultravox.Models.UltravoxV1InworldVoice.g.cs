@@ -15,7 +15,7 @@ namespace Ultravox
         public string? VoiceId { get; set; }
 
         /// <summary>
-        /// The ID of the model to use for generations, e.g. "inworld-tts-1-max".<br/>
+        /// The ID of the model to use for generations, e.g. "inworld-tts-2".<br/>
         ///  See https://docs.inworld.ai/docs/tts/tts-models
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modelId")]
@@ -76,7 +76,7 @@ namespace Ultravox
         /// The ID of the voice in Inworld.
         /// </param>
         /// <param name="modelId">
-        /// The ID of the model to use for generations, e.g. "inworld-tts-1-max".<br/>
+        /// The ID of the model to use for generations, e.g. "inworld-tts-2".<br/>
         ///  See https://docs.inworld.ai/docs/tts/tts-models
         /// </param>
         /// <param name="speakingRate">
