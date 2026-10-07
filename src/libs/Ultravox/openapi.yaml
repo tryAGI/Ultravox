@@ -3777,6 +3777,14 @@ components:
           allOf:
           - $ref: '#/components/schemas/KeyPrefix'
           description: The Respeecher API key.
+    AdmissionPreferenceEnum:
+      enum:
+      - priority
+      - lowest_cost
+      type: string
+      description: |-
+        * `priority` - Prioritize this call as much as possible
+        * `lowest_cost` - Run this call as inexpensively as possible
     Agent:
       type: object
       properties:
@@ -4092,6 +4100,17 @@ components:
           oneOf:
           - $ref: '#/components/schemas/RetentionPolicyEnum'
           - $ref: '#/components/schemas/NullEnum'
+        admissionPreference:
+          readOnly: true
+          nullable: true
+          description: |-
+            The admission preference requested for the call, if any.
+
+            * `priority` - Prioritize this call as much as possible
+            * `lowest_cost` - Run this call as inexpensively as possible
+          oneOf:
+          - $ref: '#/components/schemas/AdmissionPreferenceEnum'
+          - $ref: '#/components/schemas/NullEnum'
         systemPrompt:
           type: string
           nullable: true
@@ -4178,6 +4197,7 @@ components:
           description: Background audio played behind the agent's voice during the
             call.
       required:
+      - admissionPreference
       - agent
       - agentId
       - billedDuration
@@ -6464,6 +6484,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.BackgroundAudio'
           description: Background audio played behind the agent's voice during calls.
+        admissionPreference:
+          enum:
+          - CALL_ADMISSION_PREFERENCE_UNSPECIFIED
+          - CALL_ADMISSION_PREFERENCE_PRIORITY
+          - CALL_ADMISSION_PREFERENCE_LOWEST_COST
+          type: string
+          description: The default admission preference for calls created with this
+            agent.
+          format: enum
       description: A CallTemplate that can be used to create Ultravox calls with shared
         properties.
     ultravox.v1.Corpus:
@@ -8219,6 +8248,14 @@ components:
           description: |-
             The (overridden) background audio played behind the agent's voice for the
              duration of the call.
+        admissionPreference:
+          enum:
+          - CALL_ADMISSION_PREFERENCE_UNSPECIFIED
+          - CALL_ADMISSION_PREFERENCE_PRIORITY
+          - CALL_ADMISSION_PREFERENCE_LOWEST_COST
+          type: string
+          description: The (overridden) admission preference for the call.
+          format: enum
       description: A request to start a call with an existing agent.
     ultravox.v1.StartCallRequest:
       type: object
@@ -8375,6 +8412,16 @@ components:
           - $ref: '#/components/schemas/ultravox.v1.BackgroundAudio'
           description: Background audio played behind the agent's voice for the duration
             of the call.
+        admissionPreference:
+          enum:
+          - CALL_ADMISSION_PREFERENCE_UNSPECIFIED
+          - CALL_ADMISSION_PREFERENCE_PRIORITY
+          - CALL_ADMISSION_PREFERENCE_LOWEST_COST
+          type: string
+          description: |-
+            Whether a call's admission should prioritize fulfillment or cost.
+             This feature must be enabled for your account.
+          format: enum
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object

@@ -197,6 +197,14 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1BackgroundAudio? BackgroundAudio { get; set; }
 
         /// <summary>
+        /// Whether a call's admission should prioritize fulfillment or cost.<br/>
+        ///  This feature must be enabled for your account.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("admissionPreference")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1StartCallRequestAdmissionPreferenceJsonConverter))]
+        public global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? AdmissionPreference { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -306,6 +314,10 @@ namespace Ultravox
         /// <param name="backgroundAudio">
         /// Background audio played behind the agent's voice for the duration of the call.
         /// </param>
+        /// <param name="admissionPreference">
+        /// Whether a call's admission should prioritize fulfillment or cost.<br/>
+        ///  This feature must be enabled for your account.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -337,7 +349,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1ExternalVoice? voiceOverrides,
             global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? retentionPolicy,
             global::System.Collections.Generic.IList<string>? sharedSecrets,
-            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio)
+            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
+            global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? admissionPreference)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -367,6 +380,7 @@ namespace Ultravox
             this.RetentionPolicy = retentionPolicy;
             this.SharedSecrets = sharedSecrets;
             this.BackgroundAudio = backgroundAudio;
+            this.AdmissionPreference = admissionPreference;
         }
 
         /// <summary>

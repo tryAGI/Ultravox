@@ -142,6 +142,13 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1BackgroundAudio? BackgroundAudio { get; set; }
 
         /// <summary>
+        /// The (overridden) admission preference for the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("admissionPreference")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.UltravoxV1StartAgentCallRequestAdmissionPreferenceJsonConverter))]
+        public global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference? AdmissionPreference { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -224,6 +231,9 @@ namespace Ultravox
         /// The (overridden) background audio played behind the agent's voice for the<br/>
         ///  duration of the call.
         /// </param>
+        /// <param name="admissionPreference">
+        /// The (overridden) admission preference for the call.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -246,7 +256,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy? retentionPolicy,
             global::System.Collections.Generic.IList<string>? sharedSecrets,
             string? agentId,
-            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio)
+            global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
+            global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference? admissionPreference)
         {
             this.TemplateContext = templateContext;
             this.InitialMessages = initialMessages;
@@ -267,6 +278,7 @@ namespace Ultravox
             this.SharedSecrets = sharedSecrets;
             this.AgentId = agentId;
             this.BackgroundAudio = backgroundAudio;
+            this.AdmissionPreference = admissionPreference;
         }
 
         /// <summary>
