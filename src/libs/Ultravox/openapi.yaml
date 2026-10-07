@@ -7765,7 +7765,7 @@ components:
         modelId:
           type: string
           description: |-
-            The ID of the model to use for generations, e.g. "inworld-tts-1-max".
+            The ID of the model to use for generations, e.g. "inworld-tts-2".
              See https://docs.inworld.ai/docs/tts/tts-models
         speakingRate:
           type: number
