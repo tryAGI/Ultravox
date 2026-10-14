@@ -27,6 +27,10 @@ namespace Ultravox
 
             typeof(global::Ultravox.JsonConverters.BillingStyleEnumNullableJsonConverter),
 
+            typeof(global::Ultravox.JsonConverters.CallMediumRestrictionAllowedMediumJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.CallMediumRestrictionAllowedMediumNullableJsonConverter),
+
             typeof(global::Ultravox.JsonConverters.EndReasonEnumJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.EndReasonEnumNullableJsonConverter),
@@ -134,6 +138,10 @@ namespace Ultravox
             typeof(global::Ultravox.JsonConverters.UltravoxV1InworldVoiceDeliveryModeJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1InworldVoiceDeliveryModeNullableJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.UltravoxV1MediumRestrictionAllowedMediumJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.UltravoxV1MediumRestrictionAllowedMediumNullableJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1SourceStatsStatusJsonConverter),
 
@@ -275,6 +283,9 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TimedMessage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.InitialOutputMediumEnum), TypeInfoPropertyName = "InitialOutputMediumEnum2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallMediumRestriction))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.CallMediumRestrictionAllowedMedium>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallMediumRestrictionAllowedMedium), TypeInfoPropertyName = "CallMediumRestrictionAllowedMedium2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallMedium))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.OneOf<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>), TypeInfoPropertyName = "OneOfRetentionPolicyEnumNullEnum2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.RetentionPolicyEnum), TypeInfoPropertyName = "RetentionPolicyEnum2")]
@@ -400,6 +411,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1SelectedTool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallTemplateRetentionPolicy), TypeInfoPropertyName = "UltravoxV1CallTemplateRetentionPolicy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallTemplateAdmissionPreference), TypeInfoPropertyName = "UltravoxV1CallTemplateAdmissionPreference2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1MediumRestriction))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CorpusStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CorpusDocumentMetadata))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CorpusQueryResult))]
@@ -471,6 +483,8 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1HeaderApiKeyRequirement))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1HttpAuthRequirement))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1InworldVoiceDeliveryMode), TypeInfoPropertyName = "UltravoxV1InworldVoiceDeliveryMode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1MediumRestrictionAllowedMedium>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1MediumRestrictionAllowedMedium), TypeInfoPropertyName = "UltravoxV1MediumRestrictionAllowedMedium2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1MimeTypeSet))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1QueryApiKeyRequirement))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1QueryCorpusRequest))]
@@ -518,6 +532,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.AgentDailyUsage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1TimedMessage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.CallMediumRestrictionAllowedMedium>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.CallThrottleRule>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.DailyCallStatistics>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.HourlyCallStatistics>))]
@@ -555,6 +570,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1StaticParameter>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1AutomaticParameter>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1MediumRestrictionAllowedMedium>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1SecurityRequirements>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.VoicesListProviderItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.Account>))]

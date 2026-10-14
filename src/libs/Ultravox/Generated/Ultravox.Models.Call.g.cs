@@ -115,6 +115,13 @@ namespace Ultravox
         public global::Ultravox.InitialOutputMediumEnum InitialOutputMedium { get; set; } = default!;
 
         /// <summary>
+        /// The mediums the call may use for both user input and agent output. Null allows every medium.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mediumRestriction")]
+        public global::Ultravox.CallMediumRestriction? MediumRestriction { get; set; }
+
+        /// <summary>
         /// Default Value: 30s
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("joinTimeout")]
@@ -364,6 +371,10 @@ namespace Ultravox
         /// <param name="inactivityMessages">
         /// Messages spoken by the agent when the user is inactive for the specified duration. Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.
         /// </param>
+        /// <param name="mediumRestriction">
+        /// The mediums the call may use for both user input and agent output. Null allows every medium.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="joinTimeout">
         /// Default Value: 30s
         /// </param>
@@ -471,6 +482,7 @@ namespace Ultravox
             int? billedSideInputTokens,
             int? billedSideOutputTokens,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
+            global::Ultravox.CallMediumRestriction? mediumRestriction,
             string? joinTimeout,
             string? joinUrl,
             string? languageHint,
@@ -513,6 +525,7 @@ namespace Ultravox
             this.FirstSpeakerSettings = firstSpeakerSettings ?? throw new global::System.ArgumentNullException(nameof(firstSpeakerSettings));
             this.InactivityMessages = inactivityMessages;
             this.InitialOutputMedium = initialOutputMedium;
+            this.MediumRestriction = mediumRestriction;
             this.JoinTimeout = joinTimeout;
             this.JoinUrl = joinUrl;
             this.LanguageHint = languageHint;

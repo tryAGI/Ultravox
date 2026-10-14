@@ -157,6 +157,10 @@ namespace Ultravox
         /// Whether a call's admission should prioritize fulfillment or cost.<br/>
         ///  This feature must be enabled for your account.
         /// </param>
+        /// <param name="mediumRestriction">
+        /// The mediums the call may use for both user input and agent output. If unset,<br/>
+        ///  the call may use every medium.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -193,6 +197,7 @@ namespace Ultravox
             global::System.Collections.Generic.IList<string>? sharedSecrets = default,
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio = default,
             global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? admissionPreference = default,
+            global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
