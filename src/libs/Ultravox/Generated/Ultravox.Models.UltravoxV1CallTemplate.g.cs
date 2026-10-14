@@ -206,6 +206,13 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1CallTemplateAdmissionPreference? AdmissionPreference { get; set; }
 
         /// <summary>
+        /// The mediums calls created with this agent may use for both user input and agent output.<br/>
+        ///  If unset, calls may use every medium.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mediumRestriction")]
+        public global::Ultravox.UltravoxV1MediumRestriction? MediumRestriction { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -330,6 +337,10 @@ namespace Ultravox
         /// <param name="admissionPreference">
         /// The default admission preference for calls created with this agent.
         /// </param>
+        /// <param name="mediumRestriction">
+        /// The mediums calls created with this agent may use for both user input and agent output.<br/>
+        ///  If unset, calls may use every medium.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -359,7 +370,8 @@ namespace Ultravox
             global::System.Collections.Generic.IList<string>? sharedSecrets,
             global::Ultravox.UltravoxV1CallTemplateRetentionPolicy? retentionPolicy,
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
-            global::Ultravox.UltravoxV1CallTemplateAdmissionPreference? admissionPreference)
+            global::Ultravox.UltravoxV1CallTemplateAdmissionPreference? admissionPreference,
+            global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction)
         {
             this.Name = name;
             this.Created = created;
@@ -387,6 +399,7 @@ namespace Ultravox
             this.RetentionPolicy = retentionPolicy;
             this.BackgroundAudio = backgroundAudio;
             this.AdmissionPreference = admissionPreference;
+            this.MediumRestriction = mediumRestriction;
         }
 
         /// <summary>

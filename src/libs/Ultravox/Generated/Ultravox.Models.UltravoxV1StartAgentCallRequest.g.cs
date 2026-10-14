@@ -149,6 +149,12 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference? AdmissionPreference { get; set; }
 
         /// <summary>
+        /// The (overridden) mediums the call may use for both user input and agent output.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mediumRestriction")]
+        public global::Ultravox.UltravoxV1MediumRestriction? MediumRestriction { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -234,6 +240,9 @@ namespace Ultravox
         /// <param name="admissionPreference">
         /// The (overridden) admission preference for the call.
         /// </param>
+        /// <param name="mediumRestriction">
+        /// The (overridden) mediums the call may use for both user input and agent output.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -257,7 +266,8 @@ namespace Ultravox
             global::System.Collections.Generic.IList<string>? sharedSecrets,
             string? agentId,
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
-            global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference? admissionPreference)
+            global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference? admissionPreference,
+            global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction)
         {
             this.TemplateContext = templateContext;
             this.InitialMessages = initialMessages;
@@ -279,6 +289,7 @@ namespace Ultravox
             this.AgentId = agentId;
             this.BackgroundAudio = backgroundAudio;
             this.AdmissionPreference = admissionPreference;
+            this.MediumRestriction = mediumRestriction;
         }
 
         /// <summary>

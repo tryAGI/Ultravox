@@ -205,6 +205,13 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? AdmissionPreference { get; set; }
 
         /// <summary>
+        /// The mediums the call may use for both user input and agent output. If unset,<br/>
+        ///  the call may use every medium.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mediumRestriction")]
+        public global::Ultravox.UltravoxV1MediumRestriction? MediumRestriction { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -318,6 +325,10 @@ namespace Ultravox
         /// Whether a call's admission should prioritize fulfillment or cost.<br/>
         ///  This feature must be enabled for your account.
         /// </param>
+        /// <param name="mediumRestriction">
+        /// The mediums the call may use for both user input and agent output. If unset,<br/>
+        ///  the call may use every medium.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -350,7 +361,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy? retentionPolicy,
             global::System.Collections.Generic.IList<string>? sharedSecrets,
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
-            global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? admissionPreference)
+            global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? admissionPreference,
+            global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -381,6 +393,7 @@ namespace Ultravox
             this.SharedSecrets = sharedSecrets;
             this.BackgroundAudio = backgroundAudio;
             this.AdmissionPreference = admissionPreference;
+            this.MediumRestriction = mediumRestriction;
         }
 
         /// <summary>
