@@ -166,7 +166,8 @@ namespace Ultravox
         /// <summary>
         /// The retention policy for the call's data after it ends.<br/>
         /// * `retain` - Retain indefinitely<br/>
-        /// * `auto_delete` - Auto-delete after billing
+        /// * `auto_delete` - Auto-delete after billing<br/>
+        /// * `zdr` - Zero data retention
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("retentionPolicy")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Ultravox.JsonConverters.OneOfJsonConverter<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>))]
@@ -397,7 +398,8 @@ namespace Ultravox
         /// <param name="retentionPolicy">
         /// The retention policy for the call's data after it ends.<br/>
         /// * `retain` - Retain indefinitely<br/>
-        /// * `auto_delete` - Auto-delete after billing
+        /// * `auto_delete` - Auto-delete after billing<br/>
+        /// * `zdr` - Zero data retention
         /// </param>
         /// <param name="admissionPreference">
         /// The admission preference requested for the call, if any.<br/>

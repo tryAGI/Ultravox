@@ -4111,6 +4111,7 @@ components:
 
             * `retain` - Retain indefinitely
             * `auto_delete` - Auto-delete after billing
+            * `zdr` - Zero data retention
           oneOf:
           - $ref: '#/components/schemas/RetentionPolicyEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -5818,10 +5819,12 @@ components:
       enum:
       - retain
       - auto_delete
+      - zdr
       type: string
       description: |-
         * `retain` - Retain indefinitely
         * `auto_delete` - Auto-delete after billing
+        * `zdr` - Zero data retention
     ScheduledCall:
       type: object
       properties:
@@ -6492,6 +6495,7 @@ components:
           - CALL_RETENTION_POLICY_UNSPECIFIED
           - CALL_RETENTION_POLICY_RETAIN
           - CALL_RETENTION_POLICY_AUTO_DELETE
+          - CALL_RETENTION_POLICY_ZDR
           type: string
           description: The default retention policy for calls created with this agent.
           format: enum
@@ -8258,6 +8262,7 @@ components:
           - CALL_RETENTION_POLICY_UNSPECIFIED
           - CALL_RETENTION_POLICY_RETAIN
           - CALL_RETENTION_POLICY_AUTO_DELETE
+          - CALL_RETENTION_POLICY_ZDR
           type: string
           description: The (overridden) retention policy for the call's data after
             it ends.
@@ -8433,6 +8438,7 @@ components:
           - CALL_RETENTION_POLICY_UNSPECIFIED
           - CALL_RETENTION_POLICY_RETAIN
           - CALL_RETENTION_POLICY_AUTO_DELETE
+          - CALL_RETENTION_POLICY_ZDR
           type: string
           description: |-
             The retention policy for the call's data after it ends.
