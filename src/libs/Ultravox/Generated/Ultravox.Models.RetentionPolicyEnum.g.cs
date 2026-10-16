@@ -5,7 +5,8 @@ namespace Ultravox
 {
     /// <summary>
     /// * `retain` - Retain indefinitely<br/>
-    /// * `auto_delete` - Auto-delete after billing
+    /// * `auto_delete` - Auto-delete after billing<br/>
+    /// * `zdr` - Zero data retention
     /// </summary>
     public enum RetentionPolicyEnum
     {
@@ -17,6 +18,10 @@ namespace Ultravox
         ///
         /// </summary>
         Retain,
+        /// <summary>
+        ///
+        /// </summary>
+        Zdr,
     }
 
     /// <summary>
@@ -33,6 +38,7 @@ namespace Ultravox
             {
                 RetentionPolicyEnum.AutoDelete => "auto_delete",
                 RetentionPolicyEnum.Retain => "retain",
+                RetentionPolicyEnum.Zdr => "zdr",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -45,6 +51,7 @@ namespace Ultravox
             {
                 "auto_delete" => RetentionPolicyEnum.AutoDelete,
                 "retain" => RetentionPolicyEnum.Retain,
+                "zdr" => RetentionPolicyEnum.Zdr,
                 _ => null,
             };
         }

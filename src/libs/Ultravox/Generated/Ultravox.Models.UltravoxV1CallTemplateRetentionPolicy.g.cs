@@ -20,6 +20,10 @@ namespace Ultravox
         ///
         /// </summary>
         CallRetentionPolicyUnspecified,
+        /// <summary>
+        ///
+        /// </summary>
+        CallRetentionPolicyZdr,
     }
 
     /// <summary>
@@ -37,6 +41,7 @@ namespace Ultravox
                 UltravoxV1CallTemplateRetentionPolicy.CallRetentionPolicyAutoDelete => "CALL_RETENTION_POLICY_AUTO_DELETE",
                 UltravoxV1CallTemplateRetentionPolicy.CallRetentionPolicyRetain => "CALL_RETENTION_POLICY_RETAIN",
                 UltravoxV1CallTemplateRetentionPolicy.CallRetentionPolicyUnspecified => "CALL_RETENTION_POLICY_UNSPECIFIED",
+                UltravoxV1CallTemplateRetentionPolicy.CallRetentionPolicyZdr => "CALL_RETENTION_POLICY_ZDR",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,6 +55,7 @@ namespace Ultravox
                 "CALL_RETENTION_POLICY_AUTO_DELETE" => UltravoxV1CallTemplateRetentionPolicy.CallRetentionPolicyAutoDelete,
                 "CALL_RETENTION_POLICY_RETAIN" => UltravoxV1CallTemplateRetentionPolicy.CallRetentionPolicyRetain,
                 "CALL_RETENTION_POLICY_UNSPECIFIED" => UltravoxV1CallTemplateRetentionPolicy.CallRetentionPolicyUnspecified,
+                "CALL_RETENTION_POLICY_ZDR" => UltravoxV1CallTemplateRetentionPolicy.CallRetentionPolicyZdr,
                 _ => null,
             };
         }
