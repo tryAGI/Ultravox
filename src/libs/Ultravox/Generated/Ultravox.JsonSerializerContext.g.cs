@@ -227,6 +227,10 @@ namespace Ultravox
 
             typeof(global::Ultravox.JsonConverters.VoicesListProviderItemNullableJsonConverter),
 
+            typeof(global::Ultravox.JsonConverters.VoicesListReplacementStatusJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.VoicesListReplacementStatusNullableJsonConverter),
+
             typeof(global::Ultravox.JsonConverters.OneOfJsonConverter<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>),
 
             typeof(global::Ultravox.JsonConverters.OneOfJsonConverter<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>),
@@ -526,6 +530,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesListOwnership), TypeInfoPropertyName = "VoicesListOwnership2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesListProviderItem), TypeInfoPropertyName = "VoicesListProviderItem2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesListReplacementStatus), TypeInfoPropertyName = "VoicesListReplacementStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.Account>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.CallTool>))]

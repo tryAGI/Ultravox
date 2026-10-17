@@ -45,6 +45,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesListOwnership), TypeInfoPropertyName = "VoicesListOwnership2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesListProviderItem), TypeInfoPropertyName = "VoicesListProviderItem2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesListReplacementStatus), TypeInfoPropertyName = "VoicesListReplacementStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Guid?))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
@@ -56,6 +57,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesListBillingStyle?), TypeInfoPropertyName = "NullableVoicesListBillingStyle2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesListOwnership?), TypeInfoPropertyName = "NullableVoicesListOwnership2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesListProviderItem?), TypeInfoPropertyName = "NullableVoicesListProviderItem2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.VoicesListReplacementStatus?), TypeInfoPropertyName = "NullableVoicesListReplacementStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.Voice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference>))]
@@ -155,7 +157,11 @@ namespace Ultravox
 
                     || typeToConvert == typeof(global::Ultravox.VoicesListProviderItem)
 
-                    || typeToConvert == typeof(global::Ultravox.VoicesListProviderItem?);
+                    || typeToConvert == typeof(global::Ultravox.VoicesListProviderItem?)
+
+                    || typeToConvert == typeof(global::Ultravox.VoicesListReplacementStatus)
+
+                    || typeToConvert == typeof(global::Ultravox.VoicesListReplacementStatus?);
             }
 
             public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
@@ -230,6 +236,16 @@ namespace Ultravox
                 if (typeToConvert == typeof(global::Ultravox.VoicesListProviderItem?))
                 {
                     return new global::Ultravox.JsonConverters.VoicesListProviderItemNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Ultravox.VoicesListReplacementStatus))
+                {
+                    return new global::Ultravox.JsonConverters.VoicesListReplacementStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Ultravox.VoicesListReplacementStatus?))
+                {
+                    return new global::Ultravox.JsonConverters.VoicesListReplacementStatusNullableJsonConverter();
                 }
                 throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
             }

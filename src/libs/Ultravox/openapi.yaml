@@ -3203,6 +3203,19 @@ paths:
               * `inworld` - Inworld
         description: The providers used to filter results.
       - in: query
+        name: replacementStatus
+        schema:
+          enum:
+          - replaced
+          - replacement
+          type: string
+          minLength: 1
+        description: |-
+          Filter results to voices on either side of a replacement.
+
+          * `replaced` - Voices with a replacement that can be accepted
+          * `replacement` - Voices that will replace another voice
+      - in: query
         name: search
         schema:
           type: string
@@ -3370,6 +3383,33 @@ paths:
       responses:
         '204':
           description: No response body
+  /api/voices/{voice_id}/accept_replacement:
+    post:
+      operationId: accept_voice_replacement
+      description: Switches one of your voices to its replacement (see `replacedBy`).
+        The voice keeps its ID and name and takes on the replacement's definition,
+        description and primary language. Anything using the replacement switches
+        to this voice, and the replacement is deleted, though its ID and name still
+        refer to this voice. Accepting a replacement that was already accepted returns
+        the voice unchanged.
+      parameters:
+      - in: path
+        name: voice_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - voices
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Voice'
+          description: ''
   /api/voices/{voice_id}/preview:
     get:
       operationId: voices_preview_retrieve
@@ -5731,6 +5771,19 @@ components:
           readOnly: true
         definition:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+        replacementFor:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: The voice this one will replace if its replacement is accepted.
+        replacedBy:
+          format: uuid
+          type: string
+          nullable: true
+          readOnly: true
+          description: A replacement for this voice that can be accepted to switch
+            this voice to it.
     PatchedWebhook:
       type: object
       properties:
@@ -6264,6 +6317,19 @@ components:
           readOnly: true
         definition:
           $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
+        replacementFor:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+          description: The voice this one will replace if its replacement is accepted.
+        replacedBy:
+          format: uuid
+          type: string
+          nullable: true
+          readOnly: true
+          description: A replacement for this voice that can be accepted to switch
+            this voice to it.
       required:
       - billingStyle
       - definition
@@ -6272,6 +6338,8 @@ components:
       - ownership
       - previewUrl
       - provider
+      - replacedBy
+      - replacementFor
       - voiceId
     Webhook:
       type: object

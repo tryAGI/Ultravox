@@ -84,6 +84,20 @@ namespace Ultravox
         public required global::Ultravox.UltravoxV1ExternalVoice Definition { get; set; }
 
         /// <summary>
+        /// The voice this one will replace if its replacement is accepted.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("replacementFor")]
+        public global::System.Guid? ReplacementFor { get; set; }
+
+        /// <summary>
+        /// A replacement for this voice that can be accepted to switch this voice to it.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("replacedBy")]
+        public global::System.Guid? ReplacedBy { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -108,6 +122,14 @@ namespace Ultravox
         /// Included only in responses
         /// </param>
         /// <param name="provider">
+        /// Included only in responses
+        /// </param>
+        /// <param name="replacementFor">
+        /// The voice this one will replace if its replacement is accepted.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="replacedBy">
+        /// A replacement for this voice that can be accepted to switch this voice to it.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="voiceId">
@@ -135,6 +157,8 @@ namespace Ultravox
             string? primaryLanguage,
             string? languageLabel,
             string? provider,
+            global::System.Guid? replacementFor,
+            global::System.Guid? replacedBy,
             global::System.Guid voiceId = default!,
             string previewUrl = default!,
             global::Ultravox.OwnershipEnum ownership = default!,
@@ -150,6 +174,8 @@ namespace Ultravox
             this.BillingStyle = billingStyle;
             this.Provider = provider;
             this.Definition = definition ?? throw new global::System.ArgumentNullException(nameof(definition));
+            this.ReplacementFor = replacementFor;
+            this.ReplacedBy = replacedBy;
         }
 
         /// <summary>

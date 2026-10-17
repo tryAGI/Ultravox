@@ -33,6 +33,7 @@ namespace Ultravox
             ref int? pageSize,
             ref string? primaryLanguage,
             global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>? provider,
+            ref global::Ultravox.VoicesListReplacementStatus? replacementStatus,
             ref string? search);
         partial void PrepareVoicesListRequest(
             global::System.Net.Http.HttpClient httpClient,
@@ -43,6 +44,7 @@ namespace Ultravox
             int? pageSize,
             string? primaryLanguage,
             global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>? provider,
+            global::Ultravox.VoicesListReplacementStatus? replacementStatus,
             string? search);
         partial void ProcessVoicesListResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -62,6 +64,7 @@ namespace Ultravox
         /// <param name="pageSize"></param>
         /// <param name="primaryLanguage"></param>
         /// <param name="provider"></param>
+        /// <param name="replacementStatus"></param>
         /// <param name="search"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -73,6 +76,7 @@ namespace Ultravox
             int? pageSize = default,
             string? primaryLanguage = default,
             global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>? provider = default,
+            global::Ultravox.VoicesListReplacementStatus? replacementStatus = default,
             string? search = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -84,6 +88,7 @@ namespace Ultravox
                 pageSize: pageSize,
                 primaryLanguage: primaryLanguage,
                 provider: provider,
+                replacementStatus: replacementStatus,
                 search: search,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -100,6 +105,7 @@ namespace Ultravox
         /// <param name="pageSize"></param>
         /// <param name="primaryLanguage"></param>
         /// <param name="provider"></param>
+        /// <param name="replacementStatus"></param>
         /// <param name="search"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -111,6 +117,7 @@ namespace Ultravox
             int? pageSize = default,
             string? primaryLanguage = default,
             global::System.Collections.Generic.IList<global::Ultravox.VoicesListProviderItem>? provider = default,
+            global::Ultravox.VoicesListReplacementStatus? replacementStatus = default,
             string? search = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -125,6 +132,7 @@ namespace Ultravox
                 pageSize: ref pageSize,
                 primaryLanguage: ref primaryLanguage,
                 provider: provider,
+                replacementStatus: ref replacementStatus,
                 search: ref search);
 
 
@@ -160,6 +168,7 @@ namespace Ultravox
                                 .AddOptionalParameter("pageSize", pageSize?.ToString())
                                 .AddOptionalParameter("primaryLanguage", primaryLanguage)
                                 .AddOptionalParameter("provider", provider, selector: static x => x.ToValueString(), delimiter: ",", explode: true)
+                                .AddOptionalParameter("replacementStatus", replacementStatus?.ToValueString())
                                 .AddOptionalParameter("search", search)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -208,6 +217,7 @@ namespace Ultravox
                     pageSize: pageSize,
                     primaryLanguage: primaryLanguage,
                     provider: provider,
+                    replacementStatus: replacementStatus,
                     search: search);
 
                 return __httpRequest;
