@@ -1169,19 +1169,23 @@ namespace Ultravox
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type284 { get; set; }
+        public global::Ultravox.VoicesListReplacementStatus? Type284 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>? Type285 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.Account>? Type285 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type286 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.AgentUsage>? Type286 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type287 { get; set; }
+        public global::System.Collections.Generic.IList<global::Ultravox.CallTool>? Type287 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1CorpusQueryResult>? Type288 { get; set; }
 
         /// <summary>
         ///

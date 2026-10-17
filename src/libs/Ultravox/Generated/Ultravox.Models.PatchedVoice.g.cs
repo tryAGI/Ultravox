@@ -78,6 +78,20 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1ExternalVoice? Definition { get; set; }
 
         /// <summary>
+        /// The voice this one will replace if its replacement is accepted.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("replacementFor")]
+        public global::System.Guid? ReplacementFor { get; set; }
+
+        /// <summary>
+        /// A replacement for this voice that can be accepted to switch this voice to it.<br/>
+        /// Included only in responses
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("replacedBy")]
+        public global::System.Guid? ReplacedBy { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -119,6 +133,14 @@ namespace Ultravox
         ///  responsible for your own TTS-related errors.<br/>
         ///  Exactly one field must be set.
         /// </param>
+        /// <param name="replacementFor">
+        /// The voice this one will replace if its replacement is accepted.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="replacedBy">
+        /// A replacement for this voice that can be accepted to switch this voice to it.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -132,7 +154,9 @@ namespace Ultravox
             global::Ultravox.OwnershipEnum? ownership,
             global::Ultravox.BillingStyleEnum? billingStyle,
             string? provider,
-            global::Ultravox.UltravoxV1ExternalVoice? definition)
+            global::Ultravox.UltravoxV1ExternalVoice? definition,
+            global::System.Guid? replacementFor,
+            global::System.Guid? replacedBy)
         {
             this.VoiceId = voiceId;
             this.Name = name;
@@ -144,6 +168,8 @@ namespace Ultravox
             this.BillingStyle = billingStyle;
             this.Provider = provider;
             this.Definition = definition;
+            this.ReplacementFor = replacementFor;
+            this.ReplacedBy = replacedBy;
         }
 
         /// <summary>
