@@ -2369,6 +2369,14 @@ paths:
     get:
       operationId: models_list
       parameters:
+      - in: query
+        name: baseModelName
+        schema:
+          type: string
+          minLength: 1
+        description: For thread models, the model of the call the threads belong to.
+          Defaults to your default model. If it only accepts text, so must its threads'
+          models.
       - name: cursor
         required: false
         in: query
@@ -2381,6 +2389,20 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+      - in: query
+        name: purpose
+        schema:
+          enum:
+          - generation
+          - thread
+          type: string
+          default: generation
+          minLength: 1
+        description: |-
+          List models for this purpose: generation for a call's model, or thread for models that the call's threads can use.
+
+          * `generation` - generation
+          * `thread` - thread
       tags:
       - models
       security:

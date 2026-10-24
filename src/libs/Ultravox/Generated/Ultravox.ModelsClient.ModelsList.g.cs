@@ -27,13 +27,17 @@ namespace Ultravox
             };
         partial void PrepareModelsListArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref string? baseModelName,
             ref string? cursor,
-            ref int? pageSize);
+            ref int? pageSize,
+            ref global::Ultravox.ModelsListPurpose? purpose);
         partial void PrepareModelsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            string? baseModelName,
             string? cursor,
-            int? pageSize);
+            int? pageSize,
+            global::Ultravox.ModelsListPurpose? purpose);
         partial void ProcessModelsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -46,20 +50,28 @@ namespace Ultravox
         /// <summary>
         ///
         /// </summary>
+        /// <param name="baseModelName"></param>
         /// <param name="cursor"></param>
         /// <param name="pageSize"></param>
+        /// <param name="purpose">
+        /// Default Value: generation
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.PaginatedModelAliasList> ModelsListAsync(
+            string? baseModelName = default,
             string? cursor = default,
             int? pageSize = default,
+            global::Ultravox.ModelsListPurpose? purpose = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await ModelsListAsResponseAsync(
+                baseModelName: baseModelName,
                 cursor: cursor,
                 pageSize: pageSize,
+                purpose: purpose,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -69,14 +81,20 @@ namespace Ultravox
         /// <summary>
         ///
         /// </summary>
+        /// <param name="baseModelName"></param>
         /// <param name="cursor"></param>
         /// <param name="pageSize"></param>
+        /// <param name="purpose">
+        /// Default Value: generation
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.AutoSDKHttpResponse<global::Ultravox.PaginatedModelAliasList>> ModelsListAsResponseAsync(
+            string? baseModelName = default,
             string? cursor = default,
             int? pageSize = default,
+            global::Ultravox.ModelsListPurpose? purpose = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -84,8 +102,10 @@ namespace Ultravox
                 client: HttpClient);
             PrepareModelsListArguments(
                 httpClient: HttpClient,
+                baseModelName: ref baseModelName,
                 cursor: ref cursor,
-                pageSize: ref pageSize);
+                pageSize: ref pageSize,
+                purpose: ref purpose);
 
 
             var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
@@ -114,8 +134,10 @@ namespace Ultravox
                                 path: "/api/models",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("baseModelName", baseModelName)
                                 .AddOptionalParameter("cursor", cursor)
                                 .AddOptionalParameter("pageSize", pageSize?.ToString())
+                                .AddOptionalParameter("purpose", purpose?.ToValueString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Ultravox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -157,8 +179,10 @@ namespace Ultravox
                 PrepareModelsListRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    baseModelName: baseModelName,
                     cursor: cursor,
-                    pageSize: pageSize);
+                    pageSize: pageSize,
+                    purpose: purpose);
 
                 return __httpRequest;
             }

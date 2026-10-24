@@ -199,6 +199,10 @@ namespace Ultravox
 
             typeof(global::Ultravox.JsonConverters.CallsMessagesListModeNullableJsonConverter),
 
+            typeof(global::Ultravox.JsonConverters.ModelsListPurposeJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.ModelsListPurposeNullableJsonConverter),
+
             typeof(global::Ultravox.JsonConverters.SchemaRetrieveFormatJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.SchemaRetrieveFormatNullableJsonConverter),
@@ -522,6 +526,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AgentsScheduledBatchesScheduledCallsListStatus), TypeInfoPropertyName = "AgentsScheduledBatchesScheduledCallsListStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallsEventsListMinimumSeverity), TypeInfoPropertyName = "CallsEventsListMinimumSeverity2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallsMessagesListMode), TypeInfoPropertyName = "CallsMessagesListMode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ModelsListPurpose), TypeInfoPropertyName = "ModelsListPurpose2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.SchemaRetrieveFormat), TypeInfoPropertyName = "SchemaRetrieveFormat2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.SchemaRetrieveLang), TypeInfoPropertyName = "SchemaRetrieveLang2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ToolsListOwnership), TypeInfoPropertyName = "ToolsListOwnership2")]
