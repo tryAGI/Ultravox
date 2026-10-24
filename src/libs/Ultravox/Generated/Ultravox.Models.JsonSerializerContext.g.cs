@@ -18,7 +18,9 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ModelAlias))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.PaginatedModelAliasList))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.ModelAlias>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ModelsListPurpose), TypeInfoPropertyName = "ModelsListPurpose2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int?))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ModelsListPurpose?), TypeInfoPropertyName = "NullableModelsListPurpose2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.ModelAlias>))]
     internal sealed partial class ModelsSourceGenerationContextChunk0 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
@@ -68,6 +70,7 @@ namespace Ultravox
         public static void AddConverters(global::System.Text.Json.JsonSerializerOptions options)
         {
             options.Converters.Add(new global::Ultravox.JsonConverters.UnixTimestampJsonConverter());
+            options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
 
         private static global::System.Text.Json.JsonSerializerOptions CreateDefaultOptions()
@@ -80,6 +83,34 @@ namespace Ultravox
             AddConverters(options);
 
             return options;
+        }
+
+
+        private sealed class LazyEnumJsonConverterFactory : global::System.Text.Json.Serialization.JsonConverterFactory
+        {
+            public override bool CanConvert(global::System.Type typeToConvert)
+            {
+                return
+                    typeToConvert == typeof(global::Ultravox.ModelsListPurpose)
+
+                    || typeToConvert == typeof(global::Ultravox.ModelsListPurpose?);
+            }
+
+            public override global::System.Text.Json.Serialization.JsonConverter CreateConverter(
+                global::System.Type typeToConvert,
+                global::System.Text.Json.JsonSerializerOptions options)
+            {
+                if (typeToConvert == typeof(global::Ultravox.ModelsListPurpose))
+                {
+                    return new global::Ultravox.JsonConverters.ModelsListPurposeJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::Ultravox.ModelsListPurpose?))
+                {
+                    return new global::Ultravox.JsonConverters.ModelsListPurposeNullableJsonConverter();
+                }
+                throw new global::System.NotSupportedException($"No generated enum converter is registered for '{typeToConvert}'.");
+            }
         }
 
         private sealed class LazyChunkResolver : global::System.Text.Json.Serialization.Metadata.IJsonTypeInfoResolver
