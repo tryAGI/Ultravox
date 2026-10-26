@@ -32,6 +32,19 @@ namespace Ultravox
         /// Performs a test generation of a voice, returning the resulting audio or error.
         /// </summary>
         /// <param name="request"></param>
+        /// <returns>The response metadata and an unbuffered body stream. The caller must dispose Body to release the HTTP response.</returns>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Ultravox.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Ultravox.AutoSDKHttpResponse<global::System.IO.Stream>> PreviewVoiceAsStreamAsResponseAsync(
+
+            global::Ultravox.Voice request,
+            global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Performs a test generation of a voice, returning the resulting audio or error.
+        /// </summary>
+        /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
