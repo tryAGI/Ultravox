@@ -108,6 +108,7 @@ namespace Ultravox.Realtime
     #pragma warning restore CS3016
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.Realtime.RealtimeSourceGenerationContextTypes))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.Realtime.PingPayload))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.Realtime.PingPayloadType), TypeInfoPropertyName = "PingPayloadType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
