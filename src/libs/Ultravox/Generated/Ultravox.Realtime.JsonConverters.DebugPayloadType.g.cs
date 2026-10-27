@@ -18,7 +18,7 @@ namespace Ultravox.Realtime.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Ultravox.Realtime.DebugPayloadTypeExtensions.ToEnum(stringValue) ?? default;
+                        return global::Ultravox.Realtime.DebugPayloadTypeExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown discriminator value '{stringValue}' for global::Ultravox.Realtime.DebugPayloadType.");
                     }
 
                     break;
