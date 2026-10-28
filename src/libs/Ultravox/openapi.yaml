@@ -1779,6 +1779,12 @@ paths:
           type: string
           format: uuid
         required: true
+      - in: query
+        name: includeRevealed
+        schema:
+          type: boolean
+          default: false
+        description: Whether to also list tools that threads revealed during the stage.
       tags:
       - calls
       security:
@@ -4579,6 +4585,11 @@ components:
           description: The possibly overridden name of the tool.
         definition:
           $ref: '#/components/schemas/ultravox.v1.CallTool'
+        revealedForThreadId:
+          type: string
+          description: The thread this tool was revealed for during the stage, by
+            an update-tools response or a thread spawn. Unset for tools the stage
+            started with.
       required:
       - callToolId
       - definition

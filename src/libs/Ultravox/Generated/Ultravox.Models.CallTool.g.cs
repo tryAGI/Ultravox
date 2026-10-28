@@ -37,6 +37,12 @@ namespace Ultravox
         public required global::Ultravox.UltravoxV1CallTool Definition { get; set; }
 
         /// <summary>
+        /// The thread this tool was revealed for during the stage, by an update-tools response or a thread spawn. Unset for tools the stage started with.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("revealedForThreadId")]
+        public string? RevealedForThreadId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -51,6 +57,9 @@ namespace Ultravox
         /// <param name="toolId">
         /// Included only in responses
         /// </param>
+        /// <param name="revealedForThreadId">
+        /// The thread this tool was revealed for during the stage, by an update-tools response or a thread spawn. Unset for tools the stage started with.
+        /// </param>
         /// <param name="callToolId">
         /// Included only in responses
         /// </param>
@@ -64,6 +73,7 @@ namespace Ultravox
         public CallTool(
             global::Ultravox.UltravoxV1CallTool definition,
             global::System.Guid? toolId,
+            string? revealedForThreadId,
             global::System.Guid callToolId = default!,
             string name = default!)
         {
@@ -71,6 +81,7 @@ namespace Ultravox
             this.ToolId = toolId;
             this.Name = name;
             this.Definition = definition ?? throw new global::System.ArgumentNullException(nameof(definition));
+            this.RevealedForThreadId = revealedForThreadId;
         }
 
         /// <summary>
