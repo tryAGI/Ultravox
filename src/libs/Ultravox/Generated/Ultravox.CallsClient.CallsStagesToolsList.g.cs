@@ -28,12 +28,14 @@ namespace Ultravox
         partial void PrepareCallsStagesToolsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid callId,
-            ref global::System.Guid callStageId);
+            ref global::System.Guid callStageId,
+            ref bool? includeRevealed);
         partial void PrepareCallsStagesToolsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::System.Guid callId,
-            global::System.Guid callStageId);
+            global::System.Guid callStageId,
+            bool? includeRevealed);
         partial void ProcessCallsStagesToolsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -48,18 +50,23 @@ namespace Ultravox
         /// </summary>
         /// <param name="callId"></param>
         /// <param name="callStageId"></param>
+        /// <param name="includeRevealed">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<global::Ultravox.CallTool>> CallsStagesToolsListAsync(
             global::System.Guid callId,
             global::System.Guid callStageId,
+            bool? includeRevealed = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await CallsStagesToolsListAsResponseAsync(
                 callId: callId,
                 callStageId: callStageId,
+                includeRevealed: includeRevealed,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -71,12 +78,16 @@ namespace Ultravox
         /// </summary>
         /// <param name="callId"></param>
         /// <param name="callStageId"></param>
+        /// <param name="includeRevealed">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Ultravox.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.AutoSDKHttpResponse<global::System.Collections.Generic.IList<global::Ultravox.CallTool>>> CallsStagesToolsListAsResponseAsync(
             global::System.Guid callId,
             global::System.Guid callStageId,
+            bool? includeRevealed = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -85,7 +96,8 @@ namespace Ultravox
             PrepareCallsStagesToolsListArguments(
                 httpClient: HttpClient,
                 callId: ref callId,
-                callStageId: ref callStageId);
+                callStageId: ref callStageId,
+                includeRevealed: ref includeRevealed);
 
 
             var __authorizations = global::Ultravox.EndPointSecurityResolver.ResolveAuthorizations(
@@ -113,6 +125,9 @@ namespace Ultravox
                             var __pathBuilder = new global::Ultravox.PathBuilder(
                                 path: $"/api/calls/{callId}/stages/{callStageId}/tools",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("includeRevealed", includeRevealed?.ToString().ToLowerInvariant())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Ultravox.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -154,7 +169,8 @@ namespace Ultravox
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     callId: callId,
-                    callStageId: callStageId);
+                    callStageId: callStageId,
+                    includeRevealed: includeRevealed);
 
                 return __httpRequest;
             }
