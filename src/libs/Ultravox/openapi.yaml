@@ -2382,7 +2382,7 @@ paths:
           minLength: 1
         description: For thread models, the model of the call the threads belong to.
           Defaults to your default model. If it only accepts text, so must its threads'
-          models.
+          models. If it accepts audio, its threads may also use that same model.
       - name: cursor
         required: false
         in: query
