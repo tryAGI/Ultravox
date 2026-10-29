@@ -212,6 +212,15 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1MediumRestriction? MediumRestriction { get; set; }
 
         /// <summary>
+        /// Text models, besides the call's own, that the call's threads may use, as listed<br/>
+        ///  by `GET /api/models` with `purpose=thread`. Threads can always use the call's own<br/>
+        ///  model, so it may not be listed here. Any model threads can't use rejects the call.<br/>
+        ///  The list is fixed for the whole call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("additionalModels")]
+        public global::System.Collections.Generic.IList<string>? AdditionalModels { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -329,6 +338,12 @@ namespace Ultravox
         /// The mediums the call may use for both user input and agent output. If unset,<br/>
         ///  the call may use every medium.
         /// </param>
+        /// <param name="additionalModels">
+        /// Text models, besides the call's own, that the call's threads may use, as listed<br/>
+        ///  by `GET /api/models` with `purpose=thread`. Threads can always use the call's own<br/>
+        ///  model, so it may not be listed here. Any model threads can't use rejects the call.<br/>
+        ///  The list is fixed for the whole call.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -362,7 +377,8 @@ namespace Ultravox
             global::System.Collections.Generic.IList<string>? sharedSecrets,
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
             global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? admissionPreference,
-            global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction)
+            global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction,
+            global::System.Collections.Generic.IList<string>? additionalModels)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -394,6 +410,7 @@ namespace Ultravox
             this.BackgroundAudio = backgroundAudio;
             this.AdmissionPreference = admissionPreference;
             this.MediumRestriction = mediumRestriction;
+            this.AdditionalModels = additionalModels;
         }
 
         /// <summary>

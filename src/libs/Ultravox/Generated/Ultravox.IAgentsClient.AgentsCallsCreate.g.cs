@@ -121,6 +121,10 @@ namespace Ultravox
         /// <param name="mediumRestriction">
         /// The (overridden) mediums the call may use for both user input and agent output.
         /// </param>
+        /// <param name="additionalModels">
+        /// The (overridden) additional models the call's threads may use. If present, this<br/>
+        ///  replaces the agent's list, even when empty. See StartCallRequest.additional_models.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -148,6 +152,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio = default,
             global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference? admissionPreference = default,
             global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction = default,
+            global::System.Collections.Generic.IList<string>? additionalModels = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

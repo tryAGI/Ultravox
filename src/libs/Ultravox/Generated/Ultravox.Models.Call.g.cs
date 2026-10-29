@@ -158,6 +158,14 @@ namespace Ultravox
         public string? Model { get; set; }
 
         /// <summary>
+        /// Models, besides the call's own, that the call's threads may use.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("additionalModels")]
+        public global::System.Collections.Generic.IList<string> AdditionalModels { get; set; } = default!;
+
+        /// <summary>
         /// Default Value: false
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("recordingEnabled")]
@@ -463,6 +471,10 @@ namespace Ultravox
         /// The medium used initially by the agent. May later be changed by the client.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="additionalModels">
+        /// Models, besides the call's own, that the call's threads may use.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="agent">
         /// The agent used for this call.<br/>
         /// Included only in responses
@@ -512,6 +524,7 @@ namespace Ultravox
             global::System.DateTime created = default!,
             global::Ultravox.BillingStatusEnum billingStatus = default!,
             global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!,
+            global::System.Collections.Generic.IList<string> additionalModels = default!,
             global::Ultravox.AgentBasic agent = default!)
         {
             this.CallId = callId;
@@ -534,6 +547,7 @@ namespace Ultravox
             this.MaxDuration = maxDuration;
             this.Medium = medium;
             this.Model = model;
+            this.AdditionalModels = additionalModels;
             this.RecordingEnabled = recordingEnabled;
             this.RetentionPolicy = retentionPolicy;
             this.AdmissionPreference = admissionPreference;

@@ -161,6 +161,12 @@ namespace Ultravox
         /// The mediums the call may use for both user input and agent output. If unset,<br/>
         ///  the call may use every medium.
         /// </param>
+        /// <param name="additionalModels">
+        /// Text models, besides the call's own, that the call's threads may use, as listed<br/>
+        ///  by `GET /api/models` with `purpose=thread`. Threads can always use the call's own<br/>
+        ///  model, so it may not be listed here. Any model threads can't use rejects the call.<br/>
+        ///  The list is fixed for the whole call.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -198,6 +204,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio = default,
             global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? admissionPreference = default,
             global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction = default,
+            global::System.Collections.Generic.IList<string>? additionalModels = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

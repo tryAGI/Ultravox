@@ -4169,6 +4169,13 @@ components:
         model:
           type: string
           default: ultravox-v0.7
+        additionalModels:
+          type: array
+          items:
+            type: string
+          readOnly: true
+          description: Models, besides the call's own, that the call's threads may
+            use.
         recordingEnabled:
           type: boolean
           default: false
@@ -4280,6 +4287,7 @@ components:
           description: Background audio played behind the agent's voice during the
             call.
       required:
+      - additionalModels
       - admissionPreference
       - agent
       - agentId
@@ -6619,6 +6627,13 @@ components:
           description: |-
             The mediums calls created with this agent may use for both user input and agent output.
              If unset, calls may use every medium.
+        additionalModels:
+          type: array
+          items:
+            type: string
+          description: |-
+            Models, besides the call's own, that threads in calls created with this agent may
+             use. See StartCallRequest.additional_models.
       description: A CallTemplate that can be used to create Ultravox calls with shared
         properties.
     ultravox.v1.Corpus:
@@ -8403,6 +8418,13 @@ components:
           - $ref: '#/components/schemas/ultravox.v1.MediumRestriction'
           description: The (overridden) mediums the call may use for both user input
             and agent output.
+        additionalModels:
+          type: array
+          items:
+            type: string
+          description: |-
+            The (overridden) additional models the call's threads may use. If present, this
+             replaces the agent's list, even when empty. See StartCallRequest.additional_models.
       description: A request to start a call with an existing agent.
     ultravox.v1.StartCallRequest:
       type: object
@@ -8576,6 +8598,15 @@ components:
           description: |-
             The mediums the call may use for both user input and agent output. If unset,
              the call may use every medium.
+        additionalModels:
+          type: array
+          items:
+            type: string
+          description: |-
+            Text models, besides the call's own, that the call's threads may use, as listed
+             by `GET /api/models` with `purpose=thread`. Threads can always use the call's own
+             model, so it may not be listed here. Any model threads can't use rejects the call.
+             The list is fixed for the whole call.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object
