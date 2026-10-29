@@ -155,6 +155,13 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1MediumRestriction? MediumRestriction { get; set; }
 
         /// <summary>
+        /// The (overridden) additional models the call's threads may use. If present, this<br/>
+        ///  replaces the agent's list, even when empty. See StartCallRequest.additional_models.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("additionalModels")]
+        public global::System.Collections.Generic.IList<string>? AdditionalModels { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -243,6 +250,10 @@ namespace Ultravox
         /// <param name="mediumRestriction">
         /// The (overridden) mediums the call may use for both user input and agent output.
         /// </param>
+        /// <param name="additionalModels">
+        /// The (overridden) additional models the call's threads may use. If present, this<br/>
+        ///  replaces the agent's list, even when empty. See StartCallRequest.additional_models.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -267,7 +278,8 @@ namespace Ultravox
             string? agentId,
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
             global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference? admissionPreference,
-            global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction)
+            global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction,
+            global::System.Collections.Generic.IList<string>? additionalModels)
         {
             this.TemplateContext = templateContext;
             this.InitialMessages = initialMessages;
@@ -290,6 +302,7 @@ namespace Ultravox
             this.BackgroundAudio = backgroundAudio;
             this.AdmissionPreference = admissionPreference;
             this.MediumRestriction = mediumRestriction;
+            this.AdditionalModels = additionalModels;
         }
 
         /// <summary>

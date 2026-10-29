@@ -213,6 +213,13 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1MediumRestriction? MediumRestriction { get; set; }
 
         /// <summary>
+        /// Models, besides the call's own, that threads in calls created with this agent may<br/>
+        ///  use. See StartCallRequest.additional_models.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("additionalModels")]
+        public global::System.Collections.Generic.IList<string>? AdditionalModels { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -341,6 +348,10 @@ namespace Ultravox
         /// The mediums calls created with this agent may use for both user input and agent output.<br/>
         ///  If unset, calls may use every medium.
         /// </param>
+        /// <param name="additionalModels">
+        /// Models, besides the call's own, that threads in calls created with this agent may<br/>
+        ///  use. See StartCallRequest.additional_models.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -371,7 +382,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1CallTemplateRetentionPolicy? retentionPolicy,
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
             global::Ultravox.UltravoxV1CallTemplateAdmissionPreference? admissionPreference,
-            global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction)
+            global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction,
+            global::System.Collections.Generic.IList<string>? additionalModels)
         {
             this.Name = name;
             this.Created = created;
@@ -400,6 +412,7 @@ namespace Ultravox
             this.BackgroundAudio = backgroundAudio;
             this.AdmissionPreference = admissionPreference;
             this.MediumRestriction = mediumRestriction;
+            this.AdditionalModels = additionalModels;
         }
 
         /// <summary>
