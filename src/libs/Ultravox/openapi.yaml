@@ -1397,10 +1397,11 @@ paths:
           type: string
           format: uuid
         description: The UUID of a prior call. When specified, the new call will use
-          the same properites as the prior call unless overriden in this request's
-          body. The new call will also use the prior call's message history as its
-          own initial_messages. (It's illegal to also set initial_messages in the
-          body.)
+          the prior call's message history as its own initial_messages. (It's illegal
+          to also set initial_messages in the body.) Until December 7, 2026, the new
+          call also inherits some of the prior call's other properties that this request
+          doesn't set. Calls that do so get a warning event listing the inherited
+          fields.
       - in: query
         name: throttle
         schema:
@@ -4222,11 +4223,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
           description: Overrides for the selected voice.
-        transcriptOptional:
-          type: boolean
-          default: true
-          description: Indicates whether a transcript is optional for the call.
-          deprecated: true
         vadSettings:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.VadSettings'
@@ -7661,9 +7657,31 @@ components:
           type: boolean
           description: 'Indicates that the user has stopped speaking (according to
             simple VAD). (Default: disabled)'
+        sideGenerationDelta:
+          type: boolean
+          description: 'Provides deltas for side generations as they run. (Default:
+            disabled)'
+        sideGenerationCompleted:
+          type: boolean
+          description: 'Provides the full response for a side generation when it has
+            completed. (Default: enabled)'
+        threadSpawned:
+          type: boolean
+          description: 'Indicates that a new thread has been spawned. (Default: enabled)'
+        threadRejected:
+          type: boolean
+          description: 'Indicates that a thread spawn request was rejected. (Default:
+            enabled)'
+        threadTerminated:
+          type: boolean
+          description: 'Indicates that a thread has terminated. (Default: enabled)'
         invokingTool:
           type: boolean
           description: 'Indicates that a tool invocation has started. (Default: disabled)'
+        threadState:
+          type: boolean
+          description: 'Reports a thread''s initial state and each change to it. (Default:
+            disabled)'
       description: Whether certain data messages are enabled for a connection.
     ultravox.v1.ExternalVoice:
       type: object
@@ -8504,7 +8522,7 @@ components:
           format: enum
         transcriptOptional:
           type: boolean
-          description: Indicates whether a transcript is optional for the call.
+          description: Ignored. Accepted so that older clients' requests still parse.
         initialOutputMedium:
           enum:
           - MESSAGE_MEDIUM_UNSPECIFIED

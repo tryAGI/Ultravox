@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace Ultravox
@@ -229,14 +227,6 @@ namespace Ultravox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voiceOverrides")]
         public global::Ultravox.UltravoxV1ExternalVoice? VoiceOverrides { get; set; }
-
-        /// <summary>
-        /// Indicates whether a transcript is optional for the call.<br/>
-        /// Default Value: true
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("transcriptOptional")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public bool? TranscriptOptional { get; set; }
 
         /// <summary>
         /// VAD settings for the call.

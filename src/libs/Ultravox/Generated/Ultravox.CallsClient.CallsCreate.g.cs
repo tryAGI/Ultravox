@@ -526,7 +526,7 @@ namespace Ultravox
         ///  Deprecated. Prefer `firstSpeakerSettings`. If both are set, they must match.
         /// </param>
         /// <param name="transcriptOptional">
-        /// Indicates whether a transcript is optional for the call.
+        /// Ignored. Accepted so that older clients' requests still parse.
         /// </param>
         /// <param name="initialOutputMedium">
         /// The medium to use for the call initially. May be altered by the client later.<br/>

@@ -105,7 +105,7 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker? FirstSpeaker { get; set; }
 
         /// <summary>
-        /// Indicates whether a transcript is optional for the call.
+        /// Ignored. Accepted so that older clients' requests still parse.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcriptOptional")]
         public bool? TranscriptOptional { get; set; }
@@ -280,7 +280,7 @@ namespace Ultravox
         ///  Deprecated. Prefer `firstSpeakerSettings`. If both are set, they must match.
         /// </param>
         /// <param name="transcriptOptional">
-        /// Indicates whether a transcript is optional for the call.
+        /// Ignored. Accepted so that older clients' requests still parse.
         /// </param>
         /// <param name="initialOutputMedium">
         /// The medium to use for the call initially. May be altered by the client later.<br/>

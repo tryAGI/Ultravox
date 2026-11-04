@@ -81,10 +81,46 @@ namespace Ultravox
         public bool? UserStoppedSpeaking { get; set; }
 
         /// <summary>
+        /// Provides deltas for side generations as they run. (Default: disabled)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sideGenerationDelta")]
+        public bool? SideGenerationDelta { get; set; }
+
+        /// <summary>
+        /// Provides the full response for a side generation when it has completed. (Default: enabled)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sideGenerationCompleted")]
+        public bool? SideGenerationCompleted { get; set; }
+
+        /// <summary>
+        /// Indicates that a new thread has been spawned. (Default: enabled)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("threadSpawned")]
+        public bool? ThreadSpawned { get; set; }
+
+        /// <summary>
+        /// Indicates that a thread spawn request was rejected. (Default: enabled)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("threadRejected")]
+        public bool? ThreadRejected { get; set; }
+
+        /// <summary>
+        /// Indicates that a thread has terminated. (Default: enabled)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("threadTerminated")]
+        public bool? ThreadTerminated { get; set; }
+
+        /// <summary>
         /// Indicates that a tool invocation has started. (Default: disabled)
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("invokingTool")]
         public bool? InvokingTool { get; set; }
+
+        /// <summary>
+        /// Reports a thread's initial state and each change to it. (Default: disabled)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("threadState")]
+        public bool? ThreadState { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -131,8 +167,26 @@ namespace Ultravox
         /// <param name="userStoppedSpeaking">
         /// Indicates that the user has stopped speaking (according to simple VAD). (Default: disabled)
         /// </param>
+        /// <param name="sideGenerationDelta">
+        /// Provides deltas for side generations as they run. (Default: disabled)
+        /// </param>
+        /// <param name="sideGenerationCompleted">
+        /// Provides the full response for a side generation when it has completed. (Default: enabled)
+        /// </param>
+        /// <param name="threadSpawned">
+        /// Indicates that a new thread has been spawned. (Default: enabled)
+        /// </param>
+        /// <param name="threadRejected">
+        /// Indicates that a thread spawn request was rejected. (Default: enabled)
+        /// </param>
+        /// <param name="threadTerminated">
+        /// Indicates that a thread has terminated. (Default: enabled)
+        /// </param>
         /// <param name="invokingTool">
         /// Indicates that a tool invocation has started. (Default: disabled)
+        /// </param>
+        /// <param name="threadState">
+        /// Reports a thread's initial state and each change to it. (Default: disabled)
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -150,7 +204,13 @@ namespace Ultravox
             bool? toolUsed,
             bool? userStartedSpeaking,
             bool? userStoppedSpeaking,
-            bool? invokingTool)
+            bool? sideGenerationDelta,
+            bool? sideGenerationCompleted,
+            bool? threadSpawned,
+            bool? threadRejected,
+            bool? threadTerminated,
+            bool? invokingTool,
+            bool? threadState)
         {
             this.Pong = pong;
             this.State = state;
@@ -164,7 +224,13 @@ namespace Ultravox
             this.ToolUsed = toolUsed;
             this.UserStartedSpeaking = userStartedSpeaking;
             this.UserStoppedSpeaking = userStoppedSpeaking;
+            this.SideGenerationDelta = sideGenerationDelta;
+            this.SideGenerationCompleted = sideGenerationCompleted;
+            this.ThreadSpawned = threadSpawned;
+            this.ThreadRejected = threadRejected;
+            this.ThreadTerminated = threadTerminated;
             this.InvokingTool = invokingTool;
+            this.ThreadState = threadState;
         }
 
         /// <summary>
