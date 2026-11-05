@@ -167,6 +167,11 @@ namespace Ultravox
         ///  model, so it may not be listed here. Any model threads can't use rejects the call.<br/>
         ///  The list is fixed for the whole call.
         /// </param>
+        /// <param name="triggers">
+        /// Rules that send data messages into the call when events occur, such as a message<br/>
+        ///  from the server or a timer firing. At most 10. They apply to the whole call, across<br/>
+        ///  stage changes.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -205,6 +210,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? admissionPreference = default,
             global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction = default,
             global::System.Collections.Generic.IList<string>? additionalModels = default,
+            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? triggers = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

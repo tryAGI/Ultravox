@@ -162,6 +162,12 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<string>? AdditionalModels { get; set; }
 
         /// <summary>
+        /// Changes to the agent's triggers for this call. See StartCallRequest.triggers.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("triggerOverrides")]
+        public global::Ultravox.UltravoxV1TriggerOverrides? TriggerOverrides { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -254,6 +260,9 @@ namespace Ultravox
         /// The (overridden) additional models the call's threads may use. If present, this<br/>
         ///  replaces the agent's list, even when empty. See StartCallRequest.additional_models.
         /// </param>
+        /// <param name="triggerOverrides">
+        /// Changes to the agent's triggers for this call. See StartCallRequest.triggers.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -279,7 +288,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
             global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference? admissionPreference,
             global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction,
-            global::System.Collections.Generic.IList<string>? additionalModels)
+            global::System.Collections.Generic.IList<string>? additionalModels,
+            global::Ultravox.UltravoxV1TriggerOverrides? triggerOverrides)
         {
             this.TemplateContext = templateContext;
             this.InitialMessages = initialMessages;
@@ -303,6 +313,7 @@ namespace Ultravox
             this.AdmissionPreference = admissionPreference;
             this.MediumRestriction = mediumRestriction;
             this.AdditionalModels = additionalModels;
+            this.TriggerOverrides = triggerOverrides;
         }
 
         /// <summary>

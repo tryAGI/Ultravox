@@ -220,6 +220,12 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<string>? AdditionalModels { get; set; }
 
         /// <summary>
+        /// Triggers for calls created with this agent. See StartCallRequest.triggers.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("triggers")]
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? Triggers { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -352,6 +358,9 @@ namespace Ultravox
         /// Models, besides the call's own, that threads in calls created with this agent may<br/>
         ///  use. See StartCallRequest.additional_models.
         /// </param>
+        /// <param name="triggers">
+        /// Triggers for calls created with this agent. See StartCallRequest.triggers.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -383,7 +392,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
             global::Ultravox.UltravoxV1CallTemplateAdmissionPreference? admissionPreference,
             global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction,
-            global::System.Collections.Generic.IList<string>? additionalModels)
+            global::System.Collections.Generic.IList<string>? additionalModels,
+            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? triggers)
         {
             this.Name = name;
             this.Created = created;
@@ -413,6 +423,7 @@ namespace Ultravox
             this.AdmissionPreference = admissionPreference;
             this.MediumRestriction = mediumRestriction;
             this.AdditionalModels = additionalModels;
+            this.Triggers = triggers;
         }
 
         /// <summary>

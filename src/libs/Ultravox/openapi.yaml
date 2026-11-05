@@ -1822,6 +1822,39 @@ paths:
                 items:
                   $ref: '#/components/schemas/CallTool'
           description: ''
+  /api/calls/{call_id}/triggers:
+    get:
+      operationId: calls_triggers_list
+      parameters:
+      - in: path
+        name: call_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - name: cursor
+        required: false
+        in: query
+        description: The pagination cursor value.
+        schema:
+          type: string
+      - name: pageSize
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - calls
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCallTriggerList'
+          description: ''
   /api/corpora:
     get:
       operationId: corpora_list
@@ -4599,6 +4632,22 @@ components:
       - definition
       - name
       - toolId
+    CallTrigger:
+      type: object
+      properties:
+        triggerId:
+          type: string
+          format: uuid
+          readOnly: true
+          description: The trigger's ID. A trigger the call kept from its agent has
+            the agent's trigger ID.
+        trigger:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.Trigger'
+          readOnly: true
+      required:
+      - trigger
+      - triggerId
     CallUsage:
       type: object
       properties:
@@ -5039,6 +5088,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CallTombstone'
+        total:
+          type: integer
+          example: 123
+    PaginatedCallTriggerList:
+      type: object
+      required:
+      - results
+      properties:
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallTrigger'
         total:
           type: integer
           example: 123
@@ -6630,6 +6701,11 @@ components:
           description: |-
             Models, besides the call's own, that threads in calls created with this agent may
              use. See StartCallRequest.additional_models.
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.SelectedTrigger'
+          description: Triggers for calls created with this agent. See StartCallRequest.triggers.
       description: A CallTemplate that can be used to create Ultravox calls with shared
         properties.
     ultravox.v1.Corpus:
@@ -8229,6 +8305,14 @@ components:
       description: |-
         A tool selected for a particular call. Exactly one of tool_id, tool_name, or
          temporary_tool should be set.
+    ultravox.v1.SelectedTrigger:
+      type: object
+      properties:
+        temporaryTrigger:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.Trigger'
+          description: A trigger defined only for this call or agent.
+      description: A trigger to use in a call or an agent's calls.
     ultravox.v1.SipFallbackHandlerResponse:
       type: object
       properties:
@@ -8443,6 +8527,10 @@ components:
           description: |-
             The (overridden) additional models the call's threads may use. If present, this
              replaces the agent's list, even when empty. See StartCallRequest.additional_models.
+        triggerOverrides:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerOverrides'
+          description: Changes to the agent's triggers for this call. See StartCallRequest.triggers.
       description: A request to start a call with an existing agent.
     ultravox.v1.StartCallRequest:
       type: object
@@ -8625,6 +8713,14 @@ components:
              by `GET /api/models` with `purpose=thread`. Threads can always use the call's own
              model, so it may not be listed here. Any model threads can't use rejects the call.
              The list is fixed for the whole call.
+        triggers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.SelectedTrigger'
+          description: |-
+            Rules that send data messages into the call when events occur, such as a message
+             from the server or a timer firing. At most 10. They apply to the whole call, across
+             stage changes.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object
@@ -8734,6 +8830,226 @@ components:
             (static) value.
       description: The requirements for using a tool, which must be satisfied when
         creating a call with the tool.
+    ultravox.v1.Trigger:
+      type: object
+      properties:
+        name:
+          type: string
+          description: |-
+            Identifies the trigger, such as in call events and in triggerOverrides. Names are 1-64
+             letters, digits, or underscores, unique among the call's triggers.
+        event:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerEvent'
+          description: What causes the trigger to run.
+        condition:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerCondition'
+          description: Filters events. If unset, every event runs the trigger's actions.
+        actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.TriggerAction'
+          description: |-
+            What happens when the trigger runs (and its condition is met), in order. At most 10,
+             counting the actions within ternaries.
+        localVariables:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/google.protobuf.Value'
+          description: |-
+            Variables that only this trigger can read and write, by name, with their initial values.
+             At most 10. Names are letters, digits, or underscores, and may not start with a digit.
+             Each variable keeps the type of its initial value, which must be a string, number, or
+             boolean. Their values persist across runs for the rest of the call. Conditions and
+             templates read them under "local" (e.g. "local.count").
+      description: |-
+        A rule that sends data messages into a call when an event occurs and a condition is met.
+         Triggers run shortly after their events, in the order the events occur, so their actions
+         may interleave with other activity in the call. If one of its conditions can't be
+         evaluated, that run of the trigger stops, and a trigger whose runs fail three times in a
+         row is dropped for the rest of the call.
+    ultravox.v1.TriggerAction:
+      type: object
+      properties:
+        dataMessage:
+          type: object
+          description: |-
+            A data message to send into the call, such as a user_text_message, forced_agent_message, or
+             spawn_thread. String values within it are Mustache templates rendered against the
+             event and local variables (e.g. "{{event.text}}"), without HTML escaping. The
+             message's type may not be templated.
+        ternary:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerAction_Ternary'
+          description: Runs one list of actions or the other depending on a condition.
+        setLocalVariable:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerAction_SetLocalVariable'
+          description: Sets a local variable.
+        incrementLocalVariable:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerAction_IncrementLocalVariable'
+          description: Adds to a numeric local variable.
+        startTimer:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerAction_StartTimer'
+          description: Starts a timer.
+        cancelTimer:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerAction_CancelTimer'
+          description: Cancels a timer.
+      description: Something a trigger does when it runs.
+    ultravox.v1.TriggerAction_CancelTimer:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The timer's name.
+      description: Stops a timer from firing. Does nothing if it isn't running.
+    ultravox.v1.TriggerAction_IncrementLocalVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The local variable's name.
+        value:
+          type: number
+          description: The amount to add, which may be negative. Defaults to 1.
+          format: double
+      description: Adds to one of the trigger's numeric local variables.
+    ultravox.v1.TriggerAction_SetLocalVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The local variable's name.
+        value:
+          allOf:
+          - $ref: '#/components/schemas/google.protobuf.Value'
+          description: |-
+            The new value, of the variable's type. String values within it are Mustache
+             templates, as in `dataMessage`.
+      description: Sets one of the trigger's local variables.
+    ultravox.v1.TriggerAction_StartTimer:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The timer's name. Starting a timer that no trigger listens
+            for does nothing.
+        delay:
+          pattern: ^-?(?:0|[1-9][0-9]{0,11})(?:\.[0-9]{1,9})?s$
+          type: string
+          description: How long until the timer fires. Must be at least 10 seconds.
+      description: |-
+        Starts a timer, restarting it if it's already running. Timers last until they fire, are
+         canceled, or the call ends. To fire repeatedly, a timer's trigger can restart it.
+    ultravox.v1.TriggerAction_Ternary:
+      type: object
+      properties:
+        condition:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerCondition'
+          description: Decides which list of actions runs.
+        whenTrue:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.TriggerAction'
+          description: The actions to run when the condition is met.
+        whenFalse:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.TriggerAction'
+          description: The actions to run when the condition isn't met.
+      description: Runs one list of actions or the other depending on a condition.
+    ultravox.v1.TriggerCondition:
+      type: object
+      properties:
+        property:
+          type: string
+          description: |-
+            A dotted path to the property being compared. Properties of the event are under "event"
+             (e.g. "event.role" for a transcript), the trigger's local variables are under "local",
+             and global data is under "global" (e.g. "global.callState", the state from the call's
+             latest state message).
+        propertyArguments:
+          type: object
+          additionalProperties:
+            type: string
+          description: Arguments for global properties that take them. Values are
+            Mustache templates.
+        operator:
+          enum:
+          - OPERATOR_UNSPECIFIED
+          - OPERATOR_AND
+          - OPERATOR_OR
+          - OPERATOR_XOR
+          - OPERATOR_EQ
+          - OPERATOR_NEQ
+          - OPERATOR_LT
+          - OPERATOR_LTE
+          - OPERATOR_GT
+          - OPERATOR_GTE
+          type: string
+          description: How the condition is evaluated.
+          format: enum
+        value:
+          allOf:
+          - $ref: '#/components/schemas/google.protobuf.Value'
+          description: The value the property is compared to.
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.TriggerCondition'
+          description: Child conditions for complex operators.
+      description: |-
+        Either a simple condition (`property`, `operator`, and `value`) or a complex condition
+         (`operator` and child `conditions`). A trigger may have at most 20 conditions, counting
+         every child and the conditions of its ternaries.
+    ultravox.v1.TriggerEvent:
+      type: object
+      properties:
+        dataMessage:
+          type: string
+          description: |-
+            The type of a server data message, as in the message's "type" field (e.g.
+             "user_started_speaking", not "userStartedSpeaking"). Any message EnabledDataMessages
+             can enable may be used. The trigger runs each time the server produces a message of
+             this type, regardless of which messages clients receive.
+        timer:
+          type: string
+          description: |-
+            The name of a timer, which runs the trigger each time it fires. Timer names are 1-64
+             letters, digits, or underscores. Only one trigger may listen for each timer, but any
+             trigger can start or cancel it. The event's only property is "forwardedEvent": the
+             event of the trigger run that started the timer. If that run was itself for a timer,
+             it's that timer's forwardedEvent instead, so a timer that restarts itself keeps
+             forwarding the event that started the chain.
+      description: What causes a trigger to run.
+    ultravox.v1.TriggerOverrides:
+      type: object
+      properties:
+        remove:
+          type: array
+          items:
+            type: string
+          description: The names of the agent's triggers to remove. May not be set
+            together with removeAll.
+        removeAll:
+          type: boolean
+          description: If true, all of the agent's triggers are removed. May not be
+            set together with remove.
+        add:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.SelectedTrigger'
+          description: |-
+            Triggers to add. Their names may not match those of the agent's triggers that remain,
+             so replacing one of the agent's triggers requires removing it too.
+      description: |-
+        Changes to an agent's triggers for one call. The call's triggers are the agent's, in
+         their order and without those removed, followed by those added.
     ultravox.v1.TwilioMedium_OutgoingRequestParams:
       type: object
       properties:
