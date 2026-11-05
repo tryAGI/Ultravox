@@ -221,6 +221,14 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<string>? AdditionalModels { get; set; }
 
         /// <summary>
+        /// Rules that send data messages into the call when events occur, such as a message<br/>
+        ///  from the server or a timer firing. At most 10. They apply to the whole call, across<br/>
+        ///  stage changes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("triggers")]
+        public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? Triggers { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -344,6 +352,11 @@ namespace Ultravox
         ///  model, so it may not be listed here. Any model threads can't use rejects the call.<br/>
         ///  The list is fixed for the whole call.
         /// </param>
+        /// <param name="triggers">
+        /// Rules that send data messages into the call when events occur, such as a message<br/>
+        ///  from the server or a timer firing. At most 10. They apply to the whole call, across<br/>
+        ///  stage changes.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -378,7 +391,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
             global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? admissionPreference,
             global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction,
-            global::System.Collections.Generic.IList<string>? additionalModels)
+            global::System.Collections.Generic.IList<string>? additionalModels,
+            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? triggers)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -411,6 +425,7 @@ namespace Ultravox
             this.AdmissionPreference = admissionPreference;
             this.MediumRestriction = mediumRestriction;
             this.AdditionalModels = additionalModels;
+            this.Triggers = triggers;
         }
 
         /// <summary>

@@ -183,6 +183,10 @@ namespace Ultravox
 
             typeof(global::Ultravox.JsonConverters.UltravoxV1TimedMessageEndBehaviorNullableJsonConverter),
 
+            typeof(global::Ultravox.JsonConverters.UltravoxV1TriggerConditionOperatorJsonConverter),
+
+            typeof(global::Ultravox.JsonConverters.UltravoxV1TriggerConditionOperatorNullableJsonConverter),
+
             typeof(global::Ultravox.JsonConverters.AccountsMeUsageConcurrencyRetrieveBucketJsonConverter),
 
             typeof(global::Ultravox.JsonConverters.AccountsMeUsageConcurrencyRetrieveBucketNullableJsonConverter),
@@ -320,6 +324,8 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallTombstone))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallTool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallTool))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallTrigger))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1Trigger))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallUsage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.DailyCallStatistics>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.DailyCallStatistics))]
@@ -351,6 +357,8 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.CallThrottle>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.PaginatedCallTombstoneList))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.CallTombstone>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.PaginatedCallTriggerList))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.CallTrigger>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.PaginatedInvoiceList))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.Invoice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.PaginatedModelAliasList))]
@@ -421,6 +429,8 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallTemplateRetentionPolicy), TypeInfoPropertyName = "UltravoxV1CallTemplateRetentionPolicy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallTemplateAdmissionPreference), TypeInfoPropertyName = "UltravoxV1CallTemplateAdmissionPreference2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1MediumRestriction))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1SelectedTrigger))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CorpusStats))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CorpusDocumentMetadata))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CorpusQueryResult))]
@@ -512,12 +522,24 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1ToolOverrides))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartAgentCallRequestRetentionPolicy), TypeInfoPropertyName = "UltravoxV1StartAgentCallRequestRetentionPolicy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartAgentCallRequestAdmissionPreference), TypeInfoPropertyName = "UltravoxV1StartAgentCallRequestAdmissionPreference2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerOverrides))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartCallRequestFirstSpeaker), TypeInfoPropertyName = "UltravoxV1StartCallRequestFirstSpeaker2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartCallRequestInitialOutputMedium), TypeInfoPropertyName = "UltravoxV1StartCallRequestInitialOutputMedium2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartCallRequestRetentionPolicy), TypeInfoPropertyName = "UltravoxV1StartCallRequestRetentionPolicy2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference), TypeInfoPropertyName = "UltravoxV1StartCallRequestAdmissionPreference2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1StaticParameterLocation), TypeInfoPropertyName = "UltravoxV1StaticParameterLocation2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TimedMessageEndBehavior), TypeInfoPropertyName = "UltravoxV1TimedMessageEndBehavior2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerEvent))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerCondition))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TriggerAction>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerAction))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerActionTernary))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerActionSetLocalVariable))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerActionIncrementLocalVariable))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerActionStartTimer))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerActionCancelTimer))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerConditionOperator), TypeInfoPropertyName = "UltravoxV1TriggerConditionOperator2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TriggerCondition>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AudioClipsCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.ToolsCreateRequest))]
@@ -557,6 +579,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.CallStage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.CallThrottle>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.CallTombstone>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.CallTrigger>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.Invoice>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.ModelAlias>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.ScheduledCallBatch>))]
@@ -576,6 +599,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.WebhookFailure>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.BillingUsageDay>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1SelectedTool>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1SelectedTrigger>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1AdvancedSpecDocumentDetails>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1DynamicParameter>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1StaticParameter>))]
@@ -583,6 +607,8 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1ElevenLabsVoicePronunciationDictionaryReference>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1MediumRestrictionAllowedMedium>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1SecurityRequirements>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1TriggerAction>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.UltravoxV1TriggerCondition>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.VoicesListProviderItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.Account>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Ultravox.AgentUsage>))]
