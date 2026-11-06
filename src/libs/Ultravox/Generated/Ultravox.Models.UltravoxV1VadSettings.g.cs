@@ -43,7 +43,7 @@ namespace Ultravox
 
         /// <summary>
         /// The threshold for the VAD to consider a frame as speech. This is a value between 0.1 and 1.<br/>
-        ///  Miniumum value is 0.1, which is the default value.
+        ///  Minimum value is 0.1. Defaults to 0.2.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("frameActivationThreshold")]
         public float? FrameActivationThreshold { get; set; }
@@ -83,7 +83,7 @@ namespace Ultravox
         /// </param>
         /// <param name="frameActivationThreshold">
         /// The threshold for the VAD to consider a frame as speech. This is a value between 0.1 and 1.<br/>
-        ///  Miniumum value is 0.1, which is the default value.
+        ///  Minimum value is 0.1. Defaults to 0.2.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

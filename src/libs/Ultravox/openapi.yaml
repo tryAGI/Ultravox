@@ -9136,7 +9136,7 @@ components:
           description: |-
             The threshold for the VAD to consider a frame as speech. This is a value between 0.1 and 1.
 
-             Miniumum value is 0.1, which is the default value.
+             Minimum value is 0.1. Defaults to 0.2.
           format: float
       description: Call-level VAD settings.
   securitySchemes:
