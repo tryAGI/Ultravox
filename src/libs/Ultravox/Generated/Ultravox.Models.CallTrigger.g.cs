@@ -9,12 +9,11 @@ namespace Ultravox
     public sealed partial class CallTrigger
     {
         /// <summary>
-        /// The trigger's ID. A trigger the call kept from its agent has the agent's trigger ID.<br/>
+        /// The ID of the existing trigger the call or its agent selected. Null for triggers defined in the call or agent itself.<br/>
         /// Included only in responses
         /// </summary>
-        /// <default>default!</default>
         [global::System.Text.Json.Serialization.JsonPropertyName("triggerId")]
-        public global::System.Guid TriggerId { get; set; } = default!;
+        public global::System.Guid? TriggerId { get; set; }
 
         /// <summary>
         /// Included only in responses
@@ -33,7 +32,7 @@ namespace Ultravox
         /// Initializes a new instance of the <see cref="CallTrigger" /> class.
         /// </summary>
         /// <param name="triggerId">
-        /// The trigger's ID. A trigger the call kept from its agent has the agent's trigger ID.<br/>
+        /// The ID of the existing trigger the call or its agent selected. Null for triggers defined in the call or agent itself.<br/>
         /// Included only in responses
         /// </param>
         /// <param name="trigger">
@@ -43,7 +42,7 @@ namespace Ultravox
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CallTrigger(
-            global::System.Guid triggerId = default!,
+            global::System.Guid? triggerId,
             global::Ultravox.UltravoxV1Trigger trigger = default!)
         {
             this.TriggerId = triggerId;

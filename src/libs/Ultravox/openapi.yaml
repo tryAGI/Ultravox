@@ -3161,6 +3161,115 @@ paths:
             '*/*':
               schema: {}
           description: ''
+  /api/triggers:
+    get:
+      operationId: triggers_list
+      parameters:
+      - name: cursor
+        required: false
+        in: query
+        description: The pagination cursor value.
+        schema:
+          type: string
+      - name: pageSize
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - triggers
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTriggerList'
+          description: ''
+    post:
+      operationId: triggers_create
+      tags:
+      - triggers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trigger'
+        required: true
+      security:
+      - apiKeyAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trigger'
+          description: ''
+  /api/triggers/{trigger_id}:
+    get:
+      operationId: triggers_retrieve
+      parameters:
+      - in: path
+        name: trigger_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - triggers
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trigger'
+          description: ''
+    put:
+      operationId: triggers_update
+      parameters:
+      - in: path
+        name: trigger_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - triggers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trigger'
+        required: true
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trigger'
+          description: ''
+    delete:
+      operationId: triggers_destroy
+      parameters:
+      - in: path
+        name: trigger_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - triggers
+      security:
+      - apiKeyAuth: []
+      responses:
+        '204':
+          description: No response body
   /api/voice_preview:
     post:
       operationId: preview_voice
@@ -4639,8 +4748,9 @@ components:
           type: string
           format: uuid
           readOnly: true
-          description: The trigger's ID. A trigger the call kept from its agent has
-            the agent's trigger ID.
+          nullable: true
+          description: The ID of the existing trigger the call or its agent selected.
+            Null for triggers defined in the call or agent itself.
         trigger:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.Trigger'
@@ -5265,6 +5375,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Tool'
+        total:
+          type: integer
+          example: 123
+    PaginatedTriggerList:
+      type: object
+      required:
+      - results
+      properties:
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trigger'
         total:
           type: integer
           example: 123
@@ -6316,6 +6448,28 @@ components:
       required:
       - call
       - errorCount
+    Trigger:
+      type: object
+      properties:
+        triggerId:
+          type: string
+          format: uuid
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        trigger:
+          $ref: '#/components/schemas/ultravox.v1.Trigger'
+        ownership:
+          allOf:
+          - $ref: '#/components/schemas/OwnershipEnum'
+          readOnly: true
+      required:
+      - created
+      - ownership
+      - trigger
+      - triggerId
     TwilioConfig:
       type: object
       properties:
@@ -8312,6 +8466,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.Trigger'
           description: A trigger defined only for this call or agent.
+        triggerId:
+          type: string
+          description: |-
+            The ID of an existing trigger. A call uses the trigger as it is when the call is
+             created. An agent's calls use its latest version.
+        triggerName:
+          type: string
+          description: |-
+            The name of an existing trigger, used as with triggerId. Your account's own triggers
+             take precedence over public ones with the same name.
       description: A trigger to use in a call or an agent's calls.
     ultravox.v1.SipFallbackHandlerResponse:
       type: object

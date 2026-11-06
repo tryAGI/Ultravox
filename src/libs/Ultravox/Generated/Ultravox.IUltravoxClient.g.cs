@@ -113,6 +113,11 @@ namespace Ultravox
         /// <summary>
         ///
         /// </summary>
+        public TriggersClient Triggers { get; }
+
+        /// <summary>
+        ///
+        /// </summary>
         public VoicesClient Voices { get; }
 
         /// <summary>
