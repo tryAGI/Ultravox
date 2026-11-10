@@ -13,7 +13,7 @@ namespace Ultravox
         ///  SIP rejection code (between 400 and 699 inclusive). Defaults to 603 (Decline).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sipRejectCode")]
-        public int? SipRejectCode { get; set; }
+        public long? SipRejectCode { get; set; }
 
         /// <summary>
         /// An optional brief explanation of the rejection for logging.
@@ -41,7 +41,7 @@ namespace Ultravox
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UltravoxV1SipRejection(
-            int? sipRejectCode,
+            long? sipRejectCode,
             string? message)
         {
             this.SipRejectCode = sipRejectCode;
