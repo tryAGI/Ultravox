@@ -3900,6 +3900,12 @@ components:
           nullable: true
           readOnly: true
           description: The maximum number of concurrent calls allowed for this account.
+        priorityCallSlots:
+          type: integer
+          readOnly: true
+          description: How many of this account's concurrent calls get priority when
+            demand is high. Calls with long prompts or conversations use more of this
+            capacity. Calls beyond it may be rejected during peak demand.
         allowedVoices:
           type: integer
           nullable: true
@@ -3921,6 +3927,7 @@ components:
       - freeTimeUsed
       - hasActiveSubscription
       - name
+      - priorityCallSlots
       - subscriptionCadence
       - subscriptionExpiration
       - subscriptionRenewal
