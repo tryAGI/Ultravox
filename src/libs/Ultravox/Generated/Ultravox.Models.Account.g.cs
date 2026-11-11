@@ -103,6 +103,14 @@ namespace Ultravox
         public int? AllowedConcurrentCalls { get; set; }
 
         /// <summary>
+        /// How many of this account's concurrent calls get priority when demand is high. Calls with long prompts or conversations use more of this capacity. Calls beyond it may be rejected during peak demand.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("priorityCallSlots")]
+        public int PriorityCallSlots { get; set; } = default!;
+
+        /// <summary>
         /// The maximum number of custom voices allowed for this account.<br/>
         /// Included only in responses
         /// </summary>
@@ -181,6 +189,10 @@ namespace Ultravox
         /// The number of active calls for this account.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="priorityCallSlots">
+        /// How many of this account's concurrent calls get priority when demand is high. Calls with long prompts or conversations use more of this capacity. Calls beyond it may be rejected during peak demand.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -199,7 +211,8 @@ namespace Ultravox
             string billingUrl = default!,
             string freeTimeUsed = default!,
             string freeTimeRemaining = default!,
-            int activeCalls = default!)
+            int activeCalls = default!,
+            int priorityCallSlots = default!)
         {
             this.AccountId = accountId;
             this.Name = name;
@@ -214,6 +227,7 @@ namespace Ultravox
             this.SubscriptionRenewal = subscriptionRenewal;
             this.ActiveCalls = activeCalls;
             this.AllowedConcurrentCalls = allowedConcurrentCalls;
+            this.PriorityCallSlots = priorityCallSlots;
             this.AllowedVoices = allowedVoices;
             this.AllowedCorpora = allowedCorpora;
         }
