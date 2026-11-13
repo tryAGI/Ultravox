@@ -30,6 +30,7 @@ namespace Ultravox
         public required global::System.Collections.Generic.IList<global::Ultravox.Webhook> Results { get; set; }
 
         /// <summary>
+        /// Counted for the first page. Pages reached through `next` or `previous` repeat that count.<br/>
         /// Example: 123
         /// </summary>
         /// <example>123</example>
@@ -53,6 +54,7 @@ namespace Ultravox
         /// Example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         /// </param>
         /// <param name="total">
+        /// Counted for the first page. Pages reached through `next` or `previous` repeat that count.<br/>
         /// Example: 123
         /// </param>
 #if NET7_0_OR_GREATER

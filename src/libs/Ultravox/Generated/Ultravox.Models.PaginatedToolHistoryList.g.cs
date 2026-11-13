@@ -30,7 +30,7 @@ namespace Ultravox
         public required global::System.Collections.Generic.IList<global::Ultravox.ToolHistory> Results { get; set; }
 
         /// <summary>
-        /// Null when `includeTotal` is false.<br/>
+        /// Counted for the first page. Pages reached through `next` or `previous` repeat that count. Null when `includeTotal` is false.<br/>
         /// Example: 123
         /// </summary>
         /// <example>123</example>
@@ -54,7 +54,7 @@ namespace Ultravox
         /// Example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
         /// </param>
         /// <param name="total">
-        /// Null when `includeTotal` is false.<br/>
+        /// Counted for the first page. Pages reached through `next` or `previous` repeat that count. Null when `includeTotal` is false.<br/>
         /// Example: 123
         /// </param>
 #if NET7_0_OR_GREATER
