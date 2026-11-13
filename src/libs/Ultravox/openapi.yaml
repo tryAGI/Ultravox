@@ -5064,6 +5064,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedAgentList:
       type: object
       required:
@@ -5086,6 +5088,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedAudioClipList:
       type: object
       required:
@@ -5108,6 +5112,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedCallEventList:
       type: object
       required:
@@ -5130,6 +5136,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedCallList:
       type: object
       required:
@@ -5152,6 +5160,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedCallStageList:
       type: object
       required:
@@ -5174,6 +5184,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedCallThrottleList:
       type: object
       required:
@@ -5196,6 +5208,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedCallTombstoneList:
       type: object
       required:
@@ -5218,6 +5232,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedCallTriggerList:
       type: object
       required:
@@ -5240,6 +5256,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedInvoiceList:
       type: object
       properties:
@@ -5283,6 +5301,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedScheduledCallBatchList:
       type: object
       required:
@@ -5305,6 +5325,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedScheduledCallList:
       type: object
       required:
@@ -5327,6 +5349,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedSipRegistrationList:
       type: object
       required:
@@ -5349,6 +5373,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedToolHistoryList:
       type: object
       required:
@@ -5371,8 +5397,9 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count. Null when `includeTotal` is false.
           nullable: true
-          description: Null when `includeTotal` is false.
     PaginatedToolList:
       type: object
       required:
@@ -5395,6 +5422,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedTriggerList:
       type: object
       required:
@@ -5417,6 +5446,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedVoiceList:
       type: object
       required:
@@ -5439,6 +5470,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PaginatedWebhookList:
       type: object
       required:
@@ -5461,6 +5494,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     Paginatedultravox.v1.CorpusDocumentList:
       type: object
       required:
@@ -5505,6 +5540,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     Paginatedultravox.v1.CorpusSourceList:
       type: object
       required:
@@ -5549,6 +5586,8 @@ components:
         total:
           type: integer
           example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
     PatchedAPIKey:
       type: object
       properties:
