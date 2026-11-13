@@ -56,6 +56,22 @@ namespace Ultravox
         public global::Ultravox.OneOf<global::Ultravox.EndReasonEnum?, global::Ultravox.NullEnum?>? EndReason { get; set; }
 
         /// <summary>
+        /// The number of warning events recorded for the call.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("warningEventCount")]
+        public int WarningEventCount { get; set; } = default!;
+
+        /// <summary>
+        /// The number of error events recorded for the call.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("errorEventCount")]
+        public int ErrorEventCount { get; set; } = default!;
+
+        /// <summary>
         /// Included only in responses
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("billedDuration")]
@@ -454,6 +470,14 @@ namespace Ultravox
         /// <param name="created">
         /// Included only in responses
         /// </param>
+        /// <param name="warningEventCount">
+        /// The number of warning events recorded for the call.<br/>
+        /// Included only in responses
+        /// </param>
+        /// <param name="errorEventCount">
+        /// The number of error events recorded for the call.<br/>
+        /// Included only in responses
+        /// </param>
         /// <param name="billingStatus">
         /// Included only in responses
         /// </param>
@@ -512,6 +536,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1BackgroundAudio? backgroundAudio,
             global::System.Guid callId = default!,
             global::System.DateTime created = default!,
+            int warningEventCount = default!,
+            int errorEventCount = default!,
             global::Ultravox.BillingStatusEnum billingStatus = default!,
             global::Ultravox.InitialOutputMediumEnum initialOutputMedium = default!,
             global::System.Collections.Generic.IList<string> additionalModels = default!,
@@ -523,6 +549,8 @@ namespace Ultravox
             this.Joined = joined;
             this.Ended = ended;
             this.EndReason = endReason;
+            this.WarningEventCount = warningEventCount;
+            this.ErrorEventCount = errorEventCount;
             this.BilledDuration = billedDuration;
             this.BilledSideInputTokens = billedSideInputTokens;
             this.BilledSideOutputTokens = billedSideOutputTokens;
