@@ -4242,6 +4242,14 @@ components:
           oneOf:
           - $ref: '#/components/schemas/EndReasonEnum'
           - $ref: '#/components/schemas/NullEnum'
+        warningEventCount:
+          type: integer
+          readOnly: true
+          description: The number of warning events recorded for the call.
+        errorEventCount:
+          type: integer
+          readOnly: true
+          description: The number of error events recorded for the call.
         billedDuration:
           type: string
           readOnly: true
@@ -4445,6 +4453,7 @@ components:
       - created
       - endReason
       - ended
+      - errorEventCount
       - experimentalSettings
       - firstSpeaker
       - firstSpeakerSettings
@@ -4458,6 +4467,7 @@ components:
       - shortSummary
       - sipDetails
       - summary
+      - warningEventCount
     CallEvent:
       type: object
       properties:
