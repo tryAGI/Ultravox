@@ -595,6 +595,9 @@ namespace Ultravox
         ///  from the server or a timer firing. At most 10. They apply to the whole call, across<br/>
         ///  stage changes.
         /// </param>
+        /// <param name="transcriptionSettings">
+        /// Settings that guide speech recognition of the user's speech.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -634,6 +637,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction = default,
             global::System.Collections.Generic.IList<string>? additionalModels = default,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? triggers = default,
+            global::Ultravox.UltravoxV1TranscriptionSettings? transcriptionSettings = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -671,6 +675,7 @@ namespace Ultravox
                 MediumRestriction = mediumRestriction,
                 AdditionalModels = additionalModels,
                 Triggers = triggers,
+                TranscriptionSettings = transcriptionSettings,
             };
 
             return await CallsCreateAsync(

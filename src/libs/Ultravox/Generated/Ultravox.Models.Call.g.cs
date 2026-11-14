@@ -154,6 +154,12 @@ namespace Ultravox
         public string? LanguageHint { get; set; }
 
         /// <summary>
+        /// Settings that guide speech recognition of the user's speech.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transcriptionSettings")]
+        public global::Ultravox.UltravoxV1TranscriptionSettings? TranscriptionSettings { get; set; }
+
+        /// <summary>
         /// Default Value: 3600s
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("maxDuration")]
@@ -399,6 +405,9 @@ namespace Ultravox
         /// <param name="languageHint">
         /// BCP47 language code that may be used to guide speech recognition.
         /// </param>
+        /// <param name="transcriptionSettings">
+        /// Settings that guide speech recognition of the user's speech.
+        /// </param>
         /// <param name="maxDuration">
         /// Default Value: 3600s
         /// </param>
@@ -514,6 +523,7 @@ namespace Ultravox
             string? joinTimeout,
             string? joinUrl,
             string? languageHint,
+            global::Ultravox.UltravoxV1TranscriptionSettings? transcriptionSettings,
             string? maxDuration,
             global::Ultravox.UltravoxV1CallMedium? medium,
             string? model,
@@ -562,6 +572,7 @@ namespace Ultravox
             this.JoinTimeout = joinTimeout;
             this.JoinUrl = joinUrl;
             this.LanguageHint = languageHint;
+            this.TranscriptionSettings = transcriptionSettings;
             this.MaxDuration = maxDuration;
             this.Medium = medium;
             this.Model = model;

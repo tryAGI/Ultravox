@@ -4317,6 +4317,11 @@ components:
           nullable: true
           description: BCP47 language code that may be used to guide speech recognition.
           maxLength: 16
+        transcriptionSettings:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TranscriptionSettings'
+          nullable: true
+          description: Settings that guide speech recognition of the user's speech.
         maxDuration:
           type: string
           default: 3600s
@@ -4558,6 +4563,11 @@ components:
           nullable: true
           description: BCP47 language code that may be used to guide speech recognition.
           maxLength: 16
+        transcriptionSettings:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TranscriptionSettings'
+          nullable: true
+          description: Settings that guide speech recognition of the user's speech.
         latestTokenCount:
           type: integer
           readOnly: true
@@ -6916,6 +6926,12 @@ components:
           items:
             $ref: '#/components/schemas/ultravox.v1.SelectedTrigger'
           description: Triggers for calls created with this agent. See StartCallRequest.triggers.
+        transcriptionSettings:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TranscriptionSettings'
+          description: |-
+            Settings that guide speech recognition of the user's speech.
+             If multiple stages are defined for the call, this will be used only for stages without their own transcriptionSettings.
       description: A CallTemplate that can be used to create Ultravox calls with shared
         properties.
     ultravox.v1.Corpus:
@@ -8941,6 +8957,10 @@ components:
             Rules that send data messages into the call when events occur, such as a message
              from the server or a timer firing. At most 10. They apply to the whole call, across
              stage changes.
+        transcriptionSettings:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TranscriptionSettings'
+          description: Settings that guide speech recognition of the user's speech.
       description: A request to start a call.
     ultravox.v1.StaticParameter:
       type: object
@@ -9050,6 +9070,29 @@ components:
             (static) value.
       description: The requirements for using a tool, which must be satisfied when
         creating a call with the tool.
+    ultravox.v1.TranscriptionSettings:
+      type: object
+      properties:
+        prompts:
+          type: array
+          items:
+            type: string
+          description: |-
+            Words or phrases the user is likely to say, such as names, places or the answers
+             the agent expects. They bias speech recognition towards these terms.
+             At most 100 prompts (99 when `includeAgentContext` is true), each at most 100
+             characters of letters, digits, whitespace and the punctuation . , ; : ! ? ( ) - '
+        includeAgentContext:
+          type: boolean
+          description: |-
+            Whether to also guide recognition of each user turn with the agent's last message
+             before it, typically the question being answered (its last 100 characters, with
+             characters outside the allowed set removed). This mainly helps short answers.
+             Defaults to false.
+      description: |-
+        Settings that guide speech recognition of the user's speech.
+         When prompts are used, a transcript that only repeats them (as speech recognition can
+         for audio without words, such as a hum) is treated as empty.
     ultravox.v1.Trigger:
       type: object
       properties:

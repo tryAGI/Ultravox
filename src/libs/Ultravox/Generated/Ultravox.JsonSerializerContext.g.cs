@@ -299,6 +299,7 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallMediumRestriction))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.CallMediumRestrictionAllowedMedium>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.CallMediumRestrictionAllowedMedium), TypeInfoPropertyName = "CallMediumRestrictionAllowedMedium2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TranscriptionSettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1CallMedium))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.OneOf<global::Ultravox.RetentionPolicyEnum?, global::Ultravox.NullEnum?>), TypeInfoPropertyName = "OneOfRetentionPolicyEnumNullEnum2")]
