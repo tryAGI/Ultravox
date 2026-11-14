@@ -226,6 +226,13 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? Triggers { get; set; }
 
         /// <summary>
+        /// Settings that guide speech recognition of the user's speech.<br/>
+        ///  If multiple stages are defined for the call, this will be used only for stages without their own transcriptionSettings.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transcriptionSettings")]
+        public global::Ultravox.UltravoxV1TranscriptionSettings? TranscriptionSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -361,6 +368,10 @@ namespace Ultravox
         /// <param name="triggers">
         /// Triggers for calls created with this agent. See StartCallRequest.triggers.
         /// </param>
+        /// <param name="transcriptionSettings">
+        /// Settings that guide speech recognition of the user's speech.<br/>
+        ///  If multiple stages are defined for the call, this will be used only for stages without their own transcriptionSettings.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -393,7 +404,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1CallTemplateAdmissionPreference? admissionPreference,
             global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction,
             global::System.Collections.Generic.IList<string>? additionalModels,
-            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? triggers)
+            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? triggers,
+            global::Ultravox.UltravoxV1TranscriptionSettings? transcriptionSettings)
         {
             this.Name = name;
             this.Created = created;
@@ -424,6 +436,7 @@ namespace Ultravox
             this.MediumRestriction = mediumRestriction;
             this.AdditionalModels = additionalModels;
             this.Triggers = triggers;
+            this.TranscriptionSettings = transcriptionSettings;
         }
 
         /// <summary>

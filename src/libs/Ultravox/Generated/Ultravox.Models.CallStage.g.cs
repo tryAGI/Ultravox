@@ -49,6 +49,12 @@ namespace Ultravox
         public string? LanguageHint { get; set; }
 
         /// <summary>
+        /// Settings that guide speech recognition of the user's speech.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transcriptionSettings")]
+        public global::Ultravox.UltravoxV1TranscriptionSettings? TranscriptionSettings { get; set; }
+
+        /// <summary>
         /// The latest length of the prompt in tokens. Updated as the call stage progresses.<br/>
         /// Included only in responses
         /// </summary>
@@ -145,6 +151,9 @@ namespace Ultravox
         /// <param name="languageHint">
         /// BCP47 language code that may be used to guide speech recognition.
         /// </param>
+        /// <param name="transcriptionSettings">
+        /// Settings that guide speech recognition of the user's speech.
+        /// </param>
         /// <param name="latestTokenCount">
         /// The latest length of the prompt in tokens. Updated as the call stage progresses.<br/>
         /// Included only in responses
@@ -190,6 +199,7 @@ namespace Ultravox
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? inactivityMessages,
             int? initialTokenCount,
             string? languageHint,
+            global::Ultravox.UltravoxV1TranscriptionSettings? transcriptionSettings,
             int? latestTokenCount,
             string? model,
             string? systemPrompt,
@@ -210,6 +220,7 @@ namespace Ultravox
             this.InactivityMessages = inactivityMessages;
             this.InitialTokenCount = initialTokenCount;
             this.LanguageHint = languageHint;
+            this.TranscriptionSettings = transcriptionSettings;
             this.LatestTokenCount = latestTokenCount;
             this.Model = model;
             this.SystemPrompt = systemPrompt;

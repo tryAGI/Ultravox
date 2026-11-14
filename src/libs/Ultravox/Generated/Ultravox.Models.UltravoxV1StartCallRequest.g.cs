@@ -229,6 +229,12 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? Triggers { get; set; }
 
         /// <summary>
+        /// Settings that guide speech recognition of the user's speech.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transcriptionSettings")]
+        public global::Ultravox.UltravoxV1TranscriptionSettings? TranscriptionSettings { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -357,6 +363,9 @@ namespace Ultravox
         ///  from the server or a timer firing. At most 10. They apply to the whole call, across<br/>
         ///  stage changes.
         /// </param>
+        /// <param name="transcriptionSettings">
+        /// Settings that guide speech recognition of the user's speech.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -392,7 +401,8 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequestAdmissionPreference? admissionPreference,
             global::Ultravox.UltravoxV1MediumRestriction? mediumRestriction,
             global::System.Collections.Generic.IList<string>? additionalModels,
-            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? triggers)
+            global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? triggers,
+            global::Ultravox.UltravoxV1TranscriptionSettings? transcriptionSettings)
         {
             this.SystemPrompt = systemPrompt;
             this.Temperature = temperature;
@@ -426,6 +436,7 @@ namespace Ultravox
             this.MediumRestriction = mediumRestriction;
             this.AdditionalModels = additionalModels;
             this.Triggers = triggers;
+            this.TranscriptionSettings = transcriptionSettings;
         }
 
         /// <summary>
