@@ -348,7 +348,7 @@ namespace Ultravox
 
                                 throw global::Ultravox.ApiException.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_302 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_302 is { Length: > 0 } ? __content_302 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_302,
                                     responseBody: __content_302,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -390,7 +390,7 @@ namespace Ultravox
 
                                 throw global::Ultravox.ApiException.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __ex,
                                     responseBody: __content,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -699,7 +699,7 @@ namespace Ultravox
 
                                 throw global::Ultravox.ApiException.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_302 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_302 is { Length: > 0 } ? __content_302 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_302,
                                     responseBody: __content_302,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -745,7 +745,7 @@ namespace Ultravox
 
                                 throw global::Ultravox.ApiException.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __ex,
                                     responseBody: __content,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -1053,7 +1053,7 @@ namespace Ultravox
 
                                 throw global::Ultravox.ApiException.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_302 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_302 is { Length: > 0 } ? __content_302 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_302,
                                     responseBody: __content_302,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -1132,7 +1132,7 @@ namespace Ultravox
 
                                     throw global::Ultravox.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
