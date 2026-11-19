@@ -1404,10 +1404,7 @@ paths:
           format: uuid
         description: The UUID of a prior call. When specified, the new call will use
           the prior call's message history as its own initial_messages. (It's illegal
-          to also set initial_messages in the body.) Until December 7, 2026, the new
-          call also inherits some of the prior call's other properties that this request
-          doesn't set. Calls that do so get a warning event listing the inherited
-          fields.
+          to also set initial_messages in the body.)
       - in: query
         name: throttle
         schema:
@@ -9134,6 +9131,16 @@ components:
              Each variable keeps the type of its initial value, which must be a string, number, or
              boolean. Their values persist across runs for the rest of the call. Conditions and
              templates read them under "local" (e.g. "local.count").
+        sharedVariables:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/google.protobuf.Value'
+          description: |-
+            Variables shared with the call's other triggers that declare them, by name, with their
+             initial values. At most 10. They follow the same rules as `localVariables`, but
+             conditions and templates read them under "shared" (e.g. "shared.verified"). Every
+             trigger that declares a name must declare the same initial value. A trigger can only
+             read and write the shared variables it declares.
       description: |-
         A rule that sends data messages into a call when an event occurs and a condition is met.
          Triggers run shortly after their events, in the order the events occur, so their actions
@@ -9148,8 +9155,8 @@ components:
           description: |-
             A data message to send into the call, such as a user_text_message, forced_agent_message, or
              spawn_thread. String values within it are Mustache templates rendered against the
-             event and local variables (e.g. "{{event.text}}"), without HTML escaping. The
-             message's type may not be templated.
+             event and variables (e.g. "{{event.text}}"), without HTML escaping. The message's
+             type may not be templated.
         ternary:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.TriggerAction_Ternary'
@@ -9170,6 +9177,14 @@ components:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.TriggerAction_CancelTimer'
           description: Cancels a timer.
+        setSharedVariable:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerAction_SetSharedVariable'
+          description: Sets a shared variable.
+        incrementSharedVariable:
+          allOf:
+          - $ref: '#/components/schemas/ultravox.v1.TriggerAction_IncrementSharedVariable'
+          description: Adds to a numeric shared variable.
       description: Something a trigger does when it runs.
     ultravox.v1.TriggerAction_CancelTimer:
       type: object
@@ -9189,6 +9204,17 @@ components:
           description: The amount to add, which may be negative. Defaults to 1.
           format: double
       description: Adds to one of the trigger's numeric local variables.
+    ultravox.v1.TriggerAction_IncrementSharedVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The shared variable's name.
+        value:
+          type: number
+          description: The amount to add, which may be negative. Defaults to 1.
+          format: double
+      description: Adds to one of the trigger's numeric shared variables.
     ultravox.v1.TriggerAction_SetLocalVariable:
       type: object
       properties:
@@ -9202,6 +9228,19 @@ components:
             The new value, of the variable's type. String values within it are Mustache
              templates, as in `dataMessage`.
       description: Sets one of the trigger's local variables.
+    ultravox.v1.TriggerAction_SetSharedVariable:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The shared variable's name.
+        value:
+          allOf:
+          - $ref: '#/components/schemas/google.protobuf.Value'
+          description: |-
+            The new value, of the variable's type. String values within it are Mustache
+             templates, as in `dataMessage`.
+      description: Sets one of the trigger's shared variables.
     ultravox.v1.TriggerAction_StartTimer:
       type: object
       properties:
@@ -9242,8 +9281,8 @@ components:
           description: |-
             A dotted path to the property being compared. Properties of the event are under "event"
              (e.g. "event.role" for a transcript), the trigger's local variables are under "local",
-             and global data is under "global" (e.g. "global.callState", the state from the call's
-             latest state message).
+             its shared variables are under "shared", and global data is under "global" (e.g.
+             "global.callState", the state from the call's latest state message).
         propertyArguments:
           type: object
           additionalProperties:

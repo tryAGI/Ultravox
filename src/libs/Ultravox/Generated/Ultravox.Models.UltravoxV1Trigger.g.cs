@@ -49,6 +49,16 @@ namespace Ultravox
         public object? LocalVariables { get; set; }
 
         /// <summary>
+        /// Variables shared with the call's other triggers that declare them, by name, with their<br/>
+        ///  initial values. At most 10. They follow the same rules as `localVariables`, but<br/>
+        ///  conditions and templates read them under "shared" (e.g. "shared.verified"). Every<br/>
+        ///  trigger that declares a name must declare the same initial value. A trigger can only<br/>
+        ///  read and write the shared variables it declares.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sharedVariables")]
+        public object? SharedVariables { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -78,6 +88,13 @@ namespace Ultravox
         ///  boolean. Their values persist across runs for the rest of the call. Conditions and<br/>
         ///  templates read them under "local" (e.g. "local.count").
         /// </param>
+        /// <param name="sharedVariables">
+        /// Variables shared with the call's other triggers that declare them, by name, with their<br/>
+        ///  initial values. At most 10. They follow the same rules as `localVariables`, but<br/>
+        ///  conditions and templates read them under "shared" (e.g. "shared.verified"). Every<br/>
+        ///  trigger that declares a name must declare the same initial value. A trigger can only<br/>
+        ///  read and write the shared variables it declares.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -86,13 +103,15 @@ namespace Ultravox
             global::Ultravox.UltravoxV1TriggerEvent? @event,
             global::Ultravox.UltravoxV1TriggerCondition? condition,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TriggerAction>? actions,
-            object? localVariables)
+            object? localVariables,
+            object? sharedVariables)
         {
             this.Name = name;
             this.Event = @event;
             this.Condition = condition;
             this.Actions = actions;
             this.LocalVariables = localVariables;
+            this.SharedVariables = sharedVariables;
         }
 
         /// <summary>

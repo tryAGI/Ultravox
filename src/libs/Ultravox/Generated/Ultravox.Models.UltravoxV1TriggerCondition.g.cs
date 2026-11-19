@@ -13,8 +13,8 @@ namespace Ultravox
         /// <summary>
         /// A dotted path to the property being compared. Properties of the event are under "event"<br/>
         ///  (e.g. "event.role" for a transcript), the trigger's local variables are under "local",<br/>
-        ///  and global data is under "global" (e.g. "global.callState", the state from the call's<br/>
-        ///  latest state message).
+        ///  its shared variables are under "shared", and global data is under "global" (e.g.<br/>
+        ///  "global.callState", the state from the call's latest state message).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("property")]
         public string? Property { get; set; }
@@ -56,8 +56,8 @@ namespace Ultravox
         /// <param name="property">
         /// A dotted path to the property being compared. Properties of the event are under "event"<br/>
         ///  (e.g. "event.role" for a transcript), the trigger's local variables are under "local",<br/>
-        ///  and global data is under "global" (e.g. "global.callState", the state from the call's<br/>
-        ///  latest state message).
+        ///  its shared variables are under "shared", and global data is under "global" (e.g.<br/>
+        ///  "global.callState", the state from the call's latest state message).
         /// </param>
         /// <param name="propertyArguments">
         /// Arguments for global properties that take them. Values are Mustache templates.

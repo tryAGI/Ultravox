@@ -11,8 +11,8 @@ namespace Ultravox
         /// <summary>
         /// A data message to send into the call, such as a user_text_message, forced_agent_message, or<br/>
         ///  spawn_thread. String values within it are Mustache templates rendered against the<br/>
-        ///  event and local variables (e.g. "{{event.text}}"), without HTML escaping. The<br/>
-        ///  message's type may not be templated.
+        ///  event and variables (e.g. "{{event.text}}"), without HTML escaping. The message's<br/>
+        ///  type may not be templated.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dataMessage")]
         public object? DataMessage { get; set; }
@@ -48,6 +48,18 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1TriggerActionCancelTimer? CancelTimer { get; set; }
 
         /// <summary>
+        /// Sets a shared variable.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("setSharedVariable")]
+        public global::Ultravox.UltravoxV1TriggerActionSetSharedVariable? SetSharedVariable { get; set; }
+
+        /// <summary>
+        /// Adds to a numeric shared variable.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("incrementSharedVariable")]
+        public global::Ultravox.UltravoxV1TriggerActionIncrementSharedVariable? IncrementSharedVariable { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -59,8 +71,8 @@ namespace Ultravox
         /// <param name="dataMessage">
         /// A data message to send into the call, such as a user_text_message, forced_agent_message, or<br/>
         ///  spawn_thread. String values within it are Mustache templates rendered against the<br/>
-        ///  event and local variables (e.g. "{{event.text}}"), without HTML escaping. The<br/>
-        ///  message's type may not be templated.
+        ///  event and variables (e.g. "{{event.text}}"), without HTML escaping. The message's<br/>
+        ///  type may not be templated.
         /// </param>
         /// <param name="ternary">
         /// Runs one list of actions or the other depending on a condition.
@@ -77,6 +89,12 @@ namespace Ultravox
         /// <param name="cancelTimer">
         /// Cancels a timer.
         /// </param>
+        /// <param name="setSharedVariable">
+        /// Sets a shared variable.
+        /// </param>
+        /// <param name="incrementSharedVariable">
+        /// Adds to a numeric shared variable.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -86,7 +104,9 @@ namespace Ultravox
             global::Ultravox.UltravoxV1TriggerActionSetLocalVariable? setLocalVariable,
             global::Ultravox.UltravoxV1TriggerActionIncrementLocalVariable? incrementLocalVariable,
             global::Ultravox.UltravoxV1TriggerActionStartTimer? startTimer,
-            global::Ultravox.UltravoxV1TriggerActionCancelTimer? cancelTimer)
+            global::Ultravox.UltravoxV1TriggerActionCancelTimer? cancelTimer,
+            global::Ultravox.UltravoxV1TriggerActionSetSharedVariable? setSharedVariable,
+            global::Ultravox.UltravoxV1TriggerActionIncrementSharedVariable? incrementSharedVariable)
         {
             this.DataMessage = dataMessage;
             this.Ternary = ternary;
@@ -94,6 +114,8 @@ namespace Ultravox
             this.IncrementLocalVariable = incrementLocalVariable;
             this.StartTimer = startTimer;
             this.CancelTimer = cancelTimer;
+            this.SetSharedVariable = setSharedVariable;
+            this.IncrementSharedVariable = incrementSharedVariable;
         }
 
         /// <summary>
