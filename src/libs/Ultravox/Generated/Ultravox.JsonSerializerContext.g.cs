@@ -542,6 +542,8 @@ namespace Ultravox
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerActionIncrementLocalVariable))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerActionStartTimer))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerActionCancelTimer))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerActionSetSharedVariable))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerActionIncrementSharedVariable))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.UltravoxV1TriggerConditionOperator), TypeInfoPropertyName = "UltravoxV1TriggerConditionOperator2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TriggerCondition>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Ultravox.AudioClipsCreateRequest))]
