@@ -41,7 +41,7 @@ namespace Ultravox
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
-            get => JsonSerializerContextProvider?.Value ?? global::Ultravox.SourceGenerationContext.Default;
+            get => JsonSerializerContextProvider?.Value ?? global::Ultravox.ToolsSourceGenerationContext.Default;
             set => JsonSerializerContextProvider = new(() => value);
         }
 
