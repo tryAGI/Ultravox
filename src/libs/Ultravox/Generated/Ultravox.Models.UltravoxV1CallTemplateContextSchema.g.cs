@@ -15,8 +15,7 @@ namespace Ultravox
     ///    * selected_tools.description<br/>
     ///    * selected_tools.static_parameters.value<br/>
     ///    * selected_tools.http.auth_headers.value<br/>
-    ///    * selected_tools.http.auth_query_params.value<br/>
-    ///  If multiple stages are defined for the call, each must define its own context schema (or use the generated one).
+    ///    * selected_tools.http.auth_query_params.value
     /// </summary>
     public sealed partial class UltravoxV1CallTemplateContextSchema
     {
