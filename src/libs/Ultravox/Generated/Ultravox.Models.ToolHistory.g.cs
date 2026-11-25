@@ -16,6 +16,7 @@ namespace Ultravox
         public global::Ultravox.Call Call { get; set; } = default!;
 
         /// <summary>
+        /// The number of this tool's invocations in the call that failed.<br/>
         /// Included only in responses
         /// </summary>
         /// <default>default!</default>
@@ -35,6 +36,7 @@ namespace Ultravox
         /// Included only in responses
         /// </param>
         /// <param name="errorCount">
+        /// The number of this tool's invocations in the call that failed.<br/>
         /// Included only in responses
         /// </param>
 #if NET7_0_OR_GREATER

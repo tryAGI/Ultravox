@@ -72,29 +72,25 @@ namespace Ultravox
         public global::Ultravox.UltravoxV1FirstSpeakerSettings? FirstSpeakerSettings { get; set; }
 
         /// <summary>
-        /// The system prompt used for generations.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own systemPrompt.
+        /// The system prompt used for generations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("systemPrompt")]
         public string? SystemPrompt { get; set; }
 
         /// <summary>
-        /// The model temperature, between 0 and 1. Defaults to 0.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own temperature.
+        /// The model temperature, between 0 and 1. Defaults to 0.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("temperature")]
         public float? Temperature { get; set; }
 
         /// <summary>
-        /// The model used for generations. Currently defaults to ultravox-v0.7.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own model.
+        /// The model used for generations. Currently defaults to ultravox-v0.7.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         public string? Model { get; set; }
 
         /// <summary>
-        /// The name or ID of the voice the agent should use for calls.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own voice (or external_voice).
+        /// The name or ID of the voice the agent should use for calls.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voice")]
         public string? Voice { get; set; }
@@ -110,30 +106,26 @@ namespace Ultravox
         /// <summary>
         /// Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).<br/>
         ///  Only non-price-affecting fields may be overridden (e.g., speed, style, stability).<br/>
-        ///  The provider in the override must match the selected voice's provider.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own voice_overrides.
+        ///  The provider in the override must match the selected voice's provider.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("voiceOverrides")]
         public global::Ultravox.UltravoxV1ExternalVoice? VoiceOverrides { get; set; }
 
         /// <summary>
-        /// A BCP47 language code that may be used to guide speech recognition and synthesis.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own languageHint.
+        /// A BCP47 language code that may be used to guide speech recognition and synthesis.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("languageHint")]
         public string? LanguageHint { get; set; }
 
         /// <summary>
-        /// What the agent should say immediately before hanging up if the call's time limit is reached.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own timeExceededMessage.
+        /// What the agent should say immediately before hanging up if the call's time limit is reached.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timeExceededMessage")]
         public string? TimeExceededMessage { get; set; }
 
         /// <summary>
         /// Messages spoken by the agent when the user is inactive for the specified duration.<br/>
-        ///  Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own inactivityMessages.
+        ///  Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("inactivityMessages")]
         public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1TimedMessage>? InactivityMessages { get; set; }
@@ -144,8 +136,7 @@ namespace Ultravox
         ///    * description<br/>
         ///    * static_parameters.value<br/>
         ///    * http.auth_headers.value<br/>
-        ///    * http.auth_query_params.value<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own selectedTools.
+        ///    * http.auth_query_params.value
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("selectedTools")]
         public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTool>? SelectedTools { get; set; }
@@ -168,8 +159,7 @@ namespace Ultravox
         ///    * selected_tools.description<br/>
         ///    * selected_tools.static_parameters.value<br/>
         ///    * selected_tools.http.auth_headers.value<br/>
-        ///    * selected_tools.http.auth_query_params.value<br/>
-        ///  If multiple stages are defined for the call, each must define its own context schema (or use the generated one).
+        ///    * selected_tools.http.auth_query_params.value
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("contextSchema")]
         public object? ContextSchema { get; set; }
@@ -179,8 +169,7 @@ namespace Ultravox
         ///  When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and<br/>
         ///  X-Ultravox-Signature headers will be included. If multiple secrets are provided,<br/>
         ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
-        ///  Write-only: this field is never included in API responses.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own sharedSecrets.
+        ///  Write-only: this field is never included in API responses.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sharedSecrets")]
         public global::System.Collections.Generic.IList<string>? SharedSecrets { get; set; }
@@ -226,8 +215,7 @@ namespace Ultravox
         public global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1SelectedTrigger>? Triggers { get; set; }
 
         /// <summary>
-        /// Settings that guide speech recognition of the user's speech.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own transcriptionSettings.
+        /// Settings that guide speech recognition of the user's speech.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcriptionSettings")]
         public global::Ultravox.UltravoxV1TranscriptionSettings? TranscriptionSettings { get; set; }
@@ -287,20 +275,16 @@ namespace Ultravox
         ///  (interruptible) greeting generated based on the system prompt and any initial messages.
         /// </param>
         /// <param name="systemPrompt">
-        /// The system prompt used for generations.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own systemPrompt.
+        /// The system prompt used for generations.
         /// </param>
         /// <param name="temperature">
-        /// The model temperature, between 0 and 1. Defaults to 0.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own temperature.
+        /// The model temperature, between 0 and 1. Defaults to 0.
         /// </param>
         /// <param name="model">
-        /// The model used for generations. Currently defaults to ultravox-v0.7.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own model.
+        /// The model used for generations. Currently defaults to ultravox-v0.7.
         /// </param>
         /// <param name="voice">
-        /// The name or ID of the voice the agent should use for calls.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own voice (or external_voice).
+        /// The name or ID of the voice the agent should use for calls.
         /// </param>
         /// <param name="externalVoice">
         /// A voice not known to Ultravox Realtime that can nonetheless be used for calls with this agent.<br/>
@@ -310,21 +294,17 @@ namespace Ultravox
         /// <param name="voiceOverrides">
         /// Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).<br/>
         ///  Only non-price-affecting fields may be overridden (e.g., speed, style, stability).<br/>
-        ///  The provider in the override must match the selected voice's provider.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own voice_overrides.
+        ///  The provider in the override must match the selected voice's provider.
         /// </param>
         /// <param name="languageHint">
-        /// A BCP47 language code that may be used to guide speech recognition and synthesis.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own languageHint.
+        /// A BCP47 language code that may be used to guide speech recognition and synthesis.
         /// </param>
         /// <param name="timeExceededMessage">
-        /// What the agent should say immediately before hanging up if the call's time limit is reached.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own timeExceededMessage.
+        /// What the agent should say immediately before hanging up if the call's time limit is reached.
         /// </param>
         /// <param name="inactivityMessages">
         /// Messages spoken by the agent when the user is inactive for the specified duration.<br/>
-        ///  Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own inactivityMessages.
+        ///  Durations are cumulative, so a message m &gt; 1 with duration 30s will be spoken 30 seconds after message m-1.
         /// </param>
         /// <param name="selectedTools">
         /// The tools available to the agent for this call.<br/>
@@ -332,8 +312,7 @@ namespace Ultravox
         ///    * description<br/>
         ///    * static_parameters.value<br/>
         ///    * http.auth_headers.value<br/>
-        ///    * http.auth_query_params.value<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own selectedTools.
+        ///    * http.auth_query_params.value
         /// </param>
         /// <param name="dataConnection">
         /// Data connection configuration for calls created with this agent.
@@ -350,16 +329,14 @@ namespace Ultravox
         ///    * selected_tools.description<br/>
         ///    * selected_tools.static_parameters.value<br/>
         ///    * selected_tools.http.auth_headers.value<br/>
-        ///    * selected_tools.http.auth_query_params.value<br/>
-        ///  If multiple stages are defined for the call, each must define its own context schema (or use the generated one).
+        ///    * selected_tools.http.auth_query_params.value
         /// </param>
         /// <param name="sharedSecrets">
         /// Shared secrets used to sign outbound requests (e.g. data connection websocket).<br/>
         ///  When set, X-Ultravox-Call-ID, X-Ultravox-Signature-Timestamp, and<br/>
         ///  X-Ultravox-Signature headers will be included. If multiple secrets are provided,<br/>
         ///  one signature per secret is produced (comma-separated in X-Ultravox-Signature).<br/>
-        ///  Write-only: this field is never included in API responses.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own sharedSecrets.
+        ///  Write-only: this field is never included in API responses.
         /// </param>
         /// <param name="retentionPolicy">
         /// The default retention policy for calls created with this agent.
@@ -382,8 +359,7 @@ namespace Ultravox
         /// Triggers for calls created with this agent. See StartCallRequest.triggers.
         /// </param>
         /// <param name="transcriptionSettings">
-        /// Settings that guide speech recognition of the user's speech.<br/>
-        ///  If multiple stages are defined for the call, this will be used only for stages without their own transcriptionSettings.
+        /// Settings that guide speech recognition of the user's speech.
         /// </param>
         /// <param name="handoffs">
         /// Handoffs to other agents. Each one is presented to the model as a tool. Using it<br/>

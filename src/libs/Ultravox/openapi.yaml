@@ -6516,6 +6516,7 @@ components:
         errorCount:
           type: integer
           readOnly: true
+          description: The number of this tool's invocations in the call that failed.
       required:
       - call
       - errorCount
@@ -6796,25 +6797,17 @@ components:
              (interruptible) greeting generated based on the system prompt and any initial messages.
         systemPrompt:
           type: string
-          description: |-
-            The system prompt used for generations.
-             If multiple stages are defined for the call, this will be used only for stages without their own systemPrompt.
+          description: The system prompt used for generations.
         temperature:
           type: number
-          description: |-
-            The model temperature, between 0 and 1. Defaults to 0.
-             If multiple stages are defined for the call, this will be used only for stages without their own temperature.
+          description: The model temperature, between 0 and 1. Defaults to 0.
           format: float
         model:
           type: string
-          description: |-
-            The model used for generations. Currently defaults to ultravox-v0.7.
-             If multiple stages are defined for the call, this will be used only for stages without their own model.
+          description: The model used for generations. Currently defaults to ultravox-v0.7.
         voice:
           type: string
-          description: |-
-            The name or ID of the voice the agent should use for calls.
-             If multiple stages are defined for the call, this will be used only for stages without their own voice (or external_voice).
+          description: The name or ID of the voice the agent should use for calls.
         externalVoice:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.ExternalVoice'
@@ -6829,17 +6822,14 @@ components:
             Overrides for the selected voice. Only valid when `voice` is set (not `external_voice`).
              Only non-price-affecting fields may be overridden (e.g., speed, style, stability).
              The provider in the override must match the selected voice's provider.
-             If multiple stages are defined for the call, this will be used only for stages without their own voice_overrides.
         languageHint:
           type: string
-          description: |-
-            A BCP47 language code that may be used to guide speech recognition and synthesis.
-             If multiple stages are defined for the call, this will be used only for stages without their own languageHint.
+          description: A BCP47 language code that may be used to guide speech recognition
+            and synthesis.
         timeExceededMessage:
           type: string
-          description: |-
-            What the agent should say immediately before hanging up if the call's time limit is reached.
-             If multiple stages are defined for the call, this will be used only for stages without their own timeExceededMessage.
+          description: What the agent should say immediately before hanging up if
+            the call's time limit is reached.
         inactivityMessages:
           type: array
           items:
@@ -6847,7 +6837,6 @@ components:
           description: |-
             Messages spoken by the agent when the user is inactive for the specified duration.
              Durations are cumulative, so a message m > 1 with duration 30s will be spoken 30 seconds after message m-1.
-             If multiple stages are defined for the call, this will be used only for stages without their own inactivityMessages.
         selectedTools:
           type: array
           items:
@@ -6859,7 +6848,6 @@ components:
                * static_parameters.value
                * http.auth_headers.value
                * http.auth_query_params.value
-             If multiple stages are defined for the call, this will be used only for stages without their own selectedTools.
         dataConnection:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.DataConnectionConfig'
@@ -6879,7 +6867,6 @@ components:
                * selected_tools.static_parameters.value
                * selected_tools.http.auth_headers.value
                * selected_tools.http.auth_query_params.value
-             If multiple stages are defined for the call, each must define its own context schema (or use the generated one).
         sharedSecrets:
           type: array
           items:
@@ -6890,7 +6877,6 @@ components:
              X-Ultravox-Signature headers will be included. If multiple secrets are provided,
              one signature per secret is produced (comma-separated in X-Ultravox-Signature).
              Write-only: this field is never included in API responses.
-             If multiple stages are defined for the call, this will be used only for stages without their own sharedSecrets.
         retentionPolicy:
           enum:
           - CALL_RETENTION_POLICY_UNSPECIFIED
@@ -6934,9 +6920,7 @@ components:
         transcriptionSettings:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.TranscriptionSettings'
-          description: |-
-            Settings that guide speech recognition of the user's speech.
-             If multiple stages are defined for the call, this will be used only for stages without their own transcriptionSettings.
+          description: Settings that guide speech recognition of the user's speech.
         handoffs:
           type: array
           items:
@@ -8643,8 +8627,8 @@ components:
              can be overridden regardless of whether it is required to be.
         transitionId:
           type: string
-          description: For internal use. Relates this tool to a stage transition definition
-            within a call template for attribution.
+          description: For internal use. Relates this tool to the handoff it takes,
+            for attribution.
       description: |-
         A tool selected for a particular call. Exactly one of tool_id, tool_name, or
          temporary_tool should be set.

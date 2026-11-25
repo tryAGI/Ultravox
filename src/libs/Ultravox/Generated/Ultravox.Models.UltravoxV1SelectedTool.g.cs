@@ -63,7 +63,7 @@ namespace Ultravox
         public object? ParameterOverrides { get; set; }
 
         /// <summary>
-        /// For internal use. Relates this tool to a stage transition definition within a call template for attribution.
+        /// For internal use. Relates this tool to the handoff it takes, for attribution.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transitionId")]
         public string? TransitionId { get; set; }
@@ -110,7 +110,7 @@ namespace Ultravox
         ///  can be overridden regardless of whether it is required to be.
         /// </param>
         /// <param name="transitionId">
-        /// For internal use. Relates this tool to a stage transition definition within a call template for attribution.
+        /// For internal use. Relates this tool to the handoff it takes, for attribution.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
