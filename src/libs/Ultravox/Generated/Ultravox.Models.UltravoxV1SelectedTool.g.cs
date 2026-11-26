@@ -22,8 +22,7 @@ namespace Ultravox
         public string? ToolName { get; set; }
 
         /// <summary>
-        /// A temporary tool definition, available only for this call (and subsequent<br/>
-        ///  calls created using priorCallId without overriding selected tools). Exactly one<br/>
+        /// A temporary tool definition, available only for this call. Exactly one<br/>
         ///  implementation (http or client) should be set. See the 'Base Tool Definition'<br/>
         ///  schema for more details.
         /// </summary>
@@ -84,8 +83,7 @@ namespace Ultravox
         /// The name of an existing base tool. The name must uniquely identify the tool.
         /// </param>
         /// <param name="temporaryTool">
-        /// A temporary tool definition, available only for this call (and subsequent<br/>
-        ///  calls created using priorCallId without overriding selected tools). Exactly one<br/>
+        /// A temporary tool definition, available only for this call. Exactly one<br/>
         ///  implementation (http or client) should be set. See the 'Base Tool Definition'<br/>
         ///  schema for more details.
         /// </param>

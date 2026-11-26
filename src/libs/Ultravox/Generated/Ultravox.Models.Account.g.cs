@@ -111,6 +111,14 @@ namespace Ultravox
         public int PriorityCallSlots { get; set; } = default!;
 
         /// <summary>
+        /// Whether this account's short calls may be billed as free when admissionPreference is set to CALL_ADMISSION_PREFERENCE_LOWEST_COST.<br/>
+        /// Included only in responses
+        /// </summary>
+        /// <default>default!</default>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allowsFreeShortCalls")]
+        public bool AllowsFreeShortCalls { get; set; } = default!;
+
+        /// <summary>
         /// The maximum number of custom voices allowed for this account.<br/>
         /// Included only in responses
         /// </summary>
@@ -193,6 +201,10 @@ namespace Ultravox
         /// How many of this account's concurrent calls get priority when demand is high. Calls with long prompts or conversations use more of this capacity. Calls beyond it may be rejected during peak demand.<br/>
         /// Included only in responses
         /// </param>
+        /// <param name="allowsFreeShortCalls">
+        /// Whether this account's short calls may be billed as free when admissionPreference is set to CALL_ADMISSION_PREFERENCE_LOWEST_COST.<br/>
+        /// Included only in responses
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -212,7 +224,8 @@ namespace Ultravox
             string freeTimeUsed = default!,
             string freeTimeRemaining = default!,
             int activeCalls = default!,
-            int priorityCallSlots = default!)
+            int priorityCallSlots = default!,
+            bool allowsFreeShortCalls = default!)
         {
             this.AccountId = accountId;
             this.Name = name;
@@ -228,6 +241,7 @@ namespace Ultravox
             this.ActiveCalls = activeCalls;
             this.AllowedConcurrentCalls = allowedConcurrentCalls;
             this.PriorityCallSlots = priorityCallSlots;
+            this.AllowsFreeShortCalls = allowsFreeShortCalls;
             this.AllowedVoices = allowedVoices;
             this.AllowedCorpora = allowedCorpora;
         }
