@@ -1404,7 +1404,7 @@ paths:
           format: uuid
         description: The UUID of a prior call. When specified, the new call will use
           the prior call's message history as its own initial_messages. (It's illegal
-          to also set initial_messages in the body.)
+          to also set initial_messages in the body.) No other settings carry over.
       - in: query
         name: throttle
         schema:
@@ -3911,6 +3911,11 @@ components:
           description: How many of this account's concurrent calls get priority when
             demand is high. Calls with long prompts or conversations use more of this
             capacity. Calls beyond it may be rejected during peak demand.
+        allowsFreeShortCalls:
+          type: boolean
+          readOnly: true
+          description: Whether this account's short calls may be billed as free when
+            admissionPreference is set to CALL_ADMISSION_PREFERENCE_LOWEST_COST.
         allowedVoices:
           type: integer
           nullable: true
@@ -3927,6 +3932,7 @@ components:
       - allowedConcurrentCalls
       - allowedCorpora
       - allowedVoices
+      - allowsFreeShortCalls
       - billingUrl
       - freeTimeRemaining
       - freeTimeUsed
@@ -8594,8 +8600,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/ultravox.v1.BaseToolDefinition'
           description: |-
-            A temporary tool definition, available only for this call (and subsequent
-             calls created using priorCallId without overriding selected tools). Exactly one
+            A temporary tool definition, available only for this call. Exactly one
              implementation (http or client) should be set. See the 'Base Tool Definition'
              schema for more details.
         nameOverride:
