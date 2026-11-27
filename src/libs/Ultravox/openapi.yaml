@@ -213,8 +213,10 @@ paths:
           type: object
           additionalProperties:
             type: string
-        description: Filter calls by metadata. Use metadata.key=value to filter by
-          specific key-value pairs.
+        description: 'Filter calls by metadata. Use metadata.key=value to filter by
+          specific key-value pairs. On zero data retention calls it matches only system
+          keys, such as telephony call IDs: your keys and the caller''s details aren''t
+          kept where they can be searched.'
       - in: query
         name: search
         schema:
@@ -222,7 +224,9 @@ paths:
           minLength: 1
         description: 'The search string used to filter results: a call ID or part
           of one, or key=value to match calls whose metadata has exactly that key
-          and value.'
+          and value. On zero data retention calls it matches only system keys, such
+          as telephony call IDs: your keys and the caller''s details aren''t kept
+          where they can be searched.'
       - in: query
         name: timeOfDayEnd
         schema:
@@ -850,8 +854,10 @@ paths:
           type: object
           additionalProperties:
             type: string
-        description: Filter calls by metadata. Use metadata.key=value to filter by
-          specific key-value pairs.
+        description: 'Filter calls by metadata. Use metadata.key=value to filter by
+          specific key-value pairs. On zero data retention calls it matches only system
+          keys, such as telephony call IDs: your keys and the caller''s details aren''t
+          kept where they can be searched.'
       - in: query
         name: search
         schema:
@@ -859,7 +865,9 @@ paths:
           minLength: 1
         description: 'The search string used to filter results: a call ID or part
           of one, or key=value to match calls whose metadata has exactly that key
-          and value.'
+          and value. On zero data retention calls it matches only system keys, such
+          as telephony call IDs: your keys and the caller''s details aren''t kept
+          where they can be searched.'
       - in: query
         name: timeOfDayEnd
         schema:
@@ -1383,8 +1391,10 @@ paths:
           type: object
           additionalProperties:
             type: string
-        description: Filter calls by metadata. Use metadata.key=value to filter by
-          specific key-value pairs.
+        description: 'Filter calls by metadata. Use metadata.key=value to filter by
+          specific key-value pairs. On zero data retention calls it matches only system
+          keys, such as telephony call IDs: your keys and the caller''s details aren''t
+          kept where they can be searched.'
       - name: pageSize
         required: false
         in: query
@@ -1398,7 +1408,9 @@ paths:
           minLength: 1
         description: 'The search string used to filter results: a call ID or part
           of one, or key=value to match calls whose metadata has exactly that key
-          and value.'
+          and value. On zero data retention calls it matches only system keys, such
+          as telephony call IDs: your keys and the caller''s details aren''t kept
+          where they can be searched.'
       - name: sort
         required: false
         in: query
@@ -2402,8 +2414,10 @@ paths:
           type: object
           additionalProperties:
             type: string
-        description: Filter calls by metadata. Use metadata.key=value to filter by
-          specific key-value pairs.
+        description: 'Filter calls by metadata. Use metadata.key=value to filter by
+          specific key-value pairs. On zero data retention calls it matches only system
+          keys, such as telephony call IDs: your keys and the caller''s details aren''t
+          kept where they can be searched.'
       - name: pageSize
         required: false
         in: query
@@ -2417,7 +2431,9 @@ paths:
           minLength: 1
         description: 'The search string used to filter results: a call ID or part
           of one, or key=value to match calls whose metadata has exactly that key
-          and value.'
+          and value. On zero data retention calls it matches only system keys, such
+          as telephony call IDs: your keys and the caller''s details aren''t kept
+          where they can be searched.'
       - in: query
         name: timeOfDayEnd
         schema:
