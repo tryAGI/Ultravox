@@ -16,8 +16,9 @@ namespace Ultravox
         public string? AudioClip { get; set; }
 
         /// <summary>
-        /// The volume of the background audio relative to the agent's voice, between<br/>
-        ///  0 and 10. Defaults to 0.3.
+        /// A multiplier on the clip's samples, between 0 and 10. 1 plays the clip as<br/>
+        ///  recorded. Values above 1 amplify it, clipping samples that exceed the<br/>
+        ///  maximum level. Defaults to 0.3.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("volume")]
         public float? Volume { get; set; }
@@ -35,8 +36,9 @@ namespace Ultravox
         /// The name or ID of the audio clip to play.
         /// </param>
         /// <param name="volume">
-        /// The volume of the background audio relative to the agent's voice, between<br/>
-        ///  0 and 10. Defaults to 0.3.
+        /// A multiplier on the clip's samples, between 0 and 10. 1 plays the clip as<br/>
+        ///  recorded. Values above 1 amplify it, clipping samples that exceed the<br/>
+        ///  maximum level. Defaults to 0.3.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

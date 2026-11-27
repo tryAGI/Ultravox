@@ -11,6 +11,7 @@ namespace Ultravox
         /// Default Value: true
         /// </param>
         /// <param name="priorCallId"></param>
+        /// <param name="quotaUtilizationLimit"></param>
         /// <param name="throttle"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -21,6 +22,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequest request,
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
+            double? quotaUtilizationLimit = default,
             string? throttle = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -31,6 +33,7 @@ namespace Ultravox
         /// Default Value: true
         /// </param>
         /// <param name="priorCallId"></param>
+        /// <param name="quotaUtilizationLimit"></param>
         /// <param name="throttle"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -41,6 +44,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequest request,
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
+            double? quotaUtilizationLimit = default,
             string? throttle = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
@@ -51,6 +55,7 @@ namespace Ultravox
         /// Default Value: true
         /// </param>
         /// <param name="priorCallId"></param>
+        /// <param name="quotaUtilizationLimit"></param>
         /// <param name="throttle"></param>
         /// <param name="systemPrompt">
         /// The system prompt provided to the model during generations.
@@ -181,6 +186,7 @@ namespace Ultravox
         global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
+            double? quotaUtilizationLimit = default,
             string? throttle = default,
             string? systemPrompt = default,
             float? temperature = default,

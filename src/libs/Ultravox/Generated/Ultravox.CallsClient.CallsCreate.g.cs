@@ -29,6 +29,7 @@ namespace Ultravox
             global::System.Net.Http.HttpClient httpClient,
             ref bool? enableGreetingPrompt,
             ref global::System.Guid? priorCallId,
+            ref double? quotaUtilizationLimit,
             ref string? throttle,
             global::Ultravox.UltravoxV1StartCallRequest request);
         partial void PrepareCallsCreateRequest(
@@ -36,6 +37,7 @@ namespace Ultravox
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             bool? enableGreetingPrompt,
             global::System.Guid? priorCallId,
+            double? quotaUtilizationLimit,
             string? throttle,
             global::Ultravox.UltravoxV1StartCallRequest request);
         partial void ProcessCallsCreateResponse(
@@ -54,6 +56,7 @@ namespace Ultravox
         /// Default Value: true
         /// </param>
         /// <param name="priorCallId"></param>
+        /// <param name="quotaUtilizationLimit"></param>
         /// <param name="throttle"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -64,6 +67,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequest request,
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
+            double? quotaUtilizationLimit = default,
             string? throttle = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -73,6 +77,7 @@ namespace Ultravox
                 request: request,
                 enableGreetingPrompt: enableGreetingPrompt,
                 priorCallId: priorCallId,
+                quotaUtilizationLimit: quotaUtilizationLimit,
                 throttle: throttle,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -87,6 +92,7 @@ namespace Ultravox
         /// Default Value: true
         /// </param>
         /// <param name="priorCallId"></param>
+        /// <param name="quotaUtilizationLimit"></param>
         /// <param name="throttle"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -97,6 +103,7 @@ namespace Ultravox
             global::Ultravox.UltravoxV1StartCallRequest request,
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
+            double? quotaUtilizationLimit = default,
             string? throttle = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -109,6 +116,7 @@ namespace Ultravox
                 httpClient: HttpClient,
                 enableGreetingPrompt: ref enableGreetingPrompt,
                 priorCallId: ref priorCallId,
+                quotaUtilizationLimit: ref quotaUtilizationLimit,
                 throttle: ref throttle,
                 request: request);
 
@@ -141,6 +149,7 @@ namespace Ultravox
                             __pathBuilder
                                 .AddOptionalParameter("enableGreetingPrompt", enableGreetingPrompt?.ToString().ToLowerInvariant())
                                 .AddOptionalParameter("priorCallId", priorCallId?.ToString())
+                                .AddOptionalParameter("quotaUtilizationLimit", quotaUtilizationLimit?.ToString())
                                 .AddOptionalParameter("throttle", throttle)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -191,6 +200,7 @@ namespace Ultravox
                     httpRequestMessage: __httpRequest,
                     enableGreetingPrompt: enableGreetingPrompt,
                     priorCallId: priorCallId,
+                    quotaUtilizationLimit: quotaUtilizationLimit,
                     throttle: throttle,
                     request: request);
 
@@ -474,6 +484,7 @@ namespace Ultravox
         /// Default Value: true
         /// </param>
         /// <param name="priorCallId"></param>
+        /// <param name="quotaUtilizationLimit"></param>
         /// <param name="throttle"></param>
         /// <param name="systemPrompt">
         /// The system prompt provided to the model during generations.
@@ -604,6 +615,7 @@ namespace Ultravox
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> CallsCreateAsync(
             bool? enableGreetingPrompt = default,
             global::System.Guid? priorCallId = default,
+            double? quotaUtilizationLimit = default,
             string? throttle = default,
             string? systemPrompt = default,
             float? temperature = default,
@@ -681,6 +693,7 @@ namespace Ultravox
             return await CallsCreateAsync(
                 enableGreetingPrompt: enableGreetingPrompt,
                 priorCallId: priorCallId,
+                quotaUtilizationLimit: quotaUtilizationLimit,
                 throttle: throttle,
                 request: __request,
                 requestOptions: requestOptions,
