@@ -28,12 +28,16 @@ namespace Ultravox
         partial void PrepareAgentsCallsCreateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::System.Guid agentId,
+            ref global::System.Guid? priorCallId,
+            ref double? quotaUtilizationLimit,
             ref string? throttle,
             global::Ultravox.UltravoxV1StartAgentCallRequest request);
         partial void PrepareAgentsCallsCreateRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::System.Guid agentId,
+            global::System.Guid? priorCallId,
+            double? quotaUtilizationLimit,
             string? throttle,
             global::Ultravox.UltravoxV1StartAgentCallRequest request);
         partial void ProcessAgentsCallsCreateResponse(
@@ -49,6 +53,8 @@ namespace Ultravox
         ///
         /// </summary>
         /// <param name="agentId"></param>
+        /// <param name="priorCallId"></param>
+        /// <param name="quotaUtilizationLimit"></param>
         /// <param name="throttle"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -58,6 +64,8 @@ namespace Ultravox
             global::System.Guid agentId,
 
             global::Ultravox.UltravoxV1StartAgentCallRequest request,
+            global::System.Guid? priorCallId = default,
+            double? quotaUtilizationLimit = default,
             string? throttle = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -66,6 +74,8 @@ namespace Ultravox
                 agentId: agentId,
 
                 request: request,
+                priorCallId: priorCallId,
+                quotaUtilizationLimit: quotaUtilizationLimit,
                 throttle: throttle,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
@@ -77,6 +87,8 @@ namespace Ultravox
         ///
         /// </summary>
         /// <param name="agentId"></param>
+        /// <param name="priorCallId"></param>
+        /// <param name="quotaUtilizationLimit"></param>
         /// <param name="throttle"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -86,6 +98,8 @@ namespace Ultravox
             global::System.Guid agentId,
 
             global::Ultravox.UltravoxV1StartAgentCallRequest request,
+            global::System.Guid? priorCallId = default,
+            double? quotaUtilizationLimit = default,
             string? throttle = default,
             global::Ultravox.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -97,6 +111,8 @@ namespace Ultravox
             PrepareAgentsCallsCreateArguments(
                 httpClient: HttpClient,
                 agentId: ref agentId,
+                priorCallId: ref priorCallId,
+                quotaUtilizationLimit: ref quotaUtilizationLimit,
                 throttle: ref throttle,
                 request: request);
 
@@ -127,6 +143,8 @@ namespace Ultravox
                                 path: $"/api/agents/{agentId}/calls",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("priorCallId", priorCallId?.ToString())
+                                .AddOptionalParameter("quotaUtilizationLimit", quotaUtilizationLimit?.ToString())
                                 .AddOptionalParameter("throttle", throttle)
                                 ;
                             var __path = __pathBuilder.ToString();
@@ -176,6 +194,8 @@ namespace Ultravox
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     agentId: agentId,
+                    priorCallId: priorCallId,
+                    quotaUtilizationLimit: quotaUtilizationLimit,
                     throttle: throttle,
                     request: request);
 
@@ -456,6 +476,8 @@ namespace Ultravox
         ///
         /// </summary>
         /// <param name="agentId"></param>
+        /// <param name="priorCallId"></param>
+        /// <param name="quotaUtilizationLimit"></param>
         /// <param name="throttle"></param>
         /// <param name="templateContext">
         /// Context for filling any mustache templates for the call.
@@ -549,6 +571,8 @@ namespace Ultravox
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Ultravox.Call> AgentsCallsCreateAsync(
             global::System.Guid agentId,
+            global::System.Guid? priorCallId = default,
+            double? quotaUtilizationLimit = default,
             string? throttle = default,
             object? templateContext = default,
             global::System.Collections.Generic.IList<global::Ultravox.UltravoxV1Message>? initialMessages = default,
@@ -605,6 +629,8 @@ namespace Ultravox
 
             return await AgentsCallsCreateAsync(
                 agentId: agentId,
+                priorCallId: priorCallId,
+                quotaUtilizationLimit: quotaUtilizationLimit,
                 throttle: throttle,
                 request: __request,
                 requestOptions: requestOptions,

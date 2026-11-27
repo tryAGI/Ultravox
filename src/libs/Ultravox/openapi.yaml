@@ -473,6 +473,26 @@ paths:
           format: uuid
         required: true
       - in: query
+        name: priorCallId
+        schema:
+          type: string
+          format: uuid
+        description: The UUID of a prior call. When specified, the new call will use
+          the prior call's message history as its own initialMessages, so the body
+          can't also set initialMessages. No other settings carry over. The prior
+          call may come from any agent or none.
+      - in: query
+        name: quotaUtilizationLimit
+        schema:
+          type: number
+          format: double
+          maximum: 1.0
+        description: The fraction of your account's call quota (greater than 0 and
+          at most 1) that this call may use, leaving the rest for calls without a
+          limit. Your quota shrinks as overall load rises, so a call with a limit
+          may be refused while calls without one are still accepted. Not available
+          to accounts with a fixed concurrency limit.
+      - in: query
         name: throttle
         schema:
           type: string
@@ -495,6 +515,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Call'
+          description: ''
+  /api/agents/{agent_id}/incoming_handoffs:
+    get:
+      operationId: agents_incoming_handoffs_list
+      description: Lists the handoffs to an agent in your agents' published revisions,
+        including the agent's handoffs to itself.
+      parameters:
+      - in: path
+        name: agent_id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - name: cursor
+        required: false
+        in: query
+        description: The pagination cursor value.
+        schema:
+          type: string
+      - name: pageSize
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - agents
+      security:
+      - apiKeyAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedIncomingHandoffList'
           description: ''
   /api/agents/{agent_id}/scheduled_batches:
     get:
@@ -1318,6 +1373,10 @@ paths:
           format: date-time
         description: Start datetime (inclusive) for filtering calls by creation date.
           If no time component is present, this defaults to the start of the day (midnight).
+          If omitted, defaults to 7 days before toDate, or before now when toDate
+          is omitted too, unless search is a call ID. Set it explicitly to list older
+          calls. The range from fromDate to toDate (or now) can span at most 90 days;
+          split a longer one into several requests.
       - in: query
         name: metadata
         schema:
@@ -1405,6 +1464,17 @@ paths:
         description: The UUID of a prior call. When specified, the new call will use
           the prior call's message history as its own initial_messages. (It's illegal
           to also set initial_messages in the body.) No other settings carry over.
+      - in: query
+        name: quotaUtilizationLimit
+        schema:
+          type: number
+          format: double
+          maximum: 1.0
+        description: The fraction of your account's call quota (greater than 0 and
+          at most 1) that this call may use, leaving the rest for calls without a
+          limit. Your quota shrinks as overall load rises, so a call with a limit
+          may be refused while calls without one are still accepted. Not available
+          to accounts with a fixed concurrency limit.
       - in: query
         name: throttle
         schema:
@@ -4993,6 +5063,26 @@ components:
       - hour
       - joinedCount
       - totalCount
+    IncomingHandoff:
+      type: object
+      properties:
+        agent:
+          allOf:
+          - $ref: '#/components/schemas/AgentBasic'
+          readOnly: true
+          description: The agent the handoff belongs to.
+        name:
+          type: string
+          readOnly: true
+          description: The name of the tool the agent hands off with.
+        description:
+          type: string
+          readOnly: true
+          description: When the agent hands off.
+      required:
+      - agent
+      - description
+      - name
     InitialOutputMediumEnum:
       enum:
       - MESSAGE_MEDIUM_VOICE
@@ -5274,6 +5364,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CallTrigger'
+        total:
+          type: integer
+          example: 123
+          description: Counted for the first page. Pages reached through `next` or
+            `previous` repeat that count.
+    PaginatedIncomingHandoffList:
+      type: object
+      required:
+      - results
+      properties:
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/IncomingHandoff'
         total:
           type: integer
           example: 123
@@ -5783,6 +5897,10 @@ components:
           type: string
           format: date-time
           readOnly: true
+        name:
+          type: string
+          description: A name to help you identify the batch.
+          maxLength: 64
         windowStart:
           type: string
           format: date-time
@@ -5798,6 +5916,18 @@ components:
           nullable: true
           description: The name or ID of a call throttle. If specified, calls in this
             batch will be subject to the rate limits defined by the throttle.
+        quotaUtilizationLimit:
+          type: number
+          format: double
+          maximum: 1.0
+          nullable: true
+          description: The fraction of your account's call quota (greater than 0 and
+            at most 1) that calls in this batch may use, leaving the rest for other
+            calls. The fraction scales your whole quota and counts all of your account's
+            calls on the same model, so two batches on one model that each set 0.3
+            share about 30% of your quota (roughly 15% each), not 30% each. Defaults
+            to your account's batch limit, which is 0.9 unless changed. Not available
+            to accounts with a fixed concurrency limit.
         webhookUrl:
           type: string
           format: uri
@@ -6246,6 +6376,10 @@ components:
           type: string
           format: date-time
           readOnly: true
+        name:
+          type: string
+          description: A name to help you identify the batch.
+          maxLength: 64
         windowStart:
           type: string
           format: date-time
@@ -6261,6 +6395,18 @@ components:
           nullable: true
           description: The name or ID of a call throttle. If specified, calls in this
             batch will be subject to the rate limits defined by the throttle.
+        quotaUtilizationLimit:
+          type: number
+          format: double
+          maximum: 1.0
+          nullable: true
+          description: The fraction of your account's call quota (greater than 0 and
+            at most 1) that calls in this batch may use, leaving the rest for other
+            calls. The fraction scales your whole quota and counts all of your account's
+            calls on the same model, so two batches on one model that each set 0.3
+            share about 30% of your quota (roughly 15% each), not 30% each. Defaults
+            to your account's batch limit, which is 0.9 unless changed. Not available
+            to accounts with a fixed concurrency limit.
         webhookUrl:
           type: string
           format: uri
@@ -7201,8 +7347,9 @@ components:
         volume:
           type: number
           description: |-
-            The volume of the background audio relative to the agent's voice, between
-             0 and 10. Defaults to 0.3.
+            A multiplier on the clip's samples, between 0 and 10. 1 plays the clip as
+             recorded. Values above 1 amplify it, clipping samples that exceed the
+             maximum level. Defaults to 0.3.
           format: float
       description: |-
         Background audio played behind the agent's voice for the duration of a call,
